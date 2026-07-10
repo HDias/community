@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bylaws — DDMM Wireframes</title>
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles-opt1.css">
+  <link rel="stylesheet" href="styles-opt2.css">
+  <link rel="stylesheet" href="styles-opt3.css">
+  <link rel="stylesheet" href="styles-opt4.css">
+  <link rel="stylesheet" href="styles-opt5.css">
+</head>
+<body>
+
+<div class="completion-banner" id="completion-banner" style="display:none;">
+  ✦ Visual designs complete — all options now have Clean + Polished variants
+  <button onclick="this.parentElement.style.display='none'" style="float:right;background:none;border:none;cursor:pointer;font-size:16px;">×</button>
+</div>
+
+<div class="page-wrapper">
+
+  <div class="title-bar">
+    <span><span id="feature-name">Bylaws</span> — <span id="project-name">Community</span></span>
+    <span class="rec">★ Recommended: Option <span id="rec-number">2</span></span>
+  </div>
+
+  <nav class="main-tabs">
+    <button class="tab-btn active" data-tab="option-1">1: Sidebar Doc</button>
+    <button class="tab-btn" data-tab="option-2">2: Doc + Version Rail</button>
+    <button class="tab-btn" data-tab="option-3">3: Split Diff</button>
+    <button class="tab-btn" data-tab="option-4">4: Ack Dashboard</button>
+    <button class="tab-btn" data-tab="option-5">5: Publish Wizard</button>
+    <button class="tab-btn" data-tab="summary">Summary</button>
+  </nav>
+
+  <!-- ===== OPTION 1 ===== -->
+  <div class="option-panel active" id="option-1">
+    <h2>Option 1: <span class="opt-name">Sidebar Doc</span></h2>
+    <p class="option-description">Extends the existing sidebar-shell — the current bylaws rendered as a readable article with a version header, a changes-summary callout, and an "I have read and acknowledge" action at the bottom (plus an admin Edit action). Zero new paradigms.</p>
+    <div class="sub-tab-bar" id="frame-opt1-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch1"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch1)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint1"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint1)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond1"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond1)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt1">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/bylaws</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="../1007-administrations/index.html">◷ Administrations</a>
+              <a href="../1007-contributions/index.html">$ Contributions</a>
+              <a href="../1007-meetings/index.html">▦ Meetings</a>
+              <a href="#" class="nav-active">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">MS</div><span>Maria da Silva</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb">Community <span class="crumb-sep">/</span> <b>Bylaws</b></span>
+            </div>
+            <div class="app-body">
+              <div class="page-head">
+                <div>
+                  <h1 class="page-title">Bylaws <span class="wf-marker">1</span></h1>
+                  <p class="page-sub">The current governing document for Rosário do Sul.</p>
+                </div>
+                <div class="head-actions">
+                  <a href="#" class="btn sm">Edit (admin)</a>
+                </div>
+              </div>
+
+              <div class="ack-banner">
+                <div class="ack-text">
+                  <strong>Action needed — please confirm you've read Version 3 <span class="wf-marker">2</span></strong>
+                  A new version was published on 12 Mar 2026. Read it below, then acknowledge.
+                </div>
+                <a href="#" class="btn sm">Jump to acknowledge</a>
+              </div>
+
+              <div class="doc-head">
+                <div class="doc-title-row">
+                  <h2 class="doc-title">Bylaws — Version 3</h2>
+                  <span class="ver-tag">Current</span>
+                </div>
+                <p class="doc-meta">Published 12 Mar 2026 by Ana Diniz · 3 versions in history</p>
+              </div>
+
+              <div class="changes-callout">
+                <h4>What changed in this version <span class="wf-marker">3</span></h4>
+                <p>Updated Article 4 – monthly contribution amount raised to R$ 45,00; added Article 9 – meeting quorum requires one third of active members.</p>
+              </div>
+
+              <div class="prose">
+                <h3>Article 1 — Name and Purpose</h3>
+                <p>The association is constituted as a non-profit prayer community under the name "Comunidade Rosário do Sul", with the purpose of promoting fellowship, mutual aid, and spiritual formation among its members.</p>
+                <h3>Article 4 — Monthly Contributions</h3>
+                <p>Active members shall contribute a monthly amount of R$ 45,00, due by the tenth day of each month. The treasurer shall present a report of contributions at each ordinary meeting.</p>
+                <h3>Article 9 — Meeting Quorum</h3>
+                <p>Ordinary and extraordinary meetings require the presence of at least one third of active members to deliberate. In the absence of quorum, a second call may be held thirty minutes later with those present.</p>
+              </div>
+
+              <div class="ack-bar">
+                <label class="ack-confirm">
+                  <input type="checkbox"> <span>I have read and acknowledge Version 3 of the bylaws.</span>
+                </label>
+                <div class="head-actions">
+                  <span class="ack-note">Recorded with your name and timestamp <span class="wf-marker">4</span></span>
+                  <a href="#" class="btn primary">Acknowledge</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li>① Bylaws lives as a top-level sidebar item; members land directly on the single authoritative document — no list to navigate first.</li>
+        <li>② A prominent pending-acknowledgement banner is the safe pattern's main driver of completion: it appears only while the member hasn't confirmed the current version.</li>
+        <li>③ The changes summary is surfaced in a bordered callout above the text so members see what's new before reading the full document.</li>
+        <li>④ The acknowledge action is a single explicit checkbox + button; copy notes that name and timestamp are recorded, reinforcing the audit trail (acknowledged_at).</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OPTION 2 ===== -->
+  <div class="option-panel" id="option-2">
+    <h2>Option 2: <span class="opt-name">Doc + Version Rail</span></h2>
+    <p class="option-description">The authoritative current text stays primary in the main column, with a right-hand rail listing every version (date + publisher). Selecting a version loads it — history and the acknowledgement action are always one click away.</p>
+    <div class="sub-tab-bar" id="frame-opt2-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch2"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch2)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint2"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint2)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond2"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond2)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt2">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/bylaws</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="../1007-administrations/index.html">◷ Administrations</a>
+              <a href="../1007-contributions/index.html">$ Contributions</a>
+              <a href="../1007-meetings/index.html">▦ Meetings</a>
+              <a href="#" class="nav-active">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">MS</div><span>Maria da Silva</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb">Community <span class="crumb-sep">/</span> <b>Bylaws</b></span>
+            </div>
+            <div class="app-body">
+              <div class="page-head">
+                <div>
+                  <h1 class="page-title">Bylaws <span class="wf-marker">1</span></h1>
+                  <p class="page-sub">Current version shown; browse history in the rail.</p>
+                </div>
+                <div class="head-actions">
+                  <a href="#" class="btn sm">Compare versions</a>
+                  <a href="#" class="btn sm">Edit (admin)</a>
+                </div>
+              </div>
+
+              <div class="doc-layout">
+                <div class="doc-main">
+                  <div class="ack-banner">
+                    <div class="ack-text">
+                      <strong>Please acknowledge Version 3</strong>
+                      Published 12 Mar 2026 · pending your confirmation.
+                    </div>
+                    <a href="#" class="btn sm">Acknowledge</a>
+                  </div>
+
+                  <div class="doc-head">
+                    <div class="doc-title-row">
+                      <h2 class="doc-title">Bylaws — Version 3</h2>
+                      <span class="ver-tag">Current</span>
+                    </div>
+                    <p class="doc-meta">Published 12 Mar 2026 by Ana Diniz</p>
+                  </div>
+
+                  <div class="changes-callout">
+                    <h4>What changed <span class="wf-marker">3</span></h4>
+                    <p>Updated Article 4 – monthly contribution amount; added Article 9 – meeting quorum.</p>
+                  </div>
+
+                  <div class="prose">
+                    <h3>Article 1 — Name and Purpose</h3>
+                    <p>The association is constituted as a non-profit prayer community under the name "Comunidade Rosário do Sul", promoting fellowship, mutual aid, and spiritual formation.</p>
+                    <h3>Article 4 — Monthly Contributions</h3>
+                    <p>Active members shall contribute a monthly amount of R$ 45,00, due by the tenth day of each month.</p>
+                    <h3>Article 9 — Meeting Quorum</h3>
+                    <p>Meetings require the presence of at least one third of active members to deliberate.</p>
+                  </div>
+
+                  <div class="ack-bar">
+                    <label class="ack-confirm">
+                      <input type="checkbox"> <span>I have read and acknowledge Version 3.</span>
+                    </label>
+                    <a href="#" class="btn primary">Acknowledge</a>
+                  </div>
+                </div>
+
+                <aside class="version-rail">
+                  <div class="rail-head">Version history <span class="wf-marker">2</span></div>
+                  <a href="#" class="ver-item current">
+                    <span class="ver-no">Version 3</span>
+                    <span class="ver-cur-tag">Current</span>
+                    <span class="ver-when">12 Mar 2026 · Ana Diniz</span>
+                  </a>
+                  <a href="#" class="ver-item">
+                    <span class="ver-no">Version 2</span>
+                    <span class="ver-when">04 Nov 2025 · Ana Diniz</span>
+                  </a>
+                  <a href="#" class="ver-item">
+                    <span class="ver-no">Version 1</span>
+                    <span class="ver-when">18 Jan 2025 · Carlos Meireles</span>
+                  </a>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li>① The authoritative current text keeps the main column, so members always read the governing document first — versioning never competes with it.</li>
+        <li>② The version rail makes full history (date + publisher per version) immediately reachable; the current version is emphasized with an #eee fill and solid left-border, not color.</li>
+        <li>③ The changes callout sits at the top of the document body, tying the summary to the version being read.</li>
+        <li>④ Acknowledgement stays in-context at the bottom of the current version plus a persistent banner, keeping completion one click away regardless of scroll position.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OPTION 3 ===== -->
+  <div class="option-panel" id="option-3">
+    <h2>Option 3: <span class="opt-name">Split Diff</span></h2>
+    <p class="option-description">Version comparison view — two columns (Previous vs Current) with changed passages emphasized by weight and a solid left-border. A version picker at the top lets an admin review exactly what changed between any two versions.</p>
+    <div class="sub-tab-bar" id="frame-opt3-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch3"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch3)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint3"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint3)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond3"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond3)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt3">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/bylaws</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="../1007-administrations/index.html">◷ Administrations</a>
+              <a href="../1007-contributions/index.html">$ Contributions</a>
+              <a href="../1007-meetings/index.html">▦ Meetings</a>
+              <a href="#" class="nav-active">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb">Bylaws <span class="crumb-sep">/</span> <b>Compare versions</b></span>
+            </div>
+            <div class="app-body">
+              <div class="page-head">
+                <div>
+                  <h1 class="page-title">Compare versions <span class="wf-marker">1</span></h1>
+                  <p class="page-sub">Review exactly what changed between two versions.</p>
+                </div>
+              </div>
+
+              <div class="diff-toolbar">
+                <div class="field"><label>From</label>
+                  <select>
+                    <option>Version 2 — 04 Nov 2025 · Ana Diniz</option>
+                    <option>Version 1 — 18 Jan 2025 · Carlos Meireles</option>
+                  </select>
+                </div>
+                <span class="crumb-sep">→</span>
+                <div class="field"><label>To</label>
+                  <select>
+                    <option>Version 3 — 12 Mar 2026 · Ana Diniz (current)</option>
+                    <option>Version 2 — 04 Nov 2025 · Ana Diniz</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="diff-cols">
+                <div class="diff-col">
+                  <div class="diff-col-head"><strong>Version 2</strong> · 04 Nov 2025 · Ana Diniz</div>
+                  <div class="diff-body">
+                    <h4>Article 4 — Monthly Contributions</h4>
+                    <span class="diff-line changed">Active members shall contribute a monthly amount of R$ 35,00, due by the fifth day of each month.</span>
+                    <p>The treasurer shall present a report of contributions at each ordinary meeting.</p>
+                    <h4>Article 9 — Meeting Quorum</h4>
+                    <p><em>Not present in this version.</em></p>
+                  </div>
+                </div>
+                <div class="diff-col current">
+                  <div class="diff-col-head"><strong>Version 3</strong> · 12 Mar 2026 · Ana Diniz <span class="wf-marker">2</span></div>
+                  <div class="diff-body">
+                    <h4>Article 4 — Monthly Contributions</h4>
+                    <span class="diff-line changed">Active members shall contribute a monthly amount of R$ 45,00, due by the tenth day of each month. <span class="wf-marker">3</span></span>
+                    <p>The treasurer shall present a report of contributions at each ordinary meeting.</p>
+                    <h4>Article 9 — Meeting Quorum</h4>
+                    <span class="diff-line added">Meetings require the presence of at least one third of active members to deliberate. <span class="wf-marker">4</span></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="diff-legend">
+                <span><span class="diff-swatch changed"></span> Changed passage</span>
+                <span><span class="diff-swatch added"></span> Added in newer version</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li>① Two version pickers (From → To) let an admin diff any pair, not just consecutive versions — useful for auditing changes over time.</li>
+        <li>② Previous and Current sit side by side; the current column is subtly distinguished with an #eee header fill rather than color.</li>
+        <li>③ Changed passages are emphasized with bold weight and a solid left-border on an #eee background — the B&W-safe substitute for red/green diff highlighting.</li>
+        <li>④ Newly added articles (e.g. Article 9) get their own "added" treatment and a legend explains the two states, keeping the diff self-documenting.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OPTION 4 ===== -->
+  <div class="option-panel" id="option-4">
+    <h2>Option 4: <span class="opt-name">Ack Dashboard</span></h2>
+    <p class="option-description">Admin reading-status panel — a progress summary ("82 of 128 acknowledged"), a filterable table of members with acknowledged/pending status and dates, and a "Resend reminder to pending" action to drive completion.</p>
+    <div class="sub-tab-bar" id="frame-opt4-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch4"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch4)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint4"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint4)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond4"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond4)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt4">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/bylaws</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="../1007-administrations/index.html">◷ Administrations</a>
+              <a href="../1007-contributions/index.html">$ Contributions</a>
+              <a href="../1007-meetings/index.html">▦ Meetings</a>
+              <a href="#" class="nav-active">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb">Bylaws <span class="crumb-sep">/</span> <b>Reading status</b></span>
+            </div>
+            <div class="app-body">
+              <div class="page-head">
+                <div>
+                  <h1 class="page-title">Reading status — Version 3 <span class="wf-marker">1</span></h1>
+                  <p class="page-sub">Published 12 Mar 2026 by Ana Diniz.</p>
+                </div>
+                <div class="head-actions">
+                  <a href="#" class="btn primary sm">Resend reminder to pending</a>
+                </div>
+              </div>
+
+              <div class="ack-summary">
+                <div class="ack-stat">
+                  <span class="big">82</span>
+                  <span class="lbl">Acknowledged</span>
+                </div>
+                <div class="ack-stat">
+                  <span class="big">46</span>
+                  <span class="lbl">Pending</span>
+                </div>
+                <div class="ack-progress">
+                  <div class="track"><div class="fill" style="width:64%;"></div></div>
+                  <div class="pct">82 of 128 acknowledged · 64% complete <span class="wf-marker">2</span></div>
+                </div>
+              </div>
+
+              <div class="ack-filters">
+                <div class="field"><label>Status</label>
+                  <select>
+                    <option>All</option>
+                    <option>Pending</option>
+                    <option>Acknowledged</option>
+                  </select>
+                </div>
+                <input type="text" placeholder="Search member…">
+                <span class="wf-marker">3</span>
+              </div>
+
+              <table class="data-table">
+                <thead>
+                  <tr><th>Member</th><th>Status</th><th>Acknowledged</th><th></th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Maria da Silva</td>
+                    <td><span class="status-cell"><span class="pill solid">Acknowledged</span></span></td>
+                    <td>13 Mar 2026, 09:12</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>João Pereira</td>
+                    <td><span class="status-cell"><span class="pill solid">Acknowledged</span></span></td>
+                    <td>12 Mar 2026, 20:41</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Beatriz Nogueira</td>
+                    <td><span class="status-cell"><span class="pill muted">Pending</span></span></td>
+                    <td>—</td>
+                    <td><a href="#" class="btn link">Resend <span class="wf-marker">4</span></a></td>
+                  </tr>
+                  <tr>
+                    <td>Carlos Meireles</td>
+                    <td><span class="status-cell"><span class="pill muted">Pending</span></span></td>
+                    <td>—</td>
+                    <td><a href="#" class="btn link">Resend</a></td>
+                  </tr>
+                  <tr>
+                    <td>Fernanda Rocha</td>
+                    <td><span class="status-cell"><span class="pill solid">Acknowledged</span></span></td>
+                    <td>12 Mar 2026, 18:03</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li>① The panel is scoped to the current version, so admins always read status against what members are actually being asked to acknowledge.</li>
+        <li>② A single progress bar plus the "82 of 128 acknowledged" count makes completion the headline metric — the primary optimization goal.</li>
+        <li>③ Status filter + member search let large communities isolate the pending list quickly to focus follow-up.</li>
+        <li>④ Both a bulk "Resend reminder to pending" action and a per-row Resend give admins coarse and targeted nudges; acknowledged/pending states use solid vs muted pills, no color.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OPTION 5 ===== -->
+  <div class="option-panel" id="option-5">
+    <h2>Option 5: <span class="opt-name">Publish Wizard</span></h2>
+    <p class="option-description">A guided 3-step flow for an admin to publish a new version (Edit content → Summarize changes → Review &amp; notify), with a stepper/progress pattern that ends by explicitly stating it will notify all members and create pending acknowledgements.</p>
+    <div class="sub-tab-bar" id="frame-opt5-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch5"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch5)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint5"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint5)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond5"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond5)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt5">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/bylaws</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="../1007-administrations/index.html">◷ Administrations</a>
+              <a href="../1007-contributions/index.html">$ Contributions</a>
+              <a href="../1007-meetings/index.html">▦ Meetings</a>
+              <a href="#" class="nav-active">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb">Bylaws <span class="crumb-sep">/</span> <b>Publish new version</b></span>
+            </div>
+            <div class="app-body">
+              <div class="wizard-body">
+                <div class="wizard-head">
+                  <h1 class="page-title">Publish new version <span class="wf-marker">1</span></h1>
+                  <span class="wizard-count">Step 2 of 3</span>
+                </div>
+
+                <ol class="stepper">
+                  <li class="step done"><span class="step-dot">✓</span> Edit content</li>
+                  <li class="step current"><span class="step-dot">2</span> Summarize changes</li>
+                  <li class="step"><span class="step-dot">3</span> Review &amp; notify</li>
+                </ol>
+                <div class="progress-track"><div class="progress-fill" style="width:66%;"></div></div>
+
+                <div class="wizard-card">
+                  <h3 class="section-label">Bylaws content <span class="wf-marker">2</span></h3>
+                  <textarea rows="7">Article 4 — Monthly Contributions
+Active members shall contribute a monthly amount of R$ 45,00, due by the tenth day of each month.
+
+Article 9 — Meeting Quorum
+Meetings require the presence of at least one third of active members to deliberate.</textarea>
+
+                  <h3 class="section-label">Summary of changes <span class="wf-marker">3</span></h3>
+                  <textarea rows="3" placeholder="Describe what changed for members…">Updated Article 4 – monthly contribution amount; added Article 9 – meeting quorum.</textarea>
+                  <p class="field-note">This summary is emailed and shown in-app so members know what changed before reading.</p>
+                </div>
+
+                <div class="notify-notice">
+                  On publish this becomes <strong>Version 3</strong> and will notify all <strong>128 members</strong> by email + in-app and create a pending acknowledgement for each. <span class="wf-marker">4</span>
+                </div>
+
+                <div class="wizard-nav">
+                  <a href="#" class="btn">Back</a>
+                  <div class="wizard-nav-right">
+                    <a href="#" class="btn link">Save draft</a>
+                    <a href="#" class="btn primary">Continue to review</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li>① A 3-step stepper (Edit → Summarize → Review) makes publishing a deliberate, high-stakes action rather than an inline save, reducing accidental versions.</li>
+        <li>② Step 1's content lives in a textarea (only admins reach this flow), carried forward for editing here.</li>
+        <li>③ A dedicated changes-summary field is required mid-flow, guaranteeing every version ships with the summary members receive.</li>
+        <li>④ The review step spells out the consequence explicitly — new version number, notifies all 128 members by email + in-app, and creates pending acknowledgements — so the admin confirms with full awareness.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== SUMMARY ===== -->
+  <div class="option-panel" id="summary">
+    <h2>Summary &amp; Recommendation</h2>
+    <p class="option-description">Five approaches to the Bylaws flow, optimizing for clear versioning and high acknowledgement completion.</p>
+    <table class="summary-table">
+      <thead>
+        <tr><th>Option</th><th>Best for</th><th>Versioning clarity</th><th>Ack completion</th><th>Complexity</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. Sidebar Doc</strong></td>
+          <td>Fastest to build; member-first reading</td>
+          <td class="score">★★☆☆☆</td>
+          <td class="score">★★★☆☆</td>
+          <td>Low</td>
+        </tr>
+        <tr class="rec-row">
+          <td><strong>2. Doc + Version Rail</strong> ★</td>
+          <td>Current text primary, history always reachable</td>
+          <td class="score">★★★★★</td>
+          <td class="score">★★★★☆</td>
+          <td>Medium</td>
+        </tr>
+        <tr>
+          <td><strong>3. Split Diff</strong></td>
+          <td>Admins auditing what changed</td>
+          <td class="score">★★★★★</td>
+          <td class="score">★★☆☆☆</td>
+          <td>Medium</td>
+        </tr>
+        <tr>
+          <td><strong>4. Ack Dashboard</strong></td>
+          <td>Driving and monitoring completion</td>
+          <td class="score">★★☆☆☆</td>
+          <td class="score">★★★★★</td>
+          <td>Medium</td>
+        </tr>
+        <tr>
+          <td><strong>5. Publish Wizard</strong></td>
+          <td>Safe, deliberate publishing</td>
+          <td class="score">★★★★☆</td>
+          <td class="score">★★★☆☆</td>
+          <td>Medium-High</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="recommendation">
+      <h3>★ Recommended: Option 2 — Doc + Version Rail</h3>
+      <p>It keeps the authoritative current bylaws text primary while making version history (date + publisher per version) and the acknowledgement action immediately reachable in one screen. It scores highest on versioning clarity without sacrificing acknowledgement completion, and the diff (Option 3), status dashboard (Option 4), and publish wizard (Option 5) all layer naturally on top of it as admin-side companions.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer class="skill-footer">
+  This design was crafted by the <a href="https://github.com/Magdoub/claude-wireframe-skill">Wireframe skill</a> — follow on GitHub
+</footer>
+
+<script>
+(function() {
+  // Main tab switching
+  var tabBtns = document.querySelectorAll('.tab-btn');
+  var panels = document.querySelectorAll('.option-panel');
+  tabBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      tabBtns.forEach(function(b) { b.classList.remove('active'); });
+      panels.forEach(function(p) { p.classList.remove('active'); });
+      btn.classList.add('active');
+      var target = document.getElementById(btn.dataset.tab);
+      if (target) target.classList.add('active');
+    });
+  });
+
+  // Sub-tab switching
+  var subBtns = document.querySelectorAll('.sub-tab-btn');
+  subBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var frameId = btn.dataset.frame;
+      var siblings = btn.parentElement.querySelectorAll('.sub-tab-btn');
+      siblings.forEach(function(s) { s.classList.remove('active'); });
+      btn.classList.add('active');
+      var frame = document.getElementById(frameId);
+      if (frame) {
+        frame.classList.remove('wireframe', 'clean', 'polished');
+        frame.classList.add(btn.dataset.variant);
+      }
+    });
+  });
+
+  // Completion banner — one-time load check
+  window.addEventListener('load', function() {
+    var badges = document.querySelectorAll('.sub-tab-badge');
+    var anyVisible = false;
+    badges.forEach(function(b) {
+      if (getComputedStyle(b).display !== 'none') anyVisible = true;
+    });
+    if (!anyVisible && badges.length > 0) {
+      var banner = document.getElementById('completion-banner');
+      if (banner) {
+        banner.style.display = 'block';
+        setTimeout(function() { banner.style.display = 'none'; }, 8000);
+      }
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

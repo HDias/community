@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — DDMM Wireframes</title>
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles-opt1.css">
+  <link rel="stylesheet" href="styles-opt2.css">
+  <link rel="stylesheet" href="styles-opt3.css">
+  <link rel="stylesheet" href="styles-opt4.css">
+  <link rel="stylesheet" href="styles-opt5.css">
+</head>
+<body>
+
+<div class="completion-banner" id="completion-banner" style="display:none;">
+  ✦ Visual designs complete — all options now have Clean + Polished variants
+  <button onclick="this.parentElement.style.display='none'" style="float:right;background:none;border:none;cursor:pointer;font-size:16px;">×</button>
+</div>
+
+<div class="page-wrapper">
+
+  <div class="title-bar">
+    <span><span id="feature-name">Dashboard</span> — <span id="project-name">Community</span></span>
+    <span class="rec">★ Recommended: Option <span id="rec-number">2</span></span>
+  </div>
+
+  <nav class="main-tabs">
+    <button class="tab-btn active" data-tab="option-1">1: Card Grid</button>
+    <button class="tab-btn" data-tab="option-2">2: Action Feed</button>
+    <button class="tab-btn" data-tab="option-3">3: KPI Board</button>
+    <button class="tab-btn" data-tab="option-4">4: Widget Columns</button>
+    <button class="tab-btn" data-tab="option-5">5: Command Center</button>
+    <button class="tab-btn" data-tab="summary">Summary</button>
+  </nav>
+
+  <!-- ===== OPTION 1 ===== -->
+  <div class="option-panel active" id="option-1">
+    <h2>Option 1: <span class="opt-name">Card Grid</span></h2>
+    <p class="option-description">The existing dashboard pattern: a responsive grid of stat cards over a larger recent-activity panel — a natural, low-risk extension of the app shell.</p>
+    <div class="sub-tab-bar" id="frame-opt1-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch1"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch1)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint1"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint1)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond1"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond1)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt1">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/dashboard</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="#" class="nav-active">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="../1007-communities/index.html">◆ Communities</a>
+              <a href="../1007-administrations/index.html">◷ Administrations</a>
+              <a href="../1007-contributions/index.html">$ Contributions</a>
+              <a href="../1007-meetings/index.html">▦ Meetings</a>
+              <a href="../1007-bylaws/index.html">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb"><b>Dashboard</b></span>
+            </div>
+            <div class="app-body">
+              <div class="page-head">
+                <div>
+                  <h1 class="page-title">Rosário do Sul</h1>
+                  <p class="page-sub">Overview for July 2025</p>
+                </div>
+                <button class="btn primary">+ Register payment</button>
+              </div>
+
+              <div class="stat-grid">
+                <a href="../1007-members/index.html" class="stat-card">
+                  <span class="stat-label">Members</span>
+                  <span class="stat-value">128</span>
+                  <span class="stat-sub">+4 this month</span>
+                </a>
+                <a href="../1007-contributions/index.html" class="stat-card stat-flag">
+                  <span class="stat-label">Collected — July <span class="wf-marker">1</span></span>
+                  <span class="stat-value">R$ 4.800,00</span>
+                  <span class="stat-sub">96 of 128 paid · 32 defaulting</span>
+                </a>
+                <a href="../1007-meetings/index.html" class="stat-card">
+                  <span class="stat-label">Next meeting</span>
+                  <span class="stat-value">3 days</span>
+                  <span class="stat-sub">Assembleia Geral · Sede Comunitária</span>
+                </a>
+                <a href="../1007-bylaws/index.html" class="stat-card">
+                  <span class="stat-label">Bylaws v3 acks</span>
+                  <span class="stat-value">82 / 128</span>
+                  <span class="stat-sub">46 pending acknowledgement</span>
+                </a>
+              </div>
+
+              <div class="panel-main">
+                <div class="panel-head">
+                  <h3 class="section-label" style="margin:0;">Recent activity <span class="wf-marker">2</span></h3>
+                  <a href="#" class="btn link">View all</a>
+                </div>
+                <ul class="activity-list">
+                  <li class="act-row"><span class="act-dot"></span><div class="act-body"><b>Ana Diniz</b> registered a payment for <b>João Carlos</b> — July, R$ 50,00 <small>2 hours ago</small></div></li>
+                  <li class="act-row"><span class="act-dot"></span><div class="act-body"><b>Rita Alves</b> acknowledged <b>Bylaws v3</b> <small>Yesterday</small></div></li>
+                  <li class="act-row"><span class="act-dot"></span><div class="act-body">New member added — <b>Carla Souza</b> <small>2 days ago</small></div></li>
+                  <li class="act-row"><span class="act-dot"></span><div class="act-body">Meeting <b>Assembleia Geral</b> scheduled for 13 Jul <small>3 days ago</small></div></li>
+                  <li class="act-row"><span class="act-dot"></span><div class="act-body"><b>Paulo Lima</b> registered a donation — R$ 200,00 <small>4 days ago</small></div></li>
+                </ul>
+                <div class="term-note">
+                  <span class="row-badge">Term</span>
+                  <span>Current administration term ends <b>Dec 2025</b> — succession planning recommended. <a href="../1007-administrations/index.html">Manage <span class="wf-marker">3</span></a></span>
+                </div>
+              </div>
+              <p class="grid-hint">Cards link straight into each domain. <span class="wf-marker">4</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li><b>①</b> The collected-this-month card is emphasized (heavier border + fill) because defaulters are the admin's most frequent concern; the sub-line surfaces "32 defaulting" without a click.</li>
+        <li><b>②</b> A single large activity panel sits under the cards — matching the existing dashboard pattern (grid of cards over a bordered main panel) for the lowest-risk build.</li>
+        <li><b>③</b> Term status is folded into a note strip with a direct "Manage" link so an ending term is never buried.</li>
+        <li><b>④</b> Every stat card is itself a link into its domain, turning numbers into jumping-off points rather than dead metrics.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OPTION 2 ===== -->
+  <div class="option-panel" id="option-2">
+    <h2>Option 2: <span class="opt-name">Action Feed</span></h2>
+    <p class="option-description">An "attention required" priority feed — a ranked list of actionable items, each with context and a primary action button. The to-do list is the hero; numbers are secondary.</p>
+    <div class="sub-tab-bar" id="frame-opt2-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch2"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch2)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint2"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint2)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond2"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond2)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt2">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/dashboard</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="#" class="nav-active">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="../1007-communities/index.html">◆ Communities</a>
+              <a href="../1007-administrations/index.html">◷ Administrations</a>
+              <a href="../1007-contributions/index.html">$ Contributions</a>
+              <a href="../1007-meetings/index.html">▦ Meetings</a>
+              <a href="../1007-bylaws/index.html">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb"><b>Dashboard</b></span>
+            </div>
+            <div class="app-body">
+              <div class="page-head">
+                <div>
+                  <h1 class="page-title">Needs your attention <span class="wf-marker">1</span></h1>
+                  <p class="page-sub">4 items ranked by urgency · Rosário do Sul · July 2025</p>
+                </div>
+                <div class="feed-strip">
+                  <span><b>128</b> members</span>
+                  <span><b>R$ 4.800,00</b> collected</span>
+                  <span><b>96/128</b> paid</span>
+                </div>
+              </div>
+
+              <ul class="action-feed">
+                <li class="feed-row feed-urgent">
+                  <span class="feed-rank">1</span>
+                  <div class="feed-body">
+                    <b class="feed-title">32 members defaulting this month</b>
+                    <span class="feed-ctx">R$ 1.600,00 outstanding · 6 of them are 3+ months overdue</span>
+                  </div>
+                  <a href="../1007-contributions/index.html" class="btn primary sm">Review defaulters</a>
+                </li>
+                <li class="feed-row feed-urgent">
+                  <span class="feed-rank">2</span>
+                  <div class="feed-body">
+                    <b class="feed-title">46 members haven't acknowledged Bylaws v3 <span class="wf-marker">2</span></b>
+                    <span class="feed-ctx">Published 12 days ago · 82 of 128 confirmed</span>
+                  </div>
+                  <a href="../1007-bylaws/index.html" class="btn primary sm">Send reminder</a>
+                </li>
+                <li class="feed-row">
+                  <span class="feed-rank">3</span>
+                  <div class="feed-body">
+                    <b class="feed-title">Assembleia Geral in 3 days</b>
+                    <span class="feed-ctx">13 Jul, 19h · Sede Comunitária · attendance not started</span>
+                  </div>
+                  <a href="../1007-meetings/index.html" class="btn sm">Take attendance</a>
+                </li>
+                <li class="feed-row">
+                  <span class="feed-rank">4</span>
+                  <div class="feed-body">
+                    <b class="feed-title">Administration term ends in 21 days <span class="wf-marker">3</span></b>
+                    <span class="feed-ctx">Term ends Dec 2025 · no successor administration drafted</span>
+                  </div>
+                  <a href="../1007-administrations/index.html" class="btn sm">Plan succession</a>
+                </li>
+              </ul>
+
+              <div class="feed-clear">
+                <span class="row-badge">Recent</span>
+                <span>Latest: <b>Ana Diniz</b> registered João Carlos' July payment · <b>Rita Alves</b> acknowledged Bylaws v3. <a href="#">Activity log <span class="wf-marker">4</span></a></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li><b>①</b> The page reframes the dashboard as a ranked to-do list. Raw totals are demoted to a thin strip in the header so the actionable items own the screen.</li>
+        <li><b>②</b> Each row pairs a plain-language problem statement with the context needed to judge it and a single primary action — pending bylaw acks become "Send reminder", not a percentage.</li>
+        <li><b>③</b> Slower-burning items (term ending) still surface but rank below time-critical money and meeting items, so urgency drives order.</li>
+        <li><b>④</b> A compact "recent" line at the bottom acknowledges what's already handled, keeping the feed itself focused on open work.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OPTION 3 ===== -->
+  <div class="option-panel" id="option-3">
+    <h2>Option 3: <span class="opt-name">KPI Board</span></h2>
+    <p class="option-description">Metrics-forward: a top row of KPI tiles with trend deltas and B&W spark/bar placeholders, plus a compact defaulter mini-table.</p>
+    <div class="sub-tab-bar" id="frame-opt3-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch3"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch3)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint3"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint3)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond3"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond3)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt3">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/dashboard</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="#" class="nav-active">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="../1007-communities/index.html">◆ Communities</a>
+              <a href="../1007-administrations/index.html">◷ Administrations</a>
+              <a href="../1007-contributions/index.html">$ Contributions</a>
+              <a href="../1007-meetings/index.html">▦ Meetings</a>
+              <a href="../1007-bylaws/index.html">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb"><b>Dashboard</b></span>
+            </div>
+            <div class="app-body">
+              <div class="page-head">
+                <div>
+                  <h1 class="page-title">Metrics</h1>
+                  <p class="page-sub">Rosário do Sul · July 2025 vs June 2025</p>
+                </div>
+                <select class="kpi-period"><option>This month</option><option>Last 6 months</option><option>Year to date</option></select>
+              </div>
+
+              <div class="kpi-row">
+                <div class="kpi-tile">
+                  <span class="kpi-name">Members</span>
+                  <span class="kpi-num">128 <span class="kpi-delta up">▲ 4</span></span>
+                  <span class="kpi-spark"><i style="height:40%"></i><i style="height:55%"></i><i style="height:50%"></i><i style="height:70%"></i><i style="height:80%"></i><i style="height:100%"></i></span>
+                </div>
+                <div class="kpi-tile kpi-flag">
+                  <span class="kpi-name">Collected <span class="wf-marker">1</span></span>
+                  <span class="kpi-num">R$ 4.800 <span class="kpi-delta down">▼ 5%</span></span>
+                  <span class="kpi-foot">96 of 128 paid</span>
+                </div>
+                <div class="kpi-tile">
+                  <span class="kpi-name">Attendance</span>
+                  <span class="kpi-num">70% <span class="kpi-delta up">▲ 8%</span></span>
+                  <span class="kpi-bar"><i style="width:70%"></i></span>
+                </div>
+                <div class="kpi-tile">
+                  <span class="kpi-name">Bylaw acks</span>
+                  <span class="kpi-num">82/128 <span class="kpi-delta up">▲ 12</span></span>
+                  <span class="kpi-bar"><i style="width:64%"></i></span>
+                </div>
+              </div>
+
+              <div class="kpi-split">
+                <div class="kpi-chart">
+                  <div class="panel-head"><h3 class="section-label" style="margin:0;">Collection trend — 6 months <span class="wf-marker">2</span></h3></div>
+                  <div class="bar-chart">
+                    <div class="bar-col"><i style="height:55%"></i><span>Feb</span></div>
+                    <div class="bar-col"><i style="height:62%"></i><span>Mar</span></div>
+                    <div class="bar-col"><i style="height:70%"></i><span>Apr</span></div>
+                    <div class="bar-col"><i style="height:80%"></i><span>May</span></div>
+                    <div class="bar-col"><i style="height:88%"></i><span>Jun</span></div>
+                    <div class="bar-col"><i style="height:75%" class="cur"></i><span>Jul</span></div>
+                  </div>
+                </div>
+                <div class="kpi-mini">
+                  <div class="panel-head">
+                    <h3 class="section-label" style="margin:0;">Top defaulters <span class="wf-marker">3</span></h3>
+                    <a href="../1007-contributions/index.html" class="btn link">All 32</a>
+                  </div>
+                  <table class="data-table">
+                    <thead><tr><th>Member</th><th>Overdue</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td>João Carlos</td><td><span class="pill">4 mo</span></td><td class="mini-act"><a href="#">Charge</a></td></tr>
+                      <tr><td>Paulo Lima</td><td><span class="pill">3 mo</span></td><td class="mini-act"><a href="#">Charge</a></td></tr>
+                      <tr><td>Carla Souza</td><td><span class="pill muted">1 mo</span></td><td class="mini-act"><a href="#">Charge</a></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <p class="grid-hint">Deltas compare against the previous month; ▼ on collection flags a dip to investigate. <span class="wf-marker">4</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li><b>①</b> Each KPI tile carries a trend delta so a number is read as a direction, not a snapshot; the collection tile is emphasized and shows a downward delta to draw the eye.</li>
+        <li><b>②</b> A pure-B&W bar chart (grayscale bars, current month distinguished by fill) visualizes the six-month collection trend without any color.</li>
+        <li><b>③</b> A compact defaulter mini-table keeps the most actionable slice of the metric one glance away, with a "Charge" shortcut per row.</li>
+        <li><b>④</b> Deltas are all relative to the previous month, and a caption states that convention so the ▲/▼ marks are unambiguous.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OPTION 4 ===== -->
+  <div class="option-panel" id="option-4">
+    <h2>Option 4: <span class="opt-name">Widget Columns</span></h2>
+    <p class="option-description">A multi-column masonry of self-contained widgets, each with its own header and "view all" link — a configurable overview across every domain.</p>
+    <div class="sub-tab-bar" id="frame-opt4-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch4"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch4)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint4"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint4)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond4"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond4)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt4">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/dashboard</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="#" class="nav-active">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="../1007-communities/index.html">◆ Communities</a>
+              <a href="../1007-administrations/index.html">◷ Administrations</a>
+              <a href="../1007-contributions/index.html">$ Contributions</a>
+              <a href="../1007-meetings/index.html">▦ Meetings</a>
+              <a href="../1007-bylaws/index.html">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb"><b>Dashboard</b></span>
+            </div>
+            <div class="app-body">
+              <div class="page-head">
+                <div>
+                  <h1 class="page-title">Overview</h1>
+                  <p class="page-sub">Rosário do Sul · July 2025</p>
+                </div>
+                <button class="btn ghost sm">⊞ Customize <span class="wf-marker">1</span></button>
+              </div>
+
+              <div class="widget-cols">
+                <div class="widget">
+                  <div class="widget-head"><span>Finance</span><a href="../1007-contributions/index.html">View all</a></div>
+                  <div class="widget-body">
+                    <div class="w-metric"><b>R$ 4.800,00</b><small>collected in July · monthly R$ 50,00</small></div>
+                    <div class="w-line"><span>Paid</span><b>96 / 128</b></div>
+                    <div class="w-line"><span>Defaulting</span><b>32</b></div>
+                  </div>
+                </div>
+
+                <div class="widget">
+                  <div class="widget-head"><span>Upcoming meetings <span class="wf-marker">2</span></span><a href="../1007-meetings/index.html">View all</a></div>
+                  <div class="widget-body">
+                    <div class="w-item"><b>Assembleia Geral</b><small>13 Jul · 19h · Sede Comunitária</small></div>
+                    <div class="w-item"><b>Reunião de Diretoria</b><small>28 Jul · 20h · Sede Comunitária</small></div>
+                  </div>
+                </div>
+
+                <div class="widget">
+                  <div class="widget-head"><span>Bylaw ack status</span><a href="../1007-bylaws/index.html">View all</a></div>
+                  <div class="widget-body">
+                    <div class="w-metric"><b>Bylaws v3</b><small>published 12 days ago</small></div>
+                    <div class="w-progress"><i style="width:64%"></i></div>
+                    <div class="w-line"><span>Acknowledged</span><b>82 / 128</b></div>
+                  </div>
+                </div>
+
+                <div class="widget">
+                  <div class="widget-head"><span>Current administration</span><a href="../1007-administrations/index.html">View all</a></div>
+                  <div class="widget-body">
+                    <div class="w-line"><span>President</span><b>Ana Diniz</b></div>
+                    <div class="w-line"><span>Treasurer</span><b>Paulo Lima</b></div>
+                    <div class="w-line"><span>Term ends</span><b>Dec 2025</b></div>
+                  </div>
+                </div>
+
+                <div class="widget">
+                  <div class="widget-head"><span>Recent members</span><a href="../1007-members/index.html">View all</a></div>
+                  <div class="widget-body">
+                    <div class="w-item"><b>Carla Souza</b><small>joined 4 days ago</small></div>
+                    <div class="w-item"><b>Rita Alves</b><small>joined 2 weeks ago</small></div>
+                  </div>
+                </div>
+
+                <div class="widget">
+                  <div class="widget-head"><span>August report <span class="wf-marker">3</span></span></div>
+                  <div class="widget-body">
+                    <div class="w-generating"><span class="gen-dot"></span>Monthly default report generating — available end of August.</div>
+                  </div>
+                </div>
+              </div>
+              <p class="grid-hint">Drag widgets to reorder or hide; each keeps its own "view all" deep link. <span class="wf-marker">4</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li><b>①</b> "Customize" signals the layout is arrangeable — admins with different priorities (finance vs. membership) can order the board to their role.</li>
+        <li><b>②</b> Each widget is self-contained with its own header and a "view all" deep link, so the dashboard becomes a set of hand-offs into each domain.</li>
+        <li><b>③</b> The August report widget shows a "generating" empty state, honoring the async monthly-default job that only produces a report at month end.</li>
+        <li><b>④</b> Widgets flow into a masonry so more or fewer can be added without breaking a rigid grid — the trade-off is less enforced prioritization than the Action Feed.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OPTION 5 ===== -->
+  <div class="option-panel" id="option-5">
+    <h2>Option 5: <span class="opt-name">Command Center</span></h2>
+    <p class="option-description">A two-zone layout: a prominent "needs attention" alerts strip and a quick-actions bar over a recent-activity timeline — blending alerts with fast actions.</p>
+    <div class="sub-tab-bar" id="frame-opt5-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch5"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch5)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint5"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint5)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond5"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond5)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt5">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/dashboard</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="#" class="nav-active">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="../1007-communities/index.html">◆ Communities</a>
+              <a href="../1007-administrations/index.html">◷ Administrations</a>
+              <a href="../1007-contributions/index.html">$ Contributions</a>
+              <a href="../1007-meetings/index.html">▦ Meetings</a>
+              <a href="../1007-bylaws/index.html">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb"><b>Dashboard</b></span>
+            </div>
+            <div class="app-body">
+              <div class="page-head">
+                <div>
+                  <h1 class="page-title">Command center</h1>
+                  <p class="page-sub">Rosário do Sul · July 2025</p>
+                </div>
+              </div>
+
+              <div class="alerts-strip">
+                <div class="alert-head"><span class="section-label" style="margin:0;">Needs attention · 3 <span class="wf-marker">1</span></span></div>
+                <div class="alert-row alert-high">
+                  <div class="alert-txt"><b>32 members defaulting</b> — R$ 1.600,00 outstanding this month</div>
+                  <a href="../1007-contributions/index.html" class="btn sm">Review</a>
+                  <button class="alert-x" title="Dismiss">✕</button>
+                </div>
+                <div class="alert-row alert-high">
+                  <div class="alert-txt"><b>46 pending Bylaws v3 acks</b> — reminder not sent in 12 days</div>
+                  <a href="../1007-bylaws/index.html" class="btn sm">Remind <span class="wf-marker">2</span></a>
+                  <button class="alert-x" title="Dismiss">✕</button>
+                </div>
+                <div class="alert-row">
+                  <div class="alert-txt"><b>Term ends Dec 2025</b> — 21 days to draft successor administration</div>
+                  <a href="../1007-administrations/index.html" class="btn sm">Plan</a>
+                  <button class="alert-x" title="Dismiss">✕</button>
+                </div>
+              </div>
+
+              <div class="quick-bar">
+                <span class="qb-label">Quick actions <span class="wf-marker">3</span></span>
+                <a href="../1007-contributions/index.html" class="qb-btn">$ Register payment</a>
+                <a href="../1007-members/index.html" class="qb-btn">＋ Add member</a>
+                <a href="../1007-meetings/index.html" class="qb-btn">▦ Create meeting</a>
+                <a href="../1007-bylaws/index.html" class="qb-btn">§ Publish bylaw</a>
+              </div>
+
+              <div class="panel-head"><h3 class="section-label" style="margin:0;">Activity timeline <span class="wf-marker">4</span></h3></div>
+              <ul class="timeline">
+                <li class="tl-row"><span class="tl-time">14:20</span><span class="tl-line"></span><div class="tl-body"><b>Ana Diniz</b> registered João Carlos' July payment — R$ 50,00</div></li>
+                <li class="tl-row"><span class="tl-time">11:05</span><span class="tl-line"></span><div class="tl-body"><b>Rita Alves</b> acknowledged Bylaws v3</div></li>
+                <li class="tl-row"><span class="tl-time">Yest.</span><span class="tl-line"></span><div class="tl-body">New member <b>Carla Souza</b> added</div></li>
+                <li class="tl-row"><span class="tl-time">2d</span><span class="tl-line"></span><div class="tl-body"><b>Paulo Lima</b> registered a donation — R$ 200,00</div></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li><b>①</b> A bordered alerts strip pins the most urgent items to the very top; high-severity rows use a heavier left border and fill (no color) to stand apart from routine ones.</li>
+        <li><b>②</b> Each alert carries both an action and a dismiss ✕, so admins can act or clear noise — the strip stays a live worklist, not a static banner.</li>
+        <li><b>③</b> A quick-actions bar exposes the four highest-frequency create flows directly, cutting clicks for the treasurer's daily payment entry.</li>
+        <li><b>④</b> Below the action zones, a vertical activity timeline provides the audit trail — blending "what needs doing" (top) with "what just happened" (bottom).</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== SUMMARY ===== -->
+  <div class="option-panel" id="summary">
+    <h2>Summary &amp; Recommendation</h2>
+    <p class="option-description">Five directions for the community Dashboard, evaluated against the core goal: an <b>actionable overview</b> that surfaces what needs the admin's attention now and attaches an action to each item.</p>
+    <table class="summary-table">
+      <thead>
+        <tr><th>Option</th><th>Philosophy</th><th>Best for</th><th>Actionability</th><th>Build risk</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>1 · Card Grid</b></td>
+          <td>Stat cards over a recent-activity panel — the existing pattern.</td>
+          <td>Fastest ship; familiar to any admin.</td>
+          <td class="score">★★☆☆☆</td>
+          <td class="score">Low</td>
+        </tr>
+        <tr class="rec-row">
+          <td><b>2 · Action Feed ★</b></td>
+          <td>Ranked "attention required" list; each item has context + a primary action.</td>
+          <td>Admins who want a to-do list, not a report.</td>
+          <td class="score">★★★★★</td>
+          <td class="score">Med</td>
+        </tr>
+        <tr>
+          <td><b>3 · KPI Board</b></td>
+          <td>Metric tiles with trend deltas + B&amp;W charts + defaulter mini-table.</td>
+          <td>Data-minded admins tracking direction over time.</td>
+          <td class="score">★★★☆☆</td>
+          <td class="score">Med</td>
+        </tr>
+        <tr>
+          <td><b>4 · Widget Columns</b></td>
+          <td>Configurable masonry of per-domain widgets with "view all" links.</td>
+          <td>Multi-role teams wanting a tailorable overview.</td>
+          <td class="score">★★★☆☆</td>
+          <td class="score">High</td>
+        </tr>
+        <tr>
+          <td><b>5 · Command Center</b></td>
+          <td>Dismissible alerts strip + quick-actions bar over an activity timeline.</td>
+          <td>High-tempo admins who act and clear all day.</td>
+          <td class="score">★★★★☆</td>
+          <td class="score">Med</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="recommendation">
+      <h3>★ Recommended: Option 2 — Action Feed</h3>
+      <p>The Action Feed most directly serves the stated goal. It ranks what needs attention (defaulters, pending bylaw acks, upcoming meeting, term ending) and attaches a single primary action to each row, so the dashboard becomes a worklist rather than a wall of numbers — while raw totals stay available in a thin header strip. Option 5 (Command Center) is the strong runner-up and shares much of the same DNA; Option 1 (Card Grid) is the safe fallback if the priority is shipping the existing pattern quickly. Options 2 and 5 can even be phased: launch the feed, then add the quick-actions bar.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer class="skill-footer">
+  This design was crafted by the <a href="https://github.com/Magdoub/claude-wireframe-skill">Wireframe skill</a> — follow on GitHub
+</footer>
+
+<script>
+(function() {
+  // Main tab switching
+  var tabBtns = document.querySelectorAll('.tab-btn');
+  var panels = document.querySelectorAll('.option-panel');
+  tabBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      tabBtns.forEach(function(b) { b.classList.remove('active'); });
+      panels.forEach(function(p) { p.classList.remove('active'); });
+      btn.classList.add('active');
+      var target = document.getElementById(btn.dataset.tab);
+      if (target) target.classList.add('active');
+    });
+  });
+
+  // Sub-tab switching
+  var subBtns = document.querySelectorAll('.sub-tab-btn');
+  subBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var frameId = btn.dataset.frame;
+      var siblings = btn.parentElement.querySelectorAll('.sub-tab-btn');
+      siblings.forEach(function(s) { s.classList.remove('active'); });
+      btn.classList.add('active');
+      var frame = document.getElementById(frameId);
+      if (frame) {
+        frame.classList.remove('wireframe', 'clean', 'polished');
+        frame.classList.add(btn.dataset.variant);
+      }
+    });
+  });
+
+  // Completion banner — one-time load check
+  window.addEventListener('load', function() {
+    var badges = document.querySelectorAll('.sub-tab-badge');
+    var anyVisible = false;
+    badges.forEach(function(b) {
+      if (getComputedStyle(b).display !== 'none') anyVisible = true;
+    });
+    if (!anyVisible && badges.length > 0) {
+      var banner = document.getElementById('completion-banner');
+      if (banner) {
+        banner.style.display = 'block';
+        setTimeout(function() { banner.style.display = 'none'; }, 8000);
+      }
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

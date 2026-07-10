@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administrations — DDMM Wireframes</title>
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles-opt1.css">
+  <link rel="stylesheet" href="styles-opt2.css">
+  <link rel="stylesheet" href="styles-opt3.css">
+  <link rel="stylesheet" href="styles-opt4.css">
+  <link rel="stylesheet" href="styles-opt5.css">
+</head>
+<body>
+
+<div class="completion-banner" id="completion-banner" style="display:none;">
+  ✦ Visual designs complete — all options now have Clean + Polished variants
+  <button onclick="this.parentElement.style.display='none'" style="float:right;background:none;border:none;cursor:pointer;font-size:16px;">×</button>
+</div>
+
+<div class="page-wrapper">
+
+  <div class="title-bar">
+    <span><span id="feature-name">Administrations</span> — <span id="project-name">Community</span></span>
+    <span class="rec">★ Recommended: Option <span id="rec-number">2</span></span>
+  </div>
+
+  <nav class="main-tabs">
+    <button class="tab-btn active" data-tab="option-1">1: Sidebar Form</button>
+    <button class="tab-btn" data-tab="option-2">2: Timeline</button>
+    <button class="tab-btn" data-tab="option-3">3: Org Board</button>
+    <button class="tab-btn" data-tab="option-4">4: Assignment Wizard</button>
+    <button class="tab-btn" data-tab="option-5">5: Split View</button>
+    <button class="tab-btn" data-tab="summary">Summary</button>
+  </nav>
+
+  <!-- ===== OPTION 1 ===== -->
+  <div class="option-panel active" id="option-1">
+    <h2>Option 1: <span class="opt-name">Sidebar Form</span></h2>
+    <p class="option-description">Extends the existing sidebar-shell app — a single management page showing the current administration, its member→position assignments, and a positions list, all in the familiar layout. Zero new paradigms.</p>
+    <div class="sub-tab-bar" id="frame-opt1-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch1"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch1)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint1"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint1)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond1"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond1)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt1">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/administrations</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="#" class="nav-active">◷ Administrations</a>
+              <a href="../1007-contributions/index.html">$ Contributions</a>
+              <a href="../1007-meetings/index.html">▦ Meetings</a>
+              <a href="../1007-bylaws/index.html">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb">Administrations <span class="crumb-sep">/</span> <b>Manage</b></span>
+            </div>
+            <div class="app-body">
+              <div class="page-head">
+                <div>
+                  <h1 class="page-title">Manage administration</h1>
+                  <p class="page-sub">Current term, assignments, and community positions for Rosário do Sul.</p>
+                </div>
+                <div class="head-actions">
+                  <button type="button" class="btn primary sm">+ New administration <span class="wf-marker">1</span></button>
+                </div>
+              </div>
+
+              <div class="split-cols">
+                <div>
+                  <div class="card">
+                    <div class="card-head">
+                      <div>
+                        <h3 class="card-title">Current administration <span class="pill solid">Current <span class="wf-marker">2</span></span></h3>
+                        <p class="card-meta term">Term <b>Jan 2024 – Dec 2025</b> · started 01/01/2024</p>
+                      </div>
+                      <button type="button" class="btn sm">Edit term</button>
+                    </div>
+                    <table class="data-table">
+                      <thead>
+                        <tr><th>Position</th><th>Member <span class="wf-marker">3</span></th><th></th></tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><span class="pos-tag">President</span></td>
+                          <td><div class="assign-cell"><span class="ava">AD</span> Ana Diniz</div></td>
+                          <td><button type="button" class="btn link sm">Change</button></td>
+                        </tr>
+                        <tr>
+                          <td><span class="pos-tag">Vice-President</span></td>
+                          <td><div class="assign-cell"><span class="ava">JC</span> João Carlos</div></td>
+                          <td><button type="button" class="btn link sm">Change</button></td>
+                        </tr>
+                        <tr>
+                          <td><span class="pos-tag">Secretary</span></td>
+                          <td><div class="assign-cell"><span class="ava">RA</span> Rita Alves</div></td>
+                          <td><button type="button" class="btn link sm">Change</button></td>
+                        </tr>
+                        <tr>
+                          <td><span class="pos-tag">Treasurer</span></td>
+                          <td><div class="assign-cell"><span class="ava">PL</span> Paulo Lima</div></td>
+                          <td><button type="button" class="btn link sm">Change</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="card">
+                    <h3 class="card-title">Positions</h3>
+                    <p class="card-meta">Roles defined for this community.</p>
+                    <ul class="pos-list">
+                      <li>
+                        <span class="pos-name">President</span>
+                        <span class="pos-actions">
+                          <button type="button" class="btn link sm">Edit</button>
+                          <span class="btn link sm" aria-disabled="true" title="In use by current administration">Remove</span>
+                        </span>
+                      </li>
+                      <li>
+                        <span class="pos-name">Vice-President</span>
+                        <span class="pos-actions">
+                          <button type="button" class="btn link sm">Edit</button>
+                          <span class="btn link sm" aria-disabled="true" title="In use by current administration">Remove</span>
+                        </span>
+                      </li>
+                      <li>
+                        <span class="pos-name">Secretary</span>
+                        <span class="pos-actions">
+                          <button type="button" class="btn link sm">Edit</button>
+                          <span class="btn link sm" aria-disabled="true" title="In use by current administration">Remove</span>
+                        </span>
+                      </li>
+                      <li>
+                        <span class="pos-name">Treasurer</span>
+                        <span class="pos-actions">
+                          <button type="button" class="btn link sm">Edit</button>
+                          <span class="btn link sm" aria-disabled="true" title="In use by current administration">Remove</span>
+                        </span>
+                      </li>
+                      <li>
+                        <span class="pos-name">Events Coordinator</span>
+                        <span class="pos-actions">
+                          <button type="button" class="btn link sm">Edit</button>
+                          <button type="button" class="btn link sm">Remove</button>
+                        </span>
+                      </li>
+                    </ul>
+                    <p class="inuse-note">Positions held by the current administration can't be removed. <span class="wf-marker">4</span></p>
+                    <div class="pos-add">
+                      <input type="text" placeholder="New position name…">
+                      <button type="button" class="btn sm">Add</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li>① Familiar sidebar-shell layout — identical to the rest of the app, so admins need zero relearning; "New administration" is the one primary action.</li>
+        <li>② The current administration card leads with its term dates and an explicit "Current" badge so the active period is unmistakable.</li>
+        <li>③ Assignments are a simple position→member table; each row's "Change" reassigns one member (a member holds only one position).</li>
+        <li>④ Positions list supports create/edit/remove, but removal is blocked (greyed) for any position held by the current administration.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OPTION 2 ===== -->
+  <div class="option-panel" id="option-2">
+    <h2>Option 2: <span class="opt-name">Timeline</span></h2>
+    <p class="option-description">A vertical timeline of administrations with the current term highlighted at top and past terms below. Each node shows the period and roster; click a node to expand its members and positions. Makes term-based history the primary story.</p>
+    <div class="sub-tab-bar" id="frame-opt2-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch2"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch2)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint2"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint2)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond2"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond2)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt2">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/administrations</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="#" class="nav-active">◷ Administrations</a>
+              <a href="../1007-contributions/index.html">$ Contributions</a>
+              <a href="../1007-meetings/index.html">▦ Meetings</a>
+              <a href="../1007-bylaws/index.html">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb">Administrations <span class="crumb-sep">/</span> <b>History</b></span>
+              <button type="button" class="btn primary sm">+ New administration</button>
+            </div>
+            <div class="app-body">
+              <div class="page-head">
+                <div>
+                  <h1 class="page-title">Administration history</h1>
+                  <p class="page-sub">Every term Rosário do Sul has had, newest first. <span class="wf-marker">1</span></p>
+                </div>
+              </div>
+
+              <ul class="timeline">
+                <li class="tl-node current">
+                  <div class="tl-card">
+                    <div class="tl-head">
+                      <div>
+                        <div class="tl-period">Jan 2024 – Dec 2025 <span class="pill solid">Current <span class="wf-marker">2</span></span></div>
+                        <div class="tl-sub">4 positions filled · started 01/01/2024</div>
+                      </div>
+                      <span class="tl-toggle">▾ Collapse <span class="wf-marker">3</span></span>
+                    </div>
+                    <ul class="tl-roster">
+                      <li class="roster-row"><span class="ava">AD</span><span><span class="r-pos">President</span><br><span class="r-name">Ana Diniz</span></span></li>
+                      <li class="roster-row"><span class="ava">JC</span><span><span class="r-pos">Vice-President</span><br><span class="r-name">João Carlos</span></span></li>
+                      <li class="roster-row"><span class="ava">RA</span><span><span class="r-pos">Secretary</span><br><span class="r-name">Rita Alves</span></span></li>
+                      <li class="roster-row"><span class="ava">PL</span><span><span class="r-pos">Treasurer</span><br><span class="r-name">Paulo Lima</span></span></li>
+                    </ul>
+                  </div>
+                </li>
+
+                <li class="tl-node past">
+                  <div class="tl-card">
+                    <div class="tl-head">
+                      <div>
+                        <div class="tl-period">Jan 2022 – Dec 2023 <span class="pill muted">Ended <span class="wf-marker">4</span></span></div>
+                        <div class="tl-sub">4 positions · ended 31/12/2023</div>
+                      </div>
+                      <span class="tl-toggle">▸ Expand</span>
+                    </div>
+                    <ul class="tl-roster collapsed">
+                      <li class="roster-row"><span class="ava">CS</span><span><span class="r-pos">President</span><br><span class="r-name">Carla Souza</span></span></li>
+                      <li class="roster-row"><span class="ava">AD</span><span><span class="r-pos">Vice-President</span><br><span class="r-name">Ana Diniz</span></span></li>
+                    </ul>
+                  </div>
+                </li>
+
+                <li class="tl-node past">
+                  <div class="tl-card">
+                    <div class="tl-head">
+                      <div>
+                        <div class="tl-period">Jan 2020 – Dec 2021 <span class="pill muted">Ended</span></div>
+                        <div class="tl-sub">4 positions · ended 31/12/2021</div>
+                      </div>
+                      <span class="tl-toggle">▸ Expand</span>
+                    </div>
+                    <ul class="tl-roster collapsed">
+                      <li class="roster-row"><span class="ava">JC</span><span><span class="r-pos">President</span><br><span class="r-name">João Carlos</span></span></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li>① The whole page is the history — one chronological spine tells the term-by-term story instead of hiding the past behind a separate view.</li>
+        <li>② The current administration sits at the top, expanded by default, with a bold node and "Current" badge so today's leadership is instantly readable.</li>
+        <li>③ Each node expands/collapses its roster on click, keeping the timeline scannable while full position→member detail stays one tap away.</li>
+        <li>④ Past terms show their end date and an "Ended" pill, making the auto-end-on-new-administration behavior visible and auditable.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OPTION 3 ===== -->
+  <div class="option-panel" id="option-3">
+    <h2>Option 3: <span class="opt-name">Org Board</span></h2>
+    <p class="option-description">An org-chart board of the current administration — President at top, other positions below. Each card shows the assigned member and an assign/change action; empty positions show a "+ Assign" slot. Optimized for seeing the leadership structure at a glance.</p>
+    <div class="sub-tab-bar" id="frame-opt3-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch3"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch3)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint3"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint3)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond3"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond3)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt3">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/administrations</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="#" class="nav-active">◷ Administrations</a>
+              <a href="../1007-contributions/index.html">$ Contributions</a>
+              <a href="../1007-meetings/index.html">▦ Meetings</a>
+              <a href="../1007-bylaws/index.html">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb">Administrations <span class="crumb-sep">/</span> <b>Board</b></span>
+              <button type="button" class="btn primary sm">+ New administration</button>
+            </div>
+            <div class="app-body org-scroll">
+              <div class="page-head">
+                <div>
+                  <h1 class="page-title">Current administration</h1>
+                  <p class="page-sub">Term <b>Jan 2024 – Dec 2025</b> <span class="pill solid">Current</span> · assign a member to each position. <span class="wf-marker">1</span></p>
+                </div>
+              </div>
+
+              <div class="org-top">
+                <div class="org-card top">
+                  <span class="ava lg">AD</span>
+                  <span class="org-role">President <span class="wf-marker">2</span></span>
+                  <span class="org-person">Ana Diniz</span>
+                  <button type="button" class="btn link sm">Change member</button>
+                </div>
+              </div>
+              <div class="org-connector"></div>
+
+              <div class="org-row">
+                <div class="org-card">
+                  <span class="ava lg">JC</span>
+                  <span class="org-role">Vice-President</span>
+                  <span class="org-person">João Carlos</span>
+                  <button type="button" class="btn link sm">Change member</button>
+                </div>
+                <div class="org-card">
+                  <span class="ava lg">RA</span>
+                  <span class="org-role">Secretary</span>
+                  <span class="org-person">Rita Alves</span>
+                  <button type="button" class="btn link sm">Change member</button>
+                </div>
+                <div class="org-card empty">
+                  <span class="org-empty-slot">＋</span>
+                  <span class="org-role">Treasurer</span>
+                  <button type="button" class="btn sm">+ Assign member <span class="wf-marker">3</span></button>
+                </div>
+              </div>
+              <div class="org-row" style="margin-top:14px; grid-template-columns: repeat(3, 1fr);">
+                <div class="org-card">
+                  <span class="ava lg">PL</span>
+                  <span class="org-role">Events Coordinator <span class="wf-marker">4</span></span>
+                  <span class="org-person">Paulo Lima</span>
+                  <button type="button" class="btn link sm">Change member</button>
+                </div>
+                <div class="org-card empty">
+                  <span class="org-empty-slot">＋</span>
+                  <span class="org-role">Add custom position</span>
+                  <button type="button" class="btn sm">+ New position</button>
+                </div>
+                <div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li>① The board always reflects the current administration; its term and "Current" pill sit in the page header for context.</li>
+        <li>② President is elevated at the top with a connector line, giving the leadership hierarchy an at-a-glance visual shape.</li>
+        <li>③ Unfilled positions render as dashed "+ Assign member" slots, so gaps in the roster are obvious and directly actionable.</li>
+        <li>④ Custom positions (e.g. Events Coordinator) appear as ordinary cards, and a "+ New position" slot lets admins extend the board.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OPTION 4 ===== -->
+  <div class="option-panel" id="option-4">
+    <h2>Option 4: <span class="opt-name">Assignment Wizard</span></h2>
+    <p class="option-description">A 3-step flow to create a new administration (Set term → Assign members → Review &amp; activate) with a stepper and a clear warning that activating will end the current administration. Guides admins through the one high-stakes action.</p>
+    <div class="sub-tab-bar" id="frame-opt4-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch4"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch4)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint4"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint4)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond4"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond4)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt4">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/administrations</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="#" class="nav-active">◷ Administrations</a>
+              <a href="../1007-contributions/index.html">$ Contributions</a>
+              <a href="../1007-meetings/index.html">▦ Meetings</a>
+              <a href="../1007-bylaws/index.html">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb">Administrations <span class="crumb-sep">/</span> <b>New administration</b></span>
+            </div>
+            <div class="app-body wizard-body">
+              <div class="wizard-head">
+                <h1 class="page-title">New administration</h1>
+                <span class="wizard-count">Step 2 of 3</span>
+              </div>
+
+              <ol class="stepper">
+                <li class="step done"><span class="step-dot">✓</span><span class="step-name">Set term</span></li>
+                <li class="step current"><span class="step-dot">2</span><span class="step-name">Assign members <span class="wf-marker">1</span></span></li>
+                <li class="step"><span class="step-dot">3</span><span class="step-name">Review &amp; activate</span></li>
+              </ol>
+              <div class="progress-track"><div class="progress-fill" style="width:66%"></div></div>
+
+              <div class="warn-box">
+                ⚠ Activating this administration will <b>end the current term</b> (Jan 2024 – Dec 2025) — its end date is set automatically and it moves to history. <span class="wf-marker">2</span>
+              </div>
+
+              <div class="wizard-card">
+                <h3 class="section-label">Assign members to positions <span class="wf-marker">3</span></h3>
+                <ul class="assign-rows">
+                  <li>
+                    <span class="a-role">President</span>
+                    <select><option>Ana Diniz</option><option>João Carlos</option><option>Rita Alves</option></select>
+                  </li>
+                  <li>
+                    <span class="a-role">Vice-President</span>
+                    <select><option>João Carlos</option><option>Ana Diniz</option><option>Paulo Lima</option></select>
+                  </li>
+                  <li>
+                    <span class="a-role">Secretary</span>
+                    <select><option>Rita Alves</option><option>Carla Souza</option></select>
+                  </li>
+                  <li>
+                    <span class="a-role">Treasurer</span>
+                    <select><option>— Select a member —</option><option>Paulo Lima</option><option>Carla Souza</option></select>
+                  </li>
+                </ul>
+                <p class="field-note">Each member can hold only one position — names already assigned are hidden from other dropdowns. <span class="wf-marker">4</span></p>
+              </div>
+
+              <div class="wizard-nav">
+                <button type="button" class="btn ghost">← Back</button>
+                <div class="wizard-nav-right">
+                  <button type="button" class="btn link">Save draft</button>
+                  <button type="button" class="btn primary">Continue →</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li>① Three short steps (Set term → Assign members → Review &amp; activate) match the real create-administration flow and set clear expectations via the stepper.</li>
+        <li>② A prominent warning states that activation auto-ends the current term, so the destructive side effect is understood before the final step, not after.</li>
+        <li>③ Assignment is a compact position→member picker list, keeping the whole roster editable on one screen within the step.</li>
+        <li>④ The one-position-per-member rule is enforced inline — already-chosen members drop out of the other dropdowns to prevent invalid states.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OPTION 5 ===== -->
+  <div class="option-panel" id="option-5">
+    <h2>Option 5: <span class="opt-name">Split View</span></h2>
+    <p class="option-description">Administrations list on the left (current + past with term dates), detail panel on the right showing that term's positions/members and edit controls. Lets admins browse history and manage any term without losing the list.</p>
+    <div class="sub-tab-bar" id="frame-opt5-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch5"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch5)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint5"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint5)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond5"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond5)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt5">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/administrations</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="#" class="nav-active">◷ Administrations</a>
+              <a href="../1007-contributions/index.html">$ Contributions</a>
+              <a href="../1007-meetings/index.html">▦ Meetings</a>
+              <a href="../1007-bylaws/index.html">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb">Administrations</span>
+              <button type="button" class="btn primary sm">+ New administration</button>
+            </div>
+
+            <div class="split">
+              <div class="split-list">
+                <ul class="adm-list">
+                  <li class="adm-row selected">
+                    <span class="a-period">Jan 2024 – Dec 2025 <span class="row-badge">current</span></span>
+                    <span class="a-meta">4 positions · started 01/01/2024</span>
+                    <span class="wf-marker">1</span>
+                  </li>
+                  <li class="adm-row">
+                    <span class="a-period">Jan 2022 – Dec 2023</span>
+                    <span class="a-meta">4 positions · ended 31/12/2023</span>
+                  </li>
+                  <li class="adm-row">
+                    <span class="a-period">Jan 2020 – Dec 2021</span>
+                    <span class="a-meta">4 positions · ended 31/12/2021</span>
+                  </li>
+                </ul>
+                <span class="list-hint" style="font-size:10px;color:#bbb;">Select a term to view its roster. <span class="wf-marker">2</span></span>
+              </div>
+
+              <div class="split-detail">
+                <div class="detail-head">
+                  <div>
+                    <h2 class="detail-title">Jan 2024 – Dec 2025 <span class="pill solid">Current</span></h2>
+                    <span class="detail-status">Started 01/01/2024 · ongoing</span>
+                  </div>
+                  <button type="button" class="btn sm">Edit term</button>
+                </div>
+                <div class="detail-scroll">
+                  <h3 class="section-label">Positions &amp; members <span class="wf-marker">3</span></h3>
+                  <table class="data-table">
+                    <thead>
+                      <tr><th>Position</th><th>Member</th><th></th></tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><span class="pos-tag">President</span></td>
+                        <td><div class="assign-cell"><span class="ava">AD</span> Ana Diniz</div></td>
+                        <td><button type="button" class="btn link sm">Change</button></td>
+                      </tr>
+                      <tr>
+                        <td><span class="pos-tag">Vice-President</span></td>
+                        <td><div class="assign-cell"><span class="ava">JC</span> João Carlos</div></td>
+                        <td><button type="button" class="btn link sm">Change</button></td>
+                      </tr>
+                      <tr>
+                        <td><span class="pos-tag">Secretary</span></td>
+                        <td><div class="assign-cell"><span class="ava">RA</span> Rita Alves</div></td>
+                        <td><button type="button" class="btn link sm">Change</button></td>
+                      </tr>
+                      <tr>
+                        <td><span class="pos-tag">Treasurer</span></td>
+                        <td><div class="assign-cell"><span class="ava">PL</span> Paulo Lima</div></td>
+                        <td><button type="button" class="btn link sm">Change</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="detail-foot">
+                  <span class="save-hint">Editing the current term. Past terms are read-only. <span class="wf-marker">4</span></span>
+                  <div class="detail-foot-right">
+                    <button type="button" class="btn ghost sm">Manage positions</button>
+                    <button type="button" class="btn primary sm">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li>① The left list is the full history, each row leading with its term dates; the current term carries a "current" badge and sits at the top.</li>
+        <li>② Selecting a term loads its roster on the right without leaving the page, so comparing terms is fast and the list stays as context.</li>
+        <li>③ The detail panel shows the position→member table for the selected term with inline "Change" reassignment for the current one.</li>
+        <li>④ Past terms open read-only to preserve history; only the current term is editable, and "Manage positions" is one click away.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== SUMMARY ===== -->
+  <div class="option-panel" id="summary">
+    <h2>Summary &amp; Recommendation</h2>
+    <p class="option-description">Scored for <b>clear term/assignment management + readable history</b> — how easily an admin runs the current term and reads the community's past.</p>
+    <table class="summary-table">
+      <thead>
+        <tr><th>#</th><th>Option</th><th>Approach</th><th>Term + history clarity</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td><td><b>Sidebar Form</b></td>
+          <td>Current term card + assignment table + positions list in the existing shell — safe baseline, but history is secondary.</td>
+          <td class="score">★★★☆☆</td>
+        </tr>
+        <tr class="rec-row">
+          <td>2</td><td><b>Timeline</b> <span class="row-badge">Recommended</span></td>
+          <td>Chronological spine with the current term highlighted; expandable rosters make term history the primary, readable story.</td>
+          <td class="score">★★★★★</td>
+        </tr>
+        <tr>
+          <td>3</td><td><b>Org Board</b></td>
+          <td>Org-chart of the current administration with assign slots — great for structure, weak for term history.</td>
+          <td class="score">★★★☆☆</td>
+        </tr>
+        <tr>
+          <td>4</td><td><b>Assignment Wizard</b></td>
+          <td>Guided 3-step create flow with an end-current warning — excellent for creation, not a browsing surface.</td>
+          <td class="score">★★★☆☆</td>
+        </tr>
+        <tr>
+          <td>5</td><td><b>Split View</b></td>
+          <td>History list + detail panel — strong for browsing and editing any term, slightly heavier layout.</td>
+          <td class="score">★★★★☆</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="recommendation">
+      <h3>Recommendation: Option 2 — Timeline</h3>
+      <p>The Timeline best serves the core goal of <b>clear term management and readable history</b>. Because the feature is fundamentally about periods that succeed one another — a new administration auto-ends the previous one — a chronological spine communicates that model more directly than any list or form. The current term is highlighted at the top for day-to-day management, while every past term (with its end date and roster) is one click away, making the preserved history genuinely browsable. <b>Option 5 (Split View)</b> is the strongest alternative when editing older terms is frequent, and <b>Option 4 (Assignment Wizard)</b> pairs naturally with the Timeline as the flow triggered by "+ New administration." <b>Option 1</b> remains the lowest-risk baseline that ships fastest on the current design system.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer class="skill-footer">
+  This design was crafted by the <a href="https://github.com/Magdoub/claude-wireframe-skill">Wireframe skill</a> — follow on GitHub
+</footer>
+
+<script>
+(function() {
+  // Main tab switching
+  var tabBtns = document.querySelectorAll('.tab-btn');
+  var panels = document.querySelectorAll('.option-panel');
+  tabBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      tabBtns.forEach(function(b) { b.classList.remove('active'); });
+      panels.forEach(function(p) { p.classList.remove('active'); });
+      btn.classList.add('active');
+      var target = document.getElementById(btn.dataset.tab);
+      if (target) target.classList.add('active');
+    });
+  });
+
+  // Sub-tab switching
+  var subBtns = document.querySelectorAll('.sub-tab-btn');
+  subBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var frameId = btn.dataset.frame;
+      var siblings = btn.parentElement.querySelectorAll('.sub-tab-btn');
+      siblings.forEach(function(s) { s.classList.remove('active'); });
+      btn.classList.add('active');
+      var frame = document.getElementById(frameId);
+      if (frame) {
+        frame.classList.remove('wireframe', 'clean', 'polished');
+        frame.classList.add(btn.dataset.variant);
+      }
+    });
+  });
+
+  // Completion banner — one-time load check
+  window.addEventListener('load', function() {
+    var badges = document.querySelectorAll('.sub-tab-badge');
+    var anyVisible = false;
+    badges.forEach(function(b) {
+      if (getComputedStyle(b).display !== 'none') anyVisible = true;
+    });
+    if (!anyVisible && badges.length > 0) {
+      var banner = document.getElementById('completion-banner');
+      if (banner) {
+        banner.style.display = 'block';
+        setTimeout(function() { banner.style.display = 'none'; }, 8000);
+      }
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

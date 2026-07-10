@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meetings — DDMM Wireframes</title>
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles-opt1.css">
+  <link rel="stylesheet" href="styles-opt2.css">
+  <link rel="stylesheet" href="styles-opt3.css">
+  <link rel="stylesheet" href="styles-opt4.css">
+  <link rel="stylesheet" href="styles-opt5.css">
+</head>
+<body>
+
+<div class="completion-banner" id="completion-banner" style="display:none;">
+  ✦ Visual designs complete — all options now have Clean + Polished variants
+  <button onclick="this.parentElement.style.display='none'" style="float:right;background:none;border:none;cursor:pointer;font-size:16px;">×</button>
+</div>
+
+<div class="page-wrapper">
+
+  <div class="title-bar">
+    <span><span id="feature-name">Meetings</span> — <span id="project-name">Community</span></span>
+    <span class="rec">★ Recommended: Option <span id="rec-number">3</span></span>
+  </div>
+
+  <nav class="main-tabs">
+    <button class="tab-btn active" data-tab="option-1">1: Sidebar List</button>
+    <button class="tab-btn" data-tab="option-2">2: Timeline</button>
+    <button class="tab-btn" data-tab="option-3">3: Split View</button>
+    <button class="tab-btn" data-tab="option-4">4: Attendance Grid</button>
+    <button class="tab-btn" data-tab="option-5">5: Card Feed</button>
+    <button class="tab-btn" data-tab="summary">Summary</button>
+  </nav>
+
+  <!-- ===== OPTION 1 ===== -->
+  <div class="option-panel active" id="option-1">
+    <h2>Option 1: <span class="opt-name">Sidebar List</span></h2>
+    <p class="option-description">Extends the existing sidebar-shell — a scrollable list of meetings (upcoming, then past) showing title, date/time and location, with a "New meeting" button. Selecting one opens its detail with attendance roster and minutes. Zero new paradigms.</p>
+    <div class="sub-tab-bar" id="frame-opt1-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch1"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch1)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint1"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint1)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond1"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond1)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt1">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/meetings</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <!-- OPTION 1: Sidebar List -->
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="../1007-administrations/index.html">◷ Administrations</a>
+              <a href="../1007-contributions/index.html">$ Contributions</a>
+              <a href="#" class="nav-active">▦ Meetings</a>
+              <a href="../1007-bylaws/index.html">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb">Meetings <span class="crumb-sep">/</span> <b>Assembleia Geral</b></span>
+            </div>
+            <div class="app-body mt-split">
+              <div class="mt-listcol">
+                <div class="page-head">
+                  <div>
+                    <h1 class="page-title">Meetings <span class="wf-marker">1</span></h1>
+                    <p class="page-sub">12 meetings</p>
+                  </div>
+                  <button class="btn primary sm">+ New meeting</button>
+                </div>
+                <div class="section-label">Upcoming</div>
+                <ul class="mt-list">
+                  <li class="mt-item selected">
+                    <div class="mt-item-main">
+                      <b>Assembleia Geral</b>
+                      <small>Sáb 21 fev · 19:00 · Sede Comunitária</small>
+                    </div>
+                    <span class="pill">Scheduled</span>
+                  </li>
+                  <li class="mt-item">
+                    <div class="mt-item-main">
+                      <b>Reunião Mensal – Março</b>
+                      <small>Ter 03 mar · 20:00 · Sede Comunitária</small>
+                    </div>
+                    <span class="pill">Scheduled</span>
+                  </li>
+                </ul>
+                <div class="section-label">Past</div>
+                <ul class="mt-list">
+                  <li class="mt-item">
+                    <div class="mt-item-main">
+                      <b>Reunião Mensal – Fevereiro</b>
+                      <small>Ter 04 fev · 20:00 · Sede Comunitária</small>
+                    </div>
+                    <span class="mt-att">42/60</span>
+                  </li>
+                  <li class="mt-item">
+                    <div class="mt-item-main">
+                      <b>Reunião de Planejamento 2026</b>
+                      <small>Sáb 18 jan · 15:00 · Sede Comunitária</small>
+                    </div>
+                    <span class="mt-att">51/60</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="mt-detailcol">
+                <div class="mt-detail-head">
+                  <div>
+                    <h2 class="detail-title">Assembleia Geral <span class="wf-marker">2</span></h2>
+                    <p class="page-sub">Sáb 21 fev 2026 · 19:00 · Sede Comunitária</p>
+                  </div>
+                  <span class="pill">Scheduled</span>
+                </div>
+                <div class="mt-detail-body">
+                  <div class="section-label">Details</div>
+                  <div class="field-grid">
+                    <div class="field"><label>Title</label><input type="text" value="Assembleia Geral"></div>
+                    <div class="field"><label>Date &amp; time</label><input type="text" value="21/02/2026 19:00"></div>
+                    <div class="field"><label>Location</label><input type="text" value="Sede Comunitária"></div>
+                  </div>
+                  <p class="mt-notify">✎ Changing the date/time of this future meeting sends an in-app + email notification to all 60 members. <span class="wf-marker">3</span></p>
+
+                  <div class="section-label">Attendance <span class="mt-count">42 present of 60</span></div>
+                  <ul class="mt-roster">
+                    <li class="mt-rrow"><div class="ava">MS</div><span class="mt-rname">Maria da Silva</span><label class="chk"><input type="checkbox" checked> Present</label></li>
+                    <li class="mt-rrow"><div class="ava">JP</div><span class="mt-rname">João Pereira</span><label class="chk"><input type="checkbox" checked> Present</label></li>
+                    <li class="mt-rrow"><div class="ava">CL</div><span class="mt-rname">Carla Lima</span><label class="chk"><input type="checkbox"> Present</label></li>
+                  </ul>
+
+                  <div class="section-label">Minutes <span class="wf-marker">4</span></div>
+                  <textarea class="mt-minutes" placeholder="Escreva a ata da reunião…">Aos vinte e um dias de fevereiro reuniu-se a comunidade em assembleia. Discutiu-se o calendário de eventos e a prestação de contas do tesoureiro. Ficou definido…</textarea>
+                </div>
+                <div class="save-bar">
+                  <span class="save-hint">Minutes become visible to all members once saved</span>
+                  <div class="save-actions">
+                    <button class="btn sm">Cancel</button>
+                    <button class="btn primary sm">Save meeting</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li><span class="wf-marker">1</span> Meetings live under the existing sidebar-shell — one nav item, no new mental model. Upcoming and Past are simply two labelled groups in the same list.</li>
+        <li><span class="wf-marker">2</span> Selecting a meeting reveals its full detail in place; the list stays visible so the secretary keeps context while working.</li>
+        <li><span class="wf-marker">3</span> Editing a future date/time surfaces an explicit notice that all members will be notified in-app and by email.</li>
+        <li><span class="wf-marker">4</span> Attendance toggles and the free-text minutes sit in the same scroll; one Save writes both, and minutes become member-visible.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OPTION 2 ===== -->
+  <div class="option-panel" id="option-2">
+    <h2>Option 2: <span class="opt-name">Timeline</span></h2>
+    <p class="option-description">A chronological agenda: upcoming meetings pinned at top (date, location, attendance target), past meetings below with a "minutes available" indicator. A scannable vertical timeline that reads like the community's calendar at a glance.</p>
+    <div class="sub-tab-bar" id="frame-opt2-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch2"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch2)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint2"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint2)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond2"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond2)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt2">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/meetings</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <!-- OPTION 2: Timeline -->
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="../1007-administrations/index.html">◷ Administrations</a>
+              <a href="../1007-contributions/index.html">$ Contributions</a>
+              <a href="#" class="nav-active">▦ Meetings</a>
+              <a href="../1007-bylaws/index.html">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb">Meetings <span class="crumb-sep">/</span> <b>Timeline</b></span>
+            </div>
+            <div class="app-body">
+              <div class="page-head">
+                <div>
+                  <h1 class="page-title">Meetings timeline <span class="wf-marker">1</span></h1>
+                  <p class="page-sub">Upcoming gatherings and past minutes in one chronological view.</p>
+                </div>
+                <button class="btn primary sm">+ New meeting</button>
+              </div>
+
+              <div class="tl-groups">
+                <div class="tl-grouplabel">Upcoming <span class="wf-marker">2</span></div>
+                <ul class="timeline">
+                  <li class="tl-item upcoming">
+                    <div class="tl-date"><b>21</b><span>fev</span></div>
+                    <div class="tl-body">
+                      <div class="tl-row"><b>Assembleia Geral</b><span class="pill">Scheduled</span></div>
+                      <small class="tl-meta">Sáb 19:00 · Sede Comunitária · target 60 members</small>
+                    </div>
+                  </li>
+                  <li class="tl-item upcoming">
+                    <div class="tl-date"><b>03</b><span>mar</span></div>
+                    <div class="tl-body">
+                      <div class="tl-row"><b>Reunião Mensal – Março</b><span class="pill">Scheduled</span></div>
+                      <small class="tl-meta">Ter 20:00 · Sede Comunitária · target 60 members</small>
+                    </div>
+                  </li>
+                </ul>
+
+                <div class="tl-grouplabel">Past <span class="wf-marker">3</span></div>
+                <ul class="timeline">
+                  <li class="tl-item">
+                    <div class="tl-date"><b>04</b><span>fev</span></div>
+                    <div class="tl-body">
+                      <div class="tl-row"><b>Reunião Mensal – Fevereiro</b><span class="mt-att">42 present of 60</span></div>
+                      <small class="tl-meta">Ter 20:00 · Sede Comunitária · <a href="#" class="tl-minutes">▦ minutes available</a></small>
+                    </div>
+                  </li>
+                  <li class="tl-item">
+                    <div class="tl-date"><b>18</b><span>jan</span></div>
+                    <div class="tl-body">
+                      <div class="tl-row"><b>Reunião de Planejamento 2026</b><span class="mt-att">51 present of 60</span></div>
+                      <small class="tl-meta">Sáb 15:00 · Sede Comunitária · <a href="#" class="tl-minutes">▦ minutes available</a></small>
+                    </div>
+                  </li>
+                  <li class="tl-item">
+                    <div class="tl-date"><b>07</b><span>dez</span></div>
+                    <div class="tl-body">
+                      <div class="tl-row"><b>Assembleia de Encerramento 2025</b><span class="mt-att">48 present of 60</span></div>
+                      <small class="tl-meta">Dom 18:00 · Sede Comunitária · <span class="tl-nominutes">minutes pending <span class="wf-marker">4</span></span></small>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li><span class="wf-marker">1</span> One vertical timeline reads like the community's calendar; no list/detail split needed for a scanning-first audience.</li>
+        <li><span class="wf-marker">2</span> Upcoming meetings are pinned at the top with date, time, location and the attendance target so members know what's next.</li>
+        <li><span class="wf-marker">3</span> Past meetings show the final "X present of 60" count inline, giving turnout at a glance without opening the record.</li>
+        <li><span class="wf-marker">4</span> A "minutes available" link vs. "minutes pending" indicator tells members immediately whether the ata is ready to read.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OPTION 3 ===== -->
+  <div class="option-panel" id="option-3">
+    <h2>Option 3: <span class="opt-name">Split View</span></h2>
+    <p class="option-description">Meetings list on the left; the selected meeting fills the right panel with Details, Attendance (roster checklist) and Minutes (free-text editor) in one view. Keeps the whole meeting list in context while the secretary records attendance and writes minutes side by side — optimized for fast taking + easy writing.</p>
+    <div class="sub-tab-bar" id="frame-opt3-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch3"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch3)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint3"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint3)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond3"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond3)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt3">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/meetings</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <!-- OPTION 3: Split View (recommended) -->
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="../1007-administrations/index.html">◷ Administrations</a>
+              <a href="../1007-contributions/index.html">$ Contributions</a>
+              <a href="#" class="nav-active">▦ Meetings</a>
+              <a href="../1007-bylaws/index.html">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb">Meetings <span class="crumb-sep">/</span> <b>Reunião Mensal – Fevereiro</b></span>
+            </div>
+            <div class="mt-split3">
+              <div class="mt-splitlist">
+                <div class="mt-splitlist-head">
+                  <b>Meetings</b>
+                  <button class="btn primary sm">+ New</button>
+                </div>
+                <div class="section-label">Upcoming</div>
+                <ul class="mt-list">
+                  <li class="mt-item"><div class="mt-item-main"><b>Assembleia Geral</b><small>21 fev · 19:00</small></div><span class="pill">Sched</span></li>
+                  <li class="mt-item"><div class="mt-item-main"><b>Reunião – Março</b><small>03 mar · 20:00</small></div><span class="pill">Sched</span></li>
+                </ul>
+                <div class="section-label">Past</div>
+                <ul class="mt-list">
+                  <li class="mt-item selected"><div class="mt-item-main"><b>Reunião – Fevereiro</b><small>04 fev · 20:00</small></div><span class="mt-att">42/60</span></li>
+                  <li class="mt-item"><div class="mt-item-main"><b>Planejamento 2026</b><small>18 jan · 15:00</small></div><span class="mt-att">51/60</span></li>
+                </ul>
+                <p class="list-hint">Selected meeting opens in the panel →</p>
+              </div>
+
+              <div class="mt-splitdetail">
+                <div class="mt-detail-head">
+                  <div>
+                    <h2 class="detail-title">Reunião Mensal – Fevereiro <span class="wf-marker">1</span></h2>
+                    <p class="page-sub">Ter 04 fev 2026 · 20:00 · Sede Comunitária</p>
+                  </div>
+                  <span class="mt-count">42 present of 60</span>
+                </div>
+
+                <div class="mt-tabs">
+                  <button class="mt-tab">Details</button>
+                  <button class="mt-tab active">Attendance <span class="wf-marker">2</span></button>
+                  <button class="mt-tab">Minutes <span class="wf-marker">3</span></button>
+                </div>
+
+                <div class="mt-splitcols">
+                  <div class="mt-col-att">
+                    <div class="mt-att-toolbar">
+                      <input class="search" type="text" placeholder="Filter members…">
+                      <label class="chk"><input type="checkbox"> Mark all present <span class="wf-marker">4</span></label>
+                    </div>
+                    <ul class="mt-roster">
+                      <li class="mt-rrow"><div class="ava">MS</div><span class="mt-rname">Maria da Silva</span><label class="chk"><input type="checkbox" checked> Present</label></li>
+                      <li class="mt-rrow"><div class="ava">JP</div><span class="mt-rname">João Pereira</span><label class="chk"><input type="checkbox" checked> Present</label></li>
+                      <li class="mt-rrow"><div class="ava">CL</div><span class="mt-rname">Carla Lima</span><label class="chk"><input type="checkbox"> Present</label></li>
+                      <li class="mt-rrow"><div class="ava">RB</div><span class="mt-rname">Rui Barbosa</span><label class="chk"><input type="checkbox" checked> Present</label></li>
+                      <li class="mt-rrow"><div class="ava">FN</div><span class="mt-rname">Fátima Nunes</span><label class="chk"><input type="checkbox"> Present</label></li>
+                    </ul>
+                  </div>
+                  <div class="mt-col-min">
+                    <div class="section-label">Minutes (ata)</div>
+                    <textarea class="mt-minutes tall" placeholder="Escreva a ata da reunião…">Aos quatro dias de fevereiro de 2026 reuniu-se a comunidade na Sede Comunitária. O presidente abriu a sessão às 20h. O tesoureiro apresentou o balancete de janeiro. Deliberou-se sobre a organização da Assembleia Geral de fevereiro…</textarea>
+                    <p class="mt-notify">Minutes become visible to all members once saved.</p>
+                  </div>
+                </div>
+
+                <div class="save-bar">
+                  <span class="save-hint">Attendance and minutes saved together</span>
+                  <div class="save-actions">
+                    <button class="btn sm">Cancel</button>
+                    <button class="btn primary sm">Save meeting</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li><span class="wf-marker">1</span> The meeting list never leaves the screen — the secretary can jump between meetings without losing the record they're editing.</li>
+        <li><span class="wf-marker">2</span> Details / Attendance / Minutes are tabs on the right panel, but Attendance and Minutes render side by side so both core tasks happen in one pass.</li>
+        <li><span class="wf-marker">3</span> The free-text minutes editor sits beside the roster with a persistent "visible to all members once saved" reminder.</li>
+        <li><span class="wf-marker">4</span> A "Mark all present" control plus per-row toggles and a live "X present of 60" count make attendance-taking fast, which is the primary optimization target.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OPTION 4 ===== -->
+  <div class="option-panel" id="option-4">
+    <h2>Option 4: <span class="opt-name">Attendance Grid</span></h2>
+    <p class="option-description">The roster-checklist as hero: a full-width, fast present/absent list for one meeting. Every member is a row with a Present toggle, a sticky "X present of Y" running summary and a mark-all control — built for taking attendance in seconds during a live gathering.</p>
+    <div class="sub-tab-bar" id="frame-opt4-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch4"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch4)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint4"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint4)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond4"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond4)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt4">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/meetings</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <!-- OPTION 4: Attendance Grid -->
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="../1007-administrations/index.html">◷ Administrations</a>
+              <a href="../1007-contributions/index.html">$ Contributions</a>
+              <a href="#" class="nav-active">▦ Meetings</a>
+              <a href="../1007-bylaws/index.html">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb">Meetings <span class="crumb-sep">/</span> Assembleia Geral <span class="crumb-sep">/</span> <b>Attendance</b></span>
+            </div>
+            <div class="app-body ag-body">
+              <div class="page-head">
+                <div>
+                  <h1 class="page-title">Take attendance <span class="wf-marker">1</span></h1>
+                  <p class="page-sub">Assembleia Geral · Sáb 21 fev · 19:00 · Sede Comunitária</p>
+                </div>
+                <div class="ag-tools">
+                  <input class="search" type="text" placeholder="Search member…">
+                  <label class="chk"><input type="checkbox"> Mark all present <span class="wf-marker">3</span></label>
+                </div>
+              </div>
+
+              <div class="ag-summary">
+                <b>42</b> present of <b>60</b>
+                <div class="ag-bar"><span style="width:70%"></span></div>
+                <span class="ag-sub">18 not marked · 70% turnout <span class="wf-marker">2</span></span>
+              </div>
+
+              <ul class="ag-grid">
+                <li class="ag-row present"><div class="ava">MS</div><span class="ag-name">Maria da Silva</span><label class="chk"><input type="checkbox" checked> Present</label></li>
+                <li class="ag-row present"><div class="ava">JP</div><span class="ag-name">João Pereira</span><label class="chk"><input type="checkbox" checked> Present</label></li>
+                <li class="ag-row"><div class="ava">CL</div><span class="ag-name">Carla Lima</span><label class="chk"><input type="checkbox"> Present</label></li>
+                <li class="ag-row present"><div class="ava">RB</div><span class="ag-name">Rui Barbosa</span><label class="chk"><input type="checkbox" checked> Present</label></li>
+                <li class="ag-row"><div class="ava">FN</div><span class="ag-name">Fátima Nunes</span><label class="chk"><input type="checkbox"> Present</label></li>
+                <li class="ag-row present"><div class="ava">AD</div><span class="ag-name">Antônio Duarte</span><label class="chk"><input type="checkbox" checked> Present</label></li>
+                <li class="ag-row present"><div class="ava">LM</div><span class="ag-name">Lúcia Moreira</span><label class="chk"><input type="checkbox" checked> Present</label></li>
+                <li class="ag-row"><div class="ava">PS</div><span class="ag-name">Paulo Santos</span><label class="chk"><input type="checkbox"> Present</label></li>
+              </ul>
+            </div>
+            <div class="save-bar">
+              <span class="save-hint">42 present of 60 will be recorded <span class="wf-marker">4</span></span>
+              <div class="save-actions">
+                <button class="btn sm">Cancel</button>
+                <button class="btn primary sm">Save attendance</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li><span class="wf-marker">1</span> A dedicated full-width checklist screen for a single meeting — nothing competes with the one task of marking who showed up.</li>
+        <li><span class="wf-marker">2</span> A sticky running summary with a progress bar keeps "X present of 60" and turnout visible while scrolling long rosters.</li>
+        <li><span class="wf-marker">3</span> Search + "Mark all present" let the secretary flip the common case in one click, then uncheck the few absentees.</li>
+        <li><span class="wf-marker">4</span> A persistent save bar restates the count that will be written, avoiding accidental partial saves during a live meeting.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OPTION 5 ===== -->
+  <div class="option-panel" id="option-5">
+    <h2>Option 5: <span class="opt-name">Card Feed</span></h2>
+    <p class="option-description">A member-facing feed of meeting cards — each with date, location, attendance summary, a minutes excerpt and quick actions. Optimized for browsing and reading rather than data entry; the natural home page for ordinary members.</p>
+    <div class="sub-tab-bar" id="frame-opt5-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch5"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch5)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint5"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint5)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond5"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond5)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt5">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/meetings</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <!-- OPTION 5: Card Feed -->
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="../1007-administrations/index.html">◷ Administrations</a>
+              <a href="../1007-contributions/index.html">$ Contributions</a>
+              <a href="#" class="nav-active">▦ Meetings</a>
+              <a href="../1007-bylaws/index.html">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">MS</div><span>Maria da Silva</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb">Meetings <span class="crumb-sep">/</span> <b>All meetings</b></span>
+            </div>
+            <div class="app-body cf-body">
+              <div class="page-head">
+                <div>
+                  <h1 class="page-title">Meetings <span class="wf-marker">1</span></h1>
+                  <p class="page-sub">Upcoming gatherings and past minutes.</p>
+                </div>
+              </div>
+
+              <div class="cf-history">
+                Your attendance: <b>you attended 9 of 12 meetings</b> this term <span class="wf-marker">4</span>
+              </div>
+
+              <div class="cf-feed">
+                <div class="cf-card upcoming">
+                  <div class="cf-card-head">
+                    <div><b>Assembleia Geral</b><small>Sáb 21 fev 2026 · 19:00</small></div>
+                    <span class="pill">Upcoming</span>
+                  </div>
+                  <div class="cf-meta">◷ Sede Comunitária · 60 members invited <span class="wf-marker">2</span></div>
+                  <div class="cf-actions"><a href="#" class="btn sm">View details</a></div>
+                </div>
+
+                <div class="cf-card">
+                  <div class="cf-card-head">
+                    <div><b>Reunião Mensal – Fevereiro</b><small>Ter 04 fev 2026 · 20:00</small></div>
+                    <span class="mt-att">42 present of 60</span>
+                  </div>
+                  <div class="cf-meta">◷ Sede Comunitária · you were <b>present</b></div>
+                  <p class="cf-excerpt">Aos quatro dias de fevereiro reuniu-se a comunidade… o tesoureiro apresentou o balancete de janeiro e deliberou-se sobre a Assembleia Geral… <span class="wf-marker">3</span></p>
+                  <div class="cf-actions"><a href="#" class="btn sm">Read minutes</a></div>
+                </div>
+
+                <div class="cf-card">
+                  <div class="cf-card-head">
+                    <div><b>Reunião de Planejamento 2026</b><small>Sáb 18 jan 2026 · 15:00</small></div>
+                    <span class="mt-att">51 present of 60</span>
+                  </div>
+                  <div class="cf-meta">◷ Sede Comunitária · you were <b>absent</b></div>
+                  <p class="cf-excerpt">Definiu-se o calendário anual de reuniões e eventos, e formou-se a comissão organizadora da festa comunitária de junho…</p>
+                  <div class="cf-actions"><a href="#" class="btn sm">Read minutes</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li><span class="wf-marker">1</span> A read-optimized feed for ordinary members: cards, not editable rows, so browsing minutes feels like scanning a newsletter.</li>
+        <li><span class="wf-marker">2</span> Upcoming cards lead with date, time and location; past cards lead with the final "X present of 60" turnout.</li>
+        <li><span class="wf-marker">3</span> Each past card carries a minutes excerpt with a "Read minutes" action — the full ata is one click away.</li>
+        <li><span class="wf-marker">4</span> A banner summarizes the member's own attendance history ("you attended 9 of 12"), and each card marks whether they were present or absent.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== SUMMARY ===== -->
+  <div class="option-panel" id="summary">
+    <h2>Summary &amp; Recommendation</h2>
+    <p class="option-description">Five approaches to Meetings &amp; Minutes, weighted toward the primary jobs: fast attendance taking and easy minutes writing.</p>
+    <table class="summary-table">
+      <thead>
+        <tr><th>Option</th><th>Best for</th><th>Attendance speed</th><th>Minutes writing</th><th>Fit</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>1. Sidebar List</b></td>
+          <td>Familiar admin CRUD; safe default</td>
+          <td>Good — inline roster</td>
+          <td>Good — inline textarea</td>
+          <td class="score">★★★☆☆</td>
+        </tr>
+        <tr>
+          <td><b>2. Timeline</b></td>
+          <td>Members scanning the calendar</td>
+          <td>N/A — browse only</td>
+          <td>N/A — browse only</td>
+          <td class="score">★★★☆☆</td>
+        </tr>
+        <tr class="rec-row">
+          <td><b>3. Split View</b> ★</td>
+          <td>Secretaries recording live, with context</td>
+          <td>Excellent — roster + mark-all</td>
+          <td>Excellent — editor beside roster</td>
+          <td class="score">★★★★★</td>
+        </tr>
+        <tr>
+          <td><b>4. Attendance Grid</b></td>
+          <td>Fastest possible attendance pass</td>
+          <td>Excellent — hero checklist</td>
+          <td>Separate step</td>
+          <td class="score">★★★★☆</td>
+        </tr>
+        <tr>
+          <td><b>5. Card Feed</b></td>
+          <td>Members reading minutes + own history</td>
+          <td>N/A — read only</td>
+          <td>N/A — read only</td>
+          <td class="score">★★★☆☆</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="recommendation">
+      <h3>★ Recommended: Option 3 — Split View</h3>
+      <p>It keeps the meeting list in context while the secretary records attendance and writes minutes in one place. Attendance and Minutes render side by side, so both primary jobs — fast attendance taking and easy minutes writing — are completed in a single pass with one Save. Option 4 (Attendance Grid) is the stronger choice if attendance-only speed during a live gathering is the top priority, and Options 2 and 5 are excellent complementary member-facing views for browsing meetings and reading minutes.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer class="skill-footer">
+  This design was crafted by the <a href="https://github.com/Magdoub/claude-wireframe-skill">Wireframe skill</a> — follow on GitHub
+</footer>
+
+<script>
+(function() {
+  // Main tab switching
+  var tabBtns = document.querySelectorAll('.tab-btn');
+  var panels = document.querySelectorAll('.option-panel');
+  tabBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      tabBtns.forEach(function(b) { b.classList.remove('active'); });
+      panels.forEach(function(p) { p.classList.remove('active'); });
+      btn.classList.add('active');
+      var target = document.getElementById(btn.dataset.tab);
+      if (target) target.classList.add('active');
+    });
+  });
+
+  // Sub-tab switching
+  var subBtns = document.querySelectorAll('.sub-tab-btn');
+  subBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var frameId = btn.dataset.frame;
+      var siblings = btn.parentElement.querySelectorAll('.sub-tab-btn');
+      siblings.forEach(function(s) { s.classList.remove('active'); });
+      btn.classList.add('active');
+      var frame = document.getElementById(frameId);
+      if (frame) {
+        frame.classList.remove('wireframe', 'clean', 'polished');
+        frame.classList.add(btn.dataset.variant);
+      }
+    });
+  });
+
+  // Completion banner — one-time load check
+  window.addEventListener('load', function() {
+    var badges = document.querySelectorAll('.sub-tab-badge');
+    var anyVisible = false;
+    badges.forEach(function(b) {
+      if (getComputedStyle(b).display !== 'none') anyVisible = true;
+    });
+    if (!anyVisible && badges.length > 0) {
+      var banner = document.getElementById('completion-banner');
+      if (banner) {
+        banner.style.display = 'block';
+        setTimeout(function() { banner.style.display = 'none'; }, 8000);
+      }
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

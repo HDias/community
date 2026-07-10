@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap');
+
+/* ===================================================================
+   Option 3 — Split View · Visual design
+   Accent: chart-blue #2563eb over a neutral cool-slate light base.
+   Layout is locked; this file only overrides visual treatment.
+   =================================================================== */
+
+/* ---------- Browser dots (both variants) ---------- */
+.clean .browser-dots span:nth-child(1),
+.polished .browser-dots span:nth-child(1) { background: #ff5f57; }
+.clean .browser-dots span:nth-child(2),
+.polished .browser-dots span:nth-child(2) { background: #febc2e; }
+.clean .browser-dots span:nth-child(3),
+.polished .browser-dots span:nth-child(3) { background: #28c840; }
+
+/* Hide wireframe markers in colored variants */
+.clean .wf-marker, .polished .wf-marker { display: none; }
+
+/* ===================================================================
+   CLEAN (Style A) — system fonts, solid fills, no gradients/shadows
+   =================================================================== */
+.clean .browser-content { background: #f8fafc; }
+.clean .app-shell { background: #f8fafc; }
+
+.clean .app-sidebar { background: #ffffff; border-color: #e2e8f0; }
+.clean .sidebar-switcher { border-color: #e2e8f0; }
+.clean .switch-avatar { background: #2563eb; color: #fff; }
+.clean .switch-meta strong { color: #0f172a; }
+.clean .switch-meta span { color: #64748b; }
+.clean .sidebar-nav a { color: #475569; }
+.clean .sidebar-nav a:hover { background: #f1f5f9; color: #0f172a; }
+.clean .sidebar-nav a.nav-active { background: #eff6ff; color: #1d4ed8; font-weight: 600; }
+.clean .sidebar-foot { border-color: #e2e8f0; color: #64748b; }
+
+.clean .app-topbar { background: #ffffff; border-color: #e2e8f0; }
+.clean .crumb { color: #0f172a; }
+.clean .btn.primary { background: #2563eb; border-color: #2563eb; color: #fff; }
+.clean .btn.primary:hover { background: #1d4ed8; border-color: #1d4ed8; }
+.clean .btn.ghost { background: #fff; border-color: #cbd5e1; color: #334155; }
+.clean .btn.ghost:hover { background: #f1f5f9; }
+
+.clean .split-list { background: #ffffff; border-color: #e2e8f0; }
+.clean .list-toolbar { border-color: #e2e8f0; }
+.clean .search { background: #f8fafc; border-color: #cbd5e1; color: #0f172a; transition: border-color 150ms ease-out, box-shadow 150ms ease-out; }
+.clean .search:focus { border-color: #2563eb; box-shadow: 0 0 0 2px rgba(37,99,235,0.25); outline: none; }
+.clean .search::placeholder { color: #94a3b8; }
+
+.clean .member-row { color: #0f172a; border-color: #f1f5f9; transition: background 150ms ease-out; }
+.clean .member-row:hover { background: #f8fafc; }
+.clean .member-row .ava { background: #e2e8f0; color: #475569; }
+.clean .m-meta small { color: #64748b; }
+.clean .member-row.selected { background: #eff6ff; }
+.clean .member-row.selected .ava { background: #2563eb; color: #fff; }
+.clean .row-badge { background: #2563eb; color: #fff; }
+.clean .list-hint { color: #94a3b8; }
+
+.clean .split-detail { background: #ffffff; border-color: #e2e8f0; }
+.clean .detail-head { border-color: #e2e8f0; }
+.clean .detail-title { color: #0f172a; }
+.clean .detail-status { background: #fef3c7; color: #92400e; }
+.clean .section-label { color: #64748b; }
+.clean .field label { color: #475569; }
+.clean .field input { background: #fff; border-color: #cbd5e1; color: #0f172a; transition: border-color 150ms ease-out, box-shadow 150ms ease-out; }
+.clean .field input:focus { border-color: #2563eb; box-shadow: 0 0 0 2px rgba(37,99,235,0.2); outline: none; }
+.clean .field input::placeholder { color: #94a3b8; }
+.clean .detail-foot { border-color: #e2e8f0; background: #fff; }
+.clean .chk { color: #475569; }
+.clean .chk input { accent-color: #2563eb; }
+
+/* ===================================================================
+   POLISHED (Style B) — same palette + light base, Google fonts,
+   subtle light gradients, soft shadows, motion, decorative accents
+   =================================================================== */
+.polished .browser-content,
+.polished .app-shell { background: #f6f8fb; }
+.polished .app-topbar,
+.polished .split-list,
+.polished .split-detail,
+.polished .member-row,
+.polished .detail-title { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
+.polished .detail-title,
+.polished .crumb b, .polished .crumb { font-family: 'Fraunces', Georgia, serif; }
+
+.polished .app-sidebar { background: #ffffff; border-color: rgba(15,23,42,0.08); }
+.polished .sidebar-switcher { border-color: rgba(15,23,42,0.06); }
+.polished .switch-avatar { background: #2563eb; color: #fff; box-shadow: 0 2px 6px rgba(37,99,235,0.3); }
+.polished .switch-meta strong { color: #0f172a; }
+.polished .switch-meta span { color: #64748b; }
+.polished .sidebar-nav a { color: #475569; font-family: 'Inter', sans-serif; transition: background 150ms ease-out, color 150ms ease-out; }
+.polished .sidebar-nav a:hover { background: #f1f5f9; color: #0f172a; }
+.polished .sidebar-nav a.nav-active { background: #eff6ff; color: #1d4ed8; font-weight: 600; }
+.polished .sidebar-foot { border-color: rgba(15,23,42,0.06); color: #64748b; }
+
+.polished .app-topbar { background: linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%); border-color: rgba(15,23,42,0.08); }
+.polished .btn.primary { background: #2563eb; border-color: #2563eb; color: #fff; box-shadow: 0 1px 2px rgba(37,99,235,0.35); transition: background 150ms ease-out, transform 100ms ease-out; }
+.polished .btn.primary:hover { background: #1d4ed8; }
+.polished .btn.primary:active { transform: scale(0.98); }
+.polished .btn.ghost { background: #fff; border-color: #cbd5e1; color: #334155; transition: background 150ms ease-out; }
+.polished .btn.ghost:hover { background: #f1f5f9; }
+
+.polished .split-detail { box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 8px 24px rgba(15,23,42,0.06); border-color: rgba(15,23,42,0.06); background: #fff; }
+.polished .split-list { background: #fff; border-color: rgba(15,23,42,0.06); box-shadow: 0 1px 2px rgba(15,23,42,0.04); }
+.polished .list-toolbar { border-color: rgba(15,23,42,0.06); }
+.polished .search { background: #f8fafc; border-color: #cbd5e1; color: #0f172a; transition: border-color 150ms ease-out, box-shadow 150ms ease-out, background 150ms ease-out; }
+.polished .search:focus { border-color: #2563eb; background: #fff; box-shadow: 0 0 0 3px rgba(37,99,235,0.18); outline: none; }
+.polished .search::placeholder { color: #94a3b8; }
+
+.polished .member-row { color: #0f172a; border-color: rgba(15,23,42,0.05); transition: background 150ms ease-out, box-shadow 150ms ease-out, transform 150ms ease-out; }
+.polished .member-row:hover { background: #fbfcfe; box-shadow: 0 2px 8px rgba(15,23,42,0.08); transform: translateY(-1px); }
+.polished .member-row .ava { background: #eef2f7; color: #475569; }
+.polished .m-meta small { color: #64748b; }
+.polished .member-row.selected { background: linear-gradient(90deg, #eef4ff 0%, #f7faff 100%); position: relative; padding-left: 13px; }
+.polished .member-row.selected::before { content: ""; position: absolute; left: 0; top: 6px; bottom: 6px; width: 3px; border-radius: 2px; background: #2563eb; }
+.polished .member-row.selected .ava { background: #2563eb; color: #fff; box-shadow: 0 2px 6px rgba(37,99,235,0.35); }
+.polished .row-badge { background: #2563eb; color: #fff; box-shadow: 0 1px 3px rgba(37,99,235,0.4); }
+.polished .list-hint { color: #94a3b8; }
+
+.polished .detail-head { background: linear-gradient(180deg, #ffffff 0%, #f6f9fe 100%); border-color: rgba(15,23,42,0.06); }
+.polished .detail-title { color: #0f172a; }
+.polished .detail-status { background: #fef3c7; color: #92400e; }
+.polished .section-label { color: #64748b; letter-spacing: 0.4px; }
+.polished .field label { color: #475569; }
+.polished .field input { background: #fff; border-color: #cbd5e1; color: #0f172a; transition: border-color 150ms ease-out, box-shadow 150ms ease-out; }
+.polished .field input:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.16); outline: none; }
+.polished .field input::placeholder { color: #94a3b8; }
+.polished .detail-foot { background: linear-gradient(0deg, #ffffff 0%, #f7f9fc 100%); border-color: rgba(15,23,42,0.06); }
+.polished .chk { color: #475569; }
+.polished .chk input { accent-color: #2563eb; }
+
+/* Staggered entrance on the member list + motion respect */
+@media (prefers-reduced-motion: no-preference) {
+  .polished .member-row { animation: opt3RowIn 320ms ease-out both; }
+  .polished .member-row:nth-child(1) { animation-delay: 40ms; }
+  .polished .member-row:nth-child(2) { animation-delay: 90ms; }
+  .polished .member-row:nth-child(3) { animation-delay: 140ms; }
+  .polished .member-row:nth-child(4) { animation-delay: 190ms; }
+  .polished .member-row:nth-child(5) { animation-delay: 240ms; }
+  .polished .member-row:nth-child(6) { animation-delay: 290ms; }
+}
+@keyframes opt3RowIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+/* --- Self-reveal: hide badge, color sub-tabs --- */
+#frame-opt3-tabs .sub-tab-badge { display: none; }
+#frame-opt3-tabs .sub-tab-btn[data-variant="clean"] { color: #64B5F6; }
+#frame-opt3-tabs .sub-tab-btn[data-variant="clean"]:hover { color: #1E88E5; }
+#frame-opt3-tabs .sub-tab-btn[data-variant="clean"].active { color: #1565C0; border-bottom-color: #1565C0; }
+#frame-opt3-tabs .sub-tab-btn[data-variant="polished"] { color: #81C784; }
+#frame-opt3-tabs .sub-tab-btn[data-variant="polished"]:hover { color: #43A047; }
+#frame-opt3-tabs .sub-tab-btn[data-variant="polished"].active { color: #2E7D32; border-bottom-color: #2E7D32; }

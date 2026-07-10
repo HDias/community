@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap');
+
+/* ============================================================
+   Option 4 — Command Bar : Visual Design
+   Accent: chart-blue #3b82f6 (single accent, power-tool aesthetic)
+   Layout is defined in styles.css — these are colour/type/motion overrides only.
+   ============================================================ */
+
+/* ---------- Browser dots ---------- */
+.clean .browser-dots span:nth-child(1),
+.polished .browser-dots span:nth-child(1) { background: #ff5f57; }
+.clean .browser-dots span:nth-child(2),
+.polished .browser-dots span:nth-child(2) { background: #febc2e; }
+.clean .browser-dots span:nth-child(3),
+.polished .browser-dots span:nth-child(3) { background: #28c840; }
+
+/* Hide wireframe markers in both colour variants */
+.clean .wf-marker, .polished .wf-marker { display: none; }
+
+/* ============================================================
+   CLEAN (Style A) — neutral slate + one blue accent, system fonts
+   ============================================================ */
+.clean .browser-content { background: #f8fafc; }
+.clean .app-sidebar { background: #f8fafc; border-right-color: #e2e8f0; }
+.clean .nav-active { background: #eef2f7; color: #1e293b; }
+.clean .switch-avatar { background: #3b82f6; color: #fff; }
+
+.clean .crumb { color: #94a3b8; }
+.clean .crumb b { color: #1e293b; }
+.clean .kbd-hint { color: #94a3b8; }
+.clean kbd, .polished kbd {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  border-color: #cbd5e1; background: #fff; color: #475569;
+}
+
+/* Backdrop stays light — a soft grey scrim */
+.clean .cmd-backdrop::after {
+  content: ""; position: absolute; inset: 0;
+  background: rgba(148,163,184,.14); z-index: 1; pointer-events: none;
+}
+.clean .ghost-list li { background: #eef1f5; }
+
+/* Palette — the hero. Needs elevation to read as floating. */
+.clean .cmd-palette {
+  z-index: 2; background: #fff; border-color: #e2e8f0;
+  box-shadow: 0 16px 44px rgba(15,23,42,.16);
+}
+.clean .cmd-input-row { border-bottom-color: #eef1f5; }
+.clean .cmd-caret { color: #3b82f6; font-family: 'JetBrains Mono', ui-monospace, monospace; }
+.clean .cmd-input { color: #0f172a; }
+.clean .cmd-input::placeholder { color: #94a3b8; }
+.clean .cmd-results { border-bottom-color: #eef1f5; }
+.clean .cmd-group-label { color: #94a3b8; }
+.clean .cmd-item { color: #334155; }
+.clean .cmd-item.active { background: #eff4ff; color: #1d4ed8; }
+.clean .cmd-item.active .cmd-ic { background: #3b82f6; color: #fff; }
+.clean .cmd-ic { background: #f1f5f9; color: #64748b; }
+.clean .cmd-sub { color: #94a3b8; }
+.clean .cmd-enter { color: #3b82f6; }
+.clean .cmd-inline-form { background: #f8fafc; }
+.clean .cmd-form-title { color: #64748b; }
+.clean .cmd-foot-hint { color: #94a3b8; }
+.clean .field input { border-color: #e2e8f0; }
+.clean .field input:focus { border-color: #3b82f6; }
+.clean .btn.primary { background: #3b82f6; border-color: #3b82f6; color: #fff; }
+
+/* ============================================================
+   POLISHED (Style B) — same palette + fonts, richer depth & motion
+   ============================================================ */
+.polished .browser-content { background: #f6f8fb; }
+.polished body, .polished .cmd-input, .polished .cmd-item,
+.polished .field input { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
+.polished .page-title, .polished .crumb b, .polished .cmd-form-title {
+  font-family: 'Sora', ui-sans-serif, system-ui, sans-serif;
+}
+
+.polished .app-sidebar { background: #f6f8fb; border-right-color: #e6ebf2; }
+.polished .nav-active { background: #eaf1ff; color: #1e293b; font-weight: 600; }
+.polished .switch-avatar { background: #3b82f6; color: #fff; }
+
+.polished .crumb { color: #9aa7b8; }
+.polished .crumb b { color: #1e293b; }
+.polished .kbd-hint { color: #9aa7b8; }
+
+/* Light scrim only — never dark */
+.polished .cmd-backdrop::after {
+  content: ""; position: absolute; inset: 0;
+  background: rgba(148,163,184,.16); z-index: 1; pointer-events: none;
+}
+.polished .ghost-list li { background: #eaeff6; }
+
+/* Palette entrance + multi-layer elevation with a subtle accent glow.
+   Preserve translateX(-50%) from styles.css inside the keyframes. */
+.polished .cmd-palette {
+  z-index: 2; background: #fff; border-color: #e6ebf2;
+  box-shadow: 0 2px 6px rgba(15,23,42,.06),
+              0 20px 50px rgba(15,23,42,.20),
+              0 0 0 4px rgba(59,130,246,.08);
+}
+.polished .cmd-input-row { border-bottom-color: #eef2f7; position: relative; }
+/* decorative accent stripe on the input row */
+.polished .cmd-input-row::before {
+  content: ""; position: absolute; left: 0; top: 10px; bottom: 10px;
+  width: 3px; border-radius: 3px; background: #3b82f6;
+}
+.polished .cmd-caret {
+  color: #3b82f6; font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 600;
+}
+.polished .cmd-input { color: #0f172a; }
+.polished .cmd-input::placeholder { color: #9aa7b8; }
+.polished .cmd-input:focus { color: #0f172a; }
+.polished .cmd-input-row:focus-within { box-shadow: inset 0 0 0 9999px rgba(59,130,246,.03); }
+.polished .cmd-results { border-bottom-color: #eef2f7; }
+.polished .cmd-group-label { color: #9aa7b8; font-weight: 600; }
+.polished .cmd-item { color: #334155; transition: background 150ms ease-out, color 150ms ease-out; }
+.polished .cmd-item:hover { background: #f2f6fc; }
+.polished .cmd-item.active {
+  background: linear-gradient(90deg, #eaf1ff, #eff4ff);
+  color: #1d4ed8; font-weight: 600;
+}
+.polished .cmd-item.active .cmd-ic {
+  background: linear-gradient(135deg, #3b82f6, #2563eb); color: #fff;
+}
+.polished .cmd-ic { background: #eef2f7; color: #64748b; }
+.polished .cmd-sub { color: #9aa7b8; }
+.polished .cmd-enter { color: #3b82f6; font-weight: 600; }
+.polished .cmd-inline-form { background: #f7f9fc; }
+.polished .cmd-form-title { color: #64748b; font-weight: 600; }
+.polished .cmd-foot-hint { color: #9aa7b8; }
+.polished .field input {
+  border-color: #e6ebf2; transition: border-color 150ms ease-out, box-shadow 150ms ease-out;
+}
+.polished .field input:focus {
+  border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,.15);
+}
+.polished .btn.primary {
+  background: linear-gradient(180deg, #4b8ef7, #2563eb);
+  border-color: #2563eb; color: #fff;
+  transition: transform 120ms ease-out, box-shadow 150ms ease-out;
+}
+.polished .btn.primary:hover { box-shadow: 0 4px 12px rgba(37,99,235,.30); }
+.polished .btn.primary:active { transform: scale(.98); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .polished .cmd-palette { animation: opt4PaletteIn 240ms ease-out both; }
+  @keyframes opt4PaletteIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(-10px) scale(.98); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+  }
+}
+
+/* --- Self-reveal: hide badge, color sub-tabs --- */
+#frame-opt4-tabs .sub-tab-badge { display: none; }
+#frame-opt4-tabs .sub-tab-btn[data-variant="clean"] { color: #64B5F6; }
+#frame-opt4-tabs .sub-tab-btn[data-variant="clean"]:hover { color: #1E88E5; }
+#frame-opt4-tabs .sub-tab-btn[data-variant="clean"].active { color: #1565C0; border-bottom-color: #1565C0; }
+#frame-opt4-tabs .sub-tab-btn[data-variant="polished"] { color: #81C784; }
+#frame-opt4-tabs .sub-tab-btn[data-variant="polished"]:hover { color: #43A047; }
+#frame-opt4-tabs .sub-tab-btn[data-variant="polished"].active { color: #2E7D32; border-bottom-color: #2E7D32; }

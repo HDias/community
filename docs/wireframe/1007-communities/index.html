@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Communities — DDMM Wireframes</title>
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles-opt1.css">
+  <link rel="stylesheet" href="styles-opt2.css">
+  <link rel="stylesheet" href="styles-opt3.css">
+  <link rel="stylesheet" href="styles-opt4.css">
+  <link rel="stylesheet" href="styles-opt5.css">
+</head>
+<body>
+
+<div class="completion-banner" id="completion-banner" style="display:none;">
+  ✦ Visual designs complete — all options now have Clean + Polished variants
+  <button onclick="this.parentElement.style.display='none'" style="float:right;background:none;border:none;cursor:pointer;font-size:16px;">×</button>
+</div>
+
+<div class="page-wrapper">
+
+  <div class="title-bar">
+    <span><span id="feature-name">Communities</span> — <span id="project-name">Community</span></span>
+    <span class="rec">★ Recommended: Option <span id="rec-number">2</span></span>
+  </div>
+
+  <nav class="main-tabs">
+    <button class="tab-btn active" data-tab="option-1">1: Sidebar Form</button>
+    <button class="tab-btn" data-tab="option-2">2: Card Grid</button>
+    <button class="tab-btn" data-tab="option-3">3: Create Wizard</button>
+    <button class="tab-btn" data-tab="option-4">4: Command Switcher</button>
+    <button class="tab-btn" data-tab="option-5">5: Onboarding Hub</button>
+    <button class="tab-btn" data-tab="summary">Summary</button>
+  </nav>
+
+  <!-- ===== OPTION 1 ===== -->
+  <div class="option-panel active" id="option-1">
+    <h2>Option 1: <span class="opt-name">Sidebar Form</span></h2>
+    <p class="option-description">The existing sidebar-shell with a single scrollable form — name, address, city, state, a live read-only slug preview, and a note that the creator becomes the first member and president. Zero new paradigms.</p>
+    <div class="sub-tab-bar" id="frame-opt1-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch1"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch1)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint1"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint1)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond1"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond1)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt1">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/communities</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="#" class="nav-active">◆ Communities</a>
+              <a href="../1007-administrations/index.html">◷ Administrations</a>
+              <a href="../1007-contributions/index.html">$ Contributions</a>
+              <a href="../1007-meetings/index.html">▦ Meetings</a>
+              <a href="../1007-bylaws/index.html">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb">Communities <span class="crumb-sep">/</span> <b>New community</b></span>
+            </div>
+            <div class="app-body">
+              <div class="page-head">
+                <div>
+                  <h1 class="page-title">Create a community <span class="wf-marker">1</span></h1>
+                  <p class="page-sub">Set up a new independent community. You'll be added as its first member.</p>
+                </div>
+              </div>
+
+              <form class="stack-form form-narrow">
+                <section class="form-section">
+                  <h3 class="section-label">Identity</h3>
+                  <div class="field-grid two">
+                    <div class="field field-full"><label>Community name *</label><input type="text" placeholder="Quilombo São Roque"></div>
+                  </div>
+                  <div class="slug-preview" style="margin-top:12px;">
+                    <span class="slug-url">yourapp.com/</span><span class="slug-val">quilombo-sao-roque</span>
+                    <span style="margin-left:auto;color:#999;">Auto-generated <span class="wf-marker">2</span></span>
+                  </div>
+                </section>
+
+                <section class="form-section">
+                  <h3 class="section-label">Location</h3>
+                  <div class="field-grid">
+                    <div class="field field-full"><label>Address</label><input type="text" placeholder="Estrada do Quilombo, s/n"></div>
+                    <div class="field"><label>City *</label><input type="text" placeholder="Praia do Forte"></div>
+                    <div class="field"><label>State *</label><input type="text" placeholder="BA"></div>
+                  </div>
+                </section>
+
+                <div class="info-note">
+                  <span class="info-ic">i</span>
+                  <span>On creation you become a <strong>member</strong> and receive the <strong>President</strong> role in this community's first administration. <span class="wf-marker">3</span></span>
+                </div>
+              </form>
+            </div>
+            <div class="save-bar">
+              <span class="save-hint">Slug must be unique across all communities. <span class="wf-marker">4</span></span>
+              <div class="save-actions">
+                <button class="btn ghost">Cancel</button>
+                <button class="btn primary">Create community</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li><span class="wf-marker">1</span> Reached from the Communities section — the create form lives inside the same shell users already know, so there is no context switch.</li>
+        <li><span class="wf-marker">2</span> The slug is derived from the name and shown read-only as a live URL preview, so the user sees their tenant address without editing it.</li>
+        <li><span class="wf-marker">3</span> The membership + President consequence is stated up front, matching the flow spec so the creator understands what happens on submit.</li>
+        <li><span class="wf-marker">4</span> The uniqueness constraint is surfaced in the persistent save bar rather than hidden until a submit error.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OPTION 2 ===== -->
+  <div class="option-panel" id="option-2">
+    <h2>Option 2: <span class="opt-name">Card Grid</span></h2>
+    <p class="option-description">A picker hub that unifies switching and creating: a grid of the communities you belong to (with role badges) plus a create card — one screen covers the two things this flow is for.</p>
+    <div class="sub-tab-bar" id="frame-opt2-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch2"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch2)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint2"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint2)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond2"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond2)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt2">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/communities</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="#" class="nav-active">◆ Communities</a>
+              <a href="../1007-administrations/index.html">◷ Administrations</a>
+              <a href="../1007-contributions/index.html">$ Contributions</a>
+              <a href="../1007-meetings/index.html">▦ Meetings</a>
+              <a href="../1007-bylaws/index.html">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb">Communities <span class="crumb-sep">/</span> <b>My communities</b></span>
+            </div>
+            <div class="app-body">
+              <div class="page-head hub-head">
+                <div>
+                  <h1 class="page-title">Your communities <span class="wf-marker">1</span></h1>
+                  <p class="page-sub">Select a community to switch context, or create a new one.</p>
+                </div>
+                <button class="btn primary">+ Create community</button>
+              </div>
+
+              <div class="card-grid">
+                <div class="comm-card current">
+                  <div class="comm-card-top">
+                    <div class="comm-logo">RS</div>
+                    <div class="comm-card-meta">
+                      <b>Rosário do Sul</b>
+                      <small>Rosário do Sul, RS</small>
+                    </div>
+                  </div>
+                  <div class="comm-card-foot">
+                    <span class="row-badge">President</span>
+                    <span class="current-tag">● Current <span class="wf-marker">2</span></span>
+                  </div>
+                </div>
+
+                <div class="comm-card">
+                  <div class="comm-card-top">
+                    <div class="comm-logo">QS</div>
+                    <div class="comm-card-meta">
+                      <b>Quilombo São Roque</b>
+                      <small>Praia do Forte, BA</small>
+                    </div>
+                  </div>
+                  <div class="comm-card-foot">
+                    <span class="row-badge">Member <span class="wf-marker">3</span></span>
+                    <span class="comm-stat">128 members</span>
+                  </div>
+                </div>
+
+                <div class="comm-card">
+                  <div class="comm-card-top">
+                    <div class="comm-logo">SG</div>
+                    <div class="comm-card-meta">
+                      <b>São Gabriel</b>
+                      <small>São Gabriel, RS</small>
+                    </div>
+                  </div>
+                  <div class="comm-card-foot">
+                    <span class="row-badge">Treasurer</span>
+                    <span class="comm-stat">64 members</span>
+                  </div>
+                </div>
+
+                <div class="comm-card">
+                  <div class="comm-card-top">
+                    <div class="comm-logo">CA</div>
+                    <div class="comm-card-meta">
+                      <b>Cachoeira do Sul</b>
+                      <small>Cachoeira do Sul, RS</small>
+                    </div>
+                  </div>
+                  <div class="comm-card-foot">
+                    <span class="row-badge">Member</span>
+                    <span class="comm-stat">210 members</span>
+                  </div>
+                </div>
+
+                <div class="comm-card">
+                  <div class="comm-card-top">
+                    <div class="comm-logo">LE</div>
+                    <div class="comm-card-meta">
+                      <b>Lençóis</b>
+                      <small>Lençóis, BA</small>
+                    </div>
+                  </div>
+                  <div class="comm-card-foot">
+                    <span class="row-badge">Member</span>
+                    <span class="comm-stat">45 members</span>
+                  </div>
+                </div>
+
+                <a href="#" class="comm-card create">
+                  <span class="plus">+</span>
+                  <b>Create community</b>
+                  <small>Name, address, city, state <span class="wf-marker">4</span></small>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li><span class="wf-marker">1</span> One hub serves both jobs this flow optimizes for — switching between communities and creating a new one — so users never hunt for either.</li>
+        <li><span class="wf-marker">2</span> The active community is marked "Current" and visually emphasized, so the user always knows which tenant they are operating in.</li>
+        <li><span class="wf-marker">3</span> Each card carries a role badge (President / Treasurer / Member), giving the user their standing per community at a glance.</li>
+        <li><span class="wf-marker">4</span> The create action appears both as a primary button and as an always-present final card, so adding a community is discoverable from within the switching context.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OPTION 3 ===== -->
+  <div class="option-panel" id="option-3">
+    <h2>Option 3: <span class="opt-name">Create Wizard</span></h2>
+    <p class="option-description">A guided three-step wizard (Details, Location, Confirm) with a stepper and progress bar that isolates each decision and ends on an explicit review before the community goes live.</p>
+    <div class="sub-tab-bar" id="frame-opt3-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch3"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch3)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint3"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint3)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond3"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond3)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt3">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/communities</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="#" class="nav-active">◆ Communities</a>
+              <a href="../1007-administrations/index.html">◷ Administrations</a>
+              <a href="../1007-contributions/index.html">$ Contributions</a>
+              <a href="../1007-meetings/index.html">▦ Meetings</a>
+              <a href="../1007-bylaws/index.html">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb">Communities <span class="crumb-sep">/</span> <b>Create · Step 2 of 3</b></span>
+            </div>
+            <div class="app-body">
+              <div class="wizard-body">
+                <div class="wizard-head">
+                  <h1 class="page-title">New community</h1>
+                  <span class="wizard-count">Step 2 of 3 <span class="wf-marker">1</span></span>
+                </div>
+                <ol class="stepper">
+                  <li class="step done"><span class="step-dot">✓</span> Details</li>
+                  <li class="step current"><span class="step-dot">2</span> Location</li>
+                  <li class="step"><span class="step-dot">3</span> Confirm</li>
+                </ol>
+                <div class="progress-track"><div class="progress-fill" style="width:66%"></div></div>
+
+                <div class="wizard-card">
+                  <h3 class="section-label">Where is this community based? <span class="wf-marker">2</span></h3>
+                  <div class="field-grid">
+                    <div class="field field-full"><label>Address</label><input type="text" placeholder="Rua da Matriz, 45"></div>
+                    <div class="field"><label>City *</label><input type="text" placeholder="São Gabriel"></div>
+                    <div class="field"><label>State *</label><input type="text" placeholder="RS"></div>
+                  </div>
+                  <div class="slug-preview" style="margin-top:16px;">
+                    <span class="slug-url">yourapp.com/</span><span class="slug-val">sao-gabriel</span>
+                    <span style="margin-left:auto;color:#999;">Slug from step 1 <span class="wf-marker">3</span></span>
+                  </div>
+                </div>
+
+                <div class="wizard-nav">
+                  <button class="btn ghost">← Back</button>
+                  <div class="wizard-nav-right">
+                    <span class="save-hint">You can review everything before creating. <span class="wf-marker">4</span></span>
+                    <button class="btn primary">Continue →</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li><span class="wf-marker">1</span> The stepper and progress bar break creation into Details → Location → Confirm, so each screen asks for one coherent group of fields.</li>
+        <li><span class="wf-marker">2</span> Only the current step's fields are shown, reducing the perceived weight of the form for first-time creators.</li>
+        <li><span class="wf-marker">3</span> The auto-generated slug carries forward from step 1 and stays visible, keeping the tenant address in view across steps.</li>
+        <li><span class="wf-marker">4</span> A final Confirm step reviews all inputs — including the member + President consequence — before the community is committed.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OPTION 4 ===== -->
+  <div class="option-panel" id="option-4">
+    <h2>Option 4: <span class="opt-name">Command Switcher</span></h2>
+    <p class="option-description">A Ctrl+K command palette for power users: fuzzy-search and jump between communities instantly, or type "create" to start a new one — switching without leaving the keyboard.</p>
+    <div class="sub-tab-bar" id="frame-opt4-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch4"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch4)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint4"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint4)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond4"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond4)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt4">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/communities</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="#" class="nav-active">◆ Communities</a>
+              <a href="../1007-administrations/index.html">◷ Administrations</a>
+              <a href="../1007-contributions/index.html">$ Contributions</a>
+              <a href="../1007-meetings/index.html">▦ Meetings</a>
+              <a href="../1007-bylaws/index.html">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb">Rosário do Sul <span class="crumb-sep">/</span> <b>Dashboard</b></span>
+              <span class="kbd-hint">Switch community <kbd>Ctrl</kbd><kbd>K</kbd> <span class="wf-marker">1</span></span>
+            </div>
+            <div class="app-body cmd-backdrop">
+              <ul class="ghost-list">
+                <li></li><li></li><li></li><li></li><li></li>
+              </ul>
+
+              <div class="cmd-palette">
+                <div class="cmd-input-row">
+                  <span class="cmd-caret">⌕</span>
+                  <input class="cmd-input" type="text" placeholder="Search communities or type a command…" value="sa">
+                  <kbd>esc</kbd>
+                </div>
+                <div class="cmd-results">
+                  <div class="cmd-group-label">Switch to <span class="wf-marker">2</span></div>
+                  <div class="cmd-item active">
+                    <span class="cmd-ic">SG</span>
+                    <span class="cmd-item-meta">São Gabriel <small>São Gabriel, RS · Treasurer</small></span>
+                    <span class="cmd-enter">↵</span>
+                  </div>
+                  <div class="cmd-item">
+                    <span class="cmd-ic">QS</span>
+                    <span class="cmd-item-meta">Quilombo São Roque <small>Praia do Forte, BA · Member</small></span>
+                    <span class="cmd-sub">⌘2</span>
+                  </div>
+                  <div class="cmd-item">
+                    <span class="cmd-ic">CA</span>
+                    <span class="cmd-item-meta">Cachoeira do Sul <small>Cachoeira do Sul, RS · Member</small></span>
+                    <span class="cmd-sub">⌘3</span>
+                  </div>
+                  <div class="cmd-group-label">Actions <span class="wf-marker">3</span></div>
+                  <div class="cmd-item">
+                    <span class="cmd-ic plus">+</span>
+                    <span class="cmd-item-meta">Create a new community <small>Type "create" to start</small></span>
+                    <span class="cmd-enter">↵</span>
+                  </div>
+                </div>
+                <div class="cmd-foot">
+                  <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+                  <span><kbd>↵</kbd> switch</span>
+                  <span><kbd>esc</kbd> close <span class="wf-marker">4</span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li><span class="wf-marker">1</span> A global Ctrl+K shortcut opens the palette from anywhere, so switching never requires navigating to a page first — ideal for users in many communities.</li>
+        <li><span class="wf-marker">2</span> Typing fuzzy-matches community names and cities; each result shows the user's role, so switching is informed, not blind.</li>
+        <li><span class="wf-marker">3</span> The same palette exposes "Create a new community" as an action, so creation lives one keystroke away from switching.</li>
+        <li><span class="wf-marker">4</span> Keyboard affordances are shown in the footer, reinforcing that the whole flow works without touching the mouse.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OPTION 5 ===== -->
+  <div class="option-panel" id="option-5">
+    <h2>Option 5: <span class="opt-name">Onboarding Hub</span></h2>
+    <p class="option-description">A first-run empty state for users with no community yet: a welcome panel offering two big paths — create one or join an existing one — plus a short getting-started checklist.</p>
+    <div class="sub-tab-bar" id="frame-opt5-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch5"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch5)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint5"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint5)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond5"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond5)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt5">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/communities</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">＋</div>
+              <div class="switch-meta"><strong>No community yet</strong><span>Get started</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="#" class="nav-active">◆ Communities</a>
+              <a href="../1007-administrations/index.html">◷ Administrations</a>
+              <a href="../1007-contributions/index.html">$ Contributions</a>
+              <a href="../1007-meetings/index.html">▦ Meetings</a>
+              <a href="../1007-bylaws/index.html">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb">Communities <span class="crumb-sep">/</span> <b>Welcome</b></span>
+            </div>
+            <div class="app-body">
+              <div class="onboard">
+                <div class="onboard-logo">◆</div>
+                <h1>Welcome, Ana <span class="wf-marker">1</span></h1>
+                <p class="onboard-sub">You're not part of any community yet. Pick a path to begin.</p>
+
+                <div class="path-grid">
+                  <div class="path-card primary">
+                    <span class="path-ic">＋</span>
+                    <b>Create a community <span class="wf-marker">2</span></b>
+                    <p>Start a new independent community. You'll become its first member and President.</p>
+                    <button class="btn primary">Create community</button>
+                  </div>
+                  <div class="path-card">
+                    <span class="path-ic">⇲</span>
+                    <b>Join an existing one <span class="wf-marker">3</span></b>
+                    <p>Ask an administrator to add you, or enter an invite code to join a community.</p>
+                    <button class="btn">Enter invite code</button>
+                  </div>
+                </div>
+
+                <ul class="checklist">
+                  <div class="cl-title">Getting started <span class="wf-marker">4</span></div>
+                  <li class="done"><span class="cl-box">✓</span> Confirm your account</li>
+                  <li><span class="cl-box"></span> Create or join a community</li>
+                  <li><span class="cl-box"></span> Add your first members</li>
+                  <li><span class="cl-box"></span> Set up the first administration</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li><span class="wf-marker">1</span> A personalized first-run state replaces an empty app, so a brand-new user with no tenant isn't dropped into a blank dashboard.</li>
+        <li><span class="wf-marker">2</span> "Create a community" is the emphasized primary path and restates the member + President outcome, matching the create flow spec.</li>
+        <li><span class="wf-marker">3</span> "Join an existing one" covers the second half of the multi-tenant flow, where an admin adds the user or an invite code grants access.</li>
+        <li><span class="wf-marker">4</span> A short checklist sets expectations for what comes after the community exists, giving the onboarding a sense of progress.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== SUMMARY ===== -->
+  <div class="option-panel" id="summary">
+    <h2>Summary &amp; Recommendation</h2>
+    <p class="option-description">Five directions for the multi-tenant Communities flow, scored on the two jobs it must serve — creating a community and switching between the ones a user belongs to.</p>
+
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>Option</th>
+          <th>Best for</th>
+          <th>Create</th>
+          <th>Switch</th>
+          <th>Familiarity</th>
+          <th>Effort</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>1. Sidebar Form</b></td>
+          <td>Shipping creation fast with zero new patterns</td>
+          <td class="score">●●●●○</td>
+          <td class="score">●○○○○</td>
+          <td class="score">●●●●●</td>
+          <td class="score">Low</td>
+        </tr>
+        <tr class="rec-row">
+          <td><b>2. Card Grid</b> ★</td>
+          <td>One hub for both switching and creating</td>
+          <td class="score">●●●●○</td>
+          <td class="score">●●●●●</td>
+          <td class="score">●●●●○</td>
+          <td class="score">Med</td>
+        </tr>
+        <tr>
+          <td><b>3. Create Wizard</b></td>
+          <td>Guiding first-time creators step by step</td>
+          <td class="score">●●●●●</td>
+          <td class="score">●○○○○</td>
+          <td class="score">●●●○○</td>
+          <td class="score">Med</td>
+        </tr>
+        <tr>
+          <td><b>4. Command Switcher</b></td>
+          <td>Power users juggling many communities</td>
+          <td class="score">●●●○○</td>
+          <td class="score">●●●●●</td>
+          <td class="score">●●○○○</td>
+          <td class="score">High</td>
+        </tr>
+        <tr>
+          <td><b>5. Onboarding Hub</b></td>
+          <td>First-run users with no community yet</td>
+          <td class="score">●●●●○</td>
+          <td class="score">●●○○○</td>
+          <td class="score">●●●○○</td>
+          <td class="score">Med</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="recommendation">
+      <h3>★ Recommendation: Option 2 — Card Grid</h3>
+      <p>The flow is optimized for two things at once: clear community creation and easy switching. The Card Grid is the only option that serves both in a single, familiar hub — a grid of the communities you belong to (with role badges and a clear "Current" marker) alongside an always-present create card. Switching is a single click and creation is never more than one card away, while the layout reuses the standard index/card pattern already in the design system. Option 3 (Wizard) is the strongest pure-creation experience and pairs well as the destination behind the "+ Create" card; Option 5 (Onboarding Hub) is the ideal first-run entry point before any community exists; and Option 4 (Command Switcher) is a valuable keyboard accelerator to layer on later for power users.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer class="skill-footer">
+  This design was crafted by the <a href="https://github.com/Magdoub/claude-wireframe-skill">Wireframe skill</a> — follow on GitHub
+</footer>
+
+<script>
+(function() {
+  // Main tab switching
+  var tabBtns = document.querySelectorAll('.tab-btn');
+  var panels = document.querySelectorAll('.option-panel');
+  tabBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      tabBtns.forEach(function(b) { b.classList.remove('active'); });
+      panels.forEach(function(p) { p.classList.remove('active'); });
+      btn.classList.add('active');
+      var target = document.getElementById(btn.dataset.tab);
+      if (target) target.classList.add('active');
+    });
+  });
+
+  // Sub-tab switching
+  var subBtns = document.querySelectorAll('.sub-tab-btn');
+  subBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var frameId = btn.dataset.frame;
+      var siblings = btn.parentElement.querySelectorAll('.sub-tab-btn');
+      siblings.forEach(function(s) { s.classList.remove('active'); });
+      btn.classList.add('active');
+      var frame = document.getElementById(frameId);
+      if (frame) {
+        frame.classList.remove('wireframe', 'clean', 'polished');
+        frame.classList.add(btn.dataset.variant);
+      }
+    });
+  });
+
+  // Completion banner — one-time load check
+  window.addEventListener('load', function() {
+    var badges = document.querySelectorAll('.sub-tab-badge');
+    var anyVisible = false;
+    badges.forEach(function(b) {
+      if (getComputedStyle(b).display !== 'none') anyVisible = true;
+    });
+    if (!anyVisible && badges.length > 0) {
+      var banner = document.getElementById('completion-banner');
+      if (banner) {
+        banner.style.display = 'block';
+        setTimeout(function() { banner.style.display = 'none'; }, 8000);
+      }
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

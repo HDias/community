@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contributions — DDMM Wireframes</title>
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles-opt1.css">
+  <link rel="stylesheet" href="styles-opt2.css">
+  <link rel="stylesheet" href="styles-opt3.css">
+  <link rel="stylesheet" href="styles-opt4.css">
+  <link rel="stylesheet" href="styles-opt5.css">
+</head>
+<body>
+
+<div class="completion-banner" id="completion-banner" style="display:none;">
+  ✦ Visual designs complete — all options now have Clean + Polished variants
+  <button onclick="this.parentElement.style.display='none'" style="float:right;background:none;border:none;cursor:pointer;font-size:16px;">×</button>
+</div>
+
+<div class="page-wrapper">
+
+  <div class="title-bar">
+    <span><span id="feature-name">Contributions</span> — <span id="project-name">Community</span></span>
+    <span class="rec">★ Recommended: Option <span id="rec-number">2</span></span>
+  </div>
+
+  <nav class="main-tabs">
+    <button class="tab-btn active" data-tab="option-1">1: Sidebar Table</button>
+    <button class="tab-btn" data-tab="option-2">2: Dashboard</button>
+    <button class="tab-btn" data-tab="option-3">3: Grid Ledger</button>
+    <button class="tab-btn" data-tab="option-4">4: Split View</button>
+    <button class="tab-btn" data-tab="option-5">5: Status Columns</button>
+    <button class="tab-btn" data-tab="summary">Summary</button>
+  </nav>
+
+  <!-- ===== OPTION 1 ===== -->
+  <div class="option-panel active" id="option-1">
+    <h2>Option 1: <span class="opt-name">Sidebar Table</span></h2>
+    <p class="option-description">Extends the existing sidebar-shell — a month selector over a dense members table showing Paid/Pending status with a per-row "Register payment" action. Zero new paradigms; the fastest path to a familiar treasurer workflow.</p>
+    <div class="sub-tab-bar" id="frame-opt1-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch1"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch1)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint1"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint1)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond1"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond1)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt1">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/contributions</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="../1007-administrations/index.html">◷ Administrations</a>
+              <a href="#" class="nav-active">$ Contributions</a>
+              <a href="../1007-meetings/index.html">▦ Meetings</a>
+              <a href="../1007-bylaws/index.html">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz · Treasurer</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb">Contributions <span class="crumb-sep">/</span> <b>Monthly payments</b></span>
+            </div>
+            <div class="app-body">
+              <div class="page-head">
+                <div>
+                  <h1 class="page-title">Monthly contributions <span class="wf-marker">1</span></h1>
+                  <p class="page-sub">Fixed dues of R$ 50,00 · 128 members · 96 paid this month</p>
+                </div>
+                <div class="save-actions">
+                  <a href="#" class="btn">+ Register donation</a>
+                  <a href="#" class="btn primary">+ Register payment</a>
+                </div>
+              </div>
+
+              <div class="table-toolbar">
+                <div class="field inline-field">
+                  <label>Reference month <span class="wf-marker">2</span></label>
+                  <select>
+                    <option>June 2026</option>
+                    <option>May 2026</option>
+                    <option>April 2026</option>
+                  </select>
+                </div>
+                <input class="search grow" type="text" placeholder="Search member by name or CPF…">
+                <div class="field inline-field">
+                  <label>Status</label>
+                  <select><option>All</option><option>Paid</option><option>Pending</option></select>
+                </div>
+              </div>
+
+              <table class="data-table">
+                <thead>
+                  <tr><th>Member</th><th>Since</th><th>Status</th><th>Amount</th><th>Registered</th><th></th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="cell-member"><div class="ava">MS</div><div class="m-meta"><b>Maria da Silva</b><small>000.111.222-33</small></div></td>
+                    <td>Mar 2021</td>
+                    <td><span class="pill solid">Paid</span></td>
+                    <td>R$ 50,00</td>
+                    <td class="muted-cell">02/06 · Ana D.</td>
+                    <td class="row-action"><a href="#" class="btn sm">Receipt</a></td>
+                  </tr>
+                  <tr>
+                    <td class="cell-member"><div class="ava">JP</div><div class="m-meta"><b>João Pereira</b><small>444.555.666-77</small></div></td>
+                    <td>Jan 2020</td>
+                    <td><span class="pill">Pending</span></td>
+                    <td class="muted-cell">—</td>
+                    <td class="muted-cell">—</td>
+                    <td class="row-action"><a href="#" class="btn sm primary">Register payment</a></td>
+                  </tr>
+                  <tr>
+                    <td class="cell-member"><div class="ava">CO</div><div class="m-meta"><b>Carla Oliveira</b><small>222.333.444-55</small></div></td>
+                    <td>Aug 2022</td>
+                    <td><span class="pill overdue">Overdue 3+</span></td>
+                    <td class="muted-cell">—</td>
+                    <td class="muted-cell">Last paid Mar 2026</td>
+                    <td class="row-action"><a href="#" class="btn sm primary">Register payment</a></td>
+                  </tr>
+                  <tr>
+                    <td class="cell-member"><div class="ava">RF</div><div class="m-meta"><b>Rafael Fontes</b><small>777.888.999-00</small></div></td>
+                    <td>May 2019</td>
+                    <td><span class="pill solid">Paid</span></td>
+                    <td>R$ 50,00</td>
+                    <td class="muted-cell">01/06 · Ana D.</td>
+                    <td class="row-action"><a href="#" class="btn sm">Receipt</a></td>
+                  </tr>
+                  <tr>
+                    <td class="cell-member"><div class="ava">LM</div><div class="m-meta"><b>Lucia Martins</b><small>333.222.111-99</small></div></td>
+                    <td>Feb 2023</td>
+                    <td><span class="pill">Pending</span></td>
+                    <td class="muted-cell">—</td>
+                    <td class="muted-cell">—</td>
+                    <td class="row-action"><a href="#" class="btn sm primary">Register payment</a></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="dup-warning"><span class="wf-marker">3</span> Rafael Fontes already has a payment recorded for June 2026 — registering again will create a duplicate.</div>
+              <p class="field-note">Showing 5 of 128 members. Statuses reflect the selected reference month. <span class="wf-marker">4</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li><span class="wf-marker">1</span> Header summary ("128 members · 96 paid") gives collection health without leaving the table.</li>
+        <li><span class="wf-marker">2</span> Reference-month selector re-scopes the whole table; every status is relative to it.</li>
+        <li><span class="wf-marker">3</span> Duplicate guard warns inline when a member is already paid for the selected month.</li>
+        <li><span class="wf-marker">4</span> Per-row "Register payment" is one click; overdue 3+ members carry a heavier pill for visibility.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OPTION 2 ===== -->
+  <div class="option-panel" id="option-2">
+    <h2>Option 2: <span class="opt-name">Dashboard</span></h2>
+    <p class="option-description">Dashboard-first: KPI cards (total collected, paid X/Y, defaulters, this-month amount) sit above the auto-generated monthly defaulter report, with quick registration one click away. Surfaces collection health and overdue members at a glance.</p>
+    <div class="sub-tab-bar" id="frame-opt2-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch2"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch2)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint2"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint2)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond2"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond2)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt2">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/contributions</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="../1007-administrations/index.html">◷ Administrations</a>
+              <a href="#" class="nav-active">$ Contributions</a>
+              <a href="../1007-meetings/index.html">▦ Meetings</a>
+              <a href="../1007-bylaws/index.html">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz · Treasurer</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb">Contributions <span class="crumb-sep">/</span> <b>Overview</b></span>
+            </div>
+            <div class="app-body">
+              <div class="page-head">
+                <div>
+                  <h1 class="page-title">Contributions overview <span class="wf-marker">1</span></h1>
+                  <p class="page-sub">June 2026 · fixed dues R$ 50,00</p>
+                </div>
+                <div class="save-actions">
+                  <a href="#" class="btn">+ Register donation</a>
+                  <a href="#" class="btn primary">+ Register payment</a>
+                </div>
+              </div>
+
+              <div class="kpi-grid">
+                <div class="kpi-card">
+                  <span class="kpi-label">Total collected</span>
+                  <span class="kpi-value">R$ 4.800,00</span>
+                  <span class="kpi-sub">June 2026</span>
+                </div>
+                <div class="kpi-card">
+                  <span class="kpi-label">Paid</span>
+                  <span class="kpi-value">96 / 128</span>
+                  <span class="kpi-sub">75% of members</span>
+                </div>
+                <div class="kpi-card kpi-flag">
+                  <span class="kpi-label">Defaulters</span>
+                  <span class="kpi-value">32</span>
+                  <span class="kpi-sub">7 overdue 3+ months</span>
+                </div>
+                <div class="kpi-card">
+                  <span class="kpi-label">This-month dues</span>
+                  <span class="kpi-value">R$ 50,00</span>
+                  <span class="kpi-sub">since Jan 2026</span>
+                </div>
+              </div>
+
+              <div class="report-head">
+                <h3 class="section-label">Auto-generated defaulter report <span class="wf-marker">2</span></h3>
+                <span class="report-stamp">Generated 30/06/2026 23:05 · async job</span>
+              </div>
+
+              <div class="report-generating"><span class="spinner-dot"></span> Report for July 2026 is generating — the month-end job runs tonight. <span class="wf-marker">3</span></div>
+
+              <table class="data-table">
+                <thead>
+                  <tr><th>Defaulting member</th><th>Months owed</th><th>Last payment</th><th>Amount due</th><th></th></tr>
+                </thead>
+                <tbody>
+                  <tr class="row-overdue">
+                    <td class="cell-member"><div class="ava">CO</div><div class="m-meta"><b>Carla Oliveira</b><small>Overdue 3+ months</small></div></td>
+                    <td><span class="pill overdue">4 months</span></td>
+                    <td class="muted-cell">Feb 2026</td>
+                    <td>R$ 200,00</td>
+                    <td class="row-action"><a href="#" class="btn sm primary">Register payment</a></td>
+                  </tr>
+                  <tr class="row-overdue">
+                    <td class="cell-member"><div class="ava">PT</div><div class="m-meta"><b>Pedro Tavares</b><small>Overdue 3+ months</small></div></td>
+                    <td><span class="pill overdue">3 months</span></td>
+                    <td class="muted-cell">Mar 2026</td>
+                    <td>R$ 150,00</td>
+                    <td class="row-action"><a href="#" class="btn sm primary">Register payment</a></td>
+                  </tr>
+                  <tr>
+                    <td class="cell-member"><div class="ava">JP</div><div class="m-meta"><b>João Pereira</b><small>Member since 2020</small></div></td>
+                    <td><span class="pill">1 month</span></td>
+                    <td class="muted-cell">May 2026</td>
+                    <td>R$ 50,00</td>
+                    <td class="row-action"><a href="#" class="btn sm primary">Register payment</a></td>
+                  </tr>
+                  <tr>
+                    <td class="cell-member"><div class="ava">LM</div><div class="m-meta"><b>Lucia Martins</b><small>Member since 2023</small></div></td>
+                    <td><span class="pill">1 month</span></td>
+                    <td class="muted-cell">May 2026</td>
+                    <td>R$ 50,00</td>
+                    <td class="row-action"><a href="#" class="btn sm primary">Register payment</a></td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="field-note">128 members · 96 paid · 32 defaulting · R$ 4.800,00 collected. Showing 4 of 32 defaulters. <a href="#" class="btn link">View full report</a> <span class="wf-marker">4</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li><span class="wf-marker">1</span> KPI cards answer "how are we doing?" instantly; the defaulters card is weighted to draw the eye.</li>
+        <li><span class="wf-marker">2</span> The defaulter list is the async month-end report, stamped with its generation time.</li>
+        <li><span class="wf-marker">3</span> A "report generating" state shows the next month's job is still running (async empty state).</li>
+        <li><span class="wf-marker">4</span> Overdue 3+ rows sit on top with heavier pills; registration stays one click from the report.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OPTION 3 ===== -->
+  <div class="option-panel" id="option-3">
+    <h2>Option 3: <span class="opt-name">Grid Ledger</span></h2>
+    <p class="option-description">A month × member matrix — rows are members, columns are the last six months, cells show paid ✓ / pending / amount. Click any cell to toggle a payment. Optimised for bulk overview and spotting streaks of defaults across time.</p>
+    <div class="sub-tab-bar" id="frame-opt3-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch3"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch3)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint3"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint3)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond3"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond3)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt3">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/contributions</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="../1007-administrations/index.html">◷ Administrations</a>
+              <a href="#" class="nav-active">$ Contributions</a>
+              <a href="../1007-meetings/index.html">▦ Meetings</a>
+              <a href="../1007-bylaws/index.html">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz · Treasurer</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb">Contributions <span class="crumb-sep">/</span> <b>Ledger</b></span>
+            </div>
+            <div class="app-body">
+              <div class="page-head">
+                <div>
+                  <h1 class="page-title">Payment ledger <span class="wf-marker">1</span></h1>
+                  <p class="page-sub">Jan – Jun 2026 · click a cell to toggle a payment</p>
+                </div>
+                <div class="save-actions">
+                  <a href="#" class="btn">+ Register donation</a>
+                  <a href="#" class="btn primary">+ Register payment</a>
+                </div>
+              </div>
+
+              <div class="ledger-legend">
+                <span><span class="cell-chip paid">✓</span> Paid</span>
+                <span><span class="cell-chip pending">—</span> Pending</span>
+                <span><span class="cell-chip overdue">✕</span> Overdue</span>
+                <span class="legend-hint"><span class="wf-marker">2</span> Click any cell to register or reverse a payment</span>
+              </div>
+
+              <div class="ledger-scroll">
+                <table class="ledger-table">
+                  <thead>
+                    <tr>
+                      <th class="member-col">Member</th>
+                      <th>Jan</th><th>Feb</th><th>Mar</th><th>Apr</th><th>May</th><th class="cur-col">Jun</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="member-col"><div class="ava">MS</div><b>Maria da Silva</b></td>
+                      <td><span class="cell-chip paid">✓</span></td>
+                      <td><span class="cell-chip paid">✓</span></td>
+                      <td><span class="cell-chip paid">✓</span></td>
+                      <td><span class="cell-chip paid">✓</span></td>
+                      <td><span class="cell-chip paid">✓</span></td>
+                      <td class="cur-col"><span class="cell-chip paid">✓</span></td>
+                    </tr>
+                    <tr>
+                      <td class="member-col"><div class="ava">JP</div><b>João Pereira</b></td>
+                      <td><span class="cell-chip paid">✓</span></td>
+                      <td><span class="cell-chip paid">✓</span></td>
+                      <td><span class="cell-chip paid">✓</span></td>
+                      <td><span class="cell-chip paid">✓</span></td>
+                      <td><span class="cell-chip paid">✓</span></td>
+                      <td class="cur-col"><span class="cell-chip pending">—</span></td>
+                    </tr>
+                    <tr class="row-overdue">
+                      <td class="member-col"><div class="ava">CO</div><b>Carla Oliveira</b> <span class="pill overdue">3+</span></td>
+                      <td><span class="cell-chip paid">✓</span></td>
+                      <td><span class="cell-chip paid">✓</span></td>
+                      <td><span class="cell-chip overdue">✕</span></td>
+                      <td><span class="cell-chip overdue">✕</span></td>
+                      <td><span class="cell-chip overdue">✕</span></td>
+                      <td class="cur-col"><span class="cell-chip overdue">✕</span></td>
+                    </tr>
+                    <tr>
+                      <td class="member-col"><div class="ava">RF</div><b>Rafael Fontes</b></td>
+                      <td><span class="cell-chip paid">✓</span></td>
+                      <td><span class="cell-chip paid">✓</span></td>
+                      <td><span class="cell-chip paid">✓</span></td>
+                      <td><span class="cell-chip paid">✓</span></td>
+                      <td><span class="cell-chip paid">✓</span></td>
+                      <td class="cur-col"><span class="cell-chip paid">✓</span></td>
+                    </tr>
+                    <tr>
+                      <td class="member-col"><div class="ava">LM</div><b>Lucia Martins</b></td>
+                      <td><span class="cell-chip paid">✓</span></td>
+                      <td><span class="cell-chip paid">✓</span></td>
+                      <td><span class="cell-chip paid">✓</span></td>
+                      <td><span class="cell-chip paid">✓</span></td>
+                      <td><span class="cell-chip paid">✓</span></td>
+                      <td class="cur-col cell-editing"><span class="cell-chip pending">—</span></td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr class="ledger-total">
+                      <td class="member-col">Collected</td>
+                      <td>R$ 6.400</td><td>R$ 6.350</td><td>R$ 6.150</td>
+                      <td>R$ 5.900</td><td>R$ 5.600</td><td class="cur-col">R$ 4.800</td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+
+              <div class="cell-popover"><span class="wf-marker">3</span> <b>Lucia Martins · June 2026</b> — <a href="#" class="btn sm primary">Mark paid R$ 50,00</a> <a href="#" class="btn sm">Cancel</a></div>
+              <p class="field-note">128 members · 96 paid · 32 defaulting in June · R$ 4.800,00 collected. Rows with a 3+ badge highlight chronic defaulters. <span class="wf-marker">4</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li><span class="wf-marker">1</span> The month × member matrix shows six months at once — payment streaks and gaps read instantly.</li>
+        <li><span class="wf-marker">2</span> Cells are the primary control: click to register or reverse without leaving the grid.</li>
+        <li><span class="wf-marker">3</span> A lightweight cell popover confirms the amount before committing the payment.</li>
+        <li><span class="wf-marker">4</span> Rows of ✕ cells plus a 3+ badge make chronic defaulters visible at a glance; footer totals per month.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OPTION 4 ===== -->
+  <div class="option-panel" id="option-4">
+    <h2>Option 4: <span class="opt-name">Split View</span></h2>
+    <p class="option-description">Master-detail: a filterable member list on the left (with a defaulter filter), and a right panel showing the selected member's month-by-month history plus an inline register-payment form. Best for per-member investigation and follow-up.</p>
+    <div class="sub-tab-bar" id="frame-opt4-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch4"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch4)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint4"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint4)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond4"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond4)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt4">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/contributions</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="../1007-administrations/index.html">◷ Administrations</a>
+              <a href="#" class="nav-active">$ Contributions</a>
+              <a href="../1007-meetings/index.html">▦ Meetings</a>
+              <a href="../1007-bylaws/index.html">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz · Treasurer</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb">Contributions <span class="crumb-sep">/</span> <b>Member history</b></span>
+            </div>
+            <div class="split">
+              <div class="split-list">
+                <div class="list-toolbar">
+                  <input class="search" type="text" placeholder="Search member…">
+                  <div class="filter-row">
+                    <a href="#" class="filter-chip active">Defaulters <span class="wf-marker">1</span></a>
+                    <a href="#" class="filter-chip">All</a>
+                    <a href="#" class="filter-chip">Paid</a>
+                  </div>
+                </div>
+                <ul class="member-list">
+                  <li class="member-row selected">
+                    <div class="ava">CO</div>
+                    <div class="m-meta"><b>Carla Oliveira</b><small>Overdue 3+ · Feb 2026</small></div>
+                    <span class="pill overdue">3+</span>
+                  </li>
+                  <li class="member-row">
+                    <div class="ava">PT</div>
+                    <div class="m-meta"><b>Pedro Tavares</b><small>Overdue 3+ · Mar 2026</small></div>
+                    <span class="pill overdue">3+</span>
+                  </li>
+                  <li class="member-row">
+                    <div class="ava">JP</div>
+                    <div class="m-meta"><b>João Pereira</b><small>1 month · May 2026</small></div>
+                    <span class="pill">1</span>
+                  </li>
+                  <li class="member-row">
+                    <div class="ava">LM</div>
+                    <div class="m-meta"><b>Lucia Martins</b><small>1 month · May 2026</small></div>
+                    <span class="pill">1</span>
+                  </li>
+                </ul>
+                <p class="list-hint">32 defaulters · 7 overdue 3+ months</p>
+              </div>
+
+              <div class="split-detail">
+                <div class="detail-head">
+                  <div>
+                    <h2 class="detail-title">Carla Oliveira <span class="wf-marker">2</span></h2>
+                    <span class="detail-status">Member since Aug 2022 · 000.222.333-44</span>
+                  </div>
+                  <span class="pill overdue">Overdue 3+ months</span>
+                </div>
+                <div class="detail-scroll">
+                  <h3 class="section-label">Quick register payment <span class="wf-marker">3</span></h3>
+                  <div class="quick-pay">
+                    <div class="field"><label>Reference month</label><select><option>June 2026</option><option>May 2026</option><option>April 2026</option></select></div>
+                    <div class="field"><label>Amount</label><input type="text" value="R$ 50,00"></div>
+                    <a href="#" class="btn primary">Register</a>
+                  </div>
+
+                  <h3 class="section-label">Payment history since joining <span class="wf-marker">4</span></h3>
+                  <ul class="history-list">
+                    <li class="hist-row hist-paid"><span class="hist-month">Jun 2026</span><span class="pill">Pending</span><span class="hist-amt">—</span></li>
+                    <li class="hist-row"><span class="hist-month">May 2026</span><span class="pill overdue">Overdue</span><span class="hist-amt">R$ 50,00</span></li>
+                    <li class="hist-row"><span class="hist-month">Apr 2026</span><span class="pill overdue">Overdue</span><span class="hist-amt">R$ 50,00</span></li>
+                    <li class="hist-row"><span class="hist-month">Mar 2026</span><span class="pill overdue">Overdue</span><span class="hist-amt">R$ 50,00</span></li>
+                    <li class="hist-row"><span class="hist-month">Feb 2026</span><span class="pill solid">Paid</span><span class="hist-amt">R$ 50,00 · 05/02</span></li>
+                    <li class="hist-row"><span class="hist-month">Jan 2026</span><span class="pill solid">Paid</span><span class="hist-amt">R$ 50,00 · 03/01</span></li>
+                  </ul>
+                </div>
+                <div class="detail-foot">
+                  <span class="save-hint">Amount due: R$ 200,00 (4 months)</span>
+                  <a href="#" class="btn">View full ledger</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li><span class="wf-marker">1</span> A defaulter filter scopes the left list to who needs chasing; overdue 3+ carry a heavy pill.</li>
+        <li><span class="wf-marker">2</span> Selecting a member loads their full context on the right without a page change.</li>
+        <li><span class="wf-marker">3</span> An inline quick-pay form registers a payment for the chosen month right where you are.</li>
+        <li><span class="wf-marker">4</span> Month-by-month history since joining shows paid/pending/overdue per row with amounts and dates.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== OPTION 5 ===== -->
+  <div class="option-panel" id="option-5">
+    <h2>Option 5: <span class="opt-name">Status Columns</span></h2>
+    <p class="option-description">Kanban-style status columns — Paid, Pending, Overdue 3+ — with member chips for the selected month. Registering a payment moves a chip from Pending/Overdue to Paid. Turns collection into a visual, drag-to-clear workflow.</p>
+    <div class="sub-tab-bar" id="frame-opt5-tabs">
+      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch5"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch5)"/></svg>
+        <span class="sub-tab-label">Wireframe</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint5"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint5)"/></svg>
+        <span class="sub-tab-label">Clean</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond5"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond5)"/></svg>
+        <span class="sub-tab-label">Polished</span>
+        <span class="sub-tab-badge">generating...</span>
+      </button>
+    </div>
+    <div class="browser-frame wireframe" id="frame-opt5">
+      <div class="browser-chrome">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">yourapp.com/contributions</div>
+        <div class="browser-controls">─ □ ✕</div>
+      </div>
+      <div class="browser-content">
+        <div class="app-shell">
+          <aside class="app-sidebar">
+            <div class="sidebar-switcher">
+              <div class="switch-avatar">RS</div>
+              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
+              <span class="switch-caret">⌄</span>
+            </div>
+            <nav class="sidebar-nav">
+              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
+              <a href="../1007-members/index.html">☰ Members</a>
+              <a href="../1007-administrations/index.html">◷ Administrations</a>
+              <a href="#" class="nav-active">$ Contributions</a>
+              <a href="../1007-meetings/index.html">▦ Meetings</a>
+              <a href="../1007-bylaws/index.html">§ Bylaws</a>
+            </nav>
+            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz · Treasurer</span></div>
+          </aside>
+
+          <div class="app-main">
+            <div class="app-topbar">
+              <span class="crumb">Contributions <span class="crumb-sep">/</span> <b>Status board</b></span>
+            </div>
+            <div class="app-body">
+              <div class="page-head">
+                <div>
+                  <h1 class="page-title">Collection board <span class="wf-marker">1</span></h1>
+                  <p class="page-sub">June 2026 · drag a chip to Paid to register R$ 50,00</p>
+                </div>
+                <div class="board-toolbar">
+                  <div class="field inline-field"><label>Month</label><select><option>June 2026</option><option>May 2026</option></select></div>
+                  <a href="#" class="btn">+ Register donation</a>
+                </div>
+              </div>
+
+              <div class="kanban">
+                <div class="kan-col">
+                  <div class="kan-head"><b>Paid</b> <span class="pill solid">96</span></div>
+                  <div class="kan-body">
+                    <div class="kan-chip paid"><div class="ava">MS</div><span>Maria da Silva</span><small>R$ 50,00</small></div>
+                    <div class="kan-chip paid"><div class="ava">RF</div><span>Rafael Fontes</span><small>R$ 50,00</small></div>
+                    <div class="kan-chip paid"><div class="ava">AL</div><span>Ana Lima</span><small>R$ 50,00</small></div>
+                    <div class="kan-more">+ 93 more</div>
+                  </div>
+                </div>
+
+                <div class="kan-col">
+                  <div class="kan-head"><b>Pending</b> <span class="pill">25</span></div>
+                  <div class="kan-body">
+                    <div class="kan-chip"><div class="ava">JP</div><span>João Pereira</span><a href="#" class="chip-pay">Mark paid <span class="wf-marker">2</span></a></div>
+                    <div class="kan-chip"><div class="ava">LM</div><span>Lucia Martins</span><a href="#" class="chip-pay">Mark paid</a></div>
+                    <div class="kan-chip"><div class="ava">BS</div><span>Bruno Souza</span><a href="#" class="chip-pay">Mark paid</a></div>
+                    <div class="kan-more">+ 22 more</div>
+                  </div>
+                </div>
+
+                <div class="kan-col kan-flag">
+                  <div class="kan-head"><b>Overdue 3+</b> <span class="pill overdue">7</span> <span class="wf-marker">3</span></div>
+                  <div class="kan-body">
+                    <div class="kan-chip overdue"><div class="ava">CO</div><span>Carla Oliveira</span><small>4 mo · R$ 200</small></div>
+                    <div class="kan-chip overdue"><div class="ava">PT</div><span>Pedro Tavares</span><small>3 mo · R$ 150</small></div>
+                    <div class="kan-chip overdue"><div class="ava">GN</div><span>Gustavo Nunes</span><small>5 mo · R$ 250</small></div>
+                    <div class="kan-more">+ 4 more</div>
+                  </div>
+                </div>
+              </div>
+              <p class="field-note">128 members · 96 paid · 32 defaulting (7 overdue 3+) · R$ 4.800,00 collected in June. <span class="wf-marker">4</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-annotations">
+      <h3>UX Notes</h3>
+      <ul>
+        <li><span class="wf-marker">1</span> Three status columns for the selected month give an at-a-glance split of collection progress.</li>
+        <li><span class="wf-marker">2</span> "Mark paid" on a Pending chip registers the payment and moves the chip to Paid (drag also works).</li>
+        <li><span class="wf-marker">3</span> A dedicated Overdue 3+ column isolates chronic defaulters with owed months and amounts.</li>
+        <li><span class="wf-marker">4</span> Column counts double as KPIs; the footer restates the full month summary.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== SUMMARY ===== -->
+  <div class="option-panel" id="summary">
+    <h2>Summary &amp; Recommendation</h2>
+    <p class="option-description">Five approaches to the treasurer's contributions workflow, scored against fast payment registration and clear defaulter visibility — the two things that decide adoption for a monthly, data-dense task.</p>
+    <table class="summary-table">
+      <thead>
+        <tr><th>Option</th><th>Registration speed</th><th>Defaulter visibility</th><th>Learning curve</th><th>Best for</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>1 · Sidebar Table</b></td>
+          <td class="score">★★★★☆</td>
+          <td class="score">★★★☆☆</td>
+          <td class="score">★★★★★</td>
+          <td>Familiar, safe default; treasurers already know tables.</td>
+        </tr>
+        <tr class="rec-row">
+          <td><b>2 · Dashboard</b> ★</td>
+          <td class="score">★★★★☆</td>
+          <td class="score">★★★★★</td>
+          <td class="score">★★★★☆</td>
+          <td>Collection health + auto report + one-click registration together.</td>
+        </tr>
+        <tr>
+          <td><b>3 · Grid Ledger</b></td>
+          <td class="score">★★★★★</td>
+          <td class="score">★★★★☆</td>
+          <td class="score">★★★☆☆</td>
+          <td>Bulk overview and spotting multi-month default streaks.</td>
+        </tr>
+        <tr>
+          <td><b>4 · Split View</b></td>
+          <td class="score">★★★☆☆</td>
+          <td class="score">★★★★☆</td>
+          <td class="score">★★★★☆</td>
+          <td>Per-member investigation, history and follow-up.</td>
+        </tr>
+        <tr>
+          <td><b>5 · Status Columns</b></td>
+          <td class="score">★★★★☆</td>
+          <td class="score">★★★★☆</td>
+          <td class="score">★★★☆☆</td>
+          <td>Visual, drag-to-clear collection sessions.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="recommendation">
+      <h3>★ Recommended: Option 2 — Dashboard</h3>
+      <p>It surfaces collection health (total collected, paid X/Y, defaulters, this-month amount) and the auto-generated defaulter report — highlighting 3+ months overdue — at a glance, while keeping "Register payment" one click away. It also naturally hosts the async report's "generating" state, which is core to this flow. The Grid Ledger (Option 3) is the strongest complement for power users who want the whole matrix; consider it as a secondary view once the dashboard ships.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer class="skill-footer">
+  This design was crafted by the <a href="https://github.com/Magdoub/claude-wireframe-skill">Wireframe skill</a> — follow on GitHub
+</footer>
+
+<script>
+(function() {
+  // Main tab switching
+  var tabBtns = document.querySelectorAll('.tab-btn');
+  var panels = document.querySelectorAll('.option-panel');
+  tabBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      tabBtns.forEach(function(b) { b.classList.remove('active'); });
+      panels.forEach(function(p) { p.classList.remove('active'); });
+      btn.classList.add('active');
+      var target = document.getElementById(btn.dataset.tab);
+      if (target) target.classList.add('active');
+    });
+  });
+
+  // Sub-tab switching
+  var subBtns = document.querySelectorAll('.sub-tab-btn');
+  subBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var frameId = btn.dataset.frame;
+      var siblings = btn.parentElement.querySelectorAll('.sub-tab-btn');
+      siblings.forEach(function(s) { s.classList.remove('active'); });
+      btn.classList.add('active');
+      var frame = document.getElementById(frameId);
+      if (frame) {
+        frame.classList.remove('wireframe', 'clean', 'polished');
+        frame.classList.add(btn.dataset.variant);
+      }
+    });
+  });
+
+  // Completion banner — one-time load check
+  window.addEventListener('load', function() {
+    var badges = document.querySelectorAll('.sub-tab-badge');
+    var anyVisible = false;
+    badges.forEach(function(b) {
+      if (getComputedStyle(b).display !== 'none') anyVisible = true;
+    });
+    if (!anyVisible && badges.length > 0) {
+      var banner = document.getElementById('completion-banner');
+      if (banner) {
+        banner.style.display = 'block';
+        setTimeout(function() { banner.style.display = 'none'; }, 8000);
+      }
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

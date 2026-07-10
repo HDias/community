@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap');
+
+/* ============================================================
+   OPTION 1 — Sidebar Form
+   Palette: neutral base + single blue accent (chart-2 hue).
+   Clean = solid fills, system fonts, no shadows.
+   Polished = same colors, Google font pairing, soft gradients,
+             multi-layer shadows, focus glow, staggered reveals.
+   ============================================================ */
+
+/* ---------- Browser chrome dots (both variants) ---------- */
+.clean .browser-dots span:nth-child(1),
+.polished .browser-dots span:nth-child(1) { background: #ff5f57; }
+.clean .browser-dots span:nth-child(2),
+.polished .browser-dots span:nth-child(2) { background: #febc2e; }
+.clean .browser-dots span:nth-child(3),
+.polished .browser-dots span:nth-child(3) { background: #28c840; }
+
+/* hide wireframe markers on color variants */
+.clean .wf-marker,
+.polished .wf-marker { display: none; }
+
+/* ============================================================
+   CLEAN (Style A)
+   ============================================================ */
+.clean .browser-content { background: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.clean .app-shell { color: #0f172a; }
+
+/* sidebar */
+.clean .app-sidebar { background: #ffffff; border-right: 1px solid #e2e8f0; }
+.clean .sidebar-switcher { border-bottom: 1px solid #eef2f6; }
+.clean .switch-avatar { background: #3b82f6; color: #ffffff; }
+.clean .switch-meta strong { color: #0f172a; }
+.clean .switch-meta span { color: #64748b; }
+.clean .sidebar-nav a { color: #475569; }
+.clean .sidebar-nav a:hover { background: #f1f5f9; color: #0f172a; }
+.clean .sidebar-nav a.nav-active { background: #eff6ff; color: #1d4ed8; font-weight: 600; }
+.clean .sidebar-foot { border-top: 1px solid #eef2f6; color: #475569; }
+.clean .sidebar-foot .switch-avatar { background: #64748b; }
+
+/* topbar */
+.clean .app-topbar { background: #ffffff; border-bottom: 1px solid #e2e8f0; }
+.clean .crumb { color: #64748b; }
+.clean .crumb b { color: #0f172a; }
+
+/* body / headings */
+.clean .page-title { color: #0f172a; }
+.clean .page-sub { color: #64748b; }
+.clean .form-section { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; }
+.clean .section-label { color: #0f172a; }
+.clean .field label { color: #475569; }
+.clean .field input { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; color: #0f172a; transition: border-color 150ms ease-out; }
+.clean .field input::placeholder { color: #94a3b8; }
+.clean .field input:focus { border-color: #3b82f6; outline: none; }
+.clean .field-note { color: #64748b; }
+
+/* save bar */
+.clean .save-bar { background: #ffffff; border-top: 1px solid #e2e8f0; }
+.clean .save-hint { color: #64748b; }
+.clean .btn { border-radius: 6px; transition: background 150ms ease-out; }
+.clean .btn.primary { background: #3b82f6; color: #ffffff; border: 1px solid #3b82f6; }
+.clean .btn.primary:hover { background: #2563eb; }
+.clean .btn.ghost { background: #ffffff; color: #475569; border: 1px solid #cbd5e1; }
+.clean .btn.ghost:hover { background: #f1f5f9; }
+
+/* ============================================================
+   POLISHED (Style B) — same colors, more craft
+   ============================================================ */
+.polished .browser-content { background: #f6f8fb; font-family: 'Inter', -apple-system, sans-serif; }
+.polished .app-shell { color: #0f172a; }
+
+/* sidebar — subtle light vertical gradient */
+.polished .app-sidebar { background: linear-gradient(180deg, #ffffff 0%, #f4f7fb 100%); border-right: 1px solid #e6ecf3; }
+.polished .sidebar-switcher { border-bottom: 1px solid #eef2f6; }
+.polished .switch-avatar { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: #ffffff; box-shadow: 0 1px 3px rgba(37,99,235,0.35); }
+.polished .switch-meta strong { color: #0f172a; font-family: 'Fraunces', serif; font-weight: 600; }
+.polished .switch-meta span { color: #64748b; }
+.polished .sidebar-nav a { color: #475569; border-radius: 6px; transition: background 150ms ease-out, transform 150ms ease-out; }
+.polished .sidebar-nav a:hover { background: #eef4fb; color: #0f172a; transform: translateX(2px); }
+.polished .sidebar-nav a.nav-active { position: relative; background: linear-gradient(90deg, #eff6ff 0%, #f7fbff 100%); color: #1d4ed8; font-weight: 600; }
+/* decorative accent bar on active nav */
+.polished .sidebar-nav a.nav-active::before { content: ""; position: absolute; left: 0; top: 6px; bottom: 6px; width: 3px; border-radius: 0 3px 3px 0; background: #3b82f6; }
+.polished .sidebar-foot { border-top: 1px solid #eef2f6; color: #475569; }
+.polished .sidebar-foot .switch-avatar { background: linear-gradient(135deg, #64748b 0%, #475569 100%); }
+
+/* topbar — light gradient */
+.polished .app-topbar { background: linear-gradient(180deg, #ffffff 0%, #f7fafd 100%); border-bottom: 1px solid #e6ecf3; }
+.polished .crumb { color: #64748b; }
+.polished .crumb b { color: #0f172a; }
+
+/* headings */
+.polished .page-title { color: #0f172a; font-family: 'Fraunces', serif; font-weight: 600; letter-spacing: -0.01em; }
+.polished .page-sub { color: #64748b; }
+
+/* form sections — soft multi-layer shadow + staggered reveal */
+.polished .form-section {
+  background: #ffffff;
+  border: 1px solid #edf1f6;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 6px 16px rgba(15,23,42,0.05);
+}
+.polished .section-label { position: relative; color: #0f172a; font-family: 'Fraunces', serif; font-weight: 600; padding-left: 12px; }
+/* decorative accent bar on section labels */
+.polished .section-label::before { content: ""; position: absolute; left: 0; top: 2px; bottom: 2px; width: 3px; border-radius: 3px; background: linear-gradient(180deg, #3b82f6, #60a5fa); }
+.polished .field label { color: #475569; font-weight: 500; }
+.polished .field input {
+  background: #fbfcfe;
+  border: 1px solid #d7dfea;
+  border-radius: 7px;
+  color: #0f172a;
+  transition: border-color 150ms ease-out, box-shadow 150ms ease-out, background 150ms ease-out;
+}
+.polished .field input::placeholder { color: #9aa7b8; }
+.polished .field input:focus { background: #ffffff; border-color: #3b82f6; outline: none; box-shadow: 0 0 0 3px rgba(59,130,246,0.18); }
+.polished .field-note { color: #64748b; }
+
+/* save bar — light gradient + top shadow */
+.polished .save-bar { background: linear-gradient(180deg, #ffffff 0%, #f6f9fc 100%); border-top: 1px solid #e6ecf3; box-shadow: 0 -2px 10px rgba(15,23,42,0.04); }
+.polished .save-hint { color: #64748b; }
+.polished .btn { border-radius: 7px; transition: background 150ms ease-out, box-shadow 150ms ease-out, transform 120ms ease-out; }
+.polished .btn.primary { background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%); color: #ffffff; border: 1px solid #2563eb; box-shadow: 0 1px 2px rgba(37,99,235,0.35); }
+.polished .btn.primary:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37,99,235,0.35); }
+.polished .btn.primary:active { transform: translateY(0); }
+.polished .btn.ghost { background: #ffffff; color: #475569; border: 1px solid #d7dfea; }
+.polished .btn.ghost:hover { background: #f1f5f9; transform: translateY(-1px); }
+
+/* staggered entrance reveals */
+@media (prefers-reduced-motion: no-preference) {
+  .polished .form-section { opacity: 0; animation: opt1-rise 400ms ease-out forwards; }
+  .polished .form-section:nth-of-type(1) { animation-delay: 60ms; }
+  .polished .form-section:nth-of-type(2) { animation-delay: 120ms; }
+  .polished .form-section:nth-of-type(3) { animation-delay: 180ms; }
+  @keyframes opt1-rise {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* --- Self-reveal: hide badge, color sub-tabs --- */
+#frame-opt1-tabs .sub-tab-badge { display: none; }
+#frame-opt1-tabs .sub-tab-btn[data-variant="clean"] { color: #64B5F6; }
+#frame-opt1-tabs .sub-tab-btn[data-variant="clean"]:hover { color: #1E88E5; }
+#frame-opt1-tabs .sub-tab-btn[data-variant="clean"].active { color: #1565C0; border-bottom-color: #1565C0; }
+#frame-opt1-tabs .sub-tab-btn[data-variant="polished"] { color: #81C784; }
+#frame-opt1-tabs .sub-tab-btn[data-variant="polished"]:hover { color: #43A047; }
+#frame-opt1-tabs .sub-tab-btn[data-variant="polished"].active { color: #2E7D32; border-bottom-color: #2E7D32; }

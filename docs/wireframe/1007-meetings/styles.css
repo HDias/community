@@ -1,0 +1,162 @@
+@import "app-shell.css";
+
+/* === Meetings & Minutes — flow-specific wireframe CSS (B&W) === */
+/* Shell + form/table/button primitives live in app-shell.css. */
+
+/* --- Shared meeting bits --- */
+.mt-list { list-style: none; margin: 0 0 8px; padding: 0; }
+.mt-item {
+  display: flex; align-items: center; gap: 10px; justify-content: space-between;
+  padding: 9px 10px; border: 1px solid #eee; border-radius: 6px; margin-bottom: 6px;
+  cursor: pointer; background: #fff;
+}
+.mt-item:hover { background: #fafafa; }
+.mt-item.selected { border-color: #999; background: #eee; }
+.mt-item-main { display: flex; flex-direction: column; line-height: 1.35; min-width: 0; }
+.mt-item-main b { font-size: 12px; color: #000; }
+.mt-item-main small { font-size: 10px; color: #999; }
+.mt-att { font-size: 11px; color: #333; white-space: nowrap; }
+.mt-count { font-size: 11px; color: #666; margin-left: 8px; font-weight: 500; }
+
+/* attendance roster (shared by opt1 + opt3) */
+.mt-roster { list-style: none; margin: 8px 0 0; padding: 0; }
+.mt-rrow {
+  display: flex; align-items: center; gap: 10px;
+  padding: 7px 4px; border-bottom: 1px solid #eee;
+}
+.mt-rname { flex: 1; font-size: 12px; color: #333; min-width: 0; }
+
+/* minutes textarea */
+.mt-minutes {
+  width: 100%; box-sizing: border-box; min-height: 90px; resize: vertical;
+  border: 1px solid #ccc; border-radius: 6px; padding: 9px 10px;
+  font-size: 12px; font-family: inherit; color: #333; line-height: 1.5; background: #fff;
+}
+.mt-minutes.tall { min-height: 200px; flex: 1; }
+.mt-minutes::placeholder { color: #bbb; }
+.mt-minutes:focus { outline: none; border-color: #666; }
+
+.mt-notify {
+  font-size: 11px; color: #666; background: #f5f5f5; border: 1px solid #eee;
+  border-radius: 6px; padding: 8px 10px; margin: 12px 0 0; line-height: 1.4;
+}
+
+/* --- Option 1: Sidebar List (list + detail in body) --- */
+.app-body.mt-split { display: flex; gap: 0; padding: 0; }
+.mt-listcol {
+  width: 300px; flex-shrink: 0; border-right: 1px solid #eee;
+  padding: 16px; overflow: hidden;
+}
+.mt-detailcol { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.mt-detail-head {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding: 14px 18px; border-bottom: 1px solid #eee;
+}
+.detail-title { margin: 0; font-size: 15px; color: #000; font-weight: 600; }
+.mt-detail-body { padding: 16px 18px; flex: 1; overflow: hidden; }
+.mt-detail-body .section-label { margin-top: 18px; }
+.mt-detail-body .section-label:first-child { margin-top: 0; }
+
+/* --- Option 2: Timeline --- */
+.tl-groups { margin-top: 4px; }
+.tl-grouplabel {
+  font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: .04em;
+  margin: 18px 0 8px;
+}
+.timeline { list-style: none; margin: 0; padding: 0 0 0 6px; border-left: 2px solid #eee; }
+.tl-item {
+  display: flex; gap: 14px; padding: 10px 0 10px 16px; position: relative;
+}
+.tl-item::before {
+  content: ""; position: absolute; left: -7px; top: 16px;
+  width: 10px; height: 10px; border-radius: 50%; background: #ccc; border: 2px solid #fff;
+}
+.tl-item.upcoming::before { background: #000; }
+.tl-date {
+  flex-shrink: 0; width: 42px; text-align: center; border: 1px solid #eee;
+  border-radius: 6px; padding: 4px 0; background: #fafafa;
+}
+.tl-date b { display: block; font-size: 16px; color: #000; line-height: 1; }
+.tl-date span { font-size: 10px; color: #999; text-transform: uppercase; }
+.tl-body { flex: 1; min-width: 0; }
+.tl-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.tl-row b { font-size: 13px; color: #000; }
+.tl-meta { font-size: 11px; color: #999; display: block; margin-top: 3px; }
+.tl-minutes { color: #333; text-decoration: underline; }
+.tl-nominutes { color: #bbb; }
+
+/* --- Option 3: Split View --- */
+.mt-split3 { display: flex; flex: 1; min-height: 0; }
+.mt-splitlist {
+  width: 250px; flex-shrink: 0; border-right: 1px solid #eee;
+  padding: 12px; overflow: hidden;
+}
+.mt-splitlist-head {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;
+}
+.mt-splitlist-head b { font-size: 13px; color: #000; }
+.mt-splitdetail { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.mt-tabs { display: flex; gap: 4px; padding: 0 18px; border-bottom: 1px solid #eee; }
+.mt-tab {
+  border: none; background: none; font-family: inherit; font-size: 12px; color: #999;
+  padding: 10px 10px; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px;
+}
+.mt-tab:hover { color: #333; }
+.mt-tab.active { color: #000; font-weight: 600; border-bottom-color: #000; }
+.mt-splitcols { display: flex; flex: 1; min-height: 0; }
+.mt-col-att {
+  width: 46%; flex-shrink: 0; border-right: 1px solid #eee; padding: 14px 16px; overflow: hidden;
+}
+.mt-col-min { flex: 1; display: flex; flex-direction: column; padding: 14px 16px; min-width: 0; }
+.mt-att-toolbar { display: flex; flex-direction: column; gap: 8px; }
+.mt-att-toolbar .search {
+  width: 100%; box-sizing: border-box; border: 1px solid #ccc; border-radius: 6px;
+  padding: 7px 9px; font-size: 12px; font-family: inherit;
+}
+.mt-att-toolbar .search::placeholder { color: #bbb; }
+
+/* --- Option 4: Attendance Grid --- */
+.ag-body { display: flex; flex-direction: column; }
+.ag-tools { display: flex; align-items: center; gap: 14px; }
+.ag-tools .search {
+  border: 1px solid #ccc; border-radius: 6px; padding: 7px 9px; font-size: 12px;
+  font-family: inherit; width: 180px;
+}
+.ag-tools .search::placeholder { color: #bbb; }
+.ag-summary {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  border: 1px solid #ccc; border-radius: 8px; padding: 12px 14px; background: #fafafa;
+  font-size: 13px; color: #333; margin-bottom: 14px;
+}
+.ag-summary b { color: #000; }
+.ag-bar { flex: 1; min-width: 120px; height: 8px; background: #eee; border-radius: 6px; overflow: hidden; }
+.ag-bar span { display: block; height: 100%; background: #333; }
+.ag-sub { font-size: 11px; color: #999; }
+.ag-grid {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px 14px;
+}
+.ag-row {
+  display: flex; align-items: center; gap: 10px;
+  border: 1px solid #eee; border-radius: 6px; padding: 8px 10px; background: #fff;
+}
+.ag-row.present { border-color: #999; background: #f5f5f5; }
+.ag-name { flex: 1; font-size: 12px; color: #333; min-width: 0; }
+
+/* --- Option 5: Card Feed --- */
+.cf-body { overflow: hidden; }
+.cf-history {
+  border: 1px solid #ccc; border-radius: 8px; padding: 10px 14px; background: #fafafa;
+  font-size: 12px; color: #666; margin-bottom: 14px;
+}
+.cf-history b { color: #000; }
+.cf-feed { display: flex; flex-direction: column; gap: 12px; }
+.cf-card { border: 1px solid #eee; border-radius: 8px; padding: 14px 16px; background: #fff; }
+.cf-card.upcoming { border-color: #999; }
+.cf-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.cf-card-head b { font-size: 13px; color: #000; display: block; }
+.cf-card-head small { font-size: 11px; color: #999; }
+.cf-meta { font-size: 11px; color: #666; margin-top: 8px; }
+.cf-meta b { color: #000; }
+.cf-excerpt { font-size: 12px; color: #666; line-height: 1.5; margin: 8px 0 0; }
+.cf-actions { margin-top: 12px; }
