@@ -3,8 +3,11 @@
 namespace App\Actions\Communities;
 
 use App\Enums\CommunityRole;
+use App\Models\Administration;
 use App\Models\Community;
+use App\Models\Position;
 use App\Models\User;
+use Illuminate\Support\Collection;
 
 class CreateCommunity
 {
@@ -39,6 +42,7 @@ class CreateCommunity
     {
         $defaultPositions = ['President', 'Vice-President', 'Secretary', 'Treasurer'];
 
+        /** @var Collection<int, Position> $positions */
         $positions = collect($defaultPositions)->map(
             fn (string $name) => $community->positions()->create([
                 'name' => $name,
@@ -46,6 +50,7 @@ class CreateCommunity
             ])
         );
 
+        /** @var Administration $administration */
         $administration = $community->administrations()->create([
             'started_at' => now(),
         ]);

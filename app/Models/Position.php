@@ -33,6 +33,9 @@ class Position extends Model
         ];
     }
 
+    /**
+     * @return BelongsTo<Community, $this>
+     */
     public function community(): BelongsTo
     {
         return $this->belongsTo(Community::class);

@@ -35,11 +35,17 @@ class Administration extends Model
         ];
     }
 
+    /**
+     * @return BelongsTo<Community, $this>
+     */
     public function community(): BelongsTo
     {
         return $this->belongsTo(Community::class);
     }
 
+    /**
+     * @return HasMany<AdministrationMember, $this>
+     */
     public function members(): HasMany
     {
         return $this->hasMany(AdministrationMember::class);

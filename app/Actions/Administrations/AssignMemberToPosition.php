@@ -15,6 +15,7 @@ class AssignMemberToPosition
      */
     public function handle(Administration $administration, User $user, Position $position): AdministrationMember
     {
+        /** @var AdministrationMember $member */
         $member = $administration->members()->updateOrCreate(
             ['user_id' => $user->id],
             ['position_id' => $position->id]

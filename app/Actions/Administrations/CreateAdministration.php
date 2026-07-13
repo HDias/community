@@ -22,6 +22,7 @@ class CreateAdministration
                 ]);
             }
 
+            /** @var Administration $administration */
             $administration = $community->administrations()->create([
                 'started_at' => $data['started_at'],
             ]);

@@ -38,7 +38,7 @@ class CommunityController extends Controller
                 'city' => $community->city,
                 'state' => $community->state,
                 'members_count' => $community->members_count,
-                'role' => $community->pivot?->role ?? 'admin',
+                'role' => $community->pivot->role ?? 'admin',
                 'is_current' => $user->current_community_id === $community->id,
                 'is_owner' => $community->created_by === $user->id || $user->is_admin,
             ]);

@@ -46,7 +46,7 @@ class PositionController extends Controller
     {
         $community = $this->resolveCommunity($request);
 
-        abort_unless($community, 400, 'Community is required.');
+        abort_unless($community !== null, 400, 'Community is required.');
 
         Gate::authorize('manage', [Position::class, $community]);
 
@@ -100,7 +100,7 @@ class PositionController extends Controller
             return null;
         }
 
-        return Community::findOrFail($communityId);
+        return Community::findOrFail((int) $communityId);
     }
 
     /**
@@ -111,14 +111,17 @@ class PositionController extends Controller
     private function manageableCommunities(User $user): array
     {
         if ($user->is_admin) {
-            return Community::orderBy('name')->get(['id', 'name'])->toArray();
+            return Community::orderBy('name')
+                ->get(['id', 'name'])
+                ->map(fn (Community $c) => ['id' => $c->id, 'name' => $c->name])
+                ->toArray();
         }
 
         return $user->communities()
             ->wherePivot('role', 'president')
             ->orderBy('name')
             ->get(['communities.id', 'communities.name'])
-            ->map(fn ($c) => ['id' => $c->id, 'name' => $c->name])
+            ->map(fn (Community $c) => ['id' => $c->id, 'name' => $c->name])
             ->toArray();
     }
 }

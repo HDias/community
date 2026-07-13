@@ -27,7 +27,7 @@ class CommunityFactory extends Factory
             'description' => fake()->sentence(),
             'address' => fake()->streetAddress(),
             'city' => fake()->city(),
-            'state' => fake()->stateAbbr(),
+            'state' => fake()->randomElement(['SP', 'RJ', 'MG', 'BA', 'PR', 'RS', 'SC', 'PE', 'CE', 'GO']),
             'created_by' => User::factory(),
         ];
     }

@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 trait HasCommunities
 {
+    /**
+     * @return BelongsToMany<Community, $this>
+     */
     public function communities(): BelongsToMany
     {
         return $this->belongsToMany(Community::class)
@@ -15,6 +18,9 @@ trait HasCommunities
             ->withTimestamps();
     }
 
+    /**
+     * @return BelongsTo<Community, $this>
+     */
     public function currentCommunity(): BelongsTo
     {
         return $this->belongsTo(Community::class, 'current_community_id');

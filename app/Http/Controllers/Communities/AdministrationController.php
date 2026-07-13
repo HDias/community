@@ -6,6 +6,7 @@ use App\Actions\Administrations\AssignMemberToPosition;
 use App\Actions\Administrations\CreateAdministration;
 use App\Http\Controllers\Controller;
 use App\Models\Administration;
+use App\Models\AdministrationMember;
 use App\Models\Community;
 use App\Models\Position;
 use App\Models\User;
@@ -39,7 +40,7 @@ class AdministrationController extends Controller
                     'started_at' => $admin->started_at->toDateString(),
                     'ended_at' => $admin->ended_at?->toDateString(),
                     'is_current' => $community->current_administration_id === $admin->id,
-                    'members' => $admin->members->map(fn ($m) => [
+                    'members' => $admin->members->map(fn (AdministrationMember $m) => [
                         'id' => $m->id,
                         'user' => ['id' => $m->user->id, 'name' => $m->user->name],
                         'position' => ['id' => $m->position->id, 'name' => $m->position->name],
@@ -77,7 +78,7 @@ class AdministrationController extends Controller
                 'started_at' => $administration->started_at->toDateString(),
                 'ended_at' => $administration->ended_at?->toDateString(),
                 'is_current' => $community->current_administration_id === $administration->id,
-                'members' => $administration->members->map(fn ($m) => [
+                'members' => $administration->members->map(fn (AdministrationMember $m) => [
                     'id' => $m->id,
                     'user' => ['id' => $m->user->id, 'name' => $m->user->name],
                     'position' => ['id' => $m->position->id, 'name' => $m->position->name],
@@ -95,7 +96,7 @@ class AdministrationController extends Controller
     {
         $community = $this->resolveCommunity($request);
 
-        abort_unless($community, 400, 'Community is required.');
+        abort_unless($community !== null, 400, 'Community is required.');
 
         Gate::authorize('manage', [Administration::class, $community]);
 
@@ -172,7 +173,9 @@ class AdministrationController extends Controller
             'position_id' => ['required', Rule::exists('positions', 'id')->where('community_id', $community->id)],
         ]);
 
+        /** @var User $user */
         $user = User::findOrFail($validated['user_id']);
+        /** @var Position $position */
         $position = Position::findOrFail($validated['position_id']);
 
         $action->handle($administration, $user, $position);
@@ -205,7 +208,7 @@ class AdministrationController extends Controller
             return null;
         }
 
-        return Community::findOrFail($communityId);
+        return Community::findOrFail((int) $communityId);
     }
 
     /**
@@ -216,14 +219,17 @@ class AdministrationController extends Controller
     private function manageableCommunities(User $user): array
     {
         if ($user->is_admin) {
-            return Community::orderBy('name')->get(['id', 'name'])->toArray();
+            return Community::orderBy('name')
+                ->get(['id', 'name'])
+                ->map(fn (Community $c) => ['id' => $c->id, 'name' => $c->name])
+                ->toArray();
         }
 
         return $user->communities()
             ->wherePivot('role', 'president')
             ->orderBy('name')
             ->get(['communities.id', 'communities.name'])
-            ->map(fn ($c) => ['id' => $c->id, 'name' => $c->name])
+            ->map(fn (Community $c) => ['id' => $c->id, 'name' => $c->name])
             ->toArray();
     }
 }

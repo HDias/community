@@ -33,11 +33,17 @@ class Community extends Model
     /** @use HasFactory<CommunityFactory> */
     use GeneratesUniqueSlugs, HasFactory, SoftDeletes;
 
+    /**
+     * @return BelongsTo<User, $this>
+     */
     public function creator(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
     }
 
+    /**
+     * @return BelongsToMany<User, $this>
+     */
     public function members(): BelongsToMany
     {
         return $this->belongsToMany(User::class)
@@ -45,16 +51,25 @@ class Community extends Model
             ->withTimestamps();
     }
 
+    /**
+     * @return HasMany<Position, $this>
+     */
     public function positions(): HasMany
     {
         return $this->hasMany(Position::class);
     }
 
+    /**
+     * @return HasMany<Administration, $this>
+     */
     public function administrations(): HasMany
     {
         return $this->hasMany(Administration::class);
     }
 
+    /**
+     * @return BelongsTo<Administration, $this>
+     */
     public function currentAdministration(): BelongsTo
     {
         return $this->belongsTo(Administration::class, 'current_administration_id');

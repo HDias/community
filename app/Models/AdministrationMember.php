@@ -23,16 +23,25 @@ class AdministrationMember extends Model
     /** @use HasFactory<AdministrationMemberFactory> */
     use HasFactory;
 
+    /**
+     * @return BelongsTo<Administration, $this>
+     */
     public function administration(): BelongsTo
     {
         return $this->belongsTo(Administration::class);
     }
 
+    /**
+     * @return BelongsTo<User, $this>
+     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * @return BelongsTo<Position, $this>
+     */
     public function position(): BelongsTo
     {
         return $this->belongsTo(Position::class);
