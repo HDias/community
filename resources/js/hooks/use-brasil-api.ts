@@ -33,6 +33,7 @@ export function useCities(uf: string) {
     useEffect(() => {
         if (!uf) {
             setCities([]);
+
             return;
         }
 

@@ -36,7 +36,6 @@ type Props = {
 };
 
 export default function AdministrationShow({
-    communities,
     community,
     administration,
     positions,
@@ -166,32 +165,19 @@ export default function AdministrationShow({
                                         </span>
                                     </div>
                                     <div className="flex items-center gap-2">
-                                        <Button
-                                            type="submit"
-                                            size="sm"
-                                            disabled={datesForm.processing}
-                                        >
-                                            Save dates
-                                        </Button>
+                                        <span className="rounded bg-muted px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground">
+                                            {member.position.name}
+                                        </span>
                                         {administration.is_current && (
-                                            <Button
-                                                type="button"
-                                                size="sm"
-                                                variant="destructive"
-                                                onClick={handleEndNow}
+                                            <button
+                                                onClick={() =>
+                                                    handleRemove(member.user.id)
+                                                }
+                                                className="text-[10px] text-red-600 hover:underline"
                                             >
-                                                End now
-                                            </Button>
+                                                Remove
+                                            </button>
                                         )}
-                                        <Button
-                                            type="button"
-                                            size="sm"
-                                            variant="ghost"
-                                            className="ml-auto text-red-600 hover:text-red-700"
-                                            onClick={handleDelete}
-                                        >
-                                            Delete
-                                        </Button>
                                     </div>
                                 </li>
                             ))}
@@ -266,6 +252,15 @@ export default function AdministrationShow({
                                             End now
                                         </Button>
                                     )}
+                                    <Button
+                                        type="button"
+                                        size="sm"
+                                        variant="ghost"
+                                        className="ml-auto text-red-600 hover:text-red-700"
+                                        onClick={handleDelete}
+                                    >
+                                        Delete
+                                    </Button>
                                 </div>
                             </form>
                         </div>

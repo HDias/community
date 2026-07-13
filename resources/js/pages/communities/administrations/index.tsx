@@ -256,7 +256,6 @@ function CreateAdministrationPanel({
 }
 
 function AdministrationDetail({
-    community,
     administration,
     onDeleted,
 }: {
