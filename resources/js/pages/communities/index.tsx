@@ -1,4 +1,4 @@
-import { Form, Head, router } from '@inertiajs/react';
+import { Form, Head, Link, router } from '@inertiajs/react';
 import { useState } from 'react';
 import InputError from '@/components/input-error';
 import { LocationFields } from '@/components/location-fields';
@@ -275,6 +275,28 @@ export default function CommunitiesIndex({ communities, canCreate }: Props) {
                                 community={panel.community}
                                 onCancel={() => setPanel({ mode: 'empty' })}
                             />
+                        )}
+
+                        {panel.mode === 'edit' && panel.community.is_owner && (
+                            <div className="border-t px-6 py-4">
+                                <h3 className="mb-3 text-xs font-semibold tracking-wider text-muted-foreground uppercase">
+                                    Management
+                                </h3>
+                                <div className="flex flex-col gap-2">
+                                    <Link
+                                        href={`/positions?community=${panel.community.id}`}
+                                        className="text-sm font-medium text-primary hover:underline"
+                                    >
+                                        Positions →
+                                    </Link>
+                                    <Link
+                                        href={`/administrations?community=${panel.community.id}`}
+                                        className="text-sm font-medium text-primary hover:underline"
+                                    >
+                                        Administrations →
+                                    </Link>
+                                </div>
+                            </div>
                         )}
 
                         {panel.mode === 'empty' && (

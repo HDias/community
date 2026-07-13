@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 
@@ -21,11 +22,12 @@ use Illuminate\Support\Carbon;
  * @property string|null $city
  * @property string|null $state
  * @property int $created_by
+ * @property int|null $current_administration_id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property Carbon|null $deleted_at
  */
-#[Fillable(['name', 'slug', 'description', 'address', 'city', 'state', 'created_by'])]
+#[Fillable(['name', 'slug', 'description', 'address', 'city', 'state', 'created_by', 'current_administration_id'])]
 class Community extends Model
 {
     /** @use HasFactory<CommunityFactory> */
@@ -41,5 +43,20 @@ class Community extends Model
         return $this->belongsToMany(User::class)
             ->withPivot('role', 'joined_at')
             ->withTimestamps();
+    }
+
+    public function positions(): HasMany
+    {
+        return $this->hasMany(Position::class);
+    }
+
+    public function administrations(): HasMany
+    {
+        return $this->hasMany(Administration::class);
+    }
+
+    public function currentAdministration(): BelongsTo
+    {
+        return $this->belongsTo(Administration::class, 'current_administration_id');
     }
 }

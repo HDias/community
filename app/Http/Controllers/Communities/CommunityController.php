@@ -21,7 +21,12 @@ class CommunityController extends Controller
     public function index(Request $request): Response
     {
         $user = $request->user();
-        $communities = $user->communities()
+
+        $query = $user->is_admin
+            ? Community::query()
+            : $user->communities();
+
+        $communities = $query
             ->withCount('members')
             ->get()
             ->map(fn (Community $community) => [
@@ -33,9 +38,9 @@ class CommunityController extends Controller
                 'city' => $community->city,
                 'state' => $community->state,
                 'members_count' => $community->members_count,
-                'role' => $community->pivot->role,
+                'role' => $community->pivot?->role ?? 'admin',
                 'is_current' => $user->current_community_id === $community->id,
-                'is_owner' => $community->created_by === $user->id,
+                'is_owner' => $community->created_by === $user->id || $user->is_admin,
             ]);
 
         if ($communities->isEmpty()) {
