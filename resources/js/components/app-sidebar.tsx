@@ -1,5 +1,12 @@
 import { Link } from '@inertiajs/react';
-import { BookOpen, FolderGit2, LayoutGrid, Users } from 'lucide-react';
+import {
+    BookOpen,
+    Briefcase,
+    FolderGit2,
+    LayoutGrid,
+    Shield,
+    Users,
+} from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
@@ -26,6 +33,16 @@ export function AppSidebar() {
             title: 'Communities',
             href: '/communities',
             icon: Users,
+        },
+        {
+            title: 'Positions',
+            href: '/positions',
+            icon: Briefcase,
+        },
+        {
+            title: 'Administrations',
+            href: '/administrations',
+            icon: Shield,
         },
     ];
 

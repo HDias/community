@@ -1,689 +1,1912 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Member Registration — DDMM Wireframes</title>
-  <link rel="stylesheet" href="base.css">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="styles-opt1.css">
-  <link rel="stylesheet" href="styles-opt2.css">
-  <link rel="stylesheet" href="styles-opt3.css">
-  <link rel="stylesheet" href="styles-opt4.css">
-  <link rel="stylesheet" href="styles-opt5.css">
-</head>
-<body>
-
-<div class="completion-banner" id="completion-banner" style="display:none;">
-  ✦ Visual designs complete — all options now have Clean + Polished variants
-  <button onclick="this.parentElement.style.display='none'" style="float:right;background:none;border:none;cursor:pointer;font-size:16px;">×</button>
-</div>
-
-<div class="page-wrapper">
-
-  <div class="title-bar">
-    <span><span id="feature-name">Member Registration</span> — <span id="project-name">Community</span></span>
-    <span class="rec">★ Recommended: Option <span id="rec-number">3</span></span>
-  </div>
-
-  <nav class="main-tabs">
-    <button class="tab-btn active" data-tab="option-1">1: Sidebar Form</button>
-    <button class="tab-btn" data-tab="option-2">2: Step Flow</button>
-    <button class="tab-btn" data-tab="option-3">3: Split View</button>
-    <button class="tab-btn" data-tab="option-4">4: Command Bar</button>
-    <button class="tab-btn" data-tab="option-5">5: Rapid Entry</button>
-    <button class="tab-btn" data-tab="summary">Summary</button>
-  </nav>
-
-  <!-- ===== OPTION 1 ===== -->
-  <div class="option-panel active" id="option-1">
-    <h2>Option 1: <span class="opt-name">Sidebar Form</span></h2>
-    <p class="option-description">Extends the existing sidebar-shell app — a single scrollable form with grouped sections (required, optional, custom fields) and a persistent save bar. Zero new paradigms.</p>
-    <div class="sub-tab-bar" id="frame-opt1-tabs">
-      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt1">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch1"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch1)"/></svg>
-        <span class="sub-tab-label">Wireframe</span>
-      </button>
-      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt1">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint1"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint1)"/></svg>
-        <span class="sub-tab-label">Clean</span>
-        <span class="sub-tab-badge">generating...</span>
-      </button>
-      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt1">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond1"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond1)"/></svg>
-        <span class="sub-tab-label">Polished</span>
-        <span class="sub-tab-badge">generating...</span>
-      </button>
-    </div>
-    <div class="browser-frame wireframe" id="frame-opt1">
-      <div class="browser-chrome">
-        <div class="browser-dots"><span></span><span></span><span></span></div>
-        <div class="browser-url">yourapp.com/members/new</div>
-        <div class="browser-controls">─ □ ✕</div>
-      </div>
-      <div class="browser-content">
-        <div class="app-shell">
-          <aside class="app-sidebar">
-            <div class="sidebar-switcher">
-              <div class="switch-avatar">RS</div>
-              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
-              <span class="switch-caret">⌄</span>
-            </div>
-            <nav class="sidebar-nav">
-              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
-              <a href="#" class="nav-active">☰ Members</a>
-              <a href="../1007-communities/index.html">◆ Communities</a>
-              <a href="../1007-administrations/index.html">◷ Administrations</a>
-              <a href="../1007-contributions/index.html">$ Contributions</a>
-              <a href="../1007-meetings/index.html">▦ Meetings</a>
-              <a href="../1007-bylaws/index.html">§ Bylaws</a>
-            </nav>
-            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz</span></div>
-          </aside>
-
-          <div class="app-main">
-            <div class="app-topbar">
-              <span class="crumb">Members <span class="crumb-sep">/</span> <b>New member</b></span>
-            </div>
-            <div class="app-body">
-              <div class="page-head">
-                <div>
-                  <h1 class="page-title">Register member <span class="wf-marker">1</span></h1>
-                  <p class="page-sub">Add a new member to Rosário do Sul. Required fields are marked *.</p>
-                </div>
-              </div>
-
-              <form class="stack-form">
-                <section class="form-section">
-                  <h3 class="section-label">Required <span class="wf-marker">2</span></h3>
-                  <div class="field-grid">
-                    <div class="field"><label>Full name *</label><input type="text" placeholder="Maria da Silva"></div>
-                    <div class="field"><label>CPF *</label><input type="text" placeholder="000.000.000-00"></div>
-                    <div class="field"><label>Email *</label><input type="text" placeholder="maria@email.com"></div>
-                    <div class="field"><label>Birth date *</label><input type="text" placeholder="dd/mm/yyyy"></div>
-                    <div class="field"><label>Phone *</label><input type="text" placeholder="(00) 00000-0000"></div>
-                  </div>
-                </section>
-
-                <section class="form-section">
-                  <h3 class="section-label">Optional</h3>
-                  <div class="field-grid">
-                    <div class="field"><label>Social name</label><input type="text" placeholder="—"></div>
-                    <div class="field"><label>Nickname</label><input type="text" placeholder="—"></div>
-                    <div class="field"><label>Profession</label><input type="text" placeholder="—"></div>
-                  </div>
-                  <div class="field-grid addr">
-                    <div class="field grow"><label>Street</label><input type="text" placeholder="Rua ..."></div>
-                    <div class="field sm"><label>Number</label><input type="text" placeholder="123"></div>
-                    <div class="field"><label>Neighborhood</label><input type="text" placeholder="—"></div>
-                    <div class="field"><label>City</label><input type="text" placeholder="Rosário do Sul"></div>
-                    <div class="field sm"><label>State</label><input type="text" placeholder="RS"></div>
-                    <div class="field sm"><label>ZIP</label><input type="text" placeholder="00000-000"></div>
-                  </div>
-                </section>
-
-                <section class="form-section">
-                  <h3 class="section-label">Community fields <span class="wf-marker">3</span></h3>
-                  <div class="field-grid">
-                    <div class="field"><label>Quilombola Registry</label><input type="text" placeholder="Text field"></div>
-                    <div class="field"><label>CRQ number</label><input type="text" placeholder="Number field"></div>
-                    <div class="field"><label>Entry date</label><input type="text" placeholder="Date field"></div>
-                  </div>
-                  <p class="field-note">These fields are defined per community in Settings → Registration fields.</p>
-                </section>
-              </form>
-            </div>
-
-            <div class="save-bar">
-              <span class="save-hint">A temporary password will be emailed to the member. <span class="wf-marker">4</span></span>
-              <div class="save-actions">
-                <button type="button" class="btn ghost">Cancel</button>
-                <button type="button" class="btn primary">Save member</button>
-              </div>
-            </div>
-          </div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Member Registration — DDMM Wireframes</title>
+        <link rel="stylesheet" href="base.css" />
+        <link rel="stylesheet" href="styles.css" />
+        <link rel="stylesheet" href="styles-opt1.css" />
+        <link rel="stylesheet" href="styles-opt2.css" />
+        <link rel="stylesheet" href="styles-opt3.css" />
+        <link rel="stylesheet" href="styles-opt4.css" />
+        <link rel="stylesheet" href="styles-opt5.css" />
+    </head>
+    <body>
+        <div
+            class="completion-banner"
+            id="completion-banner"
+            style="display: none"
+        >
+            ✦ Visual designs complete — all options now have Clean + Polished
+            variants
+            <button
+                onclick="this.parentElement.style.display = 'none'"
+                style="
+                    float: right;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    font-size: 16px;
+                "
+            >
+                ×
+            </button>
         </div>
-      </div>
-    </div>
-    <div class="wf-annotations">
-      <h3>UX Notes</h3>
-      <ul>
-        <li>① Familiar sidebar-shell layout — identical to the existing app, so admins need zero relearning.</li>
-        <li>② Required fields grouped and marked first so the fastest path (name, CPF, email, birth, phone) is always visible on load.</li>
-        <li>③ Custom fields render inline in the same form, keyed by their configured type (text / number / date).</li>
-        <li>④ Persistent save bar keeps the primary action reachable no matter how far the admin scrolls.</li>
-      </ul>
-    </div>
-  </div>
 
-  <!-- ===== OPTION 2 ===== -->
-  <div class="option-panel" id="option-2">
-    <h2>Option 2: <span class="opt-name">Step Flow</span></h2>
-    <p class="option-description">Breaks registration into 3 guided steps (Personal → Address & Extra → Review) with a progress bar, reducing perceived effort and catching errors before submission.</p>
-    <div class="sub-tab-bar" id="frame-opt2-tabs">
-      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt2">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch2"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch2)"/></svg>
-        <span class="sub-tab-label">Wireframe</span>
-      </button>
-      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt2">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint2"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint2)"/></svg>
-        <span class="sub-tab-label">Clean</span>
-        <span class="sub-tab-badge">generating...</span>
-      </button>
-      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt2">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond2"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond2)"/></svg>
-        <span class="sub-tab-label">Polished</span>
-        <span class="sub-tab-badge">generating...</span>
-      </button>
-    </div>
-    <div class="browser-frame wireframe" id="frame-opt2">
-      <div class="browser-chrome">
-        <div class="browser-dots"><span></span><span></span><span></span></div>
-        <div class="browser-url">yourapp.com/members/new</div>
-        <div class="browser-controls">─ □ ✕</div>
-      </div>
-      <div class="browser-content">
-        <div class="app-shell">
-          <aside class="app-sidebar">
-            <div class="sidebar-switcher">
-              <div class="switch-avatar">RS</div>
-              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
-              <span class="switch-caret">⌄</span>
+        <div class="page-wrapper">
+            <div class="title-bar">
+                <span
+                    ><span id="feature-name">Member Registration</span> —
+                    <span id="project-name">Community</span></span
+                >
+                <span class="rec"
+                    >★ Recommended: Option <span id="rec-number">3</span></span
+                >
             </div>
-            <nav class="sidebar-nav">
-              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
-              <a href="#" class="nav-active">☰ Members</a>
-              <a href="../1007-communities/index.html">◆ Communities</a>
-              <a href="../1007-administrations/index.html">◷ Administrations</a>
-              <a href="../1007-contributions/index.html">$ Contributions</a>
-              <a href="../1007-meetings/index.html">▦ Meetings</a>
-              <a href="../1007-bylaws/index.html">§ Bylaws</a>
+
+            <nav class="main-tabs">
+                <button class="tab-btn active" data-tab="option-1">
+                    1: Sidebar Form
+                </button>
+                <button class="tab-btn" data-tab="option-2">
+                    2: Step Flow
+                </button>
+                <button class="tab-btn" data-tab="option-3">
+                    3: Split View
+                </button>
+                <button class="tab-btn" data-tab="option-4">
+                    4: Command Bar
+                </button>
+                <button class="tab-btn" data-tab="option-5">
+                    5: Rapid Entry
+                </button>
+                <button class="tab-btn" data-tab="summary">Summary</button>
             </nav>
-            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz</span></div>
-          </aside>
 
-          <div class="app-main">
-            <div class="app-topbar">
-              <span class="crumb">Members <span class="crumb-sep">/</span> <b>New member</b></span>
+            <!-- ===== OPTION 1 ===== -->
+            <div class="option-panel active" id="option-1">
+                <h2>Option 1: <span class="opt-name">Sidebar Form</span></h2>
+                <p class="option-description">
+                    Extends the existing sidebar-shell app — a single scrollable
+                    form with grouped sections (required, optional) and a
+                    persistent save bar. Zero new paradigms.
+                </p>
+                <div class="sub-tab-bar" id="frame-opt1-tabs">
+                    <button
+                        class="sub-tab-btn active"
+                        data-variant="wireframe"
+                        data-frame="frame-opt1"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="1em"
+                            height="1em"
+                            viewBox="0 0 48 48"
+                        >
+                            <defs>
+                                <mask id="ipTsketch1">
+                                    <g
+                                        fill="#555"
+                                        stroke="#fff"
+                                        stroke-linejoin="round"
+                                        stroke-width="4"
+                                    >
+                                        <rect
+                                            width="36"
+                                            height="36"
+                                            x="6"
+                                            y="6"
+                                            rx="3"
+                                        />
+                                        <path
+                                            stroke-linecap="round"
+                                            d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"
+                                        />
+                                    </g>
+                                </mask>
+                            </defs>
+                            <path
+                                fill="currentColor"
+                                d="M0 0h48v48H0z"
+                                mask="url(#ipTsketch1)"
+                            />
+                        </svg>
+                        <span class="sub-tab-label">Wireframe</span>
+                    </button>
+                    <button
+                        class="sub-tab-btn"
+                        data-variant="clean"
+                        data-frame="frame-opt1"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="1em"
+                            height="1em"
+                            viewBox="0 0 48 48"
+                        >
+                            <defs>
+                                <mask id="ipTpaint1">
+                                    <g
+                                        fill="none"
+                                        stroke="#fff"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="4"
+                                    >
+                                        <path
+                                            d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"
+                                        />
+                                        <path
+                                            fill="#555"
+                                            d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"
+                                        />
+                                    </g>
+                                </mask>
+                            </defs>
+                            <path
+                                fill="currentColor"
+                                d="M0 0h48v48H0z"
+                                mask="url(#ipTpaint1)"
+                            />
+                        </svg>
+                        <span class="sub-tab-label">Clean</span>
+                        <span class="sub-tab-badge">generating...</span>
+                    </button>
+                    <button
+                        class="sub-tab-btn"
+                        data-variant="polished"
+                        data-frame="frame-opt1"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="1em"
+                            height="1em"
+                            viewBox="0 0 48 48"
+                        >
+                            <defs>
+                                <mask id="ipTdiamond1">
+                                    <path
+                                        fill="#555"
+                                        stroke="#fff"
+                                        stroke-width="4"
+                                        d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"
+                                    />
+                                </mask>
+                            </defs>
+                            <path
+                                fill="currentColor"
+                                d="M0 0h48v48H0z"
+                                mask="url(#ipTdiamond1)"
+                            />
+                        </svg>
+                        <span class="sub-tab-label">Polished</span>
+                        <span class="sub-tab-badge">generating...</span>
+                    </button>
+                </div>
+                <div class="browser-frame wireframe" id="frame-opt1">
+                    <div class="browser-chrome">
+                        <div class="browser-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <div class="browser-url">yourapp.com/members/new</div>
+                        <div class="browser-controls">─ □ ✕</div>
+                    </div>
+                    <div class="browser-content">
+                        <div class="app-shell">
+                            <aside class="app-sidebar">
+                                <div class="sidebar-switcher">
+                                    <div class="switch-avatar">RS</div>
+                                    <div class="switch-meta">
+                                        <strong>Rosário do Sul</strong
+                                        ><span>Community</span>
+                                    </div>
+                                    <span class="switch-caret">⌄</span>
+                                </div>
+                                <nav class="sidebar-nav">
+                                    <a href="../1007-dashboard/index.html"
+                                        >▤ Dashboard</a
+                                    >
+                                    <a href="#" class="nav-active"
+                                        >☰ Members</a
+                                    >
+                                    <a href="../1007-communities/index.html"
+                                        >◆ Communities</a
+                                    >
+                                    <a href="../1007-administrations/index.html"
+                                        >◷ Administrations</a
+                                    >
+                                    <a href="../1007-contributions/index.html"
+                                        >$ Contributions</a
+                                    >
+                                    <a href="../1007-meetings/index.html"
+                                        >▦ Meetings</a
+                                    >
+                                    <a href="../1007-bylaws/index.html"
+                                        >§ Bylaws</a
+                                    >
+                                </nav>
+                                <div class="sidebar-foot">
+                                    <div class="switch-avatar sm">AD</div>
+                                    <span>Ana Diniz</span>
+                                </div>
+                            </aside>
+
+                            <div class="app-main">
+                                <div class="app-topbar">
+                                    <span class="crumb"
+                                        >Members
+                                        <span class="crumb-sep">/</span>
+                                        <b>New member</b></span
+                                    >
+                                </div>
+                                <div class="app-body">
+                                    <div class="page-head">
+                                        <div>
+                                            <h1 class="page-title">
+                                                Register member
+                                                <span class="wf-marker">1</span>
+                                            </h1>
+                                            <p class="page-sub">
+                                                Add a new member to Rosário do
+                                                Sul. Required fields are marked
+                                                *.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <form class="stack-form">
+                                        <section class="form-section">
+                                            <h3 class="section-label">
+                                                Required
+                                                <span class="wf-marker">2</span>
+                                            </h3>
+                                            <div class="field-grid">
+                                                <div class="field">
+                                                    <label>Full name *</label
+                                                    ><input
+                                                        type="text"
+                                                        placeholder="Maria da Silva"
+                                                    />
+                                                </div>
+                                                <div class="field">
+                                                    <label>CPF *</label
+                                                    ><input
+                                                        type="text"
+                                                        placeholder="000.000.000-00"
+                                                    />
+                                                </div>
+                                                <div class="field">
+                                                    <label>Email *</label
+                                                    ><input
+                                                        type="text"
+                                                        placeholder="maria@email.com"
+                                                    />
+                                                </div>
+                                                <div class="field">
+                                                    <label>Birth date *</label
+                                                    ><input
+                                                        type="text"
+                                                        placeholder="dd/mm/yyyy"
+                                                    />
+                                                </div>
+                                                <div class="field">
+                                                    <label>Phone *</label
+                                                    ><input
+                                                        type="text"
+                                                        placeholder="(00) 00000-0000"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </section>
+
+                                        <section class="form-section">
+                                            <h3 class="section-label">
+                                                Optional
+                                            </h3>
+                                            <div class="field-grid">
+                                                <div class="field">
+                                                    <label>Social name</label
+                                                    ><input
+                                                        type="text"
+                                                        placeholder="—"
+                                                    />
+                                                </div>
+                                                <div class="field">
+                                                    <label>Nickname</label
+                                                    ><input
+                                                        type="text"
+                                                        placeholder="—"
+                                                    />
+                                                </div>
+                                                <div class="field">
+                                                    <label>Profession</label
+                                                    ><input
+                                                        type="text"
+                                                        placeholder="—"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div class="field-grid addr">
+                                                <div class="field grow">
+                                                    <label>Street</label
+                                                    ><input
+                                                        type="text"
+                                                        placeholder="Rua ..."
+                                                    />
+                                                </div>
+                                                <div class="field sm">
+                                                    <label>Number</label
+                                                    ><input
+                                                        type="text"
+                                                        placeholder="123"
+                                                    />
+                                                </div>
+                                                <div class="field">
+                                                    <label>Neighborhood</label
+                                                    ><input
+                                                        type="text"
+                                                        placeholder="—"
+                                                    />
+                                                </div>
+                                                <div class="field">
+                                                    <label>City</label
+                                                    ><input
+                                                        type="text"
+                                                        placeholder="Rosário do Sul"
+                                                    />
+                                                </div>
+                                                <div class="field sm">
+                                                    <label>State</label
+                                                    ><input
+                                                        type="text"
+                                                        placeholder="RS"
+                                                    />
+                                                </div>
+                                                <div class="field sm">
+                                                    <label>ZIP</label
+                                                    ><input
+                                                        type="text"
+                                                        placeholder="00000-000"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </form>
+                                </div>
+
+                                <div class="save-bar">
+                                    <span class="save-hint"
+                                        >A temporary password will be emailed to
+                                        the member.
+                                        <span class="wf-marker">4</span></span
+                                    >
+                                    <div class="save-actions">
+                                        <button type="button" class="btn ghost">
+                                            Cancel
+                                        </button>
+                                        <button
+                                            type="button"
+                                            class="btn primary"
+                                        >
+                                            Save member
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wf-annotations">
+                    <h3>UX Notes</h3>
+                    <ul>
+                        <li>
+                            ① Familiar sidebar-shell layout — identical to the
+                            existing app, so admins need zero relearning.
+                        </li>
+                        <li>
+                            ② Required fields grouped and marked first so the
+                            fastest path (name, CPF, email, birth, phone) is
+                            always visible on load.
+                        </li>
+                        <li>
+                            ③ Persistent save bar keeps the primary action
+                            reachable no matter how far the admin scrolls.
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="app-body wizard-body">
-              <div class="wizard-head">
-                <h1 class="page-title">Register member</h1>
-                <span class="wizard-count">Step 2 of 3</span>
-              </div>
 
-              <ol class="stepper" >
-                <li class="step done"><span class="step-dot">✓</span><span class="step-name">Personal</span></li>
-                <li class="step current"><span class="step-dot">2</span><span class="step-name">Address &amp; extra <span class="wf-marker">1</span></span></li>
-                <li class="step"><span class="step-dot">3</span><span class="step-name">Review</span></li>
-              </ol>
-              <div class="progress-track"><div class="progress-fill" style="width:66%"></div></div>
-
-              <div class="wizard-card">
-                <h3 class="section-label">Address <span class="wf-marker">2</span></h3>
-                <div class="field-grid addr">
-                  <div class="field grow"><label>Street</label><input type="text" placeholder="Rua Marechal Floriano"></div>
-                  <div class="field sm"><label>Number</label><input type="text" placeholder="240"></div>
-                  <div class="field"><label>Neighborhood</label><input type="text" placeholder="Centro"></div>
-                  <div class="field"><label>City</label><input type="text" placeholder="Rosário do Sul"></div>
-                  <div class="field sm"><label>State</label><input type="text" placeholder="RS"></div>
-                  <div class="field sm"><label>ZIP</label><input type="text" placeholder="97590-000"></div>
+            <!-- ===== OPTION 2 ===== -->
+            <div class="option-panel" id="option-2">
+                <h2>Option 2: <span class="opt-name">Step Flow</span></h2>
+                <p class="option-description">
+                    Breaks registration into 3 guided steps (Personal → Address
+                    & Extra → Review) with a progress bar, reducing perceived
+                    effort and catching errors before submission.
+                </p>
+                <div class="sub-tab-bar" id="frame-opt2-tabs">
+                    <button
+                        class="sub-tab-btn active"
+                        data-variant="wireframe"
+                        data-frame="frame-opt2"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="1em"
+                            height="1em"
+                            viewBox="0 0 48 48"
+                        >
+                            <defs>
+                                <mask id="ipTsketch2">
+                                    <g
+                                        fill="#555"
+                                        stroke="#fff"
+                                        stroke-linejoin="round"
+                                        stroke-width="4"
+                                    >
+                                        <rect
+                                            width="36"
+                                            height="36"
+                                            x="6"
+                                            y="6"
+                                            rx="3"
+                                        />
+                                        <path
+                                            stroke-linecap="round"
+                                            d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"
+                                        />
+                                    </g>
+                                </mask>
+                            </defs>
+                            <path
+                                fill="currentColor"
+                                d="M0 0h48v48H0z"
+                                mask="url(#ipTsketch2)"
+                            />
+                        </svg>
+                        <span class="sub-tab-label">Wireframe</span>
+                    </button>
+                    <button
+                        class="sub-tab-btn"
+                        data-variant="clean"
+                        data-frame="frame-opt2"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="1em"
+                            height="1em"
+                            viewBox="0 0 48 48"
+                        >
+                            <defs>
+                                <mask id="ipTpaint2">
+                                    <g
+                                        fill="none"
+                                        stroke="#fff"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="4"
+                                    >
+                                        <path
+                                            d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"
+                                        />
+                                        <path
+                                            fill="#555"
+                                            d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"
+                                        />
+                                    </g>
+                                </mask>
+                            </defs>
+                            <path
+                                fill="currentColor"
+                                d="M0 0h48v48H0z"
+                                mask="url(#ipTpaint2)"
+                            />
+                        </svg>
+                        <span class="sub-tab-label">Clean</span>
+                        <span class="sub-tab-badge">generating...</span>
+                    </button>
+                    <button
+                        class="sub-tab-btn"
+                        data-variant="polished"
+                        data-frame="frame-opt2"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="1em"
+                            height="1em"
+                            viewBox="0 0 48 48"
+                        >
+                            <defs>
+                                <mask id="ipTdiamond2">
+                                    <path
+                                        fill="#555"
+                                        stroke="#fff"
+                                        stroke-width="4"
+                                        d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"
+                                    />
+                                </mask>
+                            </defs>
+                            <path
+                                fill="currentColor"
+                                d="M0 0h48v48H0z"
+                                mask="url(#ipTdiamond2)"
+                            />
+                        </svg>
+                        <span class="sub-tab-label">Polished</span>
+                        <span class="sub-tab-badge">generating...</span>
+                    </button>
                 </div>
+                <div class="browser-frame wireframe" id="frame-opt2">
+                    <div class="browser-chrome">
+                        <div class="browser-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <div class="browser-url">yourapp.com/members/new</div>
+                        <div class="browser-controls">─ □ ✕</div>
+                    </div>
+                    <div class="browser-content">
+                        <div class="app-shell">
+                            <aside class="app-sidebar">
+                                <div class="sidebar-switcher">
+                                    <div class="switch-avatar">RS</div>
+                                    <div class="switch-meta">
+                                        <strong>Rosário do Sul</strong
+                                        ><span>Community</span>
+                                    </div>
+                                    <span class="switch-caret">⌄</span>
+                                </div>
+                                <nav class="sidebar-nav">
+                                    <a href="../1007-dashboard/index.html"
+                                        >▤ Dashboard</a
+                                    >
+                                    <a href="#" class="nav-active"
+                                        >☰ Members</a
+                                    >
+                                    <a href="../1007-communities/index.html"
+                                        >◆ Communities</a
+                                    >
+                                    <a href="../1007-administrations/index.html"
+                                        >◷ Administrations</a
+                                    >
+                                    <a href="../1007-contributions/index.html"
+                                        >$ Contributions</a
+                                    >
+                                    <a href="../1007-meetings/index.html"
+                                        >▦ Meetings</a
+                                    >
+                                    <a href="../1007-bylaws/index.html"
+                                        >§ Bylaws</a
+                                    >
+                                </nav>
+                                <div class="sidebar-foot">
+                                    <div class="switch-avatar sm">AD</div>
+                                    <span>Ana Diniz</span>
+                                </div>
+                            </aside>
 
-                <h3 class="section-label">Community fields <span class="wf-marker">3</span></h3>
-                <div class="field-grid">
-                  <div class="field"><label>Quilombola Registry</label><input type="text" placeholder="Text"></div>
-                  <div class="field"><label>CRQ number</label><input type="text" placeholder="Number"></div>
-                  <div class="field"><label>Entry date</label><input type="text" placeholder="dd/mm/yyyy"></div>
-                </div>
-              </div>
+                            <div class="app-main">
+                                <div class="app-topbar">
+                                    <span class="crumb"
+                                        >Members
+                                        <span class="crumb-sep">/</span>
+                                        <b>New member</b></span
+                                    >
+                                </div>
+                                <div class="app-body wizard-body">
+                                    <div class="wizard-head">
+                                        <h1 class="page-title">
+                                            Register member
+                                        </h1>
+                                        <span class="wizard-count"
+                                            >Step 2 of 3</span
+                                        >
+                                    </div>
 
-              <div class="wizard-nav">
-                <button type="button" class="btn ghost">← Back</button>
-                <div class="wizard-nav-right">
-                  <button type="button" class="btn link">Save draft</button>
-                  <button type="button" class="btn primary">Continue → <span class="wf-marker">4</span></button>
+                                    <ol class="stepper">
+                                        <li class="step done">
+                                            <span class="step-dot">✓</span
+                                            ><span class="step-name"
+                                                >Personal</span
+                                            >
+                                        </li>
+                                        <li class="step current">
+                                            <span class="step-dot">2</span
+                                            ><span class="step-name"
+                                                >Address &amp; extra
+                                                <span class="wf-marker"
+                                                    >1</span
+                                                ></span
+                                            >
+                                        </li>
+                                        <li class="step">
+                                            <span class="step-dot">3</span
+                                            ><span class="step-name"
+                                                >Review</span
+                                            >
+                                        </li>
+                                    </ol>
+                                    <div class="progress-track">
+                                        <div
+                                            class="progress-fill"
+                                            style="width: 66%"
+                                        ></div>
+                                    </div>
+
+                                    <div class="wizard-card">
+                                        <h3 class="section-label">
+                                            Address
+                                            <span class="wf-marker">2</span>
+                                        </h3>
+                                        <div class="field-grid addr">
+                                            <div class="field grow">
+                                                <label>Street</label
+                                                ><input
+                                                    type="text"
+                                                    placeholder="Rua Marechal Floriano"
+                                                />
+                                            </div>
+                                            <div class="field sm">
+                                                <label>Number</label
+                                                ><input
+                                                    type="text"
+                                                    placeholder="240"
+                                                />
+                                            </div>
+                                            <div class="field">
+                                                <label>Neighborhood</label
+                                                ><input
+                                                    type="text"
+                                                    placeholder="Centro"
+                                                />
+                                            </div>
+                                            <div class="field">
+                                                <label>City</label
+                                                ><input
+                                                    type="text"
+                                                    placeholder="Rosário do Sul"
+                                                />
+                                            </div>
+                                            <div class="field sm">
+                                                <label>State</label
+                                                ><input
+                                                    type="text"
+                                                    placeholder="RS"
+                                                />
+                                            </div>
+                                            <div class="field sm">
+                                                <label>ZIP</label
+                                                ><input
+                                                    type="text"
+                                                    placeholder="97590-000"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="wizard-nav">
+                                        <button type="button" class="btn ghost">
+                                            ← Back
+                                        </button>
+                                        <div class="wizard-nav-right">
+                                            <button
+                                                type="button"
+                                                class="btn link"
+                                            >
+                                                Save draft
+                                            </button>
+                                            <button
+                                                type="button"
+                                                class="btn primary"
+                                            >
+                                                Continue →
+                                                <span class="wf-marker">4</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+                <div class="wf-annotations">
+                    <h3>UX Notes</h3>
+                    <ul>
+                        <li>
+                            ① Three short steps (Personal → Address &amp; extra
+                            → Review) make a long registration feel light and
+                            reduce abandonment.
+                        </li>
+                        <li>
+                            ② Each step validates before advancing, so errors
+                            surface early instead of on final submit.
+                        </li>
+                        <li>
+                            ③ Explicit progress bar + step count set
+                            expectations; "Save draft" prevents loss on
+                            interruption.
+                        </li>
+                    </ul>
+                </div>
             </div>
-          </div>
+
+            <!-- ===== OPTION 3 ===== -->
+            <div class="option-panel" id="option-3">
+                <h2>Option 3: <span class="opt-name">Split View</span></h2>
+                <p class="option-description">
+                    Member directory on the left, add/edit form in a right-hand
+                    panel — admins register many members in one place without
+                    losing context of the roster.
+                </p>
+                <div class="sub-tab-bar" id="frame-opt3-tabs">
+                    <button
+                        class="sub-tab-btn active"
+                        data-variant="wireframe"
+                        data-frame="frame-opt3"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="1em"
+                            height="1em"
+                            viewBox="0 0 48 48"
+                        >
+                            <defs>
+                                <mask id="ipTsketch3">
+                                    <g
+                                        fill="#555"
+                                        stroke="#fff"
+                                        stroke-linejoin="round"
+                                        stroke-width="4"
+                                    >
+                                        <rect
+                                            width="36"
+                                            height="36"
+                                            x="6"
+                                            y="6"
+                                            rx="3"
+                                        />
+                                        <path
+                                            stroke-linecap="round"
+                                            d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"
+                                        />
+                                    </g>
+                                </mask>
+                            </defs>
+                            <path
+                                fill="currentColor"
+                                d="M0 0h48v48H0z"
+                                mask="url(#ipTsketch3)"
+                            />
+                        </svg>
+                        <span class="sub-tab-label">Wireframe</span>
+                    </button>
+                    <button
+                        class="sub-tab-btn"
+                        data-variant="clean"
+                        data-frame="frame-opt3"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="1em"
+                            height="1em"
+                            viewBox="0 0 48 48"
+                        >
+                            <defs>
+                                <mask id="ipTpaint3">
+                                    <g
+                                        fill="none"
+                                        stroke="#fff"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="4"
+                                    >
+                                        <path
+                                            d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"
+                                        />
+                                        <path
+                                            fill="#555"
+                                            d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"
+                                        />
+                                    </g>
+                                </mask>
+                            </defs>
+                            <path
+                                fill="currentColor"
+                                d="M0 0h48v48H0z"
+                                mask="url(#ipTpaint3)"
+                            />
+                        </svg>
+                        <span class="sub-tab-label">Clean</span>
+                        <span class="sub-tab-badge">generating...</span>
+                    </button>
+                    <button
+                        class="sub-tab-btn"
+                        data-variant="polished"
+                        data-frame="frame-opt3"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="1em"
+                            height="1em"
+                            viewBox="0 0 48 48"
+                        >
+                            <defs>
+                                <mask id="ipTdiamond3">
+                                    <path
+                                        fill="#555"
+                                        stroke="#fff"
+                                        stroke-width="4"
+                                        d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"
+                                    />
+                                </mask>
+                            </defs>
+                            <path
+                                fill="currentColor"
+                                d="M0 0h48v48H0z"
+                                mask="url(#ipTdiamond3)"
+                            />
+                        </svg>
+                        <span class="sub-tab-label">Polished</span>
+                        <span class="sub-tab-badge">generating...</span>
+                    </button>
+                </div>
+                <div class="browser-frame wireframe" id="frame-opt3">
+                    <div class="browser-chrome">
+                        <div class="browser-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <div class="browser-url">yourapp.com/members/new</div>
+                        <div class="browser-controls">─ □ ✕</div>
+                    </div>
+                    <div class="browser-content">
+                        <div class="app-shell">
+                            <aside class="app-sidebar">
+                                <div class="sidebar-switcher">
+                                    <div class="switch-avatar">RS</div>
+                                    <div class="switch-meta">
+                                        <strong>Rosário do Sul</strong
+                                        ><span>Community</span>
+                                    </div>
+                                    <span class="switch-caret">⌄</span>
+                                </div>
+                                <nav class="sidebar-nav">
+                                    <a href="../1007-dashboard/index.html"
+                                        >▤ Dashboard</a
+                                    >
+                                    <a href="#" class="nav-active"
+                                        >☰ Members</a
+                                    >
+                                    <a href="../1007-communities/index.html"
+                                        >◆ Communities</a
+                                    >
+                                    <a href="../1007-administrations/index.html"
+                                        >◷ Administrations</a
+                                    >
+                                    <a href="../1007-contributions/index.html"
+                                        >$ Contributions</a
+                                    >
+                                    <a href="../1007-meetings/index.html"
+                                        >▦ Meetings</a
+                                    >
+                                    <a href="../1007-bylaws/index.html"
+                                        >§ Bylaws</a
+                                    >
+                                </nav>
+                                <div class="sidebar-foot">
+                                    <div class="switch-avatar sm">AD</div>
+                                    <span>Ana Diniz</span>
+                                </div>
+                            </aside>
+
+                            <div class="app-main">
+                                <div class="app-topbar">
+                                    <span class="crumb">Members</span>
+                                    <button
+                                        type="button"
+                                        class="btn primary sm"
+                                    >
+                                        + New member
+                                    </button>
+                                </div>
+
+                                <div class="split">
+                                    <div class="split-list">
+                                        <div class="list-toolbar">
+                                            <input
+                                                type="text"
+                                                class="search"
+                                                placeholder="Search 128 members… (Ctrl+K)"
+                                            />
+                                        </div>
+                                        <ul class="member-list">
+                                            <li class="member-row">
+                                                <span class="ava">MS</span
+                                                ><span class="m-meta"
+                                                    ><b>Maria da Silva</b
+                                                    ><small
+                                                        >maria@email.com</small
+                                                    ></span
+                                                >
+                                            </li>
+                                            <li class="member-row">
+                                                <span class="ava">JC</span
+                                                ><span class="m-meta"
+                                                    ><b>João Carlos</b
+                                                    ><small
+                                                        >joao@email.com</small
+                                                    ></span
+                                                >
+                                            </li>
+                                            <li class="member-row selected">
+                                                <span class="ava">NP</span
+                                                ><span class="m-meta"
+                                                    ><b>New member</b
+                                                    ><small
+                                                        >Draft — unsaved</small
+                                                    ></span
+                                                ><span class="row-badge"
+                                                    >editing</span
+                                                >
+                                            </li>
+                                            <li class="member-row">
+                                                <span class="ava">RA</span
+                                                ><span class="m-meta"
+                                                    ><b>Rita Alves</b
+                                                    ><small
+                                                        >rita@email.com</small
+                                                    ></span
+                                                >
+                                            </li>
+                                            <li class="member-row">
+                                                <span class="ava">PL</span
+                                                ><span class="m-meta"
+                                                    ><b>Paulo Lima</b
+                                                    ><small
+                                                        >paulo@email.com</small
+                                                    ></span
+                                                >
+                                            </li>
+                                            <li class="member-row">
+                                                <span class="ava">CS</span
+                                                ><span class="m-meta"
+                                                    ><b>Carla Souza</b
+                                                    ><small
+                                                        >carla@email.com</small
+                                                    ></span
+                                                >
+                                            </li>
+                                        </ul>
+                                        <span class="list-hint"
+                                            >Select a member to edit, or add a
+                                            new one.
+                                            <span class="wf-marker"
+                                                >1</span
+                                            ></span
+                                        >
+                                    </div>
+
+                                    <div class="split-detail">
+                                        <div class="detail-head">
+                                            <h2 class="detail-title">
+                                                New member
+                                                <span class="wf-marker">2</span>
+                                            </h2>
+                                            <span class="detail-status"
+                                                >Unsaved</span
+                                            >
+                                        </div>
+                                        <div class="detail-scroll">
+                                            <h3 class="section-label">
+                                                Required
+                                            </h3>
+                                            <div class="field-grid two">
+                                                <div class="field">
+                                                    <label>Full name *</label
+                                                    ><input
+                                                        type="text"
+                                                        placeholder="Maria da Silva"
+                                                    />
+                                                </div>
+                                                <div class="field">
+                                                    <label>CPF *</label
+                                                    ><input
+                                                        type="text"
+                                                        placeholder="000.000.000-00"
+                                                    />
+                                                </div>
+                                                <div class="field">
+                                                    <label>Email *</label
+                                                    ><input
+                                                        type="text"
+                                                        placeholder="maria@email.com"
+                                                    />
+                                                </div>
+                                                <div class="field">
+                                                    <label>Birth date *</label
+                                                    ><input
+                                                        type="text"
+                                                        placeholder="dd/mm/yyyy"
+                                                    />
+                                                </div>
+                                                <div class="field">
+                                                    <label>Phone *</label
+                                                    ><input
+                                                        type="text"
+                                                        placeholder="(00) 00000-0000"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <h3 class="section-label">
+                                                Optional
+                                            </h3>
+                                            <div class="field-grid two">
+                                                <div class="field">
+                                                    <label>Social name</label
+                                                    ><input
+                                                        type="text"
+                                                        placeholder="—"
+                                                    />
+                                                </div>
+                                                <div class="field">
+                                                    <label>Profession</label
+                                                    ><input
+                                                        type="text"
+                                                        placeholder="—"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="detail-foot">
+                                            <button
+                                                type="button"
+                                                class="btn ghost"
+                                            >
+                                                Clear
+                                            </button>
+                                            <div class="detail-foot-right">
+                                                <label class="chk"
+                                                    ><input
+                                                        type="checkbox"
+                                                        checked
+                                                    />
+                                                    Save &amp; add another
+                                                    <span class="wf-marker"
+                                                        >4</span
+                                                    ></label
+                                                >
+                                                <button
+                                                    type="button"
+                                                    class="btn primary"
+                                                >
+                                                    Save member
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wf-annotations">
+                    <h3>UX Notes</h3>
+                    <ul>
+                        <li>
+                            ① Roster stays visible while adding — admins never
+                            lose context and can spot duplicates before creating
+                            one.
+                        </li>
+                        <li>
+                            ② The same panel edits existing members and creates
+                            new ones, so one screen covers the whole lifecycle.
+                        </li>
+                        <li>
+                            ③ "Save &amp; add another" clears the panel and
+                            refocuses the first field — the core
+                            efficient-data-entry loop.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ===== OPTION 4 ===== -->
+            <div class="option-panel" id="option-4">
+                <h2>Option 4: <span class="opt-name">Command Bar</span></h2>
+                <p class="option-description">
+                    A keyboard-first command palette drives everything — search
+                    a member or type "add" to open an inline form. Optimized for
+                    power admins doing bulk entry.
+                </p>
+                <div class="sub-tab-bar" id="frame-opt4-tabs">
+                    <button
+                        class="sub-tab-btn active"
+                        data-variant="wireframe"
+                        data-frame="frame-opt4"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="1em"
+                            height="1em"
+                            viewBox="0 0 48 48"
+                        >
+                            <defs>
+                                <mask id="ipTsketch4">
+                                    <g
+                                        fill="#555"
+                                        stroke="#fff"
+                                        stroke-linejoin="round"
+                                        stroke-width="4"
+                                    >
+                                        <rect
+                                            width="36"
+                                            height="36"
+                                            x="6"
+                                            y="6"
+                                            rx="3"
+                                        />
+                                        <path
+                                            stroke-linecap="round"
+                                            d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"
+                                        />
+                                    </g>
+                                </mask>
+                            </defs>
+                            <path
+                                fill="currentColor"
+                                d="M0 0h48v48H0z"
+                                mask="url(#ipTsketch4)"
+                            />
+                        </svg>
+                        <span class="sub-tab-label">Wireframe</span>
+                    </button>
+                    <button
+                        class="sub-tab-btn"
+                        data-variant="clean"
+                        data-frame="frame-opt4"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="1em"
+                            height="1em"
+                            viewBox="0 0 48 48"
+                        >
+                            <defs>
+                                <mask id="ipTpaint4">
+                                    <g
+                                        fill="none"
+                                        stroke="#fff"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="4"
+                                    >
+                                        <path
+                                            d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"
+                                        />
+                                        <path
+                                            fill="#555"
+                                            d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"
+                                        />
+                                    </g>
+                                </mask>
+                            </defs>
+                            <path
+                                fill="currentColor"
+                                d="M0 0h48v48H0z"
+                                mask="url(#ipTpaint4)"
+                            />
+                        </svg>
+                        <span class="sub-tab-label">Clean</span>
+                        <span class="sub-tab-badge">generating...</span>
+                    </button>
+                    <button
+                        class="sub-tab-btn"
+                        data-variant="polished"
+                        data-frame="frame-opt4"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="1em"
+                            height="1em"
+                            viewBox="0 0 48 48"
+                        >
+                            <defs>
+                                <mask id="ipTdiamond4">
+                                    <path
+                                        fill="#555"
+                                        stroke="#fff"
+                                        stroke-width="4"
+                                        d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"
+                                    />
+                                </mask>
+                            </defs>
+                            <path
+                                fill="currentColor"
+                                d="M0 0h48v48H0z"
+                                mask="url(#ipTdiamond4)"
+                            />
+                        </svg>
+                        <span class="sub-tab-label">Polished</span>
+                        <span class="sub-tab-badge">generating...</span>
+                    </button>
+                </div>
+                <div class="browser-frame wireframe" id="frame-opt4">
+                    <div class="browser-chrome">
+                        <div class="browser-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <div class="browser-url">yourapp.com/members/new</div>
+                        <div class="browser-controls">─ □ ✕</div>
+                    </div>
+                    <div class="browser-content">
+                        <div class="app-shell">
+                            <aside class="app-sidebar">
+                                <div class="sidebar-switcher">
+                                    <div class="switch-avatar">RS</div>
+                                    <div class="switch-meta">
+                                        <strong>Rosário do Sul</strong
+                                        ><span>Community</span>
+                                    </div>
+                                    <span class="switch-caret">⌄</span>
+                                </div>
+                                <nav class="sidebar-nav">
+                                    <a href="../1007-dashboard/index.html"
+                                        >▤ Dashboard</a
+                                    >
+                                    <a href="#" class="nav-active"
+                                        >☰ Members</a
+                                    >
+                                    <a href="../1007-communities/index.html"
+                                        >◆ Communities</a
+                                    >
+                                    <a href="../1007-administrations/index.html"
+                                        >◷ Administrations</a
+                                    >
+                                    <a href="../1007-contributions/index.html"
+                                        >$ Contributions</a
+                                    >
+                                    <a href="../1007-meetings/index.html"
+                                        >▦ Meetings</a
+                                    >
+                                    <a href="../1007-bylaws/index.html"
+                                        >§ Bylaws</a
+                                    >
+                                </nav>
+                                <div class="sidebar-foot">
+                                    <div class="switch-avatar sm">AD</div>
+                                    <span>Ana Diniz</span>
+                                </div>
+                            </aside>
+
+                            <div class="app-main cmd-dim">
+                                <div class="app-topbar">
+                                    <span class="crumb">Members</span>
+                                    <span class="kbd-hint"
+                                        >Press <kbd>Ctrl</kbd
+                                        ><kbd>K</kbd> anywhere</span
+                                    >
+                                </div>
+                                <div class="app-body cmd-backdrop">
+                                    <ul class="ghost-list">
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                    </ul>
+
+                                    <div class="cmd-palette">
+                                        <div class="cmd-input-row">
+                                            <span class="cmd-caret">⌘</span>
+                                            <input
+                                                type="text"
+                                                class="cmd-input"
+                                                placeholder="Search members or type a command…"
+                                                value="add "
+                                            />
+                                            <span class="wf-marker">1</span>
+                                        </div>
+                                        <div class="cmd-results">
+                                            <div class="cmd-group-label">
+                                                Actions
+                                            </div>
+                                            <div class="cmd-item active">
+                                                <span class="cmd-ic">＋</span
+                                                ><span>Add new member</span
+                                                ><span class="cmd-enter"
+                                                    >↵</span
+                                                >
+                                            </div>
+                                            <div class="cmd-item">
+                                                <span class="cmd-ic">⬆</span
+                                                ><span
+                                                    >Import members from
+                                                    CSV</span
+                                                >
+                                            </div>
+                                            <div class="cmd-group-label">
+                                                Matching members
+                                                <span class="wf-marker">2</span>
+                                            </div>
+                                            <div class="cmd-item">
+                                                <span class="cmd-ic">MA</span
+                                                ><span>Maria Addário</span
+                                                ><span class="cmd-sub"
+                                                    >maria.a@email.com</span
+                                                >
+                                            </div>
+                                            <div class="cmd-item">
+                                                <span class="cmd-ic">AD</span
+                                                ><span>Adão Ferreira</span
+                                                ><span class="cmd-sub"
+                                                    >adao@email.com</span
+                                                >
+                                            </div>
+                                        </div>
+                                        <div class="cmd-inline-form">
+                                            <div class="cmd-form-title">
+                                                New member — quick add
+                                                <span class="wf-marker">3</span>
+                                            </div>
+                                            <div class="field-grid two tight">
+                                                <div class="field">
+                                                    <label>Full name *</label
+                                                    ><input
+                                                        type="text"
+                                                        placeholder="Type and press Tab"
+                                                    />
+                                                </div>
+                                                <div class="field">
+                                                    <label>CPF *</label
+                                                    ><input
+                                                        type="text"
+                                                        placeholder="000.000.000-00"
+                                                    />
+                                                </div>
+                                                <div class="field">
+                                                    <label>Email *</label
+                                                    ><input
+                                                        type="text"
+                                                        placeholder="name@email.com"
+                                                    />
+                                                </div>
+                                                <div class="field">
+                                                    <label>Phone *</label
+                                                    ><input
+                                                        type="text"
+                                                        placeholder="(00) 00000-0000"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div class="cmd-form-foot">
+                                                <span class="cmd-foot-hint"
+                                                    ><kbd>Tab</kbd> to move ·
+                                                    <kbd>⌘</kbd><kbd>↵</kbd> to
+                                                    save
+                                                    <span class="wf-marker"
+                                                        >4</span
+                                                    ></span
+                                                >
+                                                <button
+                                                    type="button"
+                                                    class="btn primary sm"
+                                                >
+                                                    Save &amp; continue
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wf-annotations">
+                    <h3>UX Notes</h3>
+                    <ul>
+                        <li>
+                            ① One input does search and commands — typing "add"
+                            surfaces the create action without navigating
+                            anywhere.
+                        </li>
+                        <li>
+                            ② Live member matches appear as you type, preventing
+                            duplicate registrations at the point of entry.
+                        </li>
+                        <li>
+                            ③ Quick-add captures only the 4 required fields
+                            inline; optional fields open in a full editor
+                            afterward.
+                        </li>
+                        <li>
+                            ④ Fully keyboard-driven (Tab / ⌘↵) for power admins
+                            entering many members — but discoverable via the
+                            visible Ctrl+K hint.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ===== OPTION 5 ===== -->
+            <div class="option-panel" id="option-5">
+                <h2>Option 5: <span class="opt-name">Rapid Entry</span></h2>
+                <p class="option-description">
+                    A dense single-screen grid of all fields with a "save &amp;
+                    add another" loop — built for entering a stack of paper
+                    forms as fast as possible.
+                </p>
+                <div class="sub-tab-bar" id="frame-opt5-tabs">
+                    <button
+                        class="sub-tab-btn active"
+                        data-variant="wireframe"
+                        data-frame="frame-opt5"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="1em"
+                            height="1em"
+                            viewBox="0 0 48 48"
+                        >
+                            <defs>
+                                <mask id="ipTsketch5">
+                                    <g
+                                        fill="#555"
+                                        stroke="#fff"
+                                        stroke-linejoin="round"
+                                        stroke-width="4"
+                                    >
+                                        <rect
+                                            width="36"
+                                            height="36"
+                                            x="6"
+                                            y="6"
+                                            rx="3"
+                                        />
+                                        <path
+                                            stroke-linecap="round"
+                                            d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"
+                                        />
+                                    </g>
+                                </mask>
+                            </defs>
+                            <path
+                                fill="currentColor"
+                                d="M0 0h48v48H0z"
+                                mask="url(#ipTsketch5)"
+                            />
+                        </svg>
+                        <span class="sub-tab-label">Wireframe</span>
+                    </button>
+                    <button
+                        class="sub-tab-btn"
+                        data-variant="clean"
+                        data-frame="frame-opt5"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="1em"
+                            height="1em"
+                            viewBox="0 0 48 48"
+                        >
+                            <defs>
+                                <mask id="ipTpaint5">
+                                    <g
+                                        fill="none"
+                                        stroke="#fff"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="4"
+                                    >
+                                        <path
+                                            d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"
+                                        />
+                                        <path
+                                            fill="#555"
+                                            d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"
+                                        />
+                                    </g>
+                                </mask>
+                            </defs>
+                            <path
+                                fill="currentColor"
+                                d="M0 0h48v48H0z"
+                                mask="url(#ipTpaint5)"
+                            />
+                        </svg>
+                        <span class="sub-tab-label">Clean</span>
+                        <span class="sub-tab-badge">generating...</span>
+                    </button>
+                    <button
+                        class="sub-tab-btn"
+                        data-variant="polished"
+                        data-frame="frame-opt5"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="1em"
+                            height="1em"
+                            viewBox="0 0 48 48"
+                        >
+                            <defs>
+                                <mask id="ipTdiamond5">
+                                    <path
+                                        fill="#555"
+                                        stroke="#fff"
+                                        stroke-width="4"
+                                        d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"
+                                    />
+                                </mask>
+                            </defs>
+                            <path
+                                fill="currentColor"
+                                d="M0 0h48v48H0z"
+                                mask="url(#ipTdiamond5)"
+                            />
+                        </svg>
+                        <span class="sub-tab-label">Polished</span>
+                        <span class="sub-tab-badge">generating...</span>
+                    </button>
+                </div>
+                <div class="browser-frame wireframe" id="frame-opt5">
+                    <div class="browser-chrome">
+                        <div class="browser-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <div class="browser-url">yourapp.com/members/new</div>
+                        <div class="browser-controls">─ □ ✕</div>
+                    </div>
+                    <div class="browser-content">
+                        <div class="app-shell">
+                            <aside class="app-sidebar">
+                                <div class="sidebar-switcher">
+                                    <div class="switch-avatar">RS</div>
+                                    <div class="switch-meta">
+                                        <strong>Rosário do Sul</strong
+                                        ><span>Community</span>
+                                    </div>
+                                    <span class="switch-caret">⌄</span>
+                                </div>
+                                <nav class="sidebar-nav">
+                                    <a href="../1007-dashboard/index.html"
+                                        >▤ Dashboard</a
+                                    >
+                                    <a href="#" class="nav-active"
+                                        >☰ Members</a
+                                    >
+                                    <a href="../1007-communities/index.html"
+                                        >◆ Communities</a
+                                    >
+                                    <a href="../1007-administrations/index.html"
+                                        >◷ Administrations</a
+                                    >
+                                    <a href="../1007-contributions/index.html"
+                                        >$ Contributions</a
+                                    >
+                                    <a href="../1007-meetings/index.html"
+                                        >▦ Meetings</a
+                                    >
+                                    <a href="../1007-bylaws/index.html"
+                                        >§ Bylaws</a
+                                    >
+                                </nav>
+                                <div class="sidebar-foot">
+                                    <div class="switch-avatar sm">AD</div>
+                                    <span>Ana Diniz</span>
+                                </div>
+                            </aside>
+
+                            <div class="app-main">
+                                <div class="app-topbar">
+                                    <span class="crumb"
+                                        >Members
+                                        <span class="crumb-sep">/</span>
+                                        <b>Rapid entry</b></span
+                                    >
+                                    <span class="session-count"
+                                        >7 added this session
+                                        <span class="wf-marker">1</span></span
+                                    >
+                                </div>
+                                <div class="app-body rapid-body">
+                                    <div class="rapid-grid">
+                                        <div class="rapid-col">
+                                            <h3 class="section-label">
+                                                Required
+                                            </h3>
+                                            <div class="field dense">
+                                                <label>Full name *</label
+                                                ><input
+                                                    type="text"
+                                                    placeholder="Maria da Silva"
+                                                />
+                                            </div>
+                                            <div class="field dense">
+                                                <label>CPF *</label
+                                                ><input
+                                                    type="text"
+                                                    placeholder="000.000.000-00"
+                                                />
+                                            </div>
+                                            <div class="field dense">
+                                                <label>Email *</label
+                                                ><input
+                                                    type="text"
+                                                    placeholder="maria@email.com"
+                                                />
+                                            </div>
+                                            <div class="field dense">
+                                                <label>Birth date *</label
+                                                ><input
+                                                    type="text"
+                                                    placeholder="dd/mm/yyyy"
+                                                />
+                                            </div>
+                                            <div class="field dense">
+                                                <label>Phone *</label
+                                                ><input
+                                                    type="text"
+                                                    placeholder="(00) 00000-0000"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="rapid-col">
+                                            <h3 class="section-label">
+                                                Optional
+                                            </h3>
+                                            <div class="field dense">
+                                                <label>Social name</label
+                                                ><input
+                                                    type="text"
+                                                    placeholder="—"
+                                                />
+                                            </div>
+                                            <div class="field dense">
+                                                <label>Nickname</label
+                                                ><input
+                                                    type="text"
+                                                    placeholder="—"
+                                                />
+                                            </div>
+                                            <div class="field dense">
+                                                <label>Profession</label
+                                                ><input
+                                                    type="text"
+                                                    placeholder="—"
+                                                />
+                                            </div>
+                                            <div class="field dense">
+                                                <label>City / State</label
+                                                ><input
+                                                    type="text"
+                                                    placeholder="Rosário do Sul / RS"
+                                                />
+                                            </div>
+                                            <div class="field dense">
+                                                <label>ZIP</label
+                                                ><input
+                                                    type="text"
+                                                    placeholder="97590-000"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="recent-strip">
+                                        <span class="recent-label"
+                                            >Just added:</span
+                                        >
+                                        <span class="chip"
+                                            >Maria da Silva ✓</span
+                                        >
+                                        <span class="chip">João Carlos ✓</span>
+                                        <span class="chip">Rita Alves ✓</span>
+                                        <span class="chip">+4 more</span>
+                                    </div>
+                                </div>
+
+                                <div class="save-bar rapid-save">
+                                    <label class="chk"
+                                        ><input type="checkbox" checked /> Keep
+                                        values for next entry</label
+                                    >
+                                    <div class="save-actions">
+                                        <button type="button" class="btn ghost">
+                                            Finish
+                                        </button>
+                                        <button
+                                            type="button"
+                                            class="btn primary"
+                                        >
+                                            Save &amp; add another <kbd>⌘↵</kbd>
+                                            <span class="wf-marker">4</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wf-annotations">
+                    <h3>UX Notes</h3>
+                    <ul>
+                        <li>
+                            ① Session counter gives the batch-entry admin a
+                            clear sense of throughput and progress.
+                        </li>
+                        <li>
+                            ② All fields — required and optional — sit on one
+                            dense screen; no scrolling, no steps.
+                        </li>
+                        <li>
+                            ③ Predictable Tab order (down columns, then across)
+                            lets a touch-typist enter a form without the mouse.
+                        </li>
+                        <li>
+                            ④ "Save &amp; add another" (⌘↵) is the default;
+                            optionally keep shared values (e.g. city) to skip
+                            re-typing.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ===== SUMMARY ===== -->
+            <div class="option-panel" id="summary">
+                <h2>Summary &amp; Recommendation</h2>
+                <p class="option-description">
+                    Scored for <b>efficient data entry</b> — how fast and
+                    error-free an admin can register members.
+                </p>
+                <table class="summary-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Option</th>
+                            <th>Approach</th>
+                            <th>Efficient entry</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><b>Sidebar Form</b></td>
+                            <td>
+                                Single grouped form in the existing shell — zero
+                                relearning, safe baseline.
+                            </td>
+                            <td class="score">★★★☆☆</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><b>Step Flow</b></td>
+                            <td>
+                                3-step wizard with progress — great for one-off,
+                                slower for bulk.
+                            </td>
+                            <td class="score">★★☆☆☆</td>
+                        </tr>
+                        <tr class="rec-row">
+                            <td>3</td>
+                            <td>
+                                <b>Split View</b>
+                                <span class="row-badge">Recommended</span>
+                            </td>
+                            <td>
+                                Roster + edit panel with "save &amp; add
+                                another" — fast loop, keeps context.
+                            </td>
+                            <td class="score">★★★★★</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><b>Command Bar</b></td>
+                            <td>
+                                Ctrl+K palette, keyboard-first — very fast for
+                                power users, steeper learning curve.
+                            </td>
+                            <td class="score">★★★★☆</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><b>Rapid Entry</b></td>
+                            <td>
+                                Dense one-screen grid with keep-values — peak
+                                throughput for batch transcription.
+                            </td>
+                            <td class="score">★★★★☆</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="recommendation">
+                    <h3>Recommendation: Option 3 — Split View</h3>
+                    <p>
+                        Split View best serves <b>efficient data entry</b> for
+                        the typical admin: the persistent roster prevents
+                        duplicate registrations and provides context, while the
+                        "save &amp; add another" loop keeps the register-many
+                        workflow moving without page reloads. It also naturally
+                        doubles as the edit and search surface, so a single
+                        screen covers the member's whole lifecycle. If the
+                        primary user is a keyboard-heavy power admin doing
+                        high-volume batch entry,
+                        <b>Option 4 (Command Bar)</b> or
+                        <b>Option 5 (Rapid Entry)</b> are strong alternatives;
+                        <b>Option 1</b> remains the lowest-risk baseline that
+                        ships fastest on the current design system.
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="wf-annotations">
-      <h3>UX Notes</h3>
-      <ul>
-        <li>① Three short steps (Personal → Address &amp; extra → Review) make a long registration feel light and reduce abandonment.</li>
-        <li>② Each step validates before advancing, so errors surface early instead of on final submit.</li>
-        <li>③ Custom fields join the same step as address to keep the flow to three screens regardless of field count.</li>
-        <li>④ Explicit progress bar + step count set expectations; "Save draft" prevents loss on interruption.</li>
-      </ul>
-    </div>
-  </div>
 
-  <!-- ===== OPTION 3 ===== -->
-  <div class="option-panel" id="option-3">
-    <h2>Option 3: <span class="opt-name">Split View</span></h2>
-    <p class="option-description">Member directory on the left, add/edit form in a right-hand panel — admins register many members in one place without losing context of the roster.</p>
-    <div class="sub-tab-bar" id="frame-opt3-tabs">
-      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt3">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch3"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch3)"/></svg>
-        <span class="sub-tab-label">Wireframe</span>
-      </button>
-      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt3">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint3"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint3)"/></svg>
-        <span class="sub-tab-label">Clean</span>
-        <span class="sub-tab-badge">generating...</span>
-      </button>
-      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt3">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond3"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond3)"/></svg>
-        <span class="sub-tab-label">Polished</span>
-        <span class="sub-tab-badge">generating...</span>
-      </button>
-    </div>
-    <div class="browser-frame wireframe" id="frame-opt3">
-      <div class="browser-chrome">
-        <div class="browser-dots"><span></span><span></span><span></span></div>
-        <div class="browser-url">yourapp.com/members/new</div>
-        <div class="browser-controls">─ □ ✕</div>
-      </div>
-      <div class="browser-content">
-        <div class="app-shell">
-          <aside class="app-sidebar">
-            <div class="sidebar-switcher">
-              <div class="switch-avatar">RS</div>
-              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
-              <span class="switch-caret">⌄</span>
-            </div>
-            <nav class="sidebar-nav">
-              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
-              <a href="#" class="nav-active">☰ Members</a>
-              <a href="../1007-communities/index.html">◆ Communities</a>
-              <a href="../1007-administrations/index.html">◷ Administrations</a>
-              <a href="../1007-contributions/index.html">$ Contributions</a>
-              <a href="../1007-meetings/index.html">▦ Meetings</a>
-              <a href="../1007-bylaws/index.html">§ Bylaws</a>
-            </nav>
-            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz</span></div>
-          </aside>
+        <footer class="skill-footer">
+            This design was crafted by the
+            <a href="https://github.com/Magdoub/claude-wireframe-skill"
+                >Wireframe skill</a
+            >
+            — follow on GitHub
+        </footer>
 
-          <div class="app-main">
-            <div class="app-topbar">
-              <span class="crumb">Members</span>
-              <button type="button" class="btn primary sm">+ New member</button>
-            </div>
+        <script>
+            (function () {
+                // Main tab switching
+                var tabBtns = document.querySelectorAll('.tab-btn');
+                var panels = document.querySelectorAll('.option-panel');
+                tabBtns.forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        tabBtns.forEach(function (b) {
+                            b.classList.remove('active');
+                        });
+                        panels.forEach(function (p) {
+                            p.classList.remove('active');
+                        });
+                        btn.classList.add('active');
+                        var target = document.getElementById(btn.dataset.tab);
+                        if (target) target.classList.add('active');
+                    });
+                });
 
-            <div class="split">
-              <div class="split-list">
-                <div class="list-toolbar">
-                  <input type="text" class="search" placeholder="Search 128 members… (Ctrl+K)">
-                </div>
-                <ul class="member-list">
-                  <li class="member-row"><span class="ava">MS</span><span class="m-meta"><b>Maria da Silva</b><small>maria@email.com</small></span></li>
-                  <li class="member-row"><span class="ava">JC</span><span class="m-meta"><b>João Carlos</b><small>joao@email.com</small></span></li>
-                  <li class="member-row selected"><span class="ava">NP</span><span class="m-meta"><b>New member</b><small>Draft — unsaved</small></span><span class="row-badge">editing</span></li>
-                  <li class="member-row"><span class="ava">RA</span><span class="m-meta"><b>Rita Alves</b><small>rita@email.com</small></span></li>
-                  <li class="member-row"><span class="ava">PL</span><span class="m-meta"><b>Paulo Lima</b><small>paulo@email.com</small></span></li>
-                  <li class="member-row"><span class="ava">CS</span><span class="m-meta"><b>Carla Souza</b><small>carla@email.com</small></span></li>
-                </ul>
-                <span class="list-hint">Select a member to edit, or add a new one. <span class="wf-marker">1</span></span>
-              </div>
+                // Sub-tab switching
+                var subBtns = document.querySelectorAll('.sub-tab-btn');
+                subBtns.forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        var frameId = btn.dataset.frame;
+                        var siblings =
+                            btn.parentElement.querySelectorAll('.sub-tab-btn');
+                        siblings.forEach(function (s) {
+                            s.classList.remove('active');
+                        });
+                        btn.classList.add('active');
+                        var frame = document.getElementById(frameId);
+                        if (frame) {
+                            frame.classList.remove(
+                                'wireframe',
+                                'clean',
+                                'polished',
+                            );
+                            frame.classList.add(btn.dataset.variant);
+                        }
+                    });
+                });
 
-              <div class="split-detail">
-                <div class="detail-head">
-                  <h2 class="detail-title">New member <span class="wf-marker">2</span></h2>
-                  <span class="detail-status">Unsaved</span>
-                </div>
-                <div class="detail-scroll">
-                  <h3 class="section-label">Required</h3>
-                  <div class="field-grid two">
-                    <div class="field"><label>Full name *</label><input type="text" placeholder="Maria da Silva"></div>
-                    <div class="field"><label>CPF *</label><input type="text" placeholder="000.000.000-00"></div>
-                    <div class="field"><label>Email *</label><input type="text" placeholder="maria@email.com"></div>
-                    <div class="field"><label>Birth date *</label><input type="text" placeholder="dd/mm/yyyy"></div>
-                    <div class="field"><label>Phone *</label><input type="text" placeholder="(00) 00000-0000"></div>
-                  </div>
-                  <h3 class="section-label">Optional</h3>
-                  <div class="field-grid two">
-                    <div class="field"><label>Social name</label><input type="text" placeholder="—"></div>
-                    <div class="field"><label>Profession</label><input type="text" placeholder="—"></div>
-                  </div>
-                  <h3 class="section-label">Community fields <span class="wf-marker">3</span></h3>
-                  <div class="field-grid two">
-                    <div class="field"><label>Quilombola Registry</label><input type="text" placeholder="Text"></div>
-                    <div class="field"><label>CRQ number</label><input type="text" placeholder="Number"></div>
-                  </div>
-                </div>
-                <div class="detail-foot">
-                  <button type="button" class="btn ghost">Clear</button>
-                  <div class="detail-foot-right">
-                    <label class="chk"><input type="checkbox" checked> Save &amp; add another <span class="wf-marker">4</span></label>
-                    <button type="button" class="btn primary">Save member</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="wf-annotations">
-      <h3>UX Notes</h3>
-      <ul>
-        <li>① Roster stays visible while adding — admins never lose context and can spot duplicates before creating one.</li>
-        <li>② The same panel edits existing members and creates new ones, so one screen covers the whole lifecycle.</li>
-        <li>③ Custom fields render in the detail panel by configured type; long field sets scroll independently of the list.</li>
-        <li>④ "Save &amp; add another" clears the panel and refocuses the first field — the core efficient-data-entry loop.</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- ===== OPTION 4 ===== -->
-  <div class="option-panel" id="option-4">
-    <h2>Option 4: <span class="opt-name">Command Bar</span></h2>
-    <p class="option-description">A keyboard-first command palette drives everything — search a member or type "add" to open an inline form. Optimized for power admins doing bulk entry.</p>
-    <div class="sub-tab-bar" id="frame-opt4-tabs">
-      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt4">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch4"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch4)"/></svg>
-        <span class="sub-tab-label">Wireframe</span>
-      </button>
-      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt4">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint4"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint4)"/></svg>
-        <span class="sub-tab-label">Clean</span>
-        <span class="sub-tab-badge">generating...</span>
-      </button>
-      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt4">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond4"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond4)"/></svg>
-        <span class="sub-tab-label">Polished</span>
-        <span class="sub-tab-badge">generating...</span>
-      </button>
-    </div>
-    <div class="browser-frame wireframe" id="frame-opt4">
-      <div class="browser-chrome">
-        <div class="browser-dots"><span></span><span></span><span></span></div>
-        <div class="browser-url">yourapp.com/members/new</div>
-        <div class="browser-controls">─ □ ✕</div>
-      </div>
-      <div class="browser-content">
-        <div class="app-shell">
-          <aside class="app-sidebar">
-            <div class="sidebar-switcher">
-              <div class="switch-avatar">RS</div>
-              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
-              <span class="switch-caret">⌄</span>
-            </div>
-            <nav class="sidebar-nav">
-              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
-              <a href="#" class="nav-active">☰ Members</a>
-              <a href="../1007-communities/index.html">◆ Communities</a>
-              <a href="../1007-administrations/index.html">◷ Administrations</a>
-              <a href="../1007-contributions/index.html">$ Contributions</a>
-              <a href="../1007-meetings/index.html">▦ Meetings</a>
-              <a href="../1007-bylaws/index.html">§ Bylaws</a>
-            </nav>
-            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz</span></div>
-          </aside>
-
-          <div class="app-main cmd-dim">
-            <div class="app-topbar">
-              <span class="crumb">Members</span>
-              <span class="kbd-hint">Press <kbd>Ctrl</kbd><kbd>K</kbd> anywhere</span>
-            </div>
-            <div class="app-body cmd-backdrop">
-              <ul class="ghost-list">
-                <li></li><li></li><li></li><li></li>
-              </ul>
-
-              <div class="cmd-palette">
-                <div class="cmd-input-row">
-                  <span class="cmd-caret">⌘</span>
-                  <input type="text" class="cmd-input" placeholder="Search members or type a command…" value="add ">
-                  <span class="wf-marker">1</span>
-                </div>
-                <div class="cmd-results">
-                  <div class="cmd-group-label">Actions</div>
-                  <div class="cmd-item active"><span class="cmd-ic">＋</span><span>Add new member</span><span class="cmd-enter">↵</span></div>
-                  <div class="cmd-item"><span class="cmd-ic">⬆</span><span>Import members from CSV</span></div>
-                  <div class="cmd-group-label">Matching members <span class="wf-marker">2</span></div>
-                  <div class="cmd-item"><span class="cmd-ic">MA</span><span>Maria Addário</span><span class="cmd-sub">maria.a@email.com</span></div>
-                  <div class="cmd-item"><span class="cmd-ic">AD</span><span>Adão Ferreira</span><span class="cmd-sub">adao@email.com</span></div>
-                </div>
-                <div class="cmd-inline-form">
-                  <div class="cmd-form-title">New member — quick add <span class="wf-marker">3</span></div>
-                  <div class="field-grid two tight">
-                    <div class="field"><label>Full name *</label><input type="text" placeholder="Type and press Tab"></div>
-                    <div class="field"><label>CPF *</label><input type="text" placeholder="000.000.000-00"></div>
-                    <div class="field"><label>Email *</label><input type="text" placeholder="name@email.com"></div>
-                    <div class="field"><label>Phone *</label><input type="text" placeholder="(00) 00000-0000"></div>
-                  </div>
-                  <div class="cmd-form-foot">
-                    <span class="cmd-foot-hint"><kbd>Tab</kbd> to move · <kbd>⌘</kbd><kbd>↵</kbd> to save <span class="wf-marker">4</span></span>
-                    <button type="button" class="btn primary sm">Save &amp; continue</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="wf-annotations">
-      <h3>UX Notes</h3>
-      <ul>
-        <li>① One input does search and commands — typing "add" surfaces the create action without navigating anywhere.</li>
-        <li>② Live member matches appear as you type, preventing duplicate registrations at the point of entry.</li>
-        <li>③ Quick-add captures only the 4 required fields inline; optional and custom fields open in a full editor afterward.</li>
-        <li>④ Fully keyboard-driven (Tab / ⌘↵) for power admins entering many members — but discoverable via the visible Ctrl+K hint.</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- ===== OPTION 5 ===== -->
-  <div class="option-panel" id="option-5">
-    <h2>Option 5: <span class="opt-name">Rapid Entry</span></h2>
-    <p class="option-description">A dense single-screen grid of all fields with a "save &amp; add another" loop — built for entering a stack of paper forms as fast as possible.</p>
-    <div class="sub-tab-bar" id="frame-opt5-tabs">
-      <button class="sub-tab-btn active" data-variant="wireframe" data-frame="frame-opt5">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTsketch5"><g fill="#555" stroke="#fff" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M18.6 16h10.8l3.6 4.706L24 32l-9-11.294z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTsketch5)"/></svg>
-        <span class="sub-tab-label">Wireframe</span>
-      </button>
-      <button class="sub-tab-btn" data-variant="clean" data-frame="frame-opt5">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTpaint5"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="m15.536 22.898l9.899 9.9m-9.899-9.9L7.05 31.383a7 7 0 1 0 9.9 9.9l8.485-8.486m-9.899 0l-4.243 4.243"/><path fill="#555" d="m25.435 32.797l14.907-6.432c2.688-1.16 3.809-4.379 2.086-6.745C38.264 13.903 32.65 8.89 28.51 5.823c-2.29-1.696-5.33-.64-6.46 1.975l-6.514 15.1z"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTpaint5)"/></svg>
-        <span class="sub-tab-label">Clean</span>
-        <span class="sub-tab-badge">generating...</span>
-      </button>
-      <button class="sub-tab-btn" data-variant="polished" data-frame="frame-opt5">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipTdiamond5"><path fill="#555" stroke="#fff" stroke-width="4" d="M5.939 13.934L23.036 4.53a2 2 0 0 1 1.928 0l17.097 9.404a2 2 0 0 1 .683 2.888l-17.098 24.79a2 2 0 0 1-3.292 0L5.256 16.823a2 2 0 0 1 .683-2.888Z"/></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTdiamond5)"/></svg>
-        <span class="sub-tab-label">Polished</span>
-        <span class="sub-tab-badge">generating...</span>
-      </button>
-    </div>
-    <div class="browser-frame wireframe" id="frame-opt5">
-      <div class="browser-chrome">
-        <div class="browser-dots"><span></span><span></span><span></span></div>
-        <div class="browser-url">yourapp.com/members/new</div>
-        <div class="browser-controls">─ □ ✕</div>
-      </div>
-      <div class="browser-content">
-        <div class="app-shell">
-          <aside class="app-sidebar">
-            <div class="sidebar-switcher">
-              <div class="switch-avatar">RS</div>
-              <div class="switch-meta"><strong>Rosário do Sul</strong><span>Community</span></div>
-              <span class="switch-caret">⌄</span>
-            </div>
-            <nav class="sidebar-nav">
-              <a href="../1007-dashboard/index.html">▤ Dashboard</a>
-              <a href="#" class="nav-active">☰ Members</a>
-              <a href="../1007-communities/index.html">◆ Communities</a>
-              <a href="../1007-administrations/index.html">◷ Administrations</a>
-              <a href="../1007-contributions/index.html">$ Contributions</a>
-              <a href="../1007-meetings/index.html">▦ Meetings</a>
-              <a href="../1007-bylaws/index.html">§ Bylaws</a>
-            </nav>
-            <div class="sidebar-foot"><div class="switch-avatar sm">AD</div><span>Ana Diniz</span></div>
-          </aside>
-
-          <div class="app-main">
-            <div class="app-topbar">
-              <span class="crumb">Members <span class="crumb-sep">/</span> <b>Rapid entry</b></span>
-              <span class="session-count">7 added this session <span class="wf-marker">1</span></span>
-            </div>
-            <div class="app-body rapid-body">
-              <div class="rapid-grid">
-                <div class="rapid-col">
-                  <h3 class="section-label">Required</h3>
-                  <div class="field dense"><label>Full name *</label><input type="text" placeholder="Maria da Silva"></div>
-                  <div class="field dense"><label>CPF *</label><input type="text" placeholder="000.000.000-00"></div>
-                  <div class="field dense"><label>Email *</label><input type="text" placeholder="maria@email.com"></div>
-                  <div class="field dense"><label>Birth date *</label><input type="text" placeholder="dd/mm/yyyy"></div>
-                  <div class="field dense"><label>Phone *</label><input type="text" placeholder="(00) 00000-0000"></div>
-                </div>
-                <div class="rapid-col">
-                  <h3 class="section-label">Optional</h3>
-                  <div class="field dense"><label>Social name</label><input type="text" placeholder="—"></div>
-                  <div class="field dense"><label>Nickname</label><input type="text" placeholder="—"></div>
-                  <div class="field dense"><label>Profession</label><input type="text" placeholder="—"></div>
-                  <div class="field dense"><label>City / State</label><input type="text" placeholder="Rosário do Sul / RS"></div>
-                  <div class="field dense"><label>ZIP</label><input type="text" placeholder="97590-000"></div>
-                </div>
-                <div class="rapid-col">
-                  <h3 class="section-label">Community fields <span class="wf-marker">2</span></h3>
-                  <div class="field dense"><label>Quilombola Registry</label><input type="text" placeholder="Text"></div>
-                  <div class="field dense"><label>CRQ number</label><input type="text" placeholder="Number"></div>
-                  <div class="field dense"><label>Entry date</label><input type="text" placeholder="dd/mm/yyyy"></div>
-                  <div class="rapid-tip">Tab flows down each column, then across. <span class="wf-marker">3</span></div>
-                </div>
-              </div>
-
-              <div class="recent-strip">
-                <span class="recent-label">Just added:</span>
-                <span class="chip">Maria da Silva ✓</span>
-                <span class="chip">João Carlos ✓</span>
-                <span class="chip">Rita Alves ✓</span>
-                <span class="chip">+4 more</span>
-              </div>
-            </div>
-
-            <div class="save-bar rapid-save">
-              <label class="chk"><input type="checkbox" checked> Keep values for next entry</label>
-              <div class="save-actions">
-                <button type="button" class="btn ghost">Finish</button>
-                <button type="button" class="btn primary">Save &amp; add another <kbd>⌘↵</kbd> <span class="wf-marker">4</span></button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="wf-annotations">
-      <h3>UX Notes</h3>
-      <ul>
-        <li>① Session counter gives the batch-entry admin a clear sense of throughput and progress.</li>
-        <li>② All fields — required, optional, and custom — sit on one dense screen; no scrolling, no steps.</li>
-        <li>③ Predictable Tab order (down columns, then across) lets a touch-typist enter a form without the mouse.</li>
-        <li>④ "Save &amp; add another" (⌘↵) is the default; optionally keep shared values (e.g. city) to skip re-typing.</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- ===== SUMMARY ===== -->
-  <div class="option-panel" id="summary">
-    <h2>Summary &amp; Recommendation</h2>
-    <p class="option-description">Scored for <b>efficient data entry</b> — how fast and error-free an admin can register members.</p>
-    <table class="summary-table">
-      <thead>
-        <tr><th>#</th><th>Option</th><th>Approach</th><th>Efficient entry</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td><td><b>Sidebar Form</b></td>
-          <td>Single grouped form in the existing shell — zero relearning, safe baseline.</td>
-          <td class="score">★★★☆☆</td>
-        </tr>
-        <tr>
-          <td>2</td><td><b>Step Flow</b></td>
-          <td>3-step wizard with progress — great for one-off, slower for bulk.</td>
-          <td class="score">★★☆☆☆</td>
-        </tr>
-        <tr class="rec-row">
-          <td>3</td><td><b>Split View</b> <span class="row-badge">Recommended</span></td>
-          <td>Roster + edit panel with "save &amp; add another" — fast loop, keeps context.</td>
-          <td class="score">★★★★★</td>
-        </tr>
-        <tr>
-          <td>4</td><td><b>Command Bar</b></td>
-          <td>Ctrl+K palette, keyboard-first — very fast for power users, steeper learning curve.</td>
-          <td class="score">★★★★☆</td>
-        </tr>
-        <tr>
-          <td>5</td><td><b>Rapid Entry</b></td>
-          <td>Dense one-screen grid with keep-values — peak throughput for batch transcription.</td>
-          <td class="score">★★★★☆</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="recommendation">
-      <h3>Recommendation: Option 3 — Split View</h3>
-      <p>Split View best serves <b>efficient data entry</b> for the typical admin: the persistent roster prevents duplicate registrations and provides context, while the "save &amp; add another" loop keeps the register-many workflow moving without page reloads. It also naturally doubles as the edit and search surface, so a single screen covers the member's whole lifecycle. If the primary user is a keyboard-heavy power admin doing high-volume batch entry, <b>Option 4 (Command Bar)</b> or <b>Option 5 (Rapid Entry)</b> are strong alternatives; <b>Option 1</b> remains the lowest-risk baseline that ships fastest on the current design system.</p>
-    </div>
-  </div>
-
-</div>
-
-<footer class="skill-footer">
-  This design was crafted by the <a href="https://github.com/Magdoub/claude-wireframe-skill">Wireframe skill</a> — follow on GitHub
-</footer>
-
-<script>
-(function() {
-  // Main tab switching
-  var tabBtns = document.querySelectorAll('.tab-btn');
-  var panels = document.querySelectorAll('.option-panel');
-  tabBtns.forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      tabBtns.forEach(function(b) { b.classList.remove('active'); });
-      panels.forEach(function(p) { p.classList.remove('active'); });
-      btn.classList.add('active');
-      var target = document.getElementById(btn.dataset.tab);
-      if (target) target.classList.add('active');
-    });
-  });
-
-  // Sub-tab switching
-  var subBtns = document.querySelectorAll('.sub-tab-btn');
-  subBtns.forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var frameId = btn.dataset.frame;
-      var siblings = btn.parentElement.querySelectorAll('.sub-tab-btn');
-      siblings.forEach(function(s) { s.classList.remove('active'); });
-      btn.classList.add('active');
-      var frame = document.getElementById(frameId);
-      if (frame) {
-        frame.classList.remove('wireframe', 'clean', 'polished');
-        frame.classList.add(btn.dataset.variant);
-      }
-    });
-  });
-
-  // Completion banner — one-time load check
-  window.addEventListener('load', function() {
-    var badges = document.querySelectorAll('.sub-tab-badge');
-    var anyVisible = false;
-    badges.forEach(function(b) {
-      if (getComputedStyle(b).display !== 'none') anyVisible = true;
-    });
-    if (!anyVisible && badges.length > 0) {
-      var banner = document.getElementById('completion-banner');
-      if (banner) {
-        banner.style.display = 'block';
-        setTimeout(function() { banner.style.display = 'none'; }, 8000);
-      }
-    }
-  });
-})();
-</script>
-
-</body>
+                // Completion banner — one-time load check
+                window.addEventListener('load', function () {
+                    var badges = document.querySelectorAll('.sub-tab-badge');
+                    var anyVisible = false;
+                    badges.forEach(function (b) {
+                        if (getComputedStyle(b).display !== 'none')
+                            anyVisible = true;
+                    });
+                    if (!anyVisible && badges.length > 0) {
+                        var banner =
+                            document.getElementById('completion-banner');
+                        if (banner) {
+                            banner.style.display = 'block';
+                            setTimeout(function () {
+                                banner.style.display = 'none';
+                            }, 8000);
+                        }
+                    }
+                });
+            })();
+        </script>
+    </body>
 </html>

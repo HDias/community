@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 type BrazilState = {
     id: number;
@@ -29,20 +29,35 @@ export function useStates() {
 export function useCities(uf: string) {
     const [cities, setCities] = useState<BrazilCity[]>([]);
     const [loading, setLoading] = useState(false);
+    const fetchIdRef = useRef(0);
 
     useEffect(() => {
         if (!uf) {
-            setCities([]);
             return;
         }
 
+        const id = ++fetchIdRef.current;
+
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- loading state must be set synchronously to avoid UI flash
         setLoading(true);
+
         fetch(`/api/brasil/cities/${uf}`)
             .then((res) => res.json())
-            .then((data: BrazilCity[]) => setCities(data))
-            .catch(() => setCities([]))
-            .finally(() => setLoading(false));
+            .then((data: BrazilCity[]) => {
+                if (fetchIdRef.current === id) {
+                    setCities(data);
+                    setLoading(false);
+                }
+            })
+            .catch(() => {
+                if (fetchIdRef.current === id) {
+                    setCities([]);
+                    setLoading(false);
+                }
+            });
     }, [uf]);
 
-    return { cities, loading };
+    const resolvedCities = uf ? cities : [];
+
+    return { cities: resolvedCities, loading };
 }
