@@ -23,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CI test matrix narrowed to PHP 8.4 and 8.5 (dropped 8.3)
 - Removed stale `workos` branch from CI triggers
 
-## [0.1.0] - 2025-07-06
+## [0.1.0] - 2025-07-13
 
 ### Added
 
