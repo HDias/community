@@ -81,6 +81,10 @@ npm run format
 vendor/bin/phpstan analyse
 ```
 
+## Architecture
+
+See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the full architecture overview, domain model, folder structure, and Mermaid diagrams.
+
 ## Building for Production
 
 ```bash
