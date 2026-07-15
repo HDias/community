@@ -1,12 +1,5 @@
-import { Link } from '@inertiajs/react';
-import {
-    BookOpen,
-    Briefcase,
-    FolderGit2,
-    LayoutGrid,
-    Shield,
-    Users,
-} from 'lucide-react';
+import { Link, usePage } from '@inertiajs/react';
+import { Briefcase, LayoutGrid, Shield, Users } from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
@@ -23,41 +16,37 @@ import {
 import type { NavItem } from '@/types';
 
 export function AppSidebar() {
+    const { canManageCommunity } = usePage<{ canManageCommunity: boolean }>()
+        .props;
+
     const mainNavItems: NavItem[] = [
         {
             title: 'Dashboard',
             href: '/dashboard',
             icon: LayoutGrid,
         },
-        {
-            title: 'Communities',
-            href: '/communities',
-            icon: Users,
-        },
-        {
-            title: 'Positions',
-            href: '/positions',
-            icon: Briefcase,
-        },
-        {
-            title: 'Administrations',
-            href: '/administrations',
-            icon: Shield,
-        },
+        ...(canManageCommunity
+            ? [
+                  {
+                      title: 'Communities',
+                      href: '/communities',
+                      icon: Users,
+                  },
+                  {
+                      title: 'Positions',
+                      href: '/positions',
+                      icon: Briefcase,
+                  },
+                  {
+                      title: 'Administrations',
+                      href: '/administrations',
+                      icon: Shield,
+                  },
+              ]
+            : []),
     ];
 
-    const footerNavItems: NavItem[] = [
-        {
-            title: 'Repository',
-            href: 'https://github.com/laravel/react-starter-kit',
-            icon: FolderGit2,
-        },
-        {
-            title: 'Documentation',
-            href: 'https://laravel.com/docs/starter-kits#react',
-            icon: BookOpen,
-        },
-    ];
+    const footerNavItems: NavItem[] = [];
 
     return (
         <Sidebar collapsible="icon" variant="inset">

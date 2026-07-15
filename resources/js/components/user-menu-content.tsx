@@ -1,4 +1,4 @@
-import { Link, router } from '@inertiajs/react';
+import { Link, router, usePage } from '@inertiajs/react';
 import { LogOut, Settings } from 'lucide-react';
 import {
     DropdownMenuGroup,
@@ -18,6 +18,8 @@ type Props = {
 
 export function UserMenuContent({ user }: Props) {
     const cleanup = useMobileNavigation();
+    const { currentPosition } = usePage<{ currentPosition: string | null }>()
+        .props;
 
     const handleLogout = () => {
         cleanup();
@@ -31,6 +33,16 @@ export function UserMenuContent({ user }: Props) {
                     <UserInfo user={user} showEmail={true} />
                 </div>
             </DropdownMenuLabel>
+            {currentPosition && (
+                <>
+                    <DropdownMenuSeparator />
+                    <div className="px-2 py-1.5">
+                        <span className="text-xs font-medium text-muted-foreground">
+                            {currentPosition}
+                        </span>
+                    </div>
+                </>
+            )}
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
                 <DropdownMenuItem asChild>

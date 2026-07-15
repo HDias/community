@@ -19,6 +19,25 @@ test('positions index requires community query param to show positions', functio
         ->assertOk();
 });
 
+test('positions index auto-redirects when user has single manageable community', function () {
+    $user = User::factory()->create();
+    $community = app(CreateCommunity::class)->handle($user, ['name' => 'Only One']);
+
+    $this->actingAs($user)
+        ->get('/positions')
+        ->assertRedirect('/positions?community='.$community->id);
+});
+
+test('positions index does not redirect when user has multiple manageable communities', function () {
+    $user = User::factory()->create();
+    app(CreateCommunity::class)->handle($user, ['name' => 'First']);
+    app(CreateCommunity::class)->handle($user, ['name' => 'Second']);
+
+    $this->actingAs($user)
+        ->get('/positions')
+        ->assertOk();
+});
+
 test('positions index shows positions for selected community', function () {
     $user = User::factory()->create(['is_admin' => true]);
     $community = app(CreateCommunity::class)->handle($user, ['name' => 'Test']);
@@ -102,6 +121,15 @@ test('administrations index requires community query param to show data', functi
         ->assertOk();
 });
 
+test('administrations index auto-redirects when user has single manageable community', function () {
+    $user = User::factory()->create();
+    $community = app(CreateCommunity::class)->handle($user, ['name' => 'Only One']);
+
+    $this->actingAs($user)
+        ->get('/administrations')
+        ->assertRedirect('/administrations?community='.$community->id);
+});
+
 test('administrations index shows administrations for selected community', function () {
     $user = User::factory()->create(['is_admin' => true]);
     $community = app(CreateCommunity::class)->handle($user, ['name' => 'Test']);
@@ -129,6 +157,7 @@ test('can create administration via flat route with community query param', func
     $this->actingAs($user)
         ->post('/administrations?community='.$community->id, [
             'started_at' => now()->addYear()->toDateString(),
+            'ended_at' => now()->addYears(2)->toDateString(),
         ])
         ->assertRedirect();
 
@@ -166,7 +195,24 @@ test('can update administration start date', function () {
     expect($administration->fresh()->started_at->toDateString())->toBe('2024-01-15');
 });
 
-test('can set end date on current administration (ends it)', function () {
+test('can end current administration with end_administration flag', function () {
+    $user = User::factory()->create(['is_admin' => true]);
+    $community = app(CreateCommunity::class)->handle($user, ['name' => 'Test']);
+    $administration = $community->currentAdministration;
+
+    $this->actingAs($user)
+        ->put("/administrations/{$administration->id}", [
+            'started_at' => $administration->started_at->toDateString(),
+            'ended_at' => now()->addYear()->toDateString(),
+            'end_administration' => true,
+        ])
+        ->assertRedirect();
+
+    expect($administration->fresh()->ended_at)->not->toBeNull();
+    expect($community->fresh()->current_administration_id)->toBeNull();
+});
+
+test('saving dates without end_administration flag does not end current administration', function () {
     $user = User::factory()->create(['is_admin' => true]);
     $community = app(CreateCommunity::class)->handle($user, ['name' => 'Test']);
     $administration = $community->currentAdministration;
@@ -179,28 +225,6 @@ test('can set end date on current administration (ends it)', function () {
         ->assertRedirect();
 
     expect($administration->fresh()->ended_at)->not->toBeNull();
-    // Setting ended_at on current administration clears the FK
-    expect($community->fresh()->current_administration_id)->toBeNull();
-});
-
-test('clearing end date on administration with no current restores it as current', function () {
-    $user = User::factory()->create(['is_admin' => true]);
-    $community = app(CreateCommunity::class)->handle($user, ['name' => 'Test']);
-    $administration = $community->currentAdministration;
-
-    // First end it
-    $administration->update(['ended_at' => now()]);
-    $community->update(['current_administration_id' => null]);
-
-    // Now clear ended_at
-    $this->actingAs($user)
-        ->put("/administrations/{$administration->id}", [
-            'started_at' => $administration->started_at->toDateString(),
-            'ended_at' => null,
-        ])
-        ->assertRedirect();
-
-    expect($administration->fresh()->ended_at)->toBeNull();
     expect($community->fresh()->current_administration_id)->toBe($administration->id);
 });
 
@@ -319,4 +343,52 @@ test('can remove member via flat route', function () {
         'administration_id' => $administration->id,
         'user_id' => $member->id,
     ]);
+});
+
+/*
+|--------------------------------------------------------------------------
+| Administrations — ended_at required on creation
+|--------------------------------------------------------------------------
+*/
+
+test('creating administration without ended_at returns validation error', function () {
+    $user = User::factory()->create(['is_admin' => true]);
+    $community = app(CreateCommunity::class)->handle($user, ['name' => 'Test']);
+
+    $this->actingAs($user)
+        ->post('/administrations?community='.$community->id, [
+            'started_at' => now()->addYear()->toDateString(),
+        ])
+        ->assertSessionHasErrors('ended_at');
+});
+
+test('creating administration with both started_at and ended_at succeeds', function () {
+    $user = User::factory()->create(['is_admin' => true]);
+    $community = app(CreateCommunity::class)->handle($user, ['name' => 'Test']);
+
+    $startDate = now()->addYear()->toDateString();
+    $endDate = now()->addYears(2)->toDateString();
+
+    $this->actingAs($user)
+        ->post('/administrations?community='.$community->id, [
+            'started_at' => $startDate,
+            'ended_at' => $endDate,
+        ])
+        ->assertRedirect();
+
+    $newAdmin = $community->fresh()->administrations()->latest('id')->first();
+    expect($newAdmin->started_at->toDateString())->toBe($startDate);
+    expect($newAdmin->ended_at->toDateString())->toBe($endDate);
+});
+
+test('creating administration with ended_at before started_at returns validation error', function () {
+    $user = User::factory()->create(['is_admin' => true]);
+    $community = app(CreateCommunity::class)->handle($user, ['name' => 'Test']);
+
+    $this->actingAs($user)
+        ->post('/administrations?community='.$community->id, [
+            'started_at' => '2026-01-01',
+            'ended_at' => '2025-01-01',
+        ])
+        ->assertSessionHasErrors('ended_at');
 });

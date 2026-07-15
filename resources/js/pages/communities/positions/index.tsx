@@ -16,6 +16,7 @@ type Position = {
     id: number;
     name: string;
     is_default: boolean;
+    has_admin_access: boolean;
     in_use: boolean;
 };
 
@@ -83,6 +84,28 @@ function PositionForm({
                                 />
                                 <InputError message={errors.name} />
                             </div>
+                            <div className="flex items-center gap-2">
+                                <input
+                                    id="has_admin_access"
+                                    name="has_admin_access"
+                                    type="checkbox"
+                                    value="1"
+                                    defaultChecked={
+                                        position?.has_admin_access ?? true
+                                    }
+                                    className="size-4 rounded border-gray-300"
+                                />
+                                <Label
+                                    htmlFor="has_admin_access"
+                                    className="cursor-pointer text-sm font-normal"
+                                >
+                                    Admin access
+                                </Label>
+                            </div>
+                            <p className="text-xs text-muted-foreground">
+                                Members with admin access can manage the
+                                community, positions, and administrations.
+                            </p>
                         </div>
 
                         <div className="flex items-center justify-between border-t px-6 py-3">
@@ -158,6 +181,7 @@ export default function PositionsIndex({
                         <Select
                             value={community ? String(community.id) : undefined}
                             onValueChange={handleCommunityChange}
+                            disabled={communities.length <= 1}
                         >
                             <SelectTrigger size="sm" className="w-48">
                                 <SelectValue />
@@ -215,6 +239,11 @@ export default function PositionsIndex({
                                         </span>
                                     </div>
                                     <div className="flex flex-col items-end gap-1">
+                                        {position.has_admin_access && (
+                                            <span className="rounded bg-blue-100 px-1.5 py-0.5 text-[10px] font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+                                                admin
+                                            </span>
+                                        )}
                                         {position.is_default && (
                                             <span className="rounded bg-muted px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground">
                                                 default

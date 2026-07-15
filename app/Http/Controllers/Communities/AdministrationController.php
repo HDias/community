@@ -4,27 +4,42 @@ namespace App\Http\Controllers\Communities;
 
 use App\Actions\Administrations\AssignMemberToPosition;
 use App\Actions\Administrations\CreateAdministration;
+use App\Concerns\ResolvesManageableCommunity;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Communities\AssignMemberRequest;
+use App\Http\Requests\Communities\StoreAdministrationRequest;
+use App\Http\Requests\Communities\UpdateAdministrationRequest;
 use App\Models\Administration;
 use App\Models\AdministrationMember;
-use App\Models\Community;
 use App\Models\Position;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 use Inertia\Response;
 
 class AdministrationController extends Controller
 {
+    use ResolvesManageableCommunity;
+
     /**
      * Display administration history.
      */
-    public function index(Request $request): Response
+    public function index(Request $request): Response|RedirectResponse
     {
         $community = $this->resolveCommunity($request);
+
+        if (! $community) {
+            Gate::authorize('viewAny', Administration::class);
+
+            $communities = $this->manageableCommunities($request->user());
+
+            if (count($communities) === 1) {
+                return redirect()->to('/administrations?community='.$communities[0]['id']);
+            }
+        }
 
         if ($community) {
             Gate::authorize('manage', [Administration::class, $community]);
@@ -33,6 +48,7 @@ class AdministrationController extends Controller
         $administrations = $community
             ? $community->administrations()
                 ->with(['members.user', 'members.position'])
+                ->orderByRaw('CASE WHEN id = ? THEN 0 ELSE 1 END', [$community->current_administration_id])
                 ->orderByDesc('started_at')
                 ->get()
                 ->map(fn (Administration $admin) => [
@@ -42,7 +58,7 @@ class AdministrationController extends Controller
                     'is_current' => $community->current_administration_id === $admin->id,
                     'members' => $admin->members->map(fn (AdministrationMember $m) => [
                         'id' => $m->id,
-                        'user' => ['id' => $m->user->id, 'name' => $m->user->name],
+                        'user' => ['id' => $m->user->id, 'name' => $m->user->name, 'email' => $m->user->email],
                         'position' => ['id' => $m->position->id, 'name' => $m->position->name],
                     ]),
                 ])
@@ -62,7 +78,7 @@ class AdministrationController extends Controller
     {
         $community = $administration->community;
 
-        Gate::authorize('manage', [Administration::class, $community]);
+        Gate::authorize('manage', [Administration::class, $community, $administration]);
 
         $administration->load(['members.user', 'members.position']);
 
@@ -92,7 +108,7 @@ class AdministrationController extends Controller
     /**
      * Store a new administration.
      */
-    public function store(Request $request, CreateAdministration $action): RedirectResponse
+    public function store(StoreAdministrationRequest $request, CreateAdministration $action): RedirectResponse
     {
         $community = $this->resolveCommunity($request);
 
@@ -100,11 +116,7 @@ class AdministrationController extends Controller
 
         Gate::authorize('manage', [Administration::class, $community]);
 
-        $validated = $request->validate([
-            'started_at' => ['required', 'date'],
-        ]);
-
-        $administration = $action->handle($community, $validated);
+        $administration = $action->handle($community, $request->validated(), $request->user());
 
         return redirect()->route('administrations.show', $administration)
             ->with('success', 'Administration created.');
@@ -113,25 +125,18 @@ class AdministrationController extends Controller
     /**
      * Update administration dates.
      */
-    public function update(Request $request, Administration $administration): RedirectResponse
+    public function update(UpdateAdministrationRequest $request, Administration $administration): RedirectResponse
     {
         $community = $administration->community;
 
-        Gate::authorize('manage', [Administration::class, $community]);
+        Gate::authorize('manage', [Administration::class, $community, $administration]);
 
-        $validated = $request->validate([
-            'started_at' => ['required', 'date'],
-            'ended_at' => ['nullable', 'date', 'after_or_equal:started_at'],
-        ]);
+        $validated = $request->validated();
 
         $administration->update($validated);
 
-        if ($validated['ended_at'] && $community->current_administration_id === $administration->id) {
+        if ($request->boolean('end_administration') && $community->current_administration_id === $administration->id) {
             $community->update(['current_administration_id' => null]);
-        }
-
-        if (! $validated['ended_at'] && ! $community->current_administration_id) {
-            $community->update(['current_administration_id' => $administration->id]);
         }
 
         return redirect()->back()->with('success', 'Administration updated.');
@@ -144,7 +149,7 @@ class AdministrationController extends Controller
     {
         $community = $administration->community;
 
-        Gate::authorize('manage', [Administration::class, $community]);
+        Gate::authorize('manage', [Administration::class, $community, $administration]);
 
         if ($community->current_administration_id === $administration->id) {
             $community->update(['current_administration_id' => null]);
@@ -160,18 +165,15 @@ class AdministrationController extends Controller
      * Assign a member to a position.
      */
     public function assignMember(
-        Request $request,
+        AssignMemberRequest $request,
         Administration $administration,
         AssignMemberToPosition $action
     ): RedirectResponse {
         $community = $administration->community;
 
-        Gate::authorize('manage', [Administration::class, $community]);
+        Gate::authorize('manage', [Administration::class, $community, $administration]);
 
-        $validated = $request->validate([
-            'user_id' => ['required', Rule::exists('community_user', 'user_id')->where('community_id', $community->id)],
-            'position_id' => ['required', Rule::exists('positions', 'id')->where('community_id', $community->id)],
-        ]);
+        $validated = $request->validated();
 
         /** @var User $user */
         $user = User::findOrFail($validated['user_id']);
@@ -190,7 +192,7 @@ class AdministrationController extends Controller
     {
         $community = $administration->community;
 
-        Gate::authorize('manage', [Administration::class, $community]);
+        Gate::authorize('manage', [Administration::class, $community, $administration]);
 
         $administration->members()->where('user_id', $user->id)->delete();
 
@@ -198,38 +200,33 @@ class AdministrationController extends Controller
     }
 
     /**
-     * Resolve community from query param.
+     * Search available members for assignment.
      */
-    private function resolveCommunity(Request $request): ?Community
+    public function searchMembers(Request $request, Administration $administration): JsonResponse
     {
-        $communityId = $request->query('community');
+        $community = $administration->community;
 
-        if (! $communityId) {
-            return null;
+        Gate::authorize('manage', [Administration::class, $community, $administration]);
+
+        $search = $request->query('search', '');
+
+        if (strlen($search) < 1) {
+            return response()->json([]);
         }
 
-        return Community::findOrFail((int) $communityId);
-    }
+        $assignedUserIds = $administration->members()->pluck('user_id');
 
-    /**
-     * Get communities the user can manage.
-     *
-     * @return array<int, array{id: int, name: string}>
-     */
-    private function manageableCommunities(User $user): array
-    {
-        if ($user->is_admin) {
-            return Community::orderBy('name')
-                ->get(['id', 'name'])
-                ->map(fn (Community $c) => ['id' => $c->id, 'name' => $c->name])
-                ->toArray();
-        }
+        $members = $community->members()
+            ->whereNotIn('users.id', $assignedUserIds)
+            ->where(function ($query) use ($search) {
+                $query->where('users.name', 'like', "%{$search}%")
+                    ->orWhere('users.email', 'like', "%{$search}%");
+            })
+            ->limit(10)
+            ->get(['users.id', 'users.name', 'users.email']);
 
-        return $user->communities()
-            ->wherePivot('role', 'president')
-            ->orderBy('name')
-            ->get(['communities.id', 'communities.name'])
-            ->map(fn (Community $c) => ['id' => $c->id, 'name' => $c->name])
-            ->toArray();
+        return response()->json(
+            $members->map(fn ($u) => ['id' => $u->id, 'name' => $u->name, 'email' => $u->email])
+        );
     }
 }

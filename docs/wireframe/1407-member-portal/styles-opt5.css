@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600&display=swap');
+/* ===== OPT 5 — Clean (Forest Green) ===== */
+#frame-opt5.clean .browser-chrome{background:#e8f0ea;border-bottom-color:#c8d9cc}
+#frame-opt5.clean .browser-dots span{background:#6db37b}
+#frame-opt5.clean .browser-url{background:#f4f8f5;border-color:#c8d9cc;color:#4a7c59}
+#frame-opt5.clean .browser-controls{color:#4a7c59}
+#frame-opt5.clean .browser-content{background:#f4f8f5}
+#frame-opt5.clean .hub-header{border-bottom-color:#c8d9cc;background:#fff}
+#frame-opt5.clean .dash-logo,#frame-opt5.clean .dash-user,#frame-opt5.clean .hub-title,#frame-opt5.clean .accordion-trigger,#frame-opt5.clean .accordion-body,#frame-opt5.clean .event-day,#frame-opt5.clean .event-info strong,#frame-opt5.clean .contribution-summary,#frame-opt5.clean .profile-summary,#frame-opt5.clean .admin-list{color:#1a2e1a}
+#frame-opt5.clean .switch-avatar{background:#e8f0ea;color:#1a2e1a}
+#frame-opt5.clean .hub-identity{border-bottom-color:#c8d9cc}
+#frame-opt5.clean .hub-sub,#frame-opt5.clean .event-month,#frame-opt5.clean .event-info span,#frame-opt5.clean .acc-arrow,#frame-opt5.clean .acc-meta{color:#4a7c59}
+#frame-opt5.clean .hub-select{border-color:#c8d9cc;color:#1a2e1a;background:#fff}
+#frame-opt5.clean .accordion-section{border-color:#c8d9cc;background:#fff}
+#frame-opt5.clean .accordion-trigger:hover{background:#e8f0ea}
+#frame-opt5.clean .acc-badge{background:#4a7c59;color:#fff}
+#frame-opt5.clean .event-card{border-color:#c8d9cc}
+#frame-opt5.clean .btn.primary{background:#4a7c59;border-color:#4a7c59;color:#fff}
+#frame-opt5.clean .btn.ghost{border-color:#c8d9cc;color:#4a7c59}
+#frame-opt5.clean .btn.ghost:hover{background:#e8f0ea}
+#frame-opt5.clean .acc-link a{color:#4a7c59;font-weight:600}
+#frame-opt5.clean .role-tag{background:#e8f0ea;color:#4a7c59}
+#frame-opt5.clean .wf-marker{display:none}
+
+/* ===== OPT 5 — Polished (Forest Green + Source Serif 4) ===== */
+#frame-opt5.polished .hub-layout{font-family:'Source Serif 4',Georgia,serif}
+#frame-opt5.polished .browser-chrome{background:linear-gradient(135deg,#e8f0ea,#d4e6d8);border-bottom-color:#b8cebc}
+#frame-opt5.polished .browser-dots span{background:#6db37b}
+#frame-opt5.polished .browser-dots span:first-child{background:#4a7c59}
+#frame-opt5.polished .browser-url{background:#f4f8f5;border-color:#b8cebc;color:#4a7c59}
+#frame-opt5.polished .browser-controls{color:#4a7c59}
+#frame-opt5.polished .browser-content{background:#f4f8f5}
+#frame-opt5.polished .hub-header{border-bottom-color:#b8cebc;background:#fff}
+#frame-opt5.polished .dash-logo{color:#1a2e1a;font-weight:600}
+#frame-opt5.polished .dash-user,#frame-opt5.polished .hub-title,#frame-opt5.polished .accordion-trigger,#frame-opt5.polished .accordion-body,#frame-opt5.polished .event-day,#frame-opt5.polished .event-info strong,#frame-opt5.polished .contribution-summary,#frame-opt5.polished .profile-summary,#frame-opt5.polished .admin-list{color:#1a2e1a}
+#frame-opt5.polished .hub-title{font-weight:600}
+#frame-opt5.polished .switch-avatar{background:linear-gradient(135deg,#6db37b,#4a7c59);color:#fff}
+#frame-opt5.polished .hub-identity{border-bottom-color:#b8cebc;position:relative}
+#frame-opt5.polished .hub-sub,#frame-opt5.polished .event-month,#frame-opt5.polished .event-info span,#frame-opt5.polished .acc-arrow,#frame-opt5.polished .acc-meta{color:#4a7c59}
+#frame-opt5.polished .hub-select{border-color:#b8cebc;color:#1a2e1a;background:#fff}
+#frame-opt5.polished .accordion-section{position:relative;border-color:#c8d9cc;background:#fff;box-shadow:0 1px 4px rgba(74,124,89,.07);transition:box-shadow 200ms ease-out}
+#frame-opt5.polished .accordion-section:hover{box-shadow:0 3px 10px rgba(74,124,89,.12)}
+#frame-opt5.polished .accordion-section::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:#6db37b;border-radius:8px 0 0 8px}
+#frame-opt5.polished .accordion-trigger{background:linear-gradient(180deg,#fff,#f4f8f5);transition:background 150ms ease-out}
+#frame-opt5.polished .accordion-trigger:hover{background:#e8f0ea}
+#frame-opt5.polished .acc-badge{background:#4a7c59;color:#fff}
+#frame-opt5.polished .event-card{border-color:#c8d9cc;transition:box-shadow 150ms ease-out}
+#frame-opt5.polished .event-card:hover{box-shadow:0 2px 6px rgba(74,124,89,.1)}
+#frame-opt5.polished .btn.primary{background:linear-gradient(180deg,#5a9468,#4a7c59);border-color:#3d6a4b;color:#fff;box-shadow:0 1px 3px rgba(74,124,89,.15);transition:box-shadow 150ms ease-out}
+#frame-opt5.polished .btn.primary:hover{box-shadow:0 3px 8px rgba(74,124,89,.22)}
+#frame-opt5.polished .btn.ghost{border-color:#c8d9cc;color:#4a7c59;transition:background 150ms ease-out,box-shadow 150ms ease-out}
+#frame-opt5.polished .btn.ghost:hover{background:#e8f0ea;box-shadow:0 1px 3px rgba(74,124,89,.08)}
+#frame-opt5.polished .acc-link a{color:#4a7c59;font-weight:600}
+#frame-opt5.polished .role-tag{background:#e8f0ea;color:#4a7c59;font-weight:600}
+#frame-opt5.polished .wf-marker{display:none}
+#frame-opt5.polished .hub-identity::after{content:'';position:absolute;bottom:0;left:24px;right:24px;height:2px;background:linear-gradient(90deg,#6db37b,transparent)}
+
+/* Staggered accordion entrance — respects reduced-motion */
+@media(prefers-reduced-motion:no-preference){
+@keyframes opt5AccIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes opt5HubFade{from{opacity:0}to{opacity:1}}
+#frame-opt5.polished .accordion-section{animation:opt5AccIn 300ms ease-out both}
+#frame-opt5.polished .accordion-section:nth-child(2){animation-delay:0ms}
+#frame-opt5.polished .accordion-section:nth-child(3){animation-delay:50ms}
+#frame-opt5.polished .accordion-section:nth-child(4){animation-delay:100ms}
+#frame-opt5.polished .accordion-section:nth-child(5){animation-delay:150ms}
+#frame-opt5.polished .accordion-section:nth-child(6){animation-delay:200ms}
+#frame-opt5.polished .hub-identity{animation:opt5HubFade 400ms ease-out}
+}
+
+/* ===== Self-reveal (N=5) ===== */
+#frame-opt5-tabs .sub-tab-badge{display:none}
+#frame-opt5-tabs .sub-tab-btn[data-variant="clean"]{color:#64B5F6}
+#frame-opt5-tabs .sub-tab-btn[data-variant="clean"]:hover{color:#1E88E5}
+#frame-opt5-tabs .sub-tab-btn[data-variant="clean"].active{color:#1565C0;border-bottom-color:#1565C0}
+#frame-opt5-tabs .sub-tab-btn[data-variant="polished"]{color:#81C784}
+#frame-opt5-tabs .sub-tab-btn[data-variant="polished"]:hover{color:#43A047}
+#frame-opt5-tabs .sub-tab-btn[data-variant="polished"].active{color:#2E7D32;border-bottom-color:#2E7D32}

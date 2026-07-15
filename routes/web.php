@@ -20,6 +20,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('administrations', AdministrationController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
     Route::post('administrations/{administration}/members', [AdministrationController::class, 'assignMember'])
         ->name('administrations.members.store');
+    Route::get('administrations/{administration}/members/search', [AdministrationController::class, 'searchMembers'])
+        ->name('administrations.members.search');
     Route::delete('administrations/{administration}/members/{user}', [AdministrationController::class, 'removeMember'])
         ->name('administrations.members.destroy');
 

@@ -52,13 +52,14 @@ class DatabaseSeeder extends Seeder
             'state' => $cityState1['state'],
         ]);
 
-        // Add members to the community
+        // Add members to the community and set their current community
         $members = [$vicePresident, $secretary, $treasurer, $member1, $member2];
         foreach ($members as $member) {
             $community->members()->attach($member->id, [
                 'role' => 'member',
                 'joined_at' => now()->subMonths(rand(1, 12)),
             ]);
+            $member->switchCommunity($community);
         }
 
         // Get default positions
@@ -68,18 +69,19 @@ class DatabaseSeeder extends Seeder
         $secretaryPosition = $positions->where('name', 'Secretary')->first();
         $treasurerPosition = $positions->where('name', 'Treasurer')->first();
 
-        // Add a custom position
+        // Add a custom position (no admin access)
         $coordinatorPosition = $community->positions()->create([
-            'name' => fake()->randomElement(['Coordinator', 'Director', 'Advisor', 'Counselor']),
+            'name' => 'Coordinator',
             'is_default' => false,
+            'has_admin_access' => false,
         ]);
 
         /*
         |----------------------------------------------------------------------
         | Administration history
         |----------------------------------------------------------------------
-        | 1st (2022-2024): ended, has members assigned
-        | 2nd (2024-present): current, has members assigned
+        | 1st (2022-2023): ended, has members assigned
+        | 2nd (2024-2026): current, has members assigned
         */
 
         // End the auto-created first administration and backdate it
@@ -100,6 +102,7 @@ class DatabaseSeeder extends Seeder
         // Create second (current) administration
         $secondAdmin = $community->administrations()->create([
             'started_at' => '2024-01-01',
+            'ended_at' => '2026-12-31',
         ]);
         $community->update(['current_administration_id' => $secondAdmin->id]);
 
@@ -134,7 +137,7 @@ class DatabaseSeeder extends Seeder
             'state' => $cityState2['state'],
         ]);
 
-        // Add some members but don't assign them to the administration
+        // Add some members and set their current community
         $community2->members()->attach($member1->id, ['role' => 'member', 'joined_at' => now()->subMonths(3)]);
         $community2->members()->attach($member2->id, ['role' => 'member', 'joined_at' => now()->subMonths(2)]);
     }

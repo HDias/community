@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Communities;
 
+use App\Concerns\ResolvesManageableCommunity;
 use App\Http\Controllers\Controller;
-use App\Models\Community;
+use App\Http\Requests\Communities\SavePositionRequest;
 use App\Models\Position;
-use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -14,12 +14,24 @@ use Inertia\Response;
 
 class PositionController extends Controller
 {
+    use ResolvesManageableCommunity;
+
     /**
      * Display community positions.
      */
-    public function index(Request $request): Response
+    public function index(Request $request): Response|RedirectResponse
     {
         $community = $this->resolveCommunity($request);
+
+        if (! $community) {
+            Gate::authorize('viewAny', Position::class);
+
+            $communities = $this->manageableCommunities($request->user());
+
+            if (count($communities) === 1) {
+                return redirect()->to('/positions?community='.$communities[0]['id']);
+            }
+        }
 
         if ($community) {
             Gate::authorize('manage', [Position::class, $community]);
@@ -32,6 +44,7 @@ class PositionController extends Controller
                 'id' => $position->id,
                 'name' => $position->name,
                 'is_default' => $position->is_default,
+                'has_admin_access' => $position->has_admin_access,
                 'in_use' => $community->currentAdministration
                     ? $community->currentAdministration->members()->where('position_id', $position->id)->exists()
                     : false,
@@ -42,7 +55,7 @@ class PositionController extends Controller
     /**
      * Store a new position.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(SavePositionRequest $request): RedirectResponse
     {
         $community = $this->resolveCommunity($request);
 
@@ -50,11 +63,7 @@ class PositionController extends Controller
 
         Gate::authorize('manage', [Position::class, $community]);
 
-        $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-        ]);
-
-        $community->positions()->create($validated);
+        $community->positions()->create($request->validated());
 
         return redirect()->back()->with('success', 'Position created.');
     }
@@ -62,17 +71,13 @@ class PositionController extends Controller
     /**
      * Update a position.
      */
-    public function update(Request $request, Position $position): RedirectResponse
+    public function update(SavePositionRequest $request, Position $position): RedirectResponse
     {
         $community = $position->community;
 
         Gate::authorize('manage', [Position::class, $community]);
 
-        $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-        ]);
-
-        $position->update($validated);
+        $position->update($request->validated());
 
         return redirect()->back()->with('success', 'Position updated.');
     }
@@ -87,41 +92,5 @@ class PositionController extends Controller
         $position->delete();
 
         return redirect()->back()->with('success', 'Position deleted.');
-    }
-
-    /**
-     * Resolve community from query param.
-     */
-    private function resolveCommunity(Request $request): ?Community
-    {
-        $communityId = $request->query('community');
-
-        if (! $communityId) {
-            return null;
-        }
-
-        return Community::findOrFail((int) $communityId);
-    }
-
-    /**
-     * Get communities the user can manage.
-     *
-     * @return array<int, array{id: int, name: string}>
-     */
-    private function manageableCommunities(User $user): array
-    {
-        if ($user->is_admin) {
-            return Community::orderBy('name')
-                ->get(['id', 'name'])
-                ->map(fn (Community $c) => ['id' => $c->id, 'name' => $c->name])
-                ->toArray();
-        }
-
-        return $user->communities()
-            ->wherePivot('role', 'president')
-            ->orderBy('name')
-            ->get(['communities.id', 'communities.name'])
-            ->map(fn (Community $c) => ['id' => $c->id, 'name' => $c->name])
-            ->toArray();
     }
 }

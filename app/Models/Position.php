@@ -14,10 +14,11 @@ use Illuminate\Support\Carbon;
  * @property int $community_id
  * @property string $name
  * @property bool $is_default
+ * @property bool $has_admin_access
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  */
-#[Fillable(['community_id', 'name', 'is_default'])]
+#[Fillable(['community_id', 'name', 'is_default', 'has_admin_access'])]
 class Position extends Model
 {
     /** @use HasFactory<PositionFactory> */
@@ -30,6 +31,7 @@ class Position extends Model
     {
         return [
             'is_default' => 'boolean',
+            'has_admin_access' => 'boolean',
         ];
     }
 
