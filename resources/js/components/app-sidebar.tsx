@@ -1,5 +1,5 @@
 import { Link, usePage } from '@inertiajs/react';
-import { Briefcase, FolderGit2, LayoutGrid, Shield, Users } from 'lucide-react';
+import { Briefcase, LayoutGrid, Shield, Users } from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
