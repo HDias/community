@@ -32,14 +32,14 @@ class DashboardController extends Controller
                 ->map(fn ($c) => ['id' => $c->id, 'name' => $c->name])
                 ->values(),
             'memberCount' => $community?->members()->count() ?? 0,
-            'memberSince' => $membership?->pivot?->joined_at,
-            'communityRole' => $membership?->pivot?->role,
+            'memberSince' => $membership?->pivot?->getAttribute('joined_at'),
+            'communityRole' => $membership?->pivot?->getAttribute('role'),
             'administrationMembers' => $administration?->members->map(fn ($m) => [
                 'name' => $m->user->name,
                 'position' => $m->position->name,
             ])->values() ?? collect(),
             'canManage' => $user->is_admin
-                || $membership?->pivot?->role === CommunityRole::President->value,
+                || $membership?->pivot?->getAttribute('role') === CommunityRole::President->value,
         ]);
     }
 }

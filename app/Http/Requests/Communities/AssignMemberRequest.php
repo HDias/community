@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Communities;
 
+use App\Models\Administration;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -15,7 +16,9 @@ class AssignMemberRequest extends FormRequest
      */
     public function rules(): array
     {
-        $community = $this->route('administration')->community;
+        /** @var Administration $administration */
+        $administration = $this->route('administration');
+        $community = $administration->community;
 
         return [
             'user_id' => ['required', Rule::exists('community_user', 'user_id')->where('community_id', $community->id)],
