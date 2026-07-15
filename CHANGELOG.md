@@ -7,8 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2025-07-15
+
 ### Added
 
+- Role-based admin access for administration members
+- `has_admin_access` flag on positions (defaults to true) to control who sees admin menus
+- Configurable position-based authorization (replaces admin-only model)
+- Auto-assign president to new administrations on creation
+- Required end date when creating new administrations
+- Searchable member assignment with debounced API search
+- User's current position displayed in sidebar dropdown menu
+- Member email shown in administration member lists
+- Confirmation dialog on "End administration" action
 - Positions and administrations management feature
 
 ### Fixed
@@ -19,6 +30,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Administration members with admin-access positions can now manage communities, positions, and administrations
+- Sidebar admin menus visibility driven by position flag instead of `is_admin` only
+- Community create/delete restricted to system admin only
+- "Save dates" no longer ends the administration period (use "End administration" button)
 - CI lint workflow now uses PHP 8.5
 - CI test matrix narrowed to PHP 8.4 and 8.5 (dropped 8.3)
 - Removed stale `workos` branch from CI triggers

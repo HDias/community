@@ -2,35 +2,47 @@
 
 namespace App\Policies;
 
+use App\Models\Administration;
 use App\Models\Community;
 use App\Models\User;
 
 class AdministrationPolicy
 {
     /**
-     * Determine whether the user can manage administrations.
+     * Determine whether the user can view the administrations list.
      */
-    public function manage(User $user, Community $community): bool
+    public function viewAny(User $user): bool
     {
-        return $user->is_admin
-            || $community->created_by === $user->id
-            || $this->isCurrentPresident($user, $community);
+        if ($user->is_admin) {
+            return true;
+        }
+
+        $community = $user->currentCommunity;
+
+        return $community && $user->hasExecutivePositionIn($community);
     }
 
     /**
-     * Check if the user holds the President position in the current administration.
+     * Determine whether the user can manage a specific administration.
      */
-    private function isCurrentPresident(User $user, Community $community): bool
+    public function manage(User $user, Community $community, ?Administration $administration = null): bool
     {
-        $administration = $community->currentAdministration;
+        if ($user->is_admin) {
+            return true;
+        }
 
-        if (! $administration) {
+        if ($administration && $this->isOldAdministration($administration, $community)) {
             return false;
         }
 
-        return $administration->members()
-            ->where('user_id', $user->id)
-            ->whereHas('position', fn ($q) => $q->where('name', 'President'))
-            ->exists();
+        return $user->hasLeadershipPositionIn($community);
+    }
+
+    /**
+     * Check if the administration is not the current one.
+     */
+    private function isOldAdministration(Administration $administration, Community $community): bool
+    {
+        return $community->current_administration_id !== $administration->id;
     }
 }

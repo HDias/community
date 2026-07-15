@@ -8,11 +8,25 @@ use App\Models\User;
 class CommunityPolicy
 {
     /**
+     * Determine whether the user can view the communities list.
+     */
+    public function viewAny(User $user): bool
+    {
+        if ($user->is_admin) {
+            return true;
+        }
+
+        $community = $user->currentCommunity;
+
+        return $community && $user->hasExecutivePositionIn($community);
+    }
+
+    /**
      * Determine whether the user can create communities.
      */
     public function create(User $user): bool
     {
-        return $user->is_admin;
+        return (bool) $user->is_admin;
     }
 
     /**
@@ -28,7 +42,7 @@ class CommunityPolicy
      */
     public function update(User $user, Community $community): bool
     {
-        return $user->is_admin || $community->created_by === $user->id;
+        return $user->is_admin || $user->hasExecutivePositionIn($community);
     }
 
     /**
@@ -36,6 +50,6 @@ class CommunityPolicy
      */
     public function delete(User $user, Community $community): bool
     {
-        return $user->is_admin || $community->created_by === $user->id;
+        return (bool) $user->is_admin;
     }
 }

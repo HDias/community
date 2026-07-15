@@ -22,6 +22,8 @@ class CommunityController extends Controller
     {
         $user = $request->user();
 
+        Gate::authorize('viewAny', Community::class);
+
         $query = $user->is_admin
             ? Community::query()
             : $user->communities();

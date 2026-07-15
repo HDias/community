@@ -15,10 +15,11 @@ test('create administration ends the previous one', function () {
 
     $second = app(CreateAdministration::class)->handle($community->fresh(), [
         'started_at' => now()->addYear(),
+        'ended_at' => now()->addYears(2),
     ]);
 
     expect($first->fresh()->ended_at)->not->toBeNull();
-    expect($second->ended_at)->toBeNull();
+    expect($second->ended_at)->not->toBeNull();
     expect($community->fresh()->current_administration_id)->toBe($second->id);
 });
 
@@ -27,6 +28,7 @@ test('create administration works when no previous administration exists', funct
 
     $administration = app(CreateAdministration::class)->handle($community, [
         'started_at' => now(),
+        'ended_at' => now()->addYear(),
     ]);
 
     expect($administration)->toBeInstanceOf(Administration::class);

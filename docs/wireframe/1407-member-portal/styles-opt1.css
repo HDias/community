@@ -1,0 +1,203 @@
+/* ===== Option 1: Sidebar Home — Visual Design ===== */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap');
+
+/* ── Both variants: browser chrome ── */
+:is(.clean, .polished)#frame-opt1 .browser-dots span:nth-child(1) {
+    background: #ff5f57;
+}
+:is(.clean, .polished)#frame-opt1 .browser-dots span:nth-child(2) {
+    background: #ffbd2e;
+}
+:is(.clean, .polished)#frame-opt1 .browser-dots span:nth-child(3) {
+    background: #28c940;
+}
+:is(.clean, .polished)#frame-opt1 .browser-chrome {
+    background: #faf8f5;
+    border-bottom-color: #e8e2da;
+}
+:is(.clean, .polished)#frame-opt1 .browser-url {
+    border-color: #e8e2da;
+    color: #6b5b4f;
+}
+:is(.clean, .polished)#frame-opt1 .browser-controls {
+    color: #6b5b4f;
+}
+/* ── Both variants: sidebar warm-stone ── */
+:is(.clean, .polished)#frame-opt1 .app-sidebar {
+    background: #faf8f5;
+    border-right-color: #e8e2da;
+}
+:is(.clean, .polished)#frame-opt1 .sidebar-switcher {
+    border-bottom-color: #e8e2da;
+}
+:is(.clean, .polished)#frame-opt1 .switch-meta span,
+:is(.clean, .polished)#frame-opt1 .switch-caret,
+:is(.clean, .polished)#frame-opt1 .crumb,
+:is(.clean, .polished)#frame-opt1 .page-sub,
+:is(.clean, .polished)#frame-opt1 .card-detail,
+:is(.clean, .polished)#frame-opt1 .card-stat .stat-label {
+    color: #6b5b4f;
+}
+:is(.clean, .polished)#frame-opt1 .sidebar-nav a,
+:is(.clean, .polished)#frame-opt1 .page-title,
+:is(.clean, .polished)#frame-opt1 .card-title,
+:is(.clean, .polished)#frame-opt1 .card-date,
+:is(.clean, .polished)#frame-opt1 .admin-list,
+:is(.clean, .polished)#frame-opt1 .btn.ghost {
+    color: #1a1a1a;
+}
+:is(.clean, .polished)#frame-opt1 .sidebar-nav a:hover,
+:is(.clean, .polished)#frame-opt1 .sidebar-nav a.nav-active {
+    background: #f5f0eb;
+}
+:is(.clean, .polished)#frame-opt1 .sidebar-foot {
+    border-top-color: #e8e2da;
+    color: #6b5b4f;
+}
+:is(.clean, .polished)#frame-opt1 .app-topbar {
+    border-bottom-color: #f0ebe4;
+}
+:is(.clean, .polished)#frame-opt1 .card-stat {
+    color: #d4a574;
+}
+:is(.clean, .polished)#frame-opt1 .btn.primary {
+    background: #1a1a1a;
+    border-color: #1a1a1a;
+    color: #fff;
+}
+:is(.clean, .polished)#frame-opt1 .btn.ghost {
+    border-color: #d4c4b0;
+}
+:is(.clean, .polished)#frame-opt1 .wf-marker {
+    border-color: #d4c4b0;
+    color: #6b5b4f;
+    background: #faf8f5;
+}
+/* ── CLEAN — solid fills, no effects ── */
+.clean#frame-opt1 .switch-avatar {
+    background: #d4a574;
+    color: #fff;
+    font-weight: 600;
+}
+.clean#frame-opt1 .sidebar-foot .switch-avatar.sm {
+    background: #c49a6c;
+    color: #fff;
+}
+.clean#frame-opt1 .portal-card {
+    border-color: #e8e2da;
+}
+.clean#frame-opt1 .btn.ghost:hover {
+    background: #f5f0eb;
+}
+/* ── POLISHED — Google Font, elevation, gradients, motion ── */
+.polished#frame-opt1 {
+    font-family: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+}
+.polished#frame-opt1 .switch-avatar {
+    background: linear-gradient(135deg, #d4a574, #c49a6c);
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 1px 3px rgba(107, 91, 79, 0.12);
+}
+.polished#frame-opt1 .sidebar-foot .switch-avatar.sm {
+    background: linear-gradient(135deg, #c49a6c, #b08a5e);
+    color: #fff;
+}
+.polished#frame-opt1 .sidebar-nav a {
+    transition: background 150ms ease-out;
+}
+.polished#frame-opt1 .portal-card {
+    border-color: rgba(0, 0, 0, 0.06);
+    position: relative;
+    box-shadow: 0 2px 8px rgba(107, 91, 79, 0.08);
+    transition:
+        transform 200ms ease-out,
+        box-shadow 200ms ease-out;
+}
+.polished#frame-opt1 .portal-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(107, 91, 79, 0.12);
+}
+.polished#frame-opt1 .portal-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #d4a574, #c49a6c);
+    border-radius: 8px 8px 0 0;
+}
+.polished#frame-opt1 .btn.primary {
+    transition:
+        transform 150ms ease-out,
+        box-shadow 150ms ease-out;
+}
+.polished#frame-opt1 .btn.primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(26, 26, 26, 0.2);
+}
+.polished#frame-opt1 .btn.primary:active {
+    transform: scale(0.98);
+}
+.polished#frame-opt1 .btn.ghost {
+    transition:
+        background 150ms ease-out,
+        border-color 150ms ease-out;
+}
+.polished#frame-opt1 .btn.ghost:hover {
+    background: #f5f0eb;
+    border-color: #c4b4a0;
+}
+/* Staggered entrance — respects reduced-motion */
+@media (prefers-reduced-motion: no-preference) {
+    @keyframes opt1FadeUp {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .polished#frame-opt1 .page-head {
+        animation: opt1FadeUp 300ms ease-out both;
+    }
+    .polished#frame-opt1 .portal-card {
+        animation: opt1FadeUp 300ms ease-out both;
+    }
+    .polished#frame-opt1 .portal-card:nth-child(2) {
+        animation-delay: 50ms;
+    }
+    .polished#frame-opt1 .portal-card:nth-child(3) {
+        animation-delay: 100ms;
+    }
+    .polished#frame-opt1 .portal-card:nth-child(4) {
+        animation-delay: 150ms;
+    }
+}
+/* --- Self-reveal: hide badge, color sub-tabs --- */
+#frame-opt1-tabs .sub-tab-badge {
+    display: none;
+}
+#frame-opt1-tabs .sub-tab-btn[data-variant='clean'] {
+    color: #64b5f6;
+}
+#frame-opt1-tabs .sub-tab-btn[data-variant='clean']:hover {
+    color: #1e88e5;
+}
+#frame-opt1-tabs .sub-tab-btn[data-variant='clean'].active {
+    color: #1565c0;
+    border-bottom-color: #1565c0;
+}
+#frame-opt1-tabs .sub-tab-btn[data-variant='polished'] {
+    color: #81c784;
+}
+#frame-opt1-tabs .sub-tab-btn[data-variant='polished']:hover {
+    color: #43a047;
+}
+#frame-opt1-tabs .sub-tab-btn[data-variant='polished'].active {
+    color: #2e7d32;
+    border-bottom-color: #2e7d32;
+}

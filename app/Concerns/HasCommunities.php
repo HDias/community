@@ -9,6 +9,40 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 trait HasCommunities
 {
     /**
+     * Determine if the user holds a position with admin access in the community's current administration.
+     */
+    public function hasExecutivePositionIn(Community $community): bool
+    {
+        $administration = $community->currentAdministration;
+
+        if (! $administration) {
+            return false;
+        }
+
+        return $administration->members()
+            ->where('user_id', $this->id)
+            ->whereHas('position', fn ($q) => $q->where('has_admin_access', true))
+            ->exists();
+    }
+
+    /**
+     * Determine if the user holds a leadership position (President or Secretary) in the community's current administration.
+     */
+    public function hasLeadershipPositionIn(Community $community): bool
+    {
+        $administration = $community->currentAdministration;
+
+        if (! $administration) {
+            return false;
+        }
+
+        return $administration->members()
+            ->where('user_id', $this->id)
+            ->whereHas('position', fn ($q) => $q->where('has_admin_access', true)->whereIn('name', ['President', 'Secretary']))
+            ->exists();
+    }
+
+    /**
      * @return BelongsToMany<Community, $this>
      */
     public function communities(): BelongsToMany

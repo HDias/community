@@ -22,6 +22,7 @@ class PositionFactory extends Factory
             'community_id' => Community::factory(),
             'name' => fake()->randomElement(['President', 'Vice-President', 'Secretary', 'Treasurer', 'Coordinator']),
             'is_default' => false,
+            'has_admin_access' => true,
         ];
     }
 

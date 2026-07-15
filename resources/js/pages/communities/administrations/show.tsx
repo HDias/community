@@ -2,6 +2,7 @@ import { Head, router, setLayoutProps, useForm } from '@inertiajs/react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { SearchSelect } from '@/components/ui/search-select';
 import {
     Select,
     SelectContent,
@@ -32,14 +33,12 @@ type Props = {
         members: Member[];
     };
     positions: { id: number; name: string }[];
-    availableMembers: { id: number; name: string }[];
 };
 
 export default function AdministrationShow({
     community,
     administration,
     positions,
-    availableMembers,
 }: Props) {
     setLayoutProps({
         breadcrumbs: [
@@ -78,12 +77,17 @@ export default function AdministrationShow({
     }
 
     function handleEndNow() {
-        if (confirm('End this administration now?')) {
+        if (
+            confirm(
+                'This will end the current administration period. Members will lose their active permissions. Continue?',
+            )
+        ) {
             const today = new Date().toISOString().split('T')[0];
             datesForm.setData('ended_at', today);
             router.put(`/administrations/${administration.id}`, {
                 started_at: administration.started_at,
                 ended_at: today,
+                end_administration: true,
             });
         }
     }
@@ -248,8 +252,9 @@ export default function AdministrationShow({
                                             size="sm"
                                             variant="destructive"
                                             onClick={handleEndNow}
+                                            title="End this administration now. Members will lose their active permissions."
                                         >
-                                            End now
+                                            End administration
                                         </Button>
                                     )}
                                     <Button
@@ -266,8 +271,7 @@ export default function AdministrationShow({
                         </div>
 
                         {/* Assign section */}
-                        {administration.is_current &&
-                        availableMembers.length > 0 ? (
+                        {administration.is_current && (
                             <div className="flex-1 px-6 py-4">
                                 <h3 className="mb-3 text-xs font-semibold tracking-wider text-muted-foreground uppercase">
                                     Assign member
@@ -278,26 +282,14 @@ export default function AdministrationShow({
                                 >
                                     <div className="grid gap-2">
                                         <Label>Member</Label>
-                                        <Select
+                                        <SearchSelect
+                                            endpoint={`/administrations/${administration.id}/members/search`}
                                             value={assignForm.data.user_id}
-                                            onValueChange={(v) =>
+                                            onChange={(v) =>
                                                 assignForm.setData('user_id', v)
                                             }
-                                        >
-                                            <SelectTrigger className="w-full">
-                                                <SelectValue placeholder="Select member..." />
-                                            </SelectTrigger>
-                                            <SelectContent>
-                                                {availableMembers.map((m) => (
-                                                    <SelectItem
-                                                        key={m.id}
-                                                        value={String(m.id)}
-                                                    >
-                                                        {m.name}
-                                                    </SelectItem>
-                                                ))}
-                                            </SelectContent>
-                                        </Select>
+                                            placeholder="Type to search members..."
+                                        />
                                     </div>
                                     <div className="grid gap-2">
                                         <Label>Position</Label>
@@ -338,11 +330,10 @@ export default function AdministrationShow({
                                     </Button>
                                 </form>
                             </div>
-                        ) : (
+                        )}
+                        {!administration.is_current && (
                             <div className="flex flex-1 items-center justify-center text-sm text-muted-foreground">
-                                {administration.is_current
-                                    ? 'All community members have been assigned.'
-                                    : 'This administration has ended.'}
+                                This administration has ended.
                             </div>
                         )}
                     </div>

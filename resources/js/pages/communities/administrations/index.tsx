@@ -13,7 +13,7 @@ import {
 
 type Member = {
     id: number;
-    user: { id: number; name: string };
+    user: { id: number; name: string; email: string };
     position: { id: number; name: string };
 };
 
@@ -86,6 +86,7 @@ export default function AdministrationsIndex({
                         <Select
                             value={community ? String(community.id) : undefined}
                             onValueChange={handleCommunityChange}
+                            disabled={communities.length <= 1}
                         >
                             <SelectTrigger size="sm" className="w-48">
                                 <SelectValue />
@@ -207,6 +208,7 @@ function CreateAdministrationPanel({
 }) {
     const form = useForm({
         started_at: new Date().toISOString().split('T')[0],
+        ended_at: '',
     });
 
     function handleSubmit(e: React.FormEvent) {
@@ -224,17 +226,41 @@ function CreateAdministrationPanel({
                     <div className="rounded-md border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800 dark:border-amber-800 dark:bg-amber-950 dark:text-amber-200">
                         Creating a new administration will end the current one.
                     </div>
-                    <div className="grid gap-2">
-                        <Label htmlFor="started_at">Start date *</Label>
-                        <Input
-                            id="started_at"
-                            type="date"
-                            value={form.data.started_at}
-                            onChange={(e) =>
-                                form.setData('started_at', e.target.value)
-                            }
-                            required
-                        />
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="grid gap-2">
+                            <Label htmlFor="started_at">Start date *</Label>
+                            <Input
+                                id="started_at"
+                                type="date"
+                                value={form.data.started_at}
+                                onChange={(e) =>
+                                    form.setData('started_at', e.target.value)
+                                }
+                                required
+                            />
+                            {form.errors.started_at && (
+                                <p className="text-xs text-red-600">
+                                    {form.errors.started_at}
+                                </p>
+                            )}
+                        </div>
+                        <div className="grid gap-2">
+                            <Label htmlFor="ended_at">End date *</Label>
+                            <Input
+                                id="ended_at"
+                                type="date"
+                                value={form.data.ended_at}
+                                onChange={(e) =>
+                                    form.setData('ended_at', e.target.value)
+                                }
+                                required
+                            />
+                            {form.errors.ended_at && (
+                                <p className="text-xs text-red-600">
+                                    {form.errors.ended_at}
+                                </p>
+                            )}
+                        </div>
                     </div>
                 </div>
                 <div className="flex items-center justify-between border-t px-6 py-3">
@@ -372,9 +398,14 @@ function AdministrationDetail({
                                     key={member.id}
                                     className="flex items-center justify-between px-4 py-3"
                                 >
-                                    <span className="text-sm font-medium">
-                                        {member.user.name}
-                                    </span>
+                                    <div>
+                                        <span className="text-sm font-medium">
+                                            {member.user.name}
+                                        </span>
+                                        <span className="block text-xs text-muted-foreground">
+                                            {member.user.email}
+                                        </span>
+                                    </div>
                                     <span className="rounded bg-muted px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground">
                                         {member.position.name}
                                     </span>
