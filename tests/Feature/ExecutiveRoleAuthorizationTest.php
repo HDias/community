@@ -117,16 +117,16 @@ test('Secretary has leadership position', function () {
     expect($user->hasLeadershipPositionIn($community))->toBeTrue();
 });
 
-test('Vice-President does not have leadership position', function () {
+test('Vice-President has leadership position', function () {
     [$user, $community] = createCommunityWithExecutiveMember('Vice-President');
 
-    expect($user->hasLeadershipPositionIn($community))->toBeFalse();
+    expect($user->hasLeadershipPositionIn($community))->toBeTrue();
 });
 
-test('Treasurer does not have leadership position', function () {
+test('Treasurer has leadership position', function () {
     [$user, $community] = createCommunityWithExecutiveMember('Treasurer');
 
-    expect($user->hasLeadershipPositionIn($community))->toBeFalse();
+    expect($user->hasLeadershipPositionIn($community))->toBeTrue();
 });
 
 /*
@@ -217,20 +217,20 @@ test('administration policy manage allows Secretary for current administration',
     expect($policy->manage($user, $community, $administration))->toBeTrue();
 });
 
-test('administration policy manage denies Vice-President for current administration', function () {
+test('administration policy manage allows Vice-President for current administration', function () {
     [$user, $community, $administration] = createCommunityWithExecutiveMember('Vice-President');
 
     $policy = new AdministrationPolicy;
 
-    expect($policy->manage($user, $community, $administration))->toBeFalse();
+    expect($policy->manage($user, $community, $administration))->toBeTrue();
 });
 
-test('administration policy manage denies Treasurer for current administration', function () {
+test('administration policy manage allows Treasurer for current administration', function () {
     [$user, $community, $administration] = createCommunityWithExecutiveMember('Treasurer');
 
     $policy = new AdministrationPolicy;
 
-    expect($policy->manage($user, $community, $administration))->toBeFalse();
+    expect($policy->manage($user, $community, $administration))->toBeTrue();
 });
 
 test('administration policy manage denies non-admin for old administration', function () {

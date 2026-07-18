@@ -38,7 +38,7 @@ trait HasCommunities
 
         return $administration->members()
             ->where('user_id', $this->id)
-            ->whereHas('position', fn ($q) => $q->where('has_admin_access', true)->whereIn('name', ['President', 'Secretary']))
+            ->whereHas('position', fn ($q) => $q->where('has_admin_access', true))
             ->exists();
     }
 
