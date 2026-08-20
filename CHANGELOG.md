@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Integration tests for the community onboarding page, covering the create permission gate and the form's validation contract
 - Integration tests for the create member page, pinning the fourteen field names `StoreMemberRequest` validates and the state-to-city dependency
 - Integration tests for the edit member page, covering the pre-populated fields, the client-side masking of the raw CPF and phone, and the saved state seeding the city list
+- Server-side prop assertions on the member and community pages, so a renamed Inertia prop fails a PHP test instead of only a stale front-end mock
 
 ### Fixed
 

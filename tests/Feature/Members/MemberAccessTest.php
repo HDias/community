@@ -6,6 +6,7 @@ use App\Models\AdministrationMember;
 use App\Models\Community;
 use App\Models\Position;
 use App\Models\User;
+use Inertia\Testing\AssertableInertia as Assert;
 
 /**
  * Attach a user to a community as a plain member.
@@ -79,7 +80,32 @@ test('executive member can access the members index', function () {
 
     $this->actingAs($executive)
         ->get(route('members.index', ['community' => $community->id]))
-        ->assertOk();
+        ->assertOk()
+        ->assertInertia(fn (Assert $page) => $page
+            ->component('members/index')
+            ->has('communities', 1)
+            ->where('communities.0', ['id' => $community->id, 'name' => $community->name])
+            ->where('community', [
+                'id' => $community->id,
+                'name' => $community->name,
+                'slug' => $community->slug,
+            ])
+            ->has('members.data', 1)
+            ->has('members.data.0', fn (Assert $row) => $row
+                ->where('id', $executive->id)
+                ->where('name', $executive->name)
+                ->where('email', $executive->email)
+                ->has('position')
+                ->has('profile')
+                ->has('pivot.role')
+                ->has('pivot.joined_at')
+                ->etc()
+            )
+            ->has('members.current_page')
+            ->has('members.last_page')
+            ->has('members.per_page')
+            ->has('members.total')
+        );
 });
 
 test('executive member is redirected to their only manageable community', function () {
@@ -92,12 +118,23 @@ test('executive member is redirected to their only manageable community', functi
         ->assertRedirect('/members?community='.$community->id);
 });
 
+/**
+ * The empty `members` array here is the shape `members/index` guards with
+ * `Array.isArray`, covered from the client side in
+ * `tests/js/pages/members-index.test.tsx`.
+ */
 test('admin without any community sees the empty members index', function () {
     $admin = User::factory()->create(['is_admin' => true]);
 
     $this->actingAs($admin)
         ->get(route('members.index'))
-        ->assertOk();
+        ->assertOk()
+        ->assertInertia(fn (Assert $page) => $page
+            ->component('members/index')
+            ->has('communities', 0)
+            ->where('community', null)
+            ->where('members', [])
+        );
 });
 
 test('executive member can access the edit form for a member of their community', function () {
@@ -110,7 +147,19 @@ test('executive member can access the edit form for a member of their community'
 
     $this->actingAs($executive)
         ->get(route('members.edit', ['member' => $member->id, 'community' => $community->id]))
-        ->assertOk();
+        ->assertOk()
+        ->assertInertia(fn (Assert $page) => $page
+            ->component('members/edit')
+            ->where('member.id', $member->id)
+            ->where('member.name', $member->name)
+            ->where('member.email', $member->email)
+            ->where('member.profile', null)
+            ->where('community', [
+                'id' => $community->id,
+                'name' => $community->name,
+                'slug' => $community->slug,
+            ])
+        );
 });
 
 test('plain member cannot access the edit form', function () {
