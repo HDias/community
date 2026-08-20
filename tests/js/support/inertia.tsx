@@ -33,6 +33,7 @@ const initialPage = (): Page => ({
 
 let page: Page = initialPage();
 let errors: Record<string, string> = {};
+let processing = false;
 
 /** Every `Form` submit intercepted since the last reset, in order. */
 export const submissions: Submission[] = [];
@@ -61,9 +62,15 @@ export function setFormErrors(next: Record<string, string>): void {
     errors = next;
 }
 
+/** Drives the `processing` argument of `Form`'s render prop. */
+export function setFormProcessing(next: boolean): void {
+    processing = next;
+}
+
 export function resetInertia(): void {
     page = initialPage();
     errors = {};
+    processing = false;
     submissions.length = 0;
     document.title = '';
     Object.values(router).forEach((fn) => fn.mockReset());
@@ -119,6 +126,8 @@ export function createInertiaMock() {
     }) {
         return (
             <form
+                action={action}
+                method={method}
                 onSubmit={(event) => {
                     event.preventDefault();
 
@@ -134,7 +143,7 @@ export function createInertiaMock() {
                 {...rest}
             >
                 {typeof children === 'function'
-                    ? children({ errors, processing: false })
+                    ? children({ errors, processing })
                     : children}
             </form>
         );

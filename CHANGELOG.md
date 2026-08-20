@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Integration tests for the CPF and phone input components, covering the raw-to-masked rendering the edit member page relies on
 - Integration tests for passkey registration, including the user-agent precedence that names a new passkey
 - Integration tests for the members index page, covering the paginated/empty prop shapes and the community switcher
+- Integration tests for the community onboarding page, covering the create permission gate and the form's validation contract
 
 ### Fixed
 
