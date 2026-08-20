@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- CI type check and lint failing because the gitignored Wayfinder `@/actions` and `@/routes` files were only generated later by the Vite plugin during "Build Assets"
 - Linter workflow running Pint, Prettier and ESLint in write mode and discarding the result, so style drift and lint errors could never fail a build
 - Member search firing a request after the component unmounted, because its debounce timer was never cleared
 - Dashboard link on the welcome page always pointing at `/` because it read a `currentTeam` prop the server never shared

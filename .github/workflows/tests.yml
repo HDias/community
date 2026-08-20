@@ -52,6 +52,12 @@ jobs:
       - name: Generate Application Key
         run: php artisan key:generate
 
+      # resources/js/actions and resources/js/routes are gitignored and normally
+      # produced by the Wayfinder Vite plugin during a build. The type check and
+      # tests both run before "Build Assets", so generate them up front.
+      - name: Generate Wayfinder Files
+        run: php artisan wayfinder:generate --with-form
+
       - name: Frontend Type Check
         run: npm run types:check
 
