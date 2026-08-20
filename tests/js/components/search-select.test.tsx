@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import type { UserEvent } from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { SearchSelect } from '@/components/ui/search-select';
-import { jsonResponse } from '../support/fetch';
+import { deferred, jsonResponse } from '../support/fetch';
 
 const ana = { id: 1, name: 'Ana Silva', email: 'ana@example.test' };
 const bruno = { id: 2, name: 'Bruno Costa' };
@@ -103,14 +103,43 @@ describe('SearchSelect', () => {
         expect(await screen.findByText('Searching...')).toBeInTheDocument();
     });
 
+    /**
+     * "No results found." is also what an untouched dropdown shows, so both of
+     * these wait for the loading row first. Asserting the message directly would
+     * pass before the debounce had even fired a request.
+     */
     it('reports when the search returns nothing', async () => {
+        const request = deferred<Response>();
+
+        fetchMock.mockReturnValue(request.promise);
         renderSearchSelect({});
 
         await user.type(screen.getByRole('textbox'), 'zzz');
+        expect(await screen.findByText('Searching...')).toBeInTheDocument();
 
-        expect(
-            await screen.findByText('No results found.'),
-        ).toBeInTheDocument();
+        request.resolve(jsonResponse([]));
+
+        await waitFor(() =>
+            expect(screen.queryByText('Searching...')).not.toBeInTheDocument(),
+        );
+        expect(screen.getByText('No results found.')).toBeInTheDocument();
+    });
+
+    it('stops loading when the request fails', async () => {
+        const request = deferred<Response>();
+
+        fetchMock.mockReturnValue(request.promise);
+        renderSearchSelect({});
+
+        await user.type(screen.getByRole('textbox'), 'zzz');
+        expect(await screen.findByText('Searching...')).toBeInTheDocument();
+
+        request.reject(new Error('Network down'));
+
+        await waitFor(() =>
+            expect(screen.queryByText('Searching...')).not.toBeInTheDocument(),
+        );
+        expect(screen.getByText('No results found.')).toBeInTheDocument();
     });
 
     it('lists each result, showing the email only when present', async () => {
