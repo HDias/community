@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Unit tests for the CPF and phone input masks and the `cn`/`toUrl` helpers
 - Unit tests for the state/city lookup, initials and clipboard hooks
 - Integration tests for the member search combobox
+- Integration tests for the address/state/city fields, and unit tests for the current-url helpers
 
 ### Fixed
 
