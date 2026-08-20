@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Integration tests for passkey registration, including the user-agent precedence that names a new passkey
 - Integration tests for the members index page, covering the paginated/empty prop shapes and the community switcher
 - Integration tests for the community onboarding page, covering the create permission gate and the form's validation contract
+- Integration tests for the create member page, pinning the fourteen field names `StoreMemberRequest` validates and the state-to-city dependency
 
 ### Fixed
 
