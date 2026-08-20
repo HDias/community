@@ -12,9 +12,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Vitest test harness for the TypeScript front end, with `npm test`, `npm run test:watch` and `npm run test:coverage`
 - Unit tests for the CPF and phone input masks and the `cn`/`toUrl` helpers
 - Unit tests for the state/city lookup, initials and clipboard hooks
+- Integration tests for the member search combobox
 
 ### Fixed
 
+- Member search firing a request after the component unmounted, because its debounce timer was never cleared
 - Dashboard link on the welcome page always pointing at `/` because it read a `currentTeam` prop the server never shared
 
 ## [0.2.0] - 2025-07-15

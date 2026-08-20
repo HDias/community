@@ -1,33 +1,7 @@
 import { act, renderHook, waitFor } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { useCities, useStates } from '@/hooks/use-brasil-api';
-
-type Deferred<T> = {
-    promise: Promise<T>;
-    resolve: (value: T) => void;
-    reject: (reason?: unknown) => void;
-};
-
-function deferred<T>(): Deferred<T> {
-    let resolve!: (value: T) => void;
-    let reject!: (reason?: unknown) => void;
-
-    const promise = new Promise<T>((res, rej) => {
-        resolve = res;
-        reject = rej;
-    });
-
-    return { promise, resolve, reject };
-}
-
-function jsonResponse(data: unknown): Response {
-    return { json: () => Promise.resolve(data) } as unknown as Response;
-}
-
-/** Drains the microtask queue so chained `.then()` handlers all run. */
-function flush(): Promise<void> {
-    return new Promise((resolve) => setTimeout(resolve, 0));
-}
+import { deferred, flush, jsonResponse } from '../support/fetch';
 
 const saoPaulo = { id: 35, sigla: 'SP', nome: 'São Paulo' };
 const santos = { nome: 'Santos', codigo_ibge: '3548500' };

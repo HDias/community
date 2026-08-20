@@ -89,6 +89,16 @@ export function SearchSelect({ endpoint, value, onChange, placeholder = 'Search.
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
+    // Drop any queued search so unmounting mid-typing cannot fire a request
+    // for a component that is no longer on screen.
+    useEffect(() => {
+        return () => {
+            if (debounceRef.current) {
+                clearTimeout(debounceRef.current);
+            }
+        };
+    }, []);
+
     return (
         <div ref={containerRef} className="relative">
             <Input
