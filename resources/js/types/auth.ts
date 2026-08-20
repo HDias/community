@@ -1,3 +1,20 @@
+export type Profile = {
+    id: number;
+    user_id: number;
+    social_name: string | null;
+    nickname: string | null;
+    cpf: string;
+    birth_date: string;
+    phone: string | null;
+    profession: string | null;
+    address_street: string | null;
+    address_number: string | null;
+    address_neighborhood: string | null;
+    address_city: string | null;
+    address_state: string | null;
+    address_zip: string | null;
+};
+
 export type User = {
     id: number;
     name: string;
@@ -5,6 +22,7 @@ export type User = {
     avatar?: string;
     email_verified_at: string | null;
     is_admin: boolean;
+    profile?: Profile | null;
     created_at: string;
     updated_at: string;
     [key: string]: unknown;

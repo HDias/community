@@ -5,6 +5,7 @@ namespace App\Concerns;
 use App\Models\Community;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 trait ResolvesManageableCommunity
 {
@@ -20,6 +21,24 @@ trait ResolvesManageableCommunity
         }
 
         return Community::findOrFail((int) $communityId);
+    }
+
+    /**
+     * Resolve community from query param, failing validation when absent.
+     *
+     * @throws ValidationException
+     */
+    private function resolveRequiredCommunity(Request $request): Community
+    {
+        $community = $this->resolveCommunity($request);
+
+        if (! $community) {
+            throw ValidationException::withMessages([
+                'community' => 'Community is required.',
+            ]);
+        }
+
+        return $community;
     }
 
     /**

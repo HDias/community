@@ -57,9 +57,7 @@ class PositionController extends Controller
      */
     public function store(SavePositionRequest $request): RedirectResponse
     {
-        $community = $this->resolveCommunity($request);
-
-        abort_unless($community !== null, 400, 'Community is required.');
+        $community = $this->resolveRequiredCommunity($request);
 
         Gate::authorize('manage', [Position::class, $community]);
 
