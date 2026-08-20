@@ -110,9 +110,7 @@ class AdministrationController extends Controller
      */
     public function store(StoreAdministrationRequest $request, CreateAdministration $action): RedirectResponse
     {
-        $community = $this->resolveCommunity($request);
-
-        abort_unless($community !== null, 400, 'Community is required.');
+        $community = $this->resolveRequiredCommunity($request);
 
         Gate::authorize('manage', [Administration::class, $community]);
 

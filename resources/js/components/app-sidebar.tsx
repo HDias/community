@@ -1,5 +1,5 @@
 import { Link, usePage } from '@inertiajs/react';
-import { Briefcase, LayoutGrid, Shield, Users } from 'lucide-react';
+import { Briefcase, Contact, LayoutGrid, Shield, Users } from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
@@ -41,6 +41,11 @@ export function AppSidebar() {
                       title: 'Administrations',
                       href: '/administrations',
                       icon: Shield,
+                  },
+                  {
+                      title: 'Members',
+                      href: '/members',
+                      icon: Contact,
                   },
               ]
             : []),

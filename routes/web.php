@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\BrasilApiController;
 use App\Http\Controllers\Communities\AdministrationController;
 use App\Http\Controllers\Communities\CommunityController;
+use App\Http\Controllers\Communities\MemberController;
 use App\Http\Controllers\Communities\PositionController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +18,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('communities.switch');
 
     Route::resource('positions', PositionController::class)->except(['create', 'show', 'edit']);
+    Route::resource('members', MemberController::class)->except(['show', 'destroy']);
     Route::resource('administrations', AdministrationController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
     Route::post('administrations/{administration}/members', [AdministrationController::class, 'assignMember'])
         ->name('administrations.members.store');

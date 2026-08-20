@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Actions\Communities\CreateCommunity;
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -14,7 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // App admin — NOT a member of any community
-        User::factory()->create([
+        $admin = User::factory()->create([
             'name' => 'Admin User',
             'email' => 'admin@example.com',
             'is_admin' => true,
@@ -60,6 +61,13 @@ class DatabaseSeeder extends Seeder
                 'joined_at' => now()->subMonths(rand(1, 12)),
             ]);
             $member->switchCommunity($community);
+        }
+
+        // Create profiles for all users — every person has personal data,
+        // including the app admin, who belongs to no community
+        $usersWithProfiles = [$admin, $president, $vicePresident, $secretary, $treasurer, $member1, $member2];
+        foreach ($usersWithProfiles as $user) {
+            Profile::factory()->create(['user_id' => $user->id]);
         }
 
         // Get default positions
@@ -120,6 +128,7 @@ class DatabaseSeeder extends Seeder
         */
 
         $creator2 = User::factory()->create();
+        Profile::factory()->create(['user_id' => $creator2->id]);
 
         $cityState2 = fake()->randomElement([
             ['city' => 'Porto Alegre', 'state' => 'RS'],
