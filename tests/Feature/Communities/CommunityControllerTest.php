@@ -8,13 +8,24 @@ use App\Models\Position;
 use App\Models\User;
 use Inertia\Testing\AssertableInertia as Assert;
 
+/**
+ * `canCreate` is the only prop `communities/onboarding` takes, and it gates the
+ * whole create form -- see `tests/js/pages/communities-onboarding.test.tsx`.
+ *
+ * Only the `true` case is reachable today: `CommunityPolicy::viewAny()` refuses a
+ * non-admin who has no community, and any non-admin who passes it belongs to one,
+ * which routes them to `communities/index` instead. The page handles
+ * `canCreate: false` anyway and the client test covers it.
+ */
 test('communities index shows onboarding for admin users with no communities', function () {
     $user = User::factory()->create(['is_admin' => true]);
 
     $response = $this->actingAs($user)->get(route('communities.index'));
 
     $response->assertOk();
-    $response->assertInertia(fn (Assert $page) => $page->component('communities/onboarding'));
+    $response->assertInertia(fn (Assert $page) => $page
+        ->component('communities/onboarding')
+        ->where('canCreate', true));
 });
 
 test('communities index shows card grid for admin users with communities', function () {

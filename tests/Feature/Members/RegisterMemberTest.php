@@ -144,6 +144,27 @@ test('phone is stored as digits only when updating a member', function () {
     expect($member->refresh()->profile->phone)->toBe('1134567890');
 });
 
+/**
+ * `members/create` reads nothing but `community`, and it builds every URL on the
+ * page from the id -- see `tests/js/pages/members-create.test.tsx`.
+ */
+test('member create page exposes only the community it is scoped to', function () {
+    $community = Community::factory()->create();
+    $admin = User::factory()->create(['is_admin' => true]);
+
+    $this->actingAs($admin)
+        ->get(route('members.create', ['community' => $community->id]))
+        ->assertOk()
+        ->assertInertia(fn (Assert $page) => $page
+            ->component('members/create')
+            ->has('community', fn (Assert $scope) => $scope
+                ->where('id', $community->id)
+                ->where('name', $community->name)
+                ->where('slug', $community->slug)
+            )
+        );
+});
+
 test('member edit page exposes birth date in Y-m-d for the date input', function () {
     $community = Community::factory()->create();
     $admin = User::factory()->create(['is_admin' => true]);
@@ -167,6 +188,36 @@ test('member edit page exposes birth date in Y-m-d for the date input', function
         );
 });
 
+/**
+ * The CPF and phone leave the server as digits only. `CpfInput` and `PhoneInput`
+ * apply the mask on render, which is asserted from the other side in
+ * `tests/js/pages/members-edit.test.tsx`.
+ */
+test('member edit page sends the CPF and phone unformatted', function () {
+    $community = Community::factory()->create();
+    $admin = User::factory()->create(['is_admin' => true]);
+
+    $member = User::factory()->create();
+    Profile::factory()->create([
+        'user_id' => $member->id,
+        'cpf' => '52998224725',
+        'phone' => '11987654321',
+    ]);
+    $community->members()->attach($member, [
+        'role' => CommunityRole::Member->value,
+        'joined_at' => now(),
+    ]);
+
+    $this->actingAs($admin)
+        ->get(route('members.edit', ['member' => $member->id, 'community' => $community->id]))
+        ->assertOk()
+        ->assertInertia(fn (Assert $page) => $page
+            ->component('members/edit')
+            ->where('member.profile.cpf', '52998224725')
+            ->where('member.profile.phone', '11987654321')
+        );
+});
+
 test('non-admin cannot register members', function () {
     $community = Community::factory()->create();
     $member = User::factory()->create();
@@ -185,6 +236,10 @@ test('non-admin cannot register members', function () {
         ->assertForbidden();
 });
 
+/**
+ * Pins the row shape `members/index` renders, mocked in
+ * `tests/js/pages/members-index.test.tsx`. A renamed or dropped key breaks here.
+ */
 test('member index lists community members', function () {
     $community = Community::factory()->create();
     $admin = User::factory()->create(['is_admin' => true]);
@@ -199,7 +254,17 @@ test('member index lists community members', function () {
     $this->actingAs($admin)
         ->get(route('members.index', ['community' => $community->id]))
         ->assertOk()
-        ->assertInertia(fn (Assert $page) => $page->component('members/index'));
+        ->assertInertia(fn (Assert $page) => $page
+            ->component('members/index')
+            ->has('members.data', 1)
+            ->where('members.data.0.id', $member->id)
+            ->where('members.data.0.name', $member->name)
+            ->where('members.data.0.email', $member->email)
+            ->where('members.data.0.pivot.role', CommunityRole::Member->value)
+            ->has('members.data.0.profile.cpf')
+            ->has('members.data.0.profile.phone')
+            ->has('members.data.0.profile.address_city')
+        );
 });
 
 test('member index exposes the position held in the current administration', function () {

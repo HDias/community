@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-08-20
+
+### Added
+
+- Vitest test harness for the TypeScript front end, with `npm test`, `npm run test:watch` and `npm run test:coverage`
+- Unit tests for the CPF and phone input masks and the `cn`/`toUrl` helpers
+- Unit tests for the state/city lookup, initials and clipboard hooks
+- Integration tests for the member search combobox
+- Integration tests for the address/state/city fields, and unit tests for the current-url helpers
+- Integration tests for the CPF and phone input components, covering the raw-to-masked rendering the edit member page relies on
+- Integration tests for passkey registration, including the user-agent precedence that names a new passkey
+- Integration tests for the members index page, covering the paginated/empty prop shapes and the community switcher
+- Integration tests for the community onboarding page, covering the create permission gate and the form's validation contract
+- Integration tests for the create member page, pinning the fourteen field names `StoreMemberRequest` validates and the state-to-city dependency
+- Integration tests for the edit member page, covering the pre-populated fields, the client-side masking of the raw CPF and phone, and the saved state seeding the city list
+- Server-side prop assertions on the member and community pages, so a renamed Inertia prop fails a PHP test instead of only a stale front-end mock
+- CI now runs the front-end type check and test suite, and `composer ci:check` runs `npm test` alongside the other gates
+
+### Fixed
+
+- CI type check and lint steps failing because the gitignored Wayfinder `@/actions` and `@/routes` modules were only generated later by the asset build
+- Linter workflow running Pint, Prettier and ESLint in write mode and discarding the result, so style drift and lint errors could never fail a build
+- Member search firing a request after the component unmounted, because its debounce timer was never cleared
+- Dashboard link on the welcome page always pointing at `/` because it read a `currentTeam` prop the server never shared
+
 ## [0.2.0] - 2025-07-15
 
 ### Added
