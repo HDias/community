@@ -52,6 +52,12 @@ jobs:
       - name: Generate Application Key
         run: php artisan key:generate
 
+      - name: Frontend Type Check
+        run: npm run types:check
+
+      - name: Frontend Tests
+        run: npm test
+
       - name: Build Assets
         run: npm run build
 
