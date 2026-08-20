@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Vitest test harness for the TypeScript front end, with `npm test`, `npm run test:watch` and `npm run test:coverage`
 - Unit tests for the CPF and phone input masks and the `cn`/`toUrl` helpers
+- Unit tests for the state/city lookup, initials and clipboard hooks
 
 ### Fixed
 

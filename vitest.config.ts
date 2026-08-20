@@ -9,6 +9,10 @@ const alias = {
 export default defineConfig({
     test: {
         projects: [
+            // Tests are split by file extension: `.test.ts` runs in the node
+            // environment, `.test.tsx` gets a jsdom document. A test needing a
+            // DOM therefore has to be named `.test.tsx`, even if it contains
+            // no JSX itself.
             {
                 plugins: [react()],
                 resolve: { alias },
@@ -17,6 +21,17 @@ export default defineConfig({
                     globals: true,
                     environment: 'node',
                     include: ['tests/js/**/*.test.ts'],
+                },
+            },
+            {
+                plugins: [react()],
+                resolve: { alias },
+                test: {
+                    name: 'dom',
+                    globals: true,
+                    environment: 'jsdom',
+                    include: ['tests/js/**/*.test.tsx'],
+                    setupFiles: ['tests/js/setup.ts'],
                 },
             },
         ],
