@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-08-20
+
 ### Added
 
 - Vitest test harness for the TypeScript front end, with `npm test`, `npm run test:watch` and `npm run test:coverage`
