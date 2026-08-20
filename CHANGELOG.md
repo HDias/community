@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Integration tests for the address/state/city fields, and unit tests for the current-url helpers
 - Integration tests for the CPF and phone input components, covering the raw-to-masked rendering the edit member page relies on
 - Integration tests for passkey registration, including the user-agent precedence that names a new passkey
+- Integration tests for the members index page, covering the paginated/empty prop shapes and the community switcher
 
 ### Fixed
 

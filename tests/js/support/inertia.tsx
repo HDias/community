@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { useEffect } from 'react';
 import { vi } from 'vitest';
 
 type PageProps = Record<string, unknown>;
@@ -64,6 +65,7 @@ export function resetInertia(): void {
     page = initialPage();
     errors = {};
     submissions.length = 0;
+    document.title = '';
     Object.values(router).forEach((fn) => fn.mockReset());
     setLayoutProps.mockReset();
     createInertiaApp.mockReset();
@@ -79,7 +81,14 @@ function hrefToString(href: Href): string {
  * real module and a missing name fails at import time.
  */
 export function createInertiaMock() {
-    function Head(): null {
+    /** Sets `document.title`, which is the observable half of Inertia's `Head`. */
+    function Head({ title }: { title?: string }): null {
+        useEffect(() => {
+            if (title !== undefined) {
+                document.title = title;
+            }
+        }, [title]);
+
         return null;
     }
 
