@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Members;
 
+use App\Models\User;
 use App\Rules\Cpf;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -24,6 +25,7 @@ class UpdateMemberRequest extends FormRequest
      */
     public function rules(): array
     {
+        /** @var User $member */
         $member = $this->route('member');
 
         return [

@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use App\Models\Community;
+use App\Models\User;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -21,6 +22,9 @@ class MemberRegistered extends Notification
         return ['mail'];
     }
 
+    /**
+     * @param  User  $notifiable
+     */
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)

@@ -29,6 +29,17 @@ class ProfileFactory extends Factory
     ];
 
     /**
+     * Brazilian state abbreviations (UF).
+     *
+     * @var list<string>
+     */
+    private const STATES = [
+        'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO',
+        'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI',
+        'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO',
+    ];
+
+    /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
@@ -47,7 +58,7 @@ class ProfileFactory extends Factory
             'address_number' => fake()->optional()->buildingNumber(),
             'address_neighborhood' => fake()->optional()->citySuffix(),
             'address_city' => fake()->optional()->city(),
-            'address_state' => fake()->optional()->stateAbbr(),
+            'address_state' => fake()->optional()->randomElement(self::STATES),
             'address_zip' => fake()->optional()->numerify('########'),
         ];
     }
