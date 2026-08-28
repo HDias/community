@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\BrasilApiController;
 use App\Http\Controllers\Communities\AdministrationController;
 use App\Http\Controllers\Communities\CommunityController;
+use App\Http\Controllers\Communities\ContributionController;
 use App\Http\Controllers\Communities\ContributionSettingController;
 use App\Http\Controllers\Communities\MemberController;
 use App\Http\Controllers\Communities\PositionController;
@@ -32,6 +33,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('contributions.settings.index');
     Route::post('contributions/settings', [ContributionSettingController::class, 'store'])
         ->name('contributions.settings.store');
+    Route::post('contributions', [ContributionController::class, 'store'])
+        ->name('contributions.store');
 
     Route::get('api/brasil/states', [BrasilApiController::class, 'states'])->name('api.brasil.states');
     Route::get('api/brasil/cities/{uf}', [BrasilApiController::class, 'cities'])->name('api.brasil.cities');
