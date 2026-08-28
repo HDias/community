@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Communities;
 
 use App\Actions\Contributions\RegisterContribution;
+use App\Actions\Contributions\RegisterDonation;
 use App\Concerns\ResolvesManageableCommunity;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Contributions\StoreContributionRequest;
+use App\Http\Requests\Contributions\StoreDonationRequest;
 use App\Models\Contribution;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -28,5 +30,19 @@ class ContributionController extends Controller
 
         return redirect()->to('/contributions?community='.$community->id)
             ->with('success', __('Payment registered successfully.'));
+    }
+
+    public function storeDonation(StoreDonationRequest $request, RegisterDonation $action): RedirectResponse
+    {
+        $community = $this->resolveRequiredCommunity($request);
+
+        Gate::authorize('create', [Contribution::class, $community]);
+
+        $member = $request->validated('user_id') ? User::findOrFail($request->validated('user_id')) : null;
+
+        $action->handle($community, $request->user(), $member, $request->validated());
+
+        return redirect()->to('/contributions?community='.$community->id)
+            ->with('success', __('Donation registered successfully.'));
     }
 }

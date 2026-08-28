@@ -35,6 +35,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('contributions.settings.store');
     Route::post('contributions', [ContributionController::class, 'store'])
         ->name('contributions.store');
+    Route::post('contributions/donations', [ContributionController::class, 'storeDonation'])
+        ->name('contributions.donations.store');
 
     Route::get('api/brasil/states', [BrasilApiController::class, 'states'])->name('api.brasil.states');
     Route::get('api/brasil/cities/{uf}', [BrasilApiController::class, 'cities'])->name('api.brasil.cities');
