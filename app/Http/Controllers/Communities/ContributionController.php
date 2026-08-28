@@ -24,7 +24,7 @@ class ContributionController extends Controller
 
         Gate::authorize('create', [Contribution::class, $community]);
 
-        $member = User::findOrFail($request->validated('user_id'));
+        $member = User::findOrFail((int) $request->validated('user_id'));
 
         $action->handle($community, $request->user(), $member, Carbon::parse($request->validated('reference_month')));
 
@@ -38,9 +38,13 @@ class ContributionController extends Controller
 
         Gate::authorize('create', [Contribution::class, $community]);
 
-        $member = $request->validated('user_id') ? User::findOrFail($request->validated('user_id')) : null;
+        $userId = $request->validated('user_id');
+        $member = $userId ? User::findOrFail((int) $userId) : null;
 
-        $action->handle($community, $request->user(), $member, $request->validated());
+        $action->handle($community, $request->user(), $member, [
+            'amount' => $request->validated('amount'),
+            'notes' => $request->validated('notes'),
+        ]);
 
         return redirect()->to('/contributions?community='.$community->id)
             ->with('success', __('Donation registered successfully.'));

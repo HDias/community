@@ -34,12 +34,13 @@ class RegisterContribution
         }
 
         $setting = ContributionSetting::currentFor($community, $referenceMonth);
+        $amount = $setting ? $setting->monthly_amount : 0;
 
         return $community->contributions()->create([
             'user_id' => $member->id,
             'reference_month' => $referenceMonth,
             'monthly_key' => $referenceMonth,
-            'amount' => $setting?->monthly_amount ?? 0,
+            'amount' => $amount,
             'registered_by' => $registeredBy->id,
             'type' => ContributionType::Monthly,
         ]);

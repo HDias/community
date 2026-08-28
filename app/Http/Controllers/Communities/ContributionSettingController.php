@@ -35,7 +35,10 @@ class ContributionSettingController extends Controller
 
         Gate::authorize('create', [Contribution::class, $community]);
 
-        $action->handle($community, $request->validated());
+        $action->handle($community, [
+            'monthly_amount' => $request->validated('monthly_amount'),
+            'effective_from' => $request->validated('effective_from'),
+        ]);
 
         return redirect()->route('contributions.settings.index', ['community' => $community->id])
             ->with('success', __('Contribution amount updated.'));

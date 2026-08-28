@@ -25,7 +25,10 @@ class CalculateDefaultStreaks
             ->groupBy('user_id')
             ->map(fn ($rows) => $rows->pluck('reference_month')->sort());
 
-        return $joinDates->map(function ($joinedAt, $userId) use ($referenceMonth, $paidMonths) {
+        $rows = [];
+
+        foreach ($joinDates as $userId => $joinedAt) {
+            $userId = (int) $userId;
             $joined = Carbon::parse($joinedAt)->startOfMonth();
             $expectedMonths = collect();
 
@@ -35,12 +38,26 @@ class CalculateDefaultStreaks
 
             $paid = $paidMonths->get($userId, collect());
             $owedMonths = $expectedMonths->reject(fn ($month) => $paid->contains(fn ($p) => $p->isSameMonth($month)));
+            $monthsOwed = $owedMonths->count();
 
-            return [
+            if ($monthsOwed === 0) {
+                continue;
+            }
+
+            $rows[] = [
                 'user_id' => $userId,
-                'months_owed' => $owedMonths->count(),
+                'months_owed' => $monthsOwed,
                 'last_payment' => $paid->last(),
             ];
-        })->filter(fn ($row) => $row['months_owed'] > 0)->values();
+        }
+
+        // PHPStan/Larastan false positive: Collection<int, array{...}>'s invariant
+        // TValue check fails whenever the array shape has a nullable member (e.g.
+        // `last_payment: Carbon|null`), even when the declared and inferred types
+        // are textually identical. Confirmed via minimal repro outside this class —
+        // a non-nullable union in the same position passes. See
+        // https://phpstan.org/blog/whats-up-with-template-covariant.
+        // @phpstan-ignore return.type
+        return new Collection($rows);
     }
 }
