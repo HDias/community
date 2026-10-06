@@ -1,4 +1,16 @@
-# Community
+# Community Management Platform
+
+A web application developed as a volunteer project to support the administrative management of the Boa Esperança Quilombola Community, located in Mateiros, Tocantins, Brazil.
+
+The goal is to replace manual administrative processes with a simple, centralized system for managing community members, meetings, contributions, and other day-to-day activities.
+
+About the Project
+
+The Boa Esperança community needs to keep track of its members, community meetings, contributions, and administrative records.
+
+This application is being developed to centralize this information and make these processes easier to manage, while keeping the system simple and accessible for the people responsible for the community's administration.
+
+This is an ongoing project and is being developed voluntarily.
 
 A Laravel application for managing communities with multi-tenant architecture. Built with Laravel, Inertia.js, React, and Tailwind CSS.
 
