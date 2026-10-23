@@ -74,4 +74,28 @@ class Community extends Model
     {
         return $this->belongsTo(Administration::class, 'current_administration_id');
     }
+
+    /**
+     * @return HasMany<ContributionSetting, $this>
+     */
+    public function contributionSettings(): HasMany
+    {
+        return $this->hasMany(ContributionSetting::class);
+    }
+
+    /**
+     * @return HasMany<Contribution, $this>
+     */
+    public function contributions(): HasMany
+    {
+        return $this->hasMany(Contribution::class);
+    }
+
+    /**
+     * @return HasMany<ContributionReport, $this>
+     */
+    public function contributionReports(): HasMany
+    {
+        return $this->hasMany(ContributionReport::class);
+    }
 }
