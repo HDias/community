@@ -261,15 +261,16 @@ test('the member list is paginated', function () {
     $community = Community::factory()->create();
     $admin = User::factory()->create(['is_admin' => true]);
 
-    User::factory()->count(20)->create()->each(
+    User::factory()->count(55)->create()->each(
         fn (User $member) => attachContributionIndexMember($community, $member)
     );
 
     $this->actingAs($admin)
         ->get(route('contributions.index', ['community' => $community->id]))
         ->assertInertia(fn (Assert $page) => $page
-            ->has('members.data', 15)
-            ->where('members.total', 20)
+            ->has('members.data', 50)
+            ->where('members.total', 55)
+            ->where('members.per_page', 50)
             ->where('members.current_page', 1)
             ->where('members.last_page', 2)
         );

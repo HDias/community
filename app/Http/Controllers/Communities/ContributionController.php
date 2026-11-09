@@ -79,7 +79,7 @@ class ContributionController extends Controller
                 });
             })
             ->orderBy('users.name')
-            ->paginate(15)
+            ->paginate((int) config('pagination.per_page'))
             ->withQueryString()
             ->through(fn (User $member): array => [
                 'id' => $member->id,
