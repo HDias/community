@@ -139,9 +139,7 @@ export default function ContributionsSettings({ community, settings }: Props) {
                                                     <DialogDescription>
                                                         Correct the amount
                                                         effective from{' '}
-                                                        {
-                                                            setting.effective_from
-                                                        }
+                                                        {setting.effective_from}
                                                         . Past settings can be
                                                         edited.
                                                     </DialogDescription>

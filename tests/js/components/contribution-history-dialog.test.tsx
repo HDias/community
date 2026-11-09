@@ -1,11 +1,8 @@
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
-import {
-    ContributionHistoryDialog
-
-} from '@/components/contribution-history-dialog';
-import type {ContributionHistoryEntry} from '@/components/contribution-history-dialog';
+import { ContributionHistoryDialog } from '@/components/contribution-history-dialog';
+import type { ContributionHistoryEntry } from '@/components/contribution-history-dialog';
 
 const reversed: ContributionHistoryEntry = {
     id: 1,

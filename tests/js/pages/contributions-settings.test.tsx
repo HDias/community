@@ -186,12 +186,12 @@ describe('editing a future setting', () => {
         expect(
             within(dialog).getByText('Edit contribution amount'),
         ).toBeInTheDocument();
-        expect(
-            within(dialog).getByLabelText('Monthly amount *'),
-        ).toHaveValue(35.5);
-        expect(
-            within(dialog).getByLabelText('Effective from *'),
-        ).toHaveValue('2026-12-01');
+        expect(within(dialog).getByLabelText('Monthly amount *')).toHaveValue(
+            35.5,
+        );
+        expect(within(dialog).getByLabelText('Effective from *')).toHaveValue(
+            '2026-12-01',
+        );
     });
 
     it('submits the correction to the update endpoint', async () => {
@@ -234,7 +234,9 @@ describe('editing a future setting', () => {
 
         const dialog = await screen.findByRole('dialog');
 
-        await user.click(within(dialog).getByRole('button', { name: 'Cancel' }));
+        await user.click(
+            within(dialog).getByRole('button', { name: 'Cancel' }),
+        );
 
         expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
         expect(submissions).toHaveLength(0);

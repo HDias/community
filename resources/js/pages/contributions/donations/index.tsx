@@ -2,11 +2,8 @@ import { Form, Head, Link, router, setLayoutProps } from '@inertiajs/react';
 import type { ChangeEvent } from 'react';
 import { useRef, useState } from 'react';
 import { formatCnpj } from '@/components/cnpj-input';
-import {
-    ContributionHistoryDialog
-    
-} from '@/components/contribution-history-dialog';
-import type {ContributionHistoryEntry} from '@/components/contribution-history-dialog';
+import { ContributionHistoryDialog } from '@/components/contribution-history-dialog';
+import type { ContributionHistoryEntry } from '@/components/contribution-history-dialog';
 import { formatCpf } from '@/components/cpf-input';
 import InputError from '@/components/input-error';
 import { Badge } from '@/components/ui/badge';
