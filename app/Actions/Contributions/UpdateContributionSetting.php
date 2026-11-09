@@ -16,4 +16,16 @@ class UpdateContributionSetting
     {
         return $community->contributionSettings()->create($data);
     }
+
+    /**
+     * Update a past contribution setting in place.
+     *
+     * @param  array{monthly_amount: string, effective_from: string}  $data
+     */
+    public function update(ContributionSetting $setting, array $data): ContributionSetting
+    {
+        $setting->update($data);
+
+        return $setting;
+    }
 }

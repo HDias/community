@@ -1,6 +1,15 @@
 import { Form, Head, setLayoutProps } from '@inertiajs/react';
 import InputError from '@/components/input-error';
 import { Button } from '@/components/ui/button';
+import {
+    Dialog,
+    DialogClose,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogTitle,
+    DialogTrigger,
+} from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
@@ -8,6 +17,7 @@ type ContributionSetting = {
     id: number;
     monthly_amount: string;
     effective_from: string;
+    editable: boolean;
 };
 
 type Props = {
@@ -97,6 +107,9 @@ export default function ContributionsSettings({ community, settings }: Props) {
                                 <th className="px-4 py-2 text-left font-medium">
                                     Monthly amount
                                 </th>
+                                <th className="px-4 py-2 text-right font-medium">
+                                    Actions
+                                </th>
                             </tr>
                         </thead>
                         <tbody className="divide-y">
@@ -107,6 +120,122 @@ export default function ContributionsSettings({ community, settings }: Props) {
                                     </td>
                                     <td className="px-4 py-2">
                                         {setting.monthly_amount}
+                                    </td>
+                                    <td className="px-4 py-2 text-right">
+                                        {setting.editable ? (
+                                            <Dialog>
+                                                <DialogTrigger asChild>
+                                                    <Button
+                                                        size="sm"
+                                                        variant="outline"
+                                                    >
+                                                        Edit
+                                                    </Button>
+                                                </DialogTrigger>
+                                                <DialogContent>
+                                                    <DialogTitle>
+                                                        Edit contribution amount
+                                                    </DialogTitle>
+                                                    <DialogDescription>
+                                                        Correct the amount
+                                                        effective from{' '}
+                                                        {
+                                                            setting.effective_from
+                                                        }
+                                                        . Past settings can be
+                                                        edited.
+                                                    </DialogDescription>
+
+                                                    <Form
+                                                        action={`/contributions/settings/${setting.id}?community=${community.id}`}
+                                                        method="put"
+                                                        options={{
+                                                            preserveScroll: true,
+                                                        }}
+                                                    >
+                                                        {({
+                                                            errors,
+                                                            processing,
+                                                        }) => (
+                                                            <>
+                                                                <div className="grid gap-2">
+                                                                    <Label
+                                                                        htmlFor={`monthly-amount-${setting.id}`}
+                                                                    >
+                                                                        Monthly
+                                                                        amount *
+                                                                    </Label>
+                                                                    <Input
+                                                                        id={`monthly-amount-${setting.id}`}
+                                                                        name="monthly_amount"
+                                                                        type="number"
+                                                                        step="0.01"
+                                                                        min="0.01"
+                                                                        defaultValue={
+                                                                            setting.monthly_amount
+                                                                        }
+                                                                        required
+                                                                    />
+                                                                    <InputError
+                                                                        message={
+                                                                            errors.monthly_amount
+                                                                        }
+                                                                    />
+                                                                </div>
+                                                                <div className="grid gap-2">
+                                                                    <Label
+                                                                        htmlFor={`effective-from-${setting.id}`}
+                                                                    >
+                                                                        Effective
+                                                                        from *
+                                                                    </Label>
+                                                                    <Input
+                                                                        id={`effective-from-${setting.id}`}
+                                                                        name="effective_from"
+                                                                        type="date"
+                                                                        defaultValue={
+                                                                            setting.effective_from
+                                                                        }
+                                                                        required
+                                                                    />
+                                                                    <InputError
+                                                                        message={
+                                                                            errors.effective_from
+                                                                        }
+                                                                    />
+                                                                </div>
+
+                                                                <DialogFooter className="gap-2">
+                                                                    <DialogClose
+                                                                        asChild
+                                                                    >
+                                                                        <Button
+                                                                            type="button"
+                                                                            variant="secondary"
+                                                                        >
+                                                                            Cancel
+                                                                        </Button>
+                                                                    </DialogClose>
+                                                                    <Button
+                                                                        type="submit"
+                                                                        disabled={
+                                                                            processing
+                                                                        }
+                                                                    >
+                                                                        Save
+                                                                        changes
+                                                                    </Button>
+                                                                </DialogFooter>
+                                                            </>
+                                                        )}
+                                                    </Form>
+                                                </DialogContent>
+                                            </Dialog>
+                                        ) : (
+                                            <span className="text-sm text-muted-foreground">
+                                                -
+                                            </span>
+                                        )}
                                     </td>
                                 </tr>
                             ))}

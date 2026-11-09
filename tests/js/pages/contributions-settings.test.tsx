@@ -21,6 +21,7 @@ function setting(overrides: Partial<Setting> = {}): Setting {
         id: 1,
         monthly_amount: '50.00',
         effective_from: '2026-08-01',
+        editable: true,
         ...overrides,
     };
 }
@@ -136,5 +137,106 @@ describe('the settings history', () => {
 
         expect(within(rows[1]).getByText('2026-08-01')).toBeInTheDocument();
         expect(within(rows[2]).getByText('2026-06-01')).toBeInTheDocument();
+    });
+});
+
+describe('editing a future setting', () => {
+    it('offers an edit action only for future settings', () => {
+        renderPage({
+            settings: [
+                setting({
+                    id: 2,
+                    effective_from: '2026-12-01',
+                    editable: true,
+                }),
+                setting({
+                    id: 1,
+                    effective_from: '2026-06-01',
+                    editable: false,
+                }),
+            ],
+        });
+
+        const rows = screen.getAllByRole('row');
+
+        expect(
+            within(rows[1]).getByRole('button', { name: 'Edit' }),
+        ).toBeInTheDocument();
+        expect(
+            within(rows[2]).queryByRole('button', { name: 'Edit' }),
+        ).not.toBeInTheDocument();
+        expect(within(rows[2]).getByText('-')).toBeInTheDocument();
+    });
+
+    it('opens a dialog prefilled with the setting values', async () => {
+        renderPage({
+            settings: [
+                setting({
+                    id: 9,
+                    monthly_amount: '35.50',
+                    effective_from: '2026-12-01',
+                }),
+            ],
+        });
+
+        await user.click(screen.getByRole('button', { name: 'Edit' }));
+
+        const dialog = await screen.findByRole('dialog');
+
+        expect(
+            within(dialog).getByText('Edit contribution amount'),
+        ).toBeInTheDocument();
+        expect(
+            within(dialog).getByLabelText('Monthly amount *'),
+        ).toHaveValue(35.5);
+        expect(
+            within(dialog).getByLabelText('Effective from *'),
+        ).toHaveValue('2026-12-01');
+    });
+
+    it('submits the correction to the update endpoint', async () => {
+        renderPage({
+            settings: [
+                setting({
+                    id: 9,
+                    monthly_amount: '35.50',
+                    effective_from: '2026-12-01',
+                }),
+            ],
+        });
+
+        await user.click(screen.getByRole('button', { name: 'Edit' }));
+
+        const dialog = await screen.findByRole('dialog');
+        const amount = within(dialog).getByLabelText('Monthly amount *');
+
+        await user.clear(amount);
+        await user.type(amount, '42.75');
+        await user.click(
+            within(dialog).getByRole('button', { name: 'Save changes' }),
+        );
+
+        expect(submissions).toHaveLength(1);
+        expect(submissions[0]).toMatchObject({
+            action: '/contributions/settings/9?community=7',
+            method: 'put',
+            data: {
+                monthly_amount: '42.75',
+                effective_from: '2026-12-01',
+            },
+        });
+    });
+
+    it('closes the dialog without submitting when cancelled', async () => {
+        renderPage({ settings: [setting({ id: 9 })] });
+
+        await user.click(screen.getByRole('button', { name: 'Edit' }));
+
+        const dialog = await screen.findByRole('dialog');
+
+        await user.click(within(dialog).getByRole('button', { name: 'Cancel' }));
+
+        expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+        expect(submissions).toHaveLength(0);
     });
 });

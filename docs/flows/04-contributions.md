@@ -183,6 +183,10 @@ flowchart TD
 The latest already-effective setting wins. A future setting does not override the
 currently active amount until its date arrives.
 
+Settings whose `effective_from` is in the future can be edited in place from the
+settings page (amount and effective date). Already-effective settings stay read-only,
+and editing a setting cannot move it onto another setting's effective date.
+
 ## Flow: Register Donation
 
 ```mermaid

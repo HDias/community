@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Donations ledger page with month filter, debounced search (member name, donor name, CPF/CNPJ) and pagination
 - Audited reversal of donations, listed with an Active/Reversed status badge
 - Payment history column and modal on both lists, showing the amount registered, who registered and reversed each row, when and why
+- Editing of future-dated contribution settings, keeping already-effective settings read-only
 - CNPJ input mask and validation rule
 - `PAGINATION_PER_PAGE` configuration, defaulting to 50 records per page
 

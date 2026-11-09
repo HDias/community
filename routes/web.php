@@ -36,6 +36,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('contributions.settings.index');
     Route::post('contributions/settings', [ContributionSettingController::class, 'store'])
         ->name('contributions.settings.store');
+    Route::put('contributions/settings/{contributionSetting}', [ContributionSettingController::class, 'update'])
+        ->name('contributions.settings.update');
     Route::post('contributions', [ContributionController::class, 'store'])
         ->name('contributions.store');
     Route::get('contributions/donations', [ContributionController::class, 'indexDonations'])

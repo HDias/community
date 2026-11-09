@@ -119,6 +119,169 @@ test('executive with admin access can view and change settings, preserving histo
         ->and((float) $community->contributionSettings()->orderBy('effective_from')->first()->monthly_amount)->toBe(30.0);
 });
 
+test('the settings index marks future settings as editable', function () {
+    $community = Community::factory()->create();
+    $admin = User::factory()->create(['is_admin' => true]);
+
+    $community->contributionSettings()->create([
+        'monthly_amount' => 30,
+        'effective_from' => now()->subMonth()->startOfMonth(),
+    ]);
+    $community->contributionSettings()->create([
+        'monthly_amount' => 50,
+        'effective_from' => now()->addMonth()->startOfMonth(),
+    ]);
+
+    $this->actingAs($admin)
+        ->get(route('contributions.settings.index', ['community' => $community->id]))
+        ->assertInertia(fn (Assert $page) => $page
+            ->has('settings', 2)
+            ->where('settings.0.effective_from', now()->addMonth()->startOfMonth()->format('Y-m-d'))
+            ->where('settings.0.editable', true)
+            ->where('settings.1.effective_from', now()->subMonth()->startOfMonth()->format('Y-m-d'))
+            ->where('settings.1.editable', false)
+        );
+});
+
+test('a future setting can be edited', function () {
+    $community = Community::factory()->create();
+    $admin = User::factory()->create(['is_admin' => true]);
+    $setting = $community->contributionSettings()->create([
+        'monthly_amount' => 50,
+        'effective_from' => now()->addMonth()->startOfMonth(),
+    ]);
+
+    $this->actingAs($admin)
+        ->put(route('contributions.settings.update', [
+            'contributionSetting' => $setting->id,
+            'community' => $community->id,
+        ]), [
+            'monthly_amount' => 45,
+            'effective_from' => $setting->effective_from->format('Y-m-d'),
+        ])
+        ->assertRedirect(route('contributions.settings.index', ['community' => $community->id]));
+
+    expect((float) $setting->fresh()->monthly_amount)->toBe(45.0)
+        ->and($community->contributionSettings()->count())->toBe(1);
+});
+
+test('a setting effective today cannot be edited', function () {
+    $community = Community::factory()->create();
+    $admin = User::factory()->create(['is_admin' => true]);
+    $setting = $community->contributionSettings()->create([
+        'monthly_amount' => 30,
+        'effective_from' => today(),
+    ]);
+
+    $this->actingAs($admin)
+        ->get(route('contributions.settings.index', ['community' => $community->id]))
+        ->assertInertia(fn (Assert $page) => $page
+            ->where('settings.0.effective_from', today()->format('Y-m-d'))
+            ->where('settings.0.editable', false)
+        );
+
+    $this->actingAs($admin)
+        ->put(route('contributions.settings.update', [
+            'contributionSetting' => $setting->id,
+            'community' => $community->id,
+        ]), [
+            'monthly_amount' => 45,
+            'effective_from' => today()->format('Y-m-d'),
+        ])
+        ->assertSessionHasErrors('effective_from');
+
+    expect((float) $setting->fresh()->monthly_amount)->toBe(30.0);
+});
+
+test('a past setting cannot be edited', function () {
+    $community = Community::factory()->create();
+    $admin = User::factory()->create(['is_admin' => true]);
+    $setting = $community->contributionSettings()->create([
+        'monthly_amount' => 30,
+        'effective_from' => now()->subMonth()->startOfMonth(),
+    ]);
+
+    $this->actingAs($admin)
+        ->put(route('contributions.settings.update', [
+            'contributionSetting' => $setting->id,
+            'community' => $community->id,
+        ]), [
+            'monthly_amount' => 45,
+            'effective_from' => $setting->effective_from->format('Y-m-d'),
+        ])
+        ->assertSessionHasErrors('effective_from');
+
+    expect((float) $setting->fresh()->monthly_amount)->toBe(30.0);
+});
+
+test('editing a future setting cannot collide with another effective date', function () {
+    $community = Community::factory()->create();
+    $admin = User::factory()->create(['is_admin' => true]);
+
+    $nearer = $community->contributionSettings()->create([
+        'monthly_amount' => 30,
+        'effective_from' => now()->addMonth()->startOfMonth(),
+    ]);
+    $farther = $community->contributionSettings()->create([
+        'monthly_amount' => 40,
+        'effective_from' => now()->addMonths(2)->startOfMonth(),
+    ]);
+
+    $this->actingAs($admin)
+        ->put(route('contributions.settings.update', [
+            'contributionSetting' => $nearer->id,
+            'community' => $community->id,
+        ]), [
+            'monthly_amount' => 45,
+            'effective_from' => $farther->effective_from->format('Y-m-d'),
+        ])
+        ->assertSessionHasErrors('effective_from');
+
+    expect((float) $nearer->fresh()->monthly_amount)->toBe(30.0);
+});
+
+test('a setting from another community cannot be edited', function () {
+    $community = Community::factory()->create();
+    $otherCommunity = Community::factory()->create();
+    $admin = User::factory()->create(['is_admin' => true]);
+    $setting = $otherCommunity->contributionSettings()->create([
+        'monthly_amount' => 30,
+        'effective_from' => now()->addMonth()->startOfMonth(),
+    ]);
+
+    $this->actingAs($admin)
+        ->put(route('contributions.settings.update', [
+            'contributionSetting' => $setting->id,
+            'community' => $community->id,
+        ]), [
+            'monthly_amount' => 45,
+            'effective_from' => $setting->effective_from->format('Y-m-d'),
+        ])
+        ->assertForbidden();
+
+    expect((float) $setting->fresh()->monthly_amount)->toBe(30.0);
+});
+
+test('non-executive position holder cannot edit a future setting', function () {
+    $community = Community::factory()->create();
+    $member = User::factory()->create(['is_admin' => false]);
+    attachContributionNonExecutive($community, $member);
+    $setting = $community->contributionSettings()->create([
+        'monthly_amount' => 30,
+        'effective_from' => now()->addMonth()->startOfMonth(),
+    ]);
+
+    $this->actingAs($member)
+        ->put(route('contributions.settings.update', [
+            'contributionSetting' => $setting->id,
+            'community' => $community->id,
+        ]), [
+            'monthly_amount' => 45,
+            'effective_from' => $setting->effective_from->format('Y-m-d'),
+        ])
+        ->assertForbidden();
+});
+
 test('non-executive position holder cannot view or change settings', function () {
     $community = Community::factory()->create();
     $member = User::factory()->create(['is_admin' => false]);
