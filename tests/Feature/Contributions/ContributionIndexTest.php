@@ -6,6 +6,7 @@ use App\Models\Administration;
 use App\Models\AdministrationMember;
 use App\Models\Community;
 use App\Models\Position;
+use App\Models\Profile;
 use App\Models\User;
 use Inertia\Testing\AssertableInertia as Assert;
 
@@ -158,10 +159,10 @@ test('members are marked as paid when they have a monthly contribution for the r
     $this->actingAs($admin)
         ->get(route('contributions.index', ['community' => $community->id]))
         ->assertInertia(fn (Assert $page) => $page
-            ->where('members.0.name', 'Ana Silva')
-            ->where('members.0.paid', true)
-            ->where('members.1.name', 'Bruno Costa')
-            ->where('members.1.paid', false)
+            ->where('members.data.0.name', 'Ana Silva')
+            ->where('members.data.0.paid', true)
+            ->where('members.data.1.name', 'Bruno Costa')
+            ->where('members.data.1.paid', false)
         );
 });
 
@@ -189,7 +190,7 @@ test('the month query parameter changes the reference month', function () {
         ]))
         ->assertInertia(fn (Assert $page) => $page
             ->where('referenceMonth', $previousMonth->format('Y-m'))
-            ->where('members.0.paid', true)
+            ->where('members.data.0.paid', true)
         );
 });
 
@@ -206,5 +207,80 @@ test('the effective monthly amount for the reference month is exposed', function
         ->get(route('contributions.index', ['community' => $community->id]))
         ->assertInertia(fn (Assert $page) => $page
             ->where('monthlyAmount', '50.00')
+        );
+});
+
+test('members can be searched by name', function () {
+    $community = Community::factory()->create();
+    $admin = User::factory()->create(['is_admin' => true]);
+
+    $ana = User::factory()->create(['name' => 'Ana Silva']);
+    $bruno = User::factory()->create(['name' => 'Bruno Costa']);
+    attachContributionIndexMember($community, $ana);
+    attachContributionIndexMember($community, $bruno);
+
+    $this->actingAs($admin)
+        ->get(route('contributions.index', [
+            'community' => $community->id,
+            'search' => 'Bruno',
+        ]))
+        ->assertInertia(fn (Assert $page) => $page
+            ->has('members.data', 1)
+            ->where('members.data.0.name', 'Bruno Costa')
+            ->where('search', 'Bruno')
+        );
+});
+
+test('members can be searched by cpf with or without formatting', function () {
+    $community = Community::factory()->create();
+    $admin = User::factory()->create(['is_admin' => true]);
+
+    $ana = User::factory()->create(['name' => 'Ana Silva']);
+    $bruno = User::factory()->create(['name' => 'Bruno Costa']);
+    attachContributionIndexMember($community, $ana);
+    attachContributionIndexMember($community, $bruno);
+
+    Profile::factory()->create([
+        'user_id' => $bruno->id,
+        'cpf' => '52998224725',
+    ]);
+
+    $this->actingAs($admin)
+        ->get(route('contributions.index', [
+            'community' => $community->id,
+            'search' => '529.982.247-25',
+        ]))
+        ->assertInertia(fn (Assert $page) => $page
+            ->has('members.data', 1)
+            ->where('members.data.0.name', 'Bruno Costa')
+            ->where('members.data.0.cpf', '52998224725')
+        );
+});
+
+test('the member list is paginated', function () {
+    $community = Community::factory()->create();
+    $admin = User::factory()->create(['is_admin' => true]);
+
+    User::factory()->count(20)->create()->each(
+        fn (User $member) => attachContributionIndexMember($community, $member)
+    );
+
+    $this->actingAs($admin)
+        ->get(route('contributions.index', ['community' => $community->id]))
+        ->assertInertia(fn (Assert $page) => $page
+            ->has('members.data', 15)
+            ->where('members.total', 20)
+            ->where('members.current_page', 1)
+            ->where('members.last_page', 2)
+        );
+
+    $this->actingAs($admin)
+        ->get(route('contributions.index', [
+            'community' => $community->id,
+            'page' => 2,
+        ]))
+        ->assertInertia(fn (Assert $page) => $page
+            ->has('members.data', 5)
+            ->where('members.current_page', 2)
         );
 });

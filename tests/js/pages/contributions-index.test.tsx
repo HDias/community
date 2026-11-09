@@ -19,13 +19,30 @@ vi.mock('@inertiajs/react', async () => {
 const community = { id: 7, name: 'Quilombo São Roque', slug: 'sao-roque' };
 
 type Props = Parameters<typeof ContributionsIndex>[0];
-type Member = Props['members'][number];
+type PaginatedMembers = Extract<Props['members'], { data: unknown }>;
+type Member = PaginatedMembers['data'][number];
 
 function member(overrides: Partial<Member> = {}): Member {
     return {
         id: 1,
         name: 'Ana Silva',
+        cpf: null,
         paid: false,
+        ...overrides,
+    };
+}
+
+function paginated(
+    data: Member[],
+    overrides: Partial<PaginatedMembers> = {},
+): PaginatedMembers {
+    return {
+        data,
+        current_page: 1,
+        last_page: 1,
+        total: data.length,
+        prev_page_url: null,
+        next_page_url: null,
         ...overrides,
     };
 }
@@ -34,9 +51,10 @@ function renderPage(overrides: Partial<Props> = {}) {
     const props: Props = {
         communities: [{ id: 7, name: 'Quilombo São Roque' }],
         community,
-        members: [],
+        members: paginated([]),
         monthlyAmount: '50.00',
         referenceMonth: '2026-08',
+        search: null,
         ...overrides,
     };
 
@@ -44,6 +62,10 @@ function renderPage(overrides: Partial<Props> = {}) {
 }
 
 let user: UserEvent;
+
+async function waitForDebounce() {
+    await new Promise((resolve) => setTimeout(resolve, 350));
+}
 
 beforeEach(() => {
     user = userEvent.setup();
@@ -91,10 +113,10 @@ describe('page chrome', () => {
 describe('the members status table', () => {
     it('marks each member as paid or pending', () => {
         renderPage({
-            members: [
+            members: paginated([
                 member({ id: 1, name: 'Ana Silva', paid: true }),
                 member({ id: 2, name: 'Bruno Costa', paid: false }),
-            ],
+            ]),
         });
 
         const rows = screen.getAllByRole('row');
@@ -103,12 +125,20 @@ describe('the members status table', () => {
         expect(within(rows[2]).getByText('Pending')).toBeInTheDocument();
     });
 
+    it('formats the member cpf', () => {
+        renderPage({
+            members: paginated([member({ cpf: '52998224725' })]),
+        });
+
+        expect(screen.getByText('529.982.247-25')).toBeInTheDocument();
+    });
+
     it('only offers a payment action for pending members', () => {
         renderPage({
-            members: [
+            members: paginated([
                 member({ id: 1, name: 'Ana Silva', paid: true }),
                 member({ id: 2, name: 'Bruno Costa', paid: false }),
-            ],
+            ]),
         });
 
         expect(
@@ -118,7 +148,7 @@ describe('the members status table', () => {
 
     it('posts the member and reference month when registering a payment', async () => {
         const { container } = renderPage({
-            members: [member({ id: 2, name: 'Bruno Costa' })],
+            members: paginated([member({ id: 2, name: 'Bruno Costa' })]),
         });
 
         const form = container.querySelector(
@@ -141,11 +171,73 @@ describe('the members status table', () => {
     });
 
     it('shows an empty state when the community has no members', () => {
-        renderPage({ members: [] });
+        renderPage({ members: paginated([]) });
 
         expect(
             screen.getByText('No members in this community yet.'),
         ).toBeInTheDocument();
+    });
+
+    it('shows a search-specific empty state', () => {
+        renderPage({ members: paginated([]), search: 'nobody' });
+
+        expect(
+            screen.getByText('No members match your search.'),
+        ).toBeInTheDocument();
+    });
+});
+
+describe('the member search', () => {
+    it('waits for the debounce before navigating', async () => {
+        renderPage();
+
+        await user.type(screen.getByLabelText('Search member'), 'Bruno');
+
+        expect(router.get).not.toHaveBeenCalled();
+
+        await waitForDebounce();
+
+        expect(router.get).toHaveBeenCalledWith(
+            '/contributions',
+            { community: 7, month: '2026-08', search: 'Bruno' },
+            expect.objectContaining({ preserveState: true }),
+        );
+    });
+
+    it('does not send an empty search parameter', async () => {
+        renderPage({ search: 'Bruno' });
+
+        await user.clear(screen.getByLabelText('Search member'));
+        await waitForDebounce();
+
+        expect(router.get).toHaveBeenCalledWith(
+            '/contributions',
+            { community: 7, month: '2026-08' },
+            expect.objectContaining({ preserveState: true }),
+        );
+    });
+});
+
+describe('the pagination', () => {
+    it('shows the total and navigates to the next page', async () => {
+        renderPage({
+            members: paginated([member()], {
+                current_page: 1,
+                last_page: 2,
+                total: 20,
+                next_page_url: '/contributions?community=7&page=2',
+            }),
+        });
+
+        expect(screen.getByText('20 members')).toBeInTheDocument();
+        expect(screen.getByText('Page 1 of 2')).toBeInTheDocument();
+
+        await user.click(screen.getByRole('button', { name: 'Next' }));
+
+        expect(router.visit).toHaveBeenCalledWith(
+            '/contributions?community=7&page=2',
+            { preserveScroll: true },
+        );
     });
 });
 
@@ -164,8 +256,10 @@ describe('the month selector', () => {
         await user.type(screen.getByLabelText('Month'), '2026-06');
         await user.click(screen.getByRole('button', { name: 'View' }));
 
-        expect(router.visit).toHaveBeenCalledWith(
-            '/contributions?community=7&month=2026-06',
+        expect(router.get).toHaveBeenCalledWith(
+            '/contributions',
+            { community: 7, month: '2026-06' },
+            expect.objectContaining({ preserveState: true }),
         );
     });
 });

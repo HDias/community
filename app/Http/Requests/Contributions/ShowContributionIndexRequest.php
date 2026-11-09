@@ -14,6 +14,7 @@ class ShowContributionIndexRequest extends FormRequest
     {
         return [
             'month' => ['nullable', 'date_format:Y-m'],
+            'search' => ['nullable', 'string', 'max:255'],
         ];
     }
 }

@@ -47,6 +47,7 @@ class ContributionController extends Controller
                 'members' => [],
                 'monthlyAmount' => null,
                 'referenceMonth' => Carbon::now()->format('Y-m'),
+                'search' => null,
             ]);
         }
 
@@ -55,6 +56,7 @@ class ContributionController extends Controller
         $month = $request->validated('month');
         $referenceMonth = $month ? Carbon::parse($month) : Carbon::now();
         $referenceMonth = $referenceMonth->copy()->startOfMonth();
+        $search = $request->validated('search');
 
         $paidUserIds = $community->contributions()
             ->where('type', ContributionType::Monthly)
@@ -63,11 +65,26 @@ class ContributionController extends Controller
             ->all();
 
         $members = $community->members()
-            ->orderBy('name')
-            ->get(['users.id', 'users.name'])
-            ->map(fn (User $member): array => [
+            ->select(['users.id', 'users.name'])
+            ->with('profile')
+            ->when($search, function ($query, string $search): void {
+                $digits = preg_replace('/\D/', '', $search);
+
+                $query->where(function ($query) use ($search, $digits): void {
+                    $query->where('users.name', 'like', "%{$search}%");
+
+                    if ($digits !== '') {
+                        $query->orWhereHas('profile', fn ($query) => $query->where('cpf', 'like', "%{$digits}%"));
+                    }
+                });
+            })
+            ->orderBy('users.name')
+            ->paginate(15)
+            ->withQueryString()
+            ->through(fn (User $member): array => [
                 'id' => $member->id,
                 'name' => $member->name,
+                'cpf' => $member->profile?->cpf,
                 'paid' => in_array($member->id, $paidUserIds, true),
             ]);
 
@@ -79,6 +96,7 @@ class ContributionController extends Controller
             'members' => $members,
             'monthlyAmount' => $setting?->monthly_amount,
             'referenceMonth' => $referenceMonth->format('Y-m'),
+            'search' => $search,
         ]);
     }
 
