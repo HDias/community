@@ -21,6 +21,7 @@ class CalculateDefaultStreaks
         $paidMonths = $community->contributions()
             ->where('type', ContributionType::Monthly)
             ->where('reference_month', '<=', $referenceMonth)
+            ->whereNull('reversed_at')
             ->get()
             ->groupBy('user_id')
             ->map(fn ($rows) => $rows->pluck('reference_month')->sort());

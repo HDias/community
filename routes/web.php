@@ -42,6 +42,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('contributions.donations.create');
     Route::post('contributions/donations', [ContributionController::class, 'storeDonation'])
         ->name('contributions.donations.store');
+    Route::post('contributions/{contribution}/reverse', [ContributionController::class, 'revert'])
+        ->name('contributions.reverse');
     Route::get('contributions/report', [ContributionReportController::class, 'index'])
         ->name('contributions.report.index');
 

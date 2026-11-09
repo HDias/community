@@ -23,6 +23,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select';
+import { Textarea } from '@/components/ui/textarea';
 
 type CommunityOption = {
     id: number;
@@ -33,6 +34,7 @@ type Member = {
     id: number;
     name: string;
     cpf: string | null;
+    contribution_id: number | null;
     paid: boolean;
 };
 
@@ -288,6 +290,94 @@ export default function ContributionsIndex({
                                             </Badge>
                                         </td>
                                         <td className="px-4 py-2 text-right">
+                                            {member.paid &&
+                                                member.contribution_id !==
+                                                    null && (
+                                                    <Dialog>
+                                                        <DialogTrigger asChild>
+                                                            <Button
+                                                                size="sm"
+                                                                variant="outline"
+                                                            >
+                                                                Revert
+                                                            </Button>
+                                                        </DialogTrigger>
+                                                        <DialogContent>
+                                                            <DialogTitle>
+                                                                Revert payment?
+                                                            </DialogTitle>
+                                                            <DialogDescription>
+                                                                Revert the{' '}
+                                                                {referenceMonth}{' '}
+                                                                payment for{' '}
+                                                                {member.name}?
+                                                                The member will
+                                                                be marked as
+                                                                pending again.
+                                                            </DialogDescription>
+
+                                                            <Form
+                                                                action={`/contributions/${member.contribution_id}/reverse?community=${community.id}`}
+                                                                method="post"
+                                                                options={{
+                                                                    preserveScroll: true,
+                                                                }}
+                                                            >
+                                                                {({
+                                                                    errors,
+                                                                    processing,
+                                                                }) => (
+                                                                    <>
+                                                                        <div className="grid gap-2">
+                                                                            <Label
+                                                                                htmlFor={`reversal-reason-${member.id}`}
+                                                                            >
+                                                                                Reason
+                                                                                *
+                                                                            </Label>
+                                                                            <Textarea
+                                                                                id={`reversal-reason-${member.id}`}
+                                                                                name="reversal_reason"
+                                                                                rows={
+                                                                                    3
+                                                                                }
+                                                                                required
+                                                                            />
+                                                                            <InputError
+                                                                                message={
+                                                                                    errors.reversal_reason
+                                                                                }
+                                                                            />
+                                                                        </div>
+
+                                                                        <DialogFooter className="gap-2">
+                                                                            <DialogClose
+                                                                                asChild
+                                                                            >
+                                                                                <Button
+                                                                                    type="button"
+                                                                                    variant="secondary"
+                                                                                >
+                                                                                    Cancel
+                                                                                </Button>
+                                                                            </DialogClose>
+                                                                            <Button
+                                                                                type="submit"
+                                                                                variant="destructive"
+                                                                                disabled={
+                                                                                    processing
+                                                                                }
+                                                                            >
+                                                                                Revert
+                                                                                payment
+                                                                            </Button>
+                                                                        </DialogFooter>
+                                                                    </>
+                                                                )}
+                                                            </Form>
+                                                        </DialogContent>
+                                                    </Dialog>
+                                                )}
                                             {!member.paid && (
                                                 <Dialog>
                                                     <DialogTrigger asChild>

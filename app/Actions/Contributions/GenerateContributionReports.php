@@ -22,6 +22,7 @@ class GenerateContributionReports
         $paidContributions = $community->contributions()
             ->where('reference_month', $referenceMonth)
             ->where('type', ContributionType::Monthly)
+            ->whereNull('reversed_at')
             ->get();
 
         $totalPaid = $paidContributions->count();

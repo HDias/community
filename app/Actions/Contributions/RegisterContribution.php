@@ -23,6 +23,7 @@ class RegisterContribution
             ->where('user_id', $member->id)
             ->where('reference_month', $referenceMonth)
             ->where('type', ContributionType::Monthly)
+            ->whereNull('reversed_at')
             ->exists();
 
         if ($exists) {

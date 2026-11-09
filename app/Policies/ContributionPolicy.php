@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\Models\Community;
+use App\Models\Contribution;
 use App\Models\User;
 
 class ContributionPolicy
@@ -21,6 +22,15 @@ class ContributionPolicy
     public function create(User $user, Community $community): bool
     {
         return $user->is_admin || $user->hasExecutivePositionIn($community);
+    }
+
+    /**
+     * Determine whether the user can reverse a registered payment.
+     */
+    public function revert(User $user, Contribution $contribution, Community $community): bool
+    {
+        return $contribution->community_id === $community->id
+            && ($user->is_admin || $user->hasExecutivePositionIn($community));
     }
 
     /**

@@ -24,10 +24,13 @@ use Illuminate\Support\Carbon;
  * @property string|null $donor_name
  * @property string|null $donor_document
  * @property string|null $notes
+ * @property Carbon|null $reversed_at
+ * @property int|null $reversed_by
+ * @property string|null $reversal_reason
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  */
-#[Fillable(['community_id', 'user_id', 'reference_month', 'monthly_key', 'amount', 'registered_by', 'type', 'donor_type', 'donor_name', 'donor_document', 'notes'])]
+#[Fillable(['community_id', 'user_id', 'reference_month', 'monthly_key', 'amount', 'registered_by', 'type', 'donor_type', 'donor_name', 'donor_document', 'notes', 'reversed_at', 'reversed_by', 'reversal_reason'])]
 class Contribution extends Model
 {
     /** @use HasFactory<ContributionFactory> */
@@ -44,6 +47,7 @@ class Contribution extends Model
             'amount' => 'decimal:2',
             'type' => ContributionType::class,
             'donor_type' => DonorType::class,
+            'reversed_at' => 'datetime',
         ];
     }
 
@@ -69,5 +73,13 @@ class Contribution extends Model
     public function registeredBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'registered_by');
+    }
+
+    /**
+     * @return BelongsTo<User, $this>
+     */
+    public function reversedBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'reversed_by');
     }
 }

@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Communities;
 
 use App\Actions\Contributions\RegisterContribution;
 use App\Actions\Contributions\RegisterDonation;
+use App\Actions\Contributions\ReverseContribution;
 use App\Concerns\ResolvesManageableCommunity;
 use App\Enums\ContributionType;
 use App\Enums\DonorType;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Contributions\ShowContributionIndexRequest;
 use App\Http\Requests\Contributions\StoreContributionRequest;
+use App\Http\Requests\Contributions\StoreContributionReversalRequest;
 use App\Http\Requests\Contributions\StoreDonationRequest;
 use App\Models\Contribution;
 use App\Models\ContributionSetting;
@@ -58,11 +60,11 @@ class ContributionController extends Controller
         $referenceMonth = $referenceMonth->copy()->startOfMonth();
         $search = $request->validated('search');
 
-        $paidUserIds = $community->contributions()
+        $paidContributions = $community->contributions()
             ->where('type', ContributionType::Monthly)
             ->where('reference_month', $referenceMonth)
-            ->pluck('user_id')
-            ->all();
+            ->whereNull('reversed_at')
+            ->pluck('id', 'user_id');
 
         $members = $community->members()
             ->select(['users.id', 'users.name'])
@@ -81,12 +83,17 @@ class ContributionController extends Controller
             ->orderBy('users.name')
             ->paginate((int) config('pagination.per_page'))
             ->withQueryString()
-            ->through(fn (User $member): array => [
-                'id' => $member->id,
-                'name' => $member->name,
-                'cpf' => $member->profile?->cpf,
-                'paid' => in_array($member->id, $paidUserIds, true),
-            ]);
+            ->through(function (User $member) use ($paidContributions): array {
+                $contributionId = $paidContributions[$member->id] ?? null;
+
+                return [
+                    'id' => $member->id,
+                    'name' => $member->name,
+                    'cpf' => $member->profile?->cpf,
+                    'contribution_id' => $contributionId,
+                    'paid' => $contributionId !== null,
+                ];
+            });
 
         $setting = ContributionSetting::currentFor($community, $referenceMonth);
 
@@ -159,5 +166,26 @@ class ContributionController extends Controller
 
         return redirect()->route('contributions.index', ['community' => $community->id])
             ->with('success', __('Donation registered successfully.'));
+    }
+
+    public function revert(
+        StoreContributionReversalRequest $request,
+        Contribution $contribution,
+        ReverseContribution $action,
+    ): RedirectResponse {
+        $community = $this->resolveRequiredCommunity($request);
+
+        Gate::authorize('revert', [$contribution, $community]);
+
+        $action->handle(
+            $contribution,
+            $request->user(),
+            $request->validated('reversal_reason'),
+        );
+
+        return redirect()->route('contributions.index', [
+            'community' => $community->id,
+            'month' => $contribution->reference_month->format('Y-m'),
+        ])->with('success', __('Payment reversed successfully.'));
     }
 }

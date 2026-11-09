@@ -27,6 +27,7 @@ function member(overrides: Partial<Member> = {}): Member {
         id: 1,
         name: 'Ana Silva',
         cpf: null,
+        contribution_id: null,
         paid: false,
         ...overrides,
     };
@@ -308,5 +309,77 @@ describe('the missing monthly amount', () => {
         expect(
             screen.getByText(/Monthly amount is not configured for this month/),
         ).toBeInTheDocument();
+    });
+});
+
+describe('the revert payment dialog', () => {
+    it('only offers revert for paid members with a contribution', () => {
+        renderPage({
+            members: paginated([
+                member({
+                    id: 1,
+                    name: 'Ana Silva',
+                    paid: true,
+                    contribution_id: 42,
+                }),
+                member({ id: 2, name: 'Bruno Costa', paid: false }),
+            ]),
+        });
+
+        expect(screen.getAllByRole('button', { name: 'Revert' })).toHaveLength(
+            1,
+        );
+        expect(
+            screen.getByRole('button', { name: 'Register payment' }),
+        ).toBeInTheDocument();
+    });
+
+    it('requires a reason and posts it to the reversal endpoint', async () => {
+        renderPage({
+            members: paginated([
+                member({
+                    id: 1,
+                    name: 'Ana Silva',
+                    paid: true,
+                    contribution_id: 42,
+                }),
+            ]),
+        });
+
+        await user.click(screen.getByRole('button', { name: 'Revert' }));
+
+        expect(screen.getByText('Revert payment?')).toBeInTheDocument();
+        expect(screen.getByLabelText('Reason *')).toBeRequired();
+        expect(submissions).toHaveLength(0);
+
+        await user.type(screen.getByLabelText('Reason *'), 'Wrong amount');
+        await user.click(
+            screen.getByRole('button', { name: 'Revert payment' }),
+        );
+
+        expect(submissions).toHaveLength(1);
+        expect(submissions[0]).toMatchObject({
+            action: '/contributions/42/reverse?community=7',
+            method: 'post',
+            data: { reversal_reason: 'Wrong amount' },
+        });
+    });
+
+    it('does not submit when the revert is cancelled', async () => {
+        renderPage({
+            members: paginated([
+                member({
+                    id: 1,
+                    name: 'Ana Silva',
+                    paid: true,
+                    contribution_id: 42,
+                }),
+            ]),
+        });
+
+        await user.click(screen.getByRole('button', { name: 'Revert' }));
+        await user.click(screen.getByRole('button', { name: 'Cancel' }));
+
+        expect(submissions).toHaveLength(0);
     });
 });
