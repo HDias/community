@@ -53,3 +53,7 @@ Implement the plan: $1
   want to see the final result documented before creating a file.
 - If a plan file exists, ensure every completed task is checked in
   `## Execution status`.
+- Verify whether project documentation needs updating for the changes made
+  (README, docs/, AGENTS.md, API/usage docs). Update only existing docs made
+  inaccurate by the change; do not create new documentation files unless the
+  user explicitly asks.
