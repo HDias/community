@@ -19,3 +19,17 @@ Tracked issues that are known trade-offs or gaps, not yet worth blocking a merge
 
 - **Where:** `database/migrations/2026_07_18_020817_create_profiles_table.php`, `app/Models/Profile.php`
 - **Issue:** `cpf` (Brazil's national ID, comparable sensitivity to a US SSN) is stored as plain text with a unique index. Laravel's standard `encrypted` cast is non-deterministic and would break `unique:profiles,cpf` validation and `WHERE cpf = ?` lookups, so encrypting it would require a deterministic/blind-index approach. Flagging as a design decision to make deliberately, not a quick fix.
+
+## Contributions feature (`feat/contributions`)
+
+### 1. Donations have no ledger and cannot be reversed
+
+- **Where:** `app/Http/Controllers/Communities/ContributionController.php`, `resources/js/pages/contributions/`
+- **Issue:** the contributions index lists only monthly payments per member. Donations are registered but never listed, so there is no UI to find or reverse one. The reversal fields (`reversed_at`, `reversed_by`, `reversal_reason`) already exist on the `contributions` table and would cover donations too.
+- **Fix:** add a donations ledger page and expose the revert action for `type = donation`.
+
+### 2. Member payment history is not implemented
+
+- **Where:** `docs/flows/04-contributions.md`
+- **Issue:** the documented "member views own payment history" flow has no route, controller or page yet.
+- **Fix:** add a read-only page for the authenticated member, listing paid/pending months since `community_user.joined_at`.

@@ -65,7 +65,11 @@ php artisan migrate:fresh --seed
 ## Testing
 
 ```bash
+# PHP
 php artisan test --compact
+
+# Frontend
+npm test
 ```
 
 ## Code Quality
@@ -84,6 +88,8 @@ vendor/bin/phpstan analyse
 ## Architecture
 
 See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the full architecture overview, domain model, folder structure, and Mermaid diagrams.
+
+Feature flows are documented in [docs/flows](docs/flows), and known trade-offs are tracked in [docs/TECH_DEBT.md](docs/TECH_DEBT.md).
 
 ## Building for Production
 

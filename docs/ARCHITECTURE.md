@@ -89,6 +89,11 @@ erDiagram
     AdministrationMember }o--|| Position : "holds"
     Community }o--o| Administration : "current_administration"
     User }o--o| Community : "current_community"
+    Community ||--o{ ContributionSetting : "configures"
+    Community ||--o{ Contribution : "receives"
+    Community ||--o{ ContributionReport : "generates"
+    User ||--o{ Contribution : "pays"
+    User ||--o{ Contribution : "reverses"
 
     User {
         int id
@@ -130,6 +135,42 @@ erDiagram
         string name
         bool is_default
     }
+
+    ContributionSetting {
+        int id
+        int community_id
+        decimal monthly_amount
+        date effective_from
+    }
+
+    Contribution {
+        int id
+        int community_id
+        int user_id "nullable"
+        date reference_month
+        date monthly_key "nullable"
+        decimal amount
+        int registered_by
+        string type "monthly or donation"
+        string donor_type "nullable"
+        string donor_name "nullable"
+        string donor_document "nullable"
+        text notes "nullable"
+        timestamp reversed_at "nullable"
+        int reversed_by "nullable"
+        text reversal_reason "nullable"
+    }
+
+    ContributionReport {
+        int id
+        int community_id
+        date reference_month
+        int total_members
+        int total_paid
+        int total_defaulting
+        decimal total_collected
+        timestamp generated_at
+    }
 ```
 
 ## Roles & Authorization
@@ -142,7 +183,7 @@ Community membership uses the `CommunityRole` enum with three levels:
 | `admin`     | Administrative privileges       |
 | `member`    | Standard member access          |
 
-Authorization is enforced via **Policies** (`CommunityPolicy`, `AdministrationPolicy`, `PositionPolicy`).
+Authorization is enforced via **Policies** (`CommunityPolicy`, `AdministrationPolicy`, `PositionPolicy`, `MemberPolicy`, `ContributionPolicy`).
 
 ## Folder Structure
 
@@ -152,27 +193,29 @@ community/
 │   ├── Actions/                # Business logic (single-responsibility classes)
 │   │   ├── Administrations/    #   CreateAdministration, AssignMemberToPosition
 │   │   ├── Communities/        #   CreateCommunity
+│   │   ├── Contributions/      #   RegisterContribution, RegisterDonation, ReverseContribution
 │   │   └── Fortify/            #   Auth actions (registration, password, 2FA)
 │   ├── Concerns/               # Traits (HasCommunities, GeneratesUniqueSlugs, ...)
 │   ├── Console/                # Artisan commands
 │   ├── Data/                   # Data transfer objects
-│   ├── Enums/                  # CommunityRole
+│   ├── Enums/                  # CommunityRole, ContributionType, DonorType
 │   ├── Http/
 │   │   ├── Controllers/
 │   │   │   ├── Api/            #   BrasilApiController
-│   │   │   ├── Communities/    #   Community, Administration, Position controllers
+│   │   │   ├── Communities/    #   Community, Administration, Position, Member, Contribution controllers
 │   │   │   └── Settings/       #   Profile, Security controllers
 │   │   ├── Middleware/         # EnsureCommunityMembership, HandleInertiaRequests
 │   │   └── Requests/           # Form request validation
-│   ├── Models/                 # Eloquent models (User, Community, Administration, ...)
+│   ├── Models/                 # Eloquent models (User, Community, Administration, Contribution, ...)
 │   ├── Notifications/          # Email / notification classes
 │   ├── Policies/               # Authorization policies
 │   ├── Providers/              # Service providers
-│   └── Rules/                  # Custom validation rules
+│   └── Rules/                  # Custom validation rules (Cpf, Cnpj)
 ├── resources/js/
 │   ├── pages/                  # Inertia page components
 │   │   ├── auth/               #   Login, Register, Forgot/Reset password, Verify email
 │   │   ├── communities/        #   Index, Edit, Onboarding, Administrations, Positions
+│   │   ├── contributions/      #   Index, Settings, Report, Donations/Create
 │   │   ├── settings/           #   Profile, Security, Appearance
 │   │   ├── dashboard.tsx
 │   │   └── welcome.tsx
@@ -190,7 +233,7 @@ community/
 ├── database/                   # Migrations, factories, seeders
 ├── config/                     # Laravel configuration files
 ├── tests/
-│   ├── Feature/                # Feature tests (Auth, Communities, Administrations, ...)
+│   ├── Feature/                # Feature tests (Auth, Communities, Administrations, Contributions, ...)
 │   └── Unit/                   # Unit tests
 ├── docs/                       # Documentation and wireframes
 └── public/                     # Public assets

@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Contributions overview page with per-member Paid/Pending status and a sidebar entry
+- Member search by name or CPF in the contributions list, debounced and paginated
+- Confirmation dialog before registering a monthly payment
+- Donation registration screen with member, individual (CPF) and legal entity (CNPJ) donors
+- Audited reversal (void) of monthly payments with a required reason, recording who reversed it and when
+- CNPJ input mask and validation rule
+- `PAGINATION_PER_PAGE` configuration, defaulting to 50 records per page
+
+### Changed
+
+- Monthly amounts resolve from the latest setting whose `effective_from` has already arrived; future-dated settings stay inactive until that date
+- Reversed payments no longer count as paid in the member list, default streaks or generated reports, and free the month for re-registration
+
+### Fixed
+
+- Payment registration blocked when the monthly amount was configured with a mid-month effective date
+- Registering a payment redirecting to a non-existent contributions page (404)
+- Contribution sub-pages missing breadcrumbs back to the overview
+
 ## [0.3.0] - 2026-08-20
 
 ### Added
