@@ -1,6 +1,7 @@
 ---
 description: Execute a plan from .plans/ using TDD, progress tracking and artisan commands
 agent: build
+model: opencode-go/deepseek-v4.1-flash
 ---
 
 Implement the plan: $1
