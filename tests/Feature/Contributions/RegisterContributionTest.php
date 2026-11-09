@@ -7,6 +7,7 @@ use App\Models\AdministrationMember;
 use App\Models\Community;
 use App\Models\Position;
 use App\Models\User;
+use Inertia\Testing\AssertableInertia as Assert;
 
 function attachRegisterContributionMember(Community $community, User $user): void
 {
@@ -280,6 +281,41 @@ test('a mid-month effective setting allows registering a payment for that month'
         ->assertRedirect(route('contributions.index', ['community' => $community->id]));
 
     expect((float) $community->contributions()->first()->amount)->toBe(50.0);
+});
+
+test('a setting effective tomorrow is used and recorded once tomorrow arrives', function () {
+    $this->travelTo(today()->addDay());
+
+    $community = Community::factory()->create();
+    $admin = User::factory()->create(['is_admin' => true]);
+    $member = User::factory()->create(['name' => 'Ana Silva']);
+    attachRegisterContributionMember($community, $member);
+
+    $community->contributionSettings()->create([
+        'monthly_amount' => 30,
+        'effective_from' => today()->subMonth()->startOfMonth(),
+    ]);
+    $community->contributionSettings()->create([
+        'monthly_amount' => 50,
+        'effective_from' => today(),
+    ]);
+
+    $this->actingAs($admin)
+        ->post(route('contributions.store', ['community' => $community->id]), [
+            'user_id' => $member->id,
+            'reference_month' => now()->startOfMonth()->format('Y-m-d'),
+        ])
+        ->assertRedirect(route('contributions.index', ['community' => $community->id]));
+
+    $contribution = $community->contributions()->where('user_id', $member->id)->first();
+
+    expect((float) $contribution->amount)->toBe(50.0);
+
+    $this->actingAs($admin)
+        ->get(route('contributions.index', ['community' => $community->id]))
+        ->assertInertia(fn (Assert $page) => $page
+            ->where('members.data.0.history.0.amount', '50.00')
+        );
 });
 
 test('a payment cannot be registered before a future effective date', function () {
