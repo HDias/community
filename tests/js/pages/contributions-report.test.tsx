@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import type { UserEvent } from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import ContributionsReport from '@/pages/contributions/report';
-import { resetInertia, router } from '../support/inertia';
+import { resetInertia, router, setLayoutProps } from '../support/inertia';
 
 vi.mock('@inertiajs/react', async () => {
     const { createInertiaMock } = await import('../support/inertia');
@@ -48,6 +48,25 @@ beforeEach(() => {
 
 afterEach(() => {
     resetInertia();
+});
+
+describe('page chrome', () => {
+    it('links the breadcrumbs back to the contributions index', () => {
+        renderPage();
+
+        expect(setLayoutProps).toHaveBeenCalledWith({
+            breadcrumbs: [
+                {
+                    title: 'Contributions',
+                    href: '/contributions?community=7',
+                },
+                {
+                    title: 'Defaulters Report',
+                    href: '/contributions/report?community=7',
+                },
+            ],
+        });
+    });
 });
 
 describe('the defaulters table', () => {

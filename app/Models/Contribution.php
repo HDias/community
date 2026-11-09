@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\ContributionType;
+use App\Enums\DonorType;
 use Database\Factories\ContributionFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -19,11 +20,14 @@ use Illuminate\Support\Carbon;
  * @property float $amount
  * @property int $registered_by
  * @property ContributionType $type
+ * @property DonorType|null $donor_type
+ * @property string|null $donor_name
+ * @property string|null $donor_document
  * @property string|null $notes
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  */
-#[Fillable(['community_id', 'user_id', 'reference_month', 'monthly_key', 'amount', 'registered_by', 'type', 'notes'])]
+#[Fillable(['community_id', 'user_id', 'reference_month', 'monthly_key', 'amount', 'registered_by', 'type', 'donor_type', 'donor_name', 'donor_document', 'notes'])]
 class Contribution extends Model
 {
     /** @use HasFactory<ContributionFactory> */
@@ -39,6 +43,7 @@ class Contribution extends Model
             'monthly_key' => 'date',
             'amount' => 'decimal:2',
             'type' => ContributionType::class,
+            'donor_type' => DonorType::class,
         ];
     }
 

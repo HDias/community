@@ -19,7 +19,11 @@ export default function ContributionsSettings({ community, settings }: Props) {
     setLayoutProps({
         breadcrumbs: [
             {
-                title: 'Contribution Settings',
+                title: 'Contributions',
+                href: `/contributions?community=${community.id}`,
+            },
+            {
+                title: 'Settings',
                 href: `/contributions/settings?community=${community.id}`,
             },
         ],

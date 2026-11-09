@@ -30,12 +30,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('administrations/{administration}/members/{user}', [AdministrationController::class, 'removeMember'])
         ->name('administrations.members.destroy');
 
+    Route::get('contributions', [ContributionController::class, 'index'])
+        ->name('contributions.index');
     Route::get('contributions/settings', [ContributionSettingController::class, 'index'])
         ->name('contributions.settings.index');
     Route::post('contributions/settings', [ContributionSettingController::class, 'store'])
         ->name('contributions.settings.store');
     Route::post('contributions', [ContributionController::class, 'store'])
         ->name('contributions.store');
+    Route::get('contributions/donations/create', [ContributionController::class, 'createDonation'])
+        ->name('contributions.donations.create');
     Route::post('contributions/donations', [ContributionController::class, 'storeDonation'])
         ->name('contributions.donations.store');
     Route::get('contributions/report', [ContributionReportController::class, 'index'])

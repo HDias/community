@@ -37,7 +37,11 @@ export default function ContributionsReport({
     setLayoutProps({
         breadcrumbs: [
             {
-                title: 'Contributions Report',
+                title: 'Contributions',
+                href: `/contributions?community=${community.id}`,
+            },
+            {
+                title: 'Defaulters Report',
                 href: `/contributions/report?community=${community.id}`,
             },
         ],

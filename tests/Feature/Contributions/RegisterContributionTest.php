@@ -71,7 +71,7 @@ test('admin can register a monthly payment for a member', function () {
             'user_id' => $member->id,
             'reference_month' => $referenceMonth,
         ])
-        ->assertRedirect('/contributions?community='.$community->id);
+        ->assertRedirect(route('contributions.index', ['community' => $community->id]));
 
     $contribution = $community->contributions()->where('user_id', $member->id)->first();
 
@@ -93,7 +93,7 @@ test('executive can register a monthly payment', function () {
             'user_id' => $member->id,
             'reference_month' => now()->startOfMonth()->format('Y-m-d'),
         ])
-        ->assertRedirect('/contributions?community='.$community->id);
+        ->assertRedirect(route('contributions.index', ['community' => $community->id]));
 
     expect($community->contributions()->count())->toBe(1);
 });

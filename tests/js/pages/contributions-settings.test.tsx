@@ -53,7 +53,11 @@ describe('page chrome', () => {
         expect(setLayoutProps).toHaveBeenCalledWith({
             breadcrumbs: [
                 {
-                    title: 'Contribution Settings',
+                    title: 'Contributions',
+                    href: '/contributions?community=7',
+                },
+                {
+                    title: 'Settings',
                     href: '/contributions/settings?community=7',
                 },
             ],
