@@ -1,7 +1,7 @@
 ---
 description: Execute a plan using TDD and checking off its Execution status
 agent: build
-model: opencode-go/deepseek-v4.1-flash
+model: opencode/deepseek-v4.1-flash-free
 ---
 
 Implement the plan: $1
