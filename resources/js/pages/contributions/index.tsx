@@ -5,6 +5,15 @@ import { formatCpf } from '@/components/cpf-input';
 import InputError from '@/components/input-error';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import {
+    Dialog,
+    DialogClose,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogTitle,
+    DialogTrigger,
+} from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import {
@@ -266,44 +275,83 @@ export default function ContributionsIndex({
                                         </td>
                                         <td className="px-4 py-2 text-right">
                                             {!member.paid && (
-                                                <Form
-                                                    action={`/contributions?community=${community.id}`}
-                                                    method="post"
-                                                >
-                                                    {({
-                                                        errors,
-                                                        processing,
-                                                    }) => (
-                                                        <>
-                                                            <input
-                                                                type="hidden"
-                                                                name="user_id"
-                                                                value={
-                                                                    member.id
-                                                                }
-                                                            />
-                                                            <input
-                                                                type="hidden"
-                                                                name="reference_month"
-                                                                value={`${referenceMonth}-01`}
-                                                            />
-                                                            <Button
-                                                                type="submit"
-                                                                size="sm"
-                                                                disabled={
-                                                                    processing
-                                                                }
-                                                            >
-                                                                Register payment
-                                                            </Button>
-                                                            <InputError
-                                                                message={
-                                                                    errors.reference_month
-                                                                }
-                                                            />
-                                                        </>
-                                                    )}
-                                                </Form>
+                                                <Dialog>
+                                                    <DialogTrigger asChild>
+                                                        <Button size="sm">
+                                                            Register payment
+                                                        </Button>
+                                                    </DialogTrigger>
+                                                    <DialogContent>
+                                                        <DialogTitle>
+                                                            Register monthly
+                                                            payment?
+                                                        </DialogTitle>
+                                                        <DialogDescription>
+                                                            Register the{' '}
+                                                            {referenceMonth}{' '}
+                                                            payment for{' '}
+                                                            {member.name}? This
+                                                            will mark the member
+                                                            as paid for that
+                                                            month.
+                                                        </DialogDescription>
+
+                                                        <Form
+                                                            action={`/contributions?community=${community.id}`}
+                                                            method="post"
+                                                            options={{
+                                                                preserveScroll: true,
+                                                            }}
+                                                        >
+                                                            {({
+                                                                errors,
+                                                                processing,
+                                                            }) => (
+                                                                <>
+                                                                    <input
+                                                                        type="hidden"
+                                                                        name="user_id"
+                                                                        value={
+                                                                            member.id
+                                                                        }
+                                                                    />
+                                                                    <input
+                                                                        type="hidden"
+                                                                        name="reference_month"
+                                                                        value={`${referenceMonth}-01`}
+                                                                    />
+                                                                    <InputError
+                                                                        message={
+                                                                            errors.reference_month
+                                                                        }
+                                                                    />
+
+                                                                    <DialogFooter className="gap-2">
+                                                                        <DialogClose
+                                                                            asChild
+                                                                        >
+                                                                            <Button
+                                                                                type="button"
+                                                                                variant="secondary"
+                                                                            >
+                                                                                Cancel
+                                                                            </Button>
+                                                                        </DialogClose>
+                                                                        <Button
+                                                                            type="submit"
+                                                                            disabled={
+                                                                                processing
+                                                                            }
+                                                                        >
+                                                                            Confirm
+                                                                            payment
+                                                                        </Button>
+                                                                    </DialogFooter>
+                                                                </>
+                                                            )}
+                                                        </Form>
+                                                    </DialogContent>
+                                                </Dialog>
                                             )}
                                         </td>
                                     </tr>

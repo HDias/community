@@ -146,17 +146,22 @@ describe('the members status table', () => {
         ).toHaveLength(1);
     });
 
-    it('posts the member and reference month when registering a payment', async () => {
-        const { container } = renderPage({
+    it('asks for confirmation before registering a payment', async () => {
+        renderPage({
             members: paginated([member({ id: 2, name: 'Bruno Costa' })]),
         });
 
-        const form = container.querySelector(
-            'form[action="/contributions?community=7"]',
-        ) as HTMLFormElement;
+        await user.click(
+            screen.getByRole('button', { name: 'Register payment' }),
+        );
+
+        expect(
+            screen.getByText('Register monthly payment?'),
+        ).toBeInTheDocument();
+        expect(submissions).toHaveLength(0);
 
         await user.click(
-            within(form).getByRole('button', { name: 'Register payment' }),
+            screen.getByRole('button', { name: 'Confirm payment' }),
         );
 
         expect(submissions).toHaveLength(1);
@@ -168,6 +173,19 @@ describe('the members status table', () => {
                 reference_month: '2026-08-01',
             },
         });
+    });
+
+    it('does not submit when the confirmation is cancelled', async () => {
+        renderPage({
+            members: paginated([member({ id: 2, name: 'Bruno Costa' })]),
+        });
+
+        await user.click(
+            screen.getByRole('button', { name: 'Register payment' }),
+        );
+        await user.click(screen.getByRole('button', { name: 'Cancel' }));
+
+        expect(submissions).toHaveLength(0);
     });
 
     it('shows an empty state when the community has no members', () => {
