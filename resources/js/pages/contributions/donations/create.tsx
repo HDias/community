@@ -1,4 +1,4 @@
-import { Form, Head, setLayoutProps } from '@inertiajs/react';
+import { Form, Head, Link, setLayoutProps } from '@inertiajs/react';
 import { useState } from 'react';
 import CnpjInput from '@/components/cnpj-input';
 import CpfInput from '@/components/cpf-input';
@@ -31,6 +31,7 @@ type DonorType = 'member' | 'individual' | 'organization';
 type Props = {
     community: Community;
     members: Member[];
+    referenceMonth: string;
 };
 
 const donorTypes: { value: DonorType; label: string }[] = [
@@ -39,12 +40,20 @@ const donorTypes: { value: DonorType; label: string }[] = [
     { value: 'organization', label: 'Legal entity' },
 ];
 
-export default function DonationsCreate({ community, members }: Props) {
+export default function DonationsCreate({
+    community,
+    members,
+    referenceMonth,
+}: Props) {
     setLayoutProps({
         breadcrumbs: [
             {
                 title: 'Contributions',
                 href: `/contributions?community=${community.id}`,
+            },
+            {
+                title: 'Donations',
+                href: `/contributions/donations?community=${community.id}&month=${referenceMonth}`,
             },
             {
                 title: 'Register Donation',
@@ -59,9 +68,16 @@ export default function DonationsCreate({ community, members }: Props) {
         <>
             <Head title={`Register Donation - ${community.name}`} />
             <div className="mx-auto w-full max-w-2xl px-6 py-8">
-                <h1 className="mb-6 text-lg font-semibold">
-                    Register Donation
-                </h1>
+                <div className="mb-6 flex items-center justify-between gap-3">
+                    <h1 className="text-lg font-semibold">Register Donation</h1>
+                    <Button size="sm" variant="outline" asChild>
+                        <Link
+                            href={`/contributions/donations?community=${community.id}&month=${referenceMonth}`}
+                        >
+                            Back to donations
+                        </Link>
+                    </Button>
+                </div>
 
                 <Form
                     action={`/contributions/donations?community=${community.id}`}

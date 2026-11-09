@@ -1,6 +1,11 @@
 import { Form, Head, Link, router, setLayoutProps } from '@inertiajs/react';
 import type { ChangeEvent } from 'react';
 import { useRef, useState } from 'react';
+import {
+    ContributionHistoryDialog
+    
+} from '@/components/contribution-history-dialog';
+import type {ContributionHistoryEntry} from '@/components/contribution-history-dialog';
 import { formatCpf } from '@/components/cpf-input';
 import InputError from '@/components/input-error';
 import { Badge } from '@/components/ui/badge';
@@ -36,6 +41,7 @@ type Member = {
     cpf: string | null;
     contribution_id: number | null;
     paid: boolean;
+    history: ContributionHistoryEntry[];
 };
 
 type PaginatedMembers = {
@@ -164,9 +170,9 @@ export default function ContributionsIndex({
                         <div className="flex items-center gap-2">
                             <Button size="sm" asChild>
                                 <Link
-                                    href={`/contributions/donations/create?community=${community.id}`}
+                                    href={`/contributions/donations?community=${community.id}&month=${referenceMonth}`}
                                 >
-                                    + Register donation
+                                    Donations
                                 </Link>
                             </Button>
                             <Button size="sm" variant="outline" asChild>
@@ -257,6 +263,9 @@ export default function ContributionsIndex({
                                     <th className="px-4 py-2 text-left font-medium">
                                         Status
                                     </th>
+                                    <th className="px-4 py-2 text-left font-medium">
+                                        History
+                                    </th>
                                     <th className="px-4 py-2 text-right font-medium">
                                         Actions
                                     </th>
@@ -288,6 +297,11 @@ export default function ContributionsIndex({
                                                     ? 'Paid'
                                                     : 'Pending'}
                                             </Badge>
+                                        </td>
+                                        <td className="px-4 py-2">
+                                            <ContributionHistoryDialog
+                                                history={member.history}
+                                            />
                                         </td>
                                         <td className="px-4 py-2 text-right">
                                             {member.paid &&
@@ -473,7 +487,7 @@ export default function ContributionsIndex({
                                 {memberList.length === 0 && (
                                     <tr>
                                         <td
-                                            colSpan={4}
+                                            colSpan={5}
                                             className="px-4 py-8 text-center text-muted-foreground"
                                         >
                                             {searchTerm

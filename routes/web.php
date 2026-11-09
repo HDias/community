@@ -38,6 +38,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('contributions.settings.store');
     Route::post('contributions', [ContributionController::class, 'store'])
         ->name('contributions.store');
+    Route::get('contributions/donations', [ContributionController::class, 'indexDonations'])
+        ->name('contributions.donations.index');
     Route::get('contributions/donations/create', [ContributionController::class, 'createDonation'])
         ->name('contributions.donations.create');
     Route::post('contributions/donations', [ContributionController::class, 'storeDonation'])

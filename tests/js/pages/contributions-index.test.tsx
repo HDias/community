@@ -29,6 +29,7 @@ function member(overrides: Partial<Member> = {}): Member {
         cpf: null,
         contribution_id: null,
         paid: false,
+        history: [],
         ...overrides,
     };
 }
@@ -283,16 +284,54 @@ describe('the month selector', () => {
     });
 });
 
-describe('the register donation action', () => {
-    it('links to the donation registration page for this community', () => {
+describe('the donations action', () => {
+    it('links to the donations ledger for the selected month', () => {
         renderPage();
 
-        expect(
-            screen.getByRole('link', { name: '+ Register donation' }),
-        ).toHaveAttribute(
+        expect(screen.getByRole('link', { name: 'Donations' })).toHaveAttribute(
             'href',
-            '/contributions/donations/create?community=7',
+            '/contributions/donations?community=7&month=2026-08',
         );
+    });
+});
+
+describe('the payment history', () => {
+    const entry = {
+        id: 42,
+        amount: '50.00',
+        status: 'reversed' as const,
+        registered_at: '2026-08-10T12:00:00+00:00',
+        registered_by_name: 'Treasurer',
+        reversed_at: '2026-08-12T12:00:00+00:00',
+        reversed_by_name: 'Auditor',
+        reversal_reason: 'Wrong amount',
+    };
+
+    it('disables the history button when the member has no payments', () => {
+        renderPage({ members: paginated([member()]) });
+
+        expect(screen.getByRole('button', { name: 'History' })).toBeDisabled();
+    });
+
+    it('shows registration and reversal events in the modal', async () => {
+        renderPage({
+            members: paginated([
+                member({
+                    paid: true,
+                    contribution_id: 42,
+                    history: [entry],
+                }),
+            ]),
+        });
+
+        await user.click(screen.getByRole('button', { name: 'History' }));
+
+        expect(screen.getByText('Payment history')).toBeInTheDocument();
+        expect(screen.getByText(/^Registered /)).toBeInTheDocument();
+        expect(screen.getByText('By Treasurer')).toBeInTheDocument();
+        expect(screen.getByText(/^Reversed /)).toBeInTheDocument();
+        expect(screen.getByText('By Auditor')).toBeInTheDocument();
+        expect(screen.getByText('Reason: Wrong amount')).toBeInTheDocument();
     });
 });
 

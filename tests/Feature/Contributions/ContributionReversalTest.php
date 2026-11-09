@@ -254,7 +254,7 @@ test('a payment cannot be reversed twice', function () {
     expect($contribution->fresh()->reversed_at->equalTo($firstReversedAt))->toBeTrue();
 });
 
-test('only monthly payments can be reversed', function () {
+test('a donation can be reversed', function () {
     $community = Community::factory()->create();
     $admin = User::factory()->create(['is_admin' => true]);
     $donation = $community->contributions()->create([
@@ -273,10 +273,15 @@ test('only monthly payments can be reversed', function () {
         ->post(route('contributions.reverse', [
             'contribution' => $donation->id,
             'community' => $community->id,
-        ]), ['reversal_reason' => 'Not a monthly payment.'])
-        ->assertSessionHasErrors('reversal_reason');
+        ]), ['reversal_reason' => 'Refunded to the donor.'])
+        ->assertRedirect();
 
-    expect($donation->fresh()->reversed_at)->toBeNull();
+    $donation->refresh();
+
+    expect($donation->reversed_at)->not->toBeNull()
+        ->and($donation->reversed_by)->toBe($admin->id)
+        ->and($donation->reversal_reason)->toBe('Refunded to the donor.')
+        ->and($donation->monthly_key)->toBeNull();
 });
 
 test('the month can be registered again after a reversal', function () {

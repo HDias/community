@@ -22,13 +22,7 @@ Tracked issues that are known trade-offs or gaps, not yet worth blocking a merge
 
 ## Contributions feature (`feat/contributions`)
 
-### 1. Donations have no ledger and cannot be reversed
-
-- **Where:** `app/Http/Controllers/Communities/ContributionController.php`, `resources/js/pages/contributions/`
-- **Issue:** the contributions index lists only monthly payments per member. Donations are registered but never listed, so there is no UI to find or reverse one. The reversal fields (`reversed_at`, `reversed_by`, `reversal_reason`) already exist on the `contributions` table and would cover donations too.
-- **Fix:** add a donations ledger page and expose the revert action for `type = donation`.
-
-### 2. Member payment history is not implemented
+### 1. Member payment history is not implemented
 
 - **Where:** `docs/flows/04-contributions.md`
 - **Issue:** the documented "member views own payment history" flow has no route, controller or page yet.

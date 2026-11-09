@@ -11,7 +11,9 @@ use Illuminate\Validation\ValidationException;
 class ReverseContribution
 {
     /**
-     * Reverse a monthly payment, keeping the row for audit and freeing the month.
+     * Reverse a payment or donation, keeping the row for audit.
+     *
+     * Reversing a monthly payment frees the month for a fresh registration.
      */
     public function handle(Contribution $contribution, User $reversedBy, string $reason): Contribution
     {
@@ -21,19 +23,18 @@ class ReverseContribution
             ]);
         }
 
-        if ($contribution->type !== ContributionType::Monthly) {
-            throw ValidationException::withMessages([
-                'reversal_reason' => __('Only monthly payments can be reversed.'),
-            ]);
-        }
-
         return DB::transaction(function () use ($contribution, $reversedBy, $reason): Contribution {
-            $contribution->forceFill([
+            $attributes = [
                 'reversed_at' => now(),
                 'reversed_by' => $reversedBy->id,
                 'reversal_reason' => $reason,
-                'monthly_key' => null,
-            ])->save();
+            ];
+
+            if ($contribution->type === ContributionType::Monthly) {
+                $attributes['monthly_key'] = null;
+            }
+
+            $contribution->forceFill($attributes)->save();
 
             return $contribution;
         });

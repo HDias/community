@@ -72,6 +72,7 @@ test('admin can view the donation registration form', function () {
         ->assertInertia(fn (Assert $page) => $page
             ->component('contributions/donations/create')
             ->where('community.id', $community->id)
+            ->where('referenceMonth', now()->format('Y-m'))
             ->has('members', 1)
         );
 });
@@ -88,7 +89,10 @@ test('admin can register a donation from an individual donor', function () {
             'amount' => 200,
             'notes' => 'Collected at the meeting.',
         ])
-        ->assertRedirect(route('contributions.index', ['community' => $community->id]));
+        ->assertRedirect(route('contributions.donations.index', [
+            'community' => $community->id,
+            'month' => now()->format('Y-m'),
+        ]));
 
     $donation = $community->contributions()->where('type', ContributionType::Donation)->first();
 
@@ -115,7 +119,10 @@ test('executive can register a donation attributed to a member', function () {
             'user_id' => $member->id,
             'amount' => 100,
         ])
-        ->assertRedirect(route('contributions.index', ['community' => $community->id]));
+        ->assertRedirect(route('contributions.donations.index', [
+            'community' => $community->id,
+            'month' => now()->format('Y-m'),
+        ]));
 
     $donation = $community->contributions()->where('type', ContributionType::Donation)->first();
 
@@ -136,7 +143,10 @@ test('admin can register a donation from a legal entity', function () {
             'donor_document' => '11.222.333/0001-81',
             'amount' => 500,
         ])
-        ->assertRedirect(route('contributions.index', ['community' => $community->id]));
+        ->assertRedirect(route('contributions.donations.index', [
+            'community' => $community->id,
+            'month' => now()->format('Y-m'),
+        ]));
 
     $donation = $community->contributions()->where('type', ContributionType::Donation)->first();
 
@@ -261,14 +271,20 @@ test('multiple donations in the same month for the same member are allowed', fun
 
     $this->actingAs($admin)
         ->post(route('contributions.donations.store', ['community' => $community->id]), $payload)
-        ->assertRedirect(route('contributions.index', ['community' => $community->id]));
+        ->assertRedirect(route('contributions.donations.index', [
+            'community' => $community->id,
+            'month' => now()->format('Y-m'),
+        ]));
 
     $this->actingAs($admin)
         ->post(route('contributions.donations.store', ['community' => $community->id]), [
             ...$payload,
             'amount' => 75,
         ])
-        ->assertRedirect(route('contributions.index', ['community' => $community->id]));
+        ->assertRedirect(route('contributions.donations.index', [
+            'community' => $community->id,
+            'month' => now()->format('Y-m'),
+        ]));
 
     expect($community->contributions()->where('user_id', $member->id)->count())->toBe(2);
 });

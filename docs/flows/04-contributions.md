@@ -103,7 +103,44 @@ flowchart TD
 
 Only admins and executives of the community may reverse a payment. The voided row is
 kept for audit; it is excluded from the paid status, default streaks and generated report
-totals. Donations are not revertible yet (see `docs/TECH_DEBT.md`).
+totals. Donations use the same reversal fields and can be voided from the donations list.
+
+## Flow: Donations Ledger
+
+```mermaid
+flowchart TD
+    A[Treasurer/Admin opens Donations from the contributions header] --> B[Lists donations of the selected month]
+    B --> C{Filter}
+    C -->|Month| D[Shows only donations of that reference month]
+    C -->|All months| E[Shows donations from every month]
+    C -->|Search| F[Filters by member name, donor name or CPF/CNPJ]
+    D --> G[Rows paginated - 50 per page]
+    E --> G
+    F --> G
+    G --> H{Status}
+    H -->|Active| I[Offers Revert with a required reason]
+    H -->|Reversed| J[Shows the Reversed badge and keeps the row for audit]
+    I --> K[Reversal fields recorded, badge changes to Reversed]
+```
+
+The donations list only shows rows with `type = donation`; monthly payments stay in the
+contributions overview. The month defaults to the current month when the page is opened
+from the contributions header, and the "All months" button removes the month filter.
+
+## Flow: View Payment History
+
+```mermaid
+flowchart TD
+    A[Treasurer/Admin clicks History on a row] --> B{Any history for the month?}
+    B -->|No| C[Button disabled]
+    B -->|Yes| D[Modal lists each registered row in chronological order]
+    D --> E[Shows the amount, who registered it and when]
+    D --> F[Shows each reversal with who reversed it, when and the reason]
+```
+
+History is derived from the existing `contributions` rows for the selected month, including
+reversed ones. A month paid, reversed and paid again therefore shows two entries: the voided
+row (with its reversal metadata) and the active replacement.
 
 ## Flow: Monthly Report Generation (Async Job)
 
@@ -161,6 +198,8 @@ flowchart TD
 ```
 
 Donations are not tied to the monthly amount and are never included in the default streak.
+They are registered from the donations ledger, which also lists, filters and reverses them
+(see "Flow: Donations Ledger").
 
 ## Flow: Find a Member in the Contributions List
 

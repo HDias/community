@@ -19,6 +19,7 @@ function renderPage(overrides: Partial<Props> = {}) {
     const props: Props = {
         community,
         members: [{ id: 2, name: 'Bruno Costa' }],
+        referenceMonth: '2026-08',
         ...overrides,
     };
 
@@ -47,11 +48,26 @@ describe('page chrome', () => {
                     href: '/contributions?community=7',
                 },
                 {
+                    title: 'Donations',
+                    href: '/contributions/donations?community=7&month=2026-08',
+                },
+                {
                     title: 'Register Donation',
                     href: '/contributions/donations/create?community=7',
                 },
             ],
         });
+    });
+
+    it('links back to the donations list', () => {
+        renderPage();
+
+        expect(
+            screen.getByRole('link', { name: 'Back to donations' }),
+        ).toHaveAttribute(
+            'href',
+            '/contributions/donations?community=7&month=2026-08',
+        );
     });
 });
 
