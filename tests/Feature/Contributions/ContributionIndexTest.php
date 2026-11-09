@@ -287,6 +287,8 @@ test('the member list is paginated', function () {
 });
 
 test('a setting effective mid-month exposes the monthly amount for that month', function () {
+    $this->travelTo(now()->startOfMonth()->addDays(19));
+
     $community = Community::factory()->create();
     $admin = User::factory()->create(['is_admin' => true]);
 
@@ -299,5 +301,41 @@ test('a setting effective mid-month exposes the monthly amount for that month', 
         ->get(route('contributions.index', ['community' => $community->id]))
         ->assertInertia(fn (Assert $page) => $page
             ->where('monthlyAmount', '50.00')
+        );
+});
+
+test('a future setting leaves the monthly amount unconfigured', function () {
+    $community = Community::factory()->create();
+    $admin = User::factory()->create(['is_admin' => true]);
+
+    $community->contributionSettings()->create([
+        'monthly_amount' => 50,
+        'effective_from' => now()->addDay(),
+    ]);
+
+    $this->actingAs($admin)
+        ->get(route('contributions.index', ['community' => $community->id]))
+        ->assertInertia(fn (Assert $page) => $page
+            ->where('monthlyAmount', null)
+        );
+});
+
+test('a future setting does not override the active monthly amount', function () {
+    $community = Community::factory()->create();
+    $admin = User::factory()->create(['is_admin' => true]);
+
+    $community->contributionSettings()->create([
+        'monthly_amount' => 5,
+        'effective_from' => now()->subMonth(),
+    ]);
+    $community->contributionSettings()->create([
+        'monthly_amount' => 50,
+        'effective_from' => now()->addDay(),
+    ]);
+
+    $this->actingAs($admin)
+        ->get(route('contributions.index', ['community' => $community->id]))
+        ->assertInertia(fn (Assert $page) => $page
+            ->where('monthlyAmount', '5.00')
         );
 });

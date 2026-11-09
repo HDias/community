@@ -127,6 +127,8 @@ test('contribution report factory creates a valid row tied to a community', func
 });
 
 test('contribution setting currentFor treats a mid-month effective date as effective for that month', function () {
+    $this->travelTo(now()->startOfMonth()->addDays(19));
+
     $community = Community::factory()->create();
     $referenceMonth = now()->startOfMonth();
 
@@ -139,4 +141,34 @@ test('contribution setting currentFor treats a mid-month effective date as effec
 
     expect($current?->id)->toBe($setting->id)
         ->and((float) $current->monthly_amount)->toBe(50.0);
+});
+
+test('contribution setting currentFor ignores a setting whose effective date is in the future', function () {
+    $community = Community::factory()->create();
+
+    $community->contributionSettings()->create([
+        'monthly_amount' => 10,
+        'effective_from' => now()->addDay(),
+    ]);
+
+    expect(ContributionSetting::currentFor($community, now()->startOfMonth()))->toBeNull();
+});
+
+test('contribution setting currentFor falls back to the latest setting already in effect', function () {
+    $community = Community::factory()->create();
+    $referenceMonth = now()->startOfMonth();
+
+    $active = $community->contributionSettings()->create([
+        'monthly_amount' => 5,
+        'effective_from' => now()->subMonth(),
+    ]);
+    $community->contributionSettings()->create([
+        'monthly_amount' => 10,
+        'effective_from' => now()->addDay(),
+    ]);
+
+    $current = ContributionSetting::currentFor($community, $referenceMonth);
+
+    expect($current?->id)->toBe($active->id)
+        ->and((float) $current->monthly_amount)->toBe(5.0);
 });
