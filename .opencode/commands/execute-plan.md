@@ -1,21 +1,20 @@
 ---
-description: Execute a plan from .plans/ using TDD, progress tracking and artisan commands
+description: Execute a plan using TDD and checking off its Execution status
 agent: build
 model: opencode-go/deepseek-v4.1-flash
 ---
 
 Implement the plan: $1
 
-`$1` may be a plan folder or its `plan.md`. Derive the rest from it:
-- plan file: `<folder>/plan.md`
-- progress file: `<folder>/progress.md`
+`$1` may be a plan folder or its `plan.md`. The plan file is `<folder>/plan.md`.
 
 ## Source of truth and resume
 
 - The plan file is the source of truth. If context is compacted, re-read it.
-- If `progress.md` exists, read it and continue from the FIRST incomplete task
-  instead of starting over.
-- Write state to files, not to the conversation.
+- Resume from the FIRST unchecked task in the plan's `## Execution status`
+  section (do not start over).
+- If `$1` is empty or no plan file exists, ask the user for the plan before
+  starting.
 
 ## Mandatory rules (project conventions — see AGENTS.md)
 
@@ -34,18 +33,23 @@ Implement the plan: $1
    tool). A surviving mutant means a weak test — strengthen the test, not the
    code.
 
-## Progress tracking (every task)
+## Progress tracking
 
-- When a task is done, APPEND to `progress.md`: task id, status, and the
-  evidence that satisfies its "done when" condition.
-- Mark the task done in `plan.md` (checkbox + evidence) so the plan stays
-  current.
+- When a task is done, check it off in the plan's `## Execution status` section
+  with its "done when" evidence. No separate progress file.
+- Keep the plan file as the single source of truth.
 
-## Execution
+## Checkpoints (stop and wait for the user)
 
-- Follow the plan's tasks in dependency order.
-- Independent tasks (see the parallel map) MAY run via subagents to keep the
-  main context small; heavy work MUST be delegated to a subagent that returns a
-  short summary.
-- When you hit a gate, stop and decide Pass/Adjust/Abort.
+- Stop ONLY at decision gates and phase boundaries — not after every task.
+- At a gate, present Pass/Adjust/Abort and wait for the user's choice.
+- Between phases, ask: "Phase done. Continue to the next phase?
+  (continue / adjust / stop)".
 - When a failure scenario triggers, apply the plan's recovery cascade.
+
+## Final step
+
+- If no plan file exists or the plan was never saved, ask the user whether they
+  want to see the final result documented before creating a file.
+- If a plan file exists, ensure every completed task is checked in
+  `## Execution status`.
