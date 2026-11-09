@@ -258,3 +258,24 @@ test('a payment cannot be registered before the configured effective date', func
 
     expect($community->contributions()->count())->toBe(0);
 });
+
+test('a mid-month effective setting allows registering a payment for that month', function () {
+    $community = Community::factory()->create();
+    $admin = User::factory()->create(['is_admin' => true]);
+    $member = User::factory()->create();
+    attachRegisterContributionMember($community, $member);
+
+    $community->contributionSettings()->create([
+        'monthly_amount' => 50,
+        'effective_from' => now()->startOfMonth()->addDays(5),
+    ]);
+
+    $this->actingAs($admin)
+        ->post(route('contributions.store', ['community' => $community->id]), [
+            'user_id' => $member->id,
+            'reference_month' => now()->startOfMonth()->format('Y-m-d'),
+        ])
+        ->assertRedirect(route('contributions.index', ['community' => $community->id]));
+
+    expect((float) $community->contributions()->first()->amount)->toBe(50.0);
+});

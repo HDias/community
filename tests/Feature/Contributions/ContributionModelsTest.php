@@ -125,3 +125,18 @@ test('contribution report factory creates a valid row tied to a community', func
         ->and($report->total_members)->not->toBeNull()
         ->and($report->generated_at)->not->toBeNull();
 });
+
+test('contribution setting currentFor treats a mid-month effective date as effective for that month', function () {
+    $community = Community::factory()->create();
+    $referenceMonth = now()->startOfMonth();
+
+    $setting = $community->contributionSettings()->create([
+        'monthly_amount' => 50,
+        'effective_from' => $referenceMonth->copy()->addDays(5),
+    ]);
+
+    $current = ContributionSetting::currentFor($community, $referenceMonth);
+
+    expect($current?->id)->toBe($setting->id)
+        ->and((float) $current->monthly_amount)->toBe(50.0);
+});

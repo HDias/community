@@ -285,3 +285,19 @@ test('the member list is paginated', function () {
             ->where('members.current_page', 2)
         );
 });
+
+test('a setting effective mid-month exposes the monthly amount for that month', function () {
+    $community = Community::factory()->create();
+    $admin = User::factory()->create(['is_admin' => true]);
+
+    $community->contributionSettings()->create([
+        'monthly_amount' => 50,
+        'effective_from' => now()->startOfMonth()->addDays(5),
+    ]);
+
+    $this->actingAs($admin)
+        ->get(route('contributions.index', ['community' => $community->id]))
+        ->assertInertia(fn (Assert $page) => $page
+            ->where('monthlyAmount', '50.00')
+        );
+});

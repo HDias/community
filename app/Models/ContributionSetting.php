@@ -45,11 +45,14 @@ class ContributionSetting extends Model
 
     /**
      * Resolve the setting effective for the given reference month.
+     *
+     * The amount is month-based, so any effective date inside the reference
+     * month counts for that whole month.
      */
     public static function currentFor(Community $community, CarbonInterface $referenceMonth): ?self
     {
         return $community->contributionSettings()
-            ->where('effective_from', '<=', $referenceMonth->copy()->startOfMonth())
+            ->where('effective_from', '<=', $referenceMonth->copy()->endOfMonth())
             ->orderByDesc('effective_from')
             ->first();
     }
