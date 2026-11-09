@@ -294,3 +294,19 @@ describe('the register donation action', () => {
         );
     });
 });
+
+describe('the missing monthly amount', () => {
+    it('disables payment registration and warns the user', () => {
+        renderPage({
+            members: paginated([member({ id: 2, name: 'Bruno Costa' })]),
+            monthlyAmount: null,
+        });
+
+        expect(
+            screen.getByRole('button', { name: 'Register payment' }),
+        ).toBeDisabled();
+        expect(
+            screen.getByText(/Monthly amount is not configured for this month/),
+        ).toBeInTheDocument();
+    });
+});

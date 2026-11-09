@@ -64,6 +64,11 @@ test('admin can register a monthly payment for a member', function () {
     $member = User::factory()->create();
     attachRegisterContributionMember($community, $member);
 
+    $community->contributionSettings()->create([
+        'monthly_amount' => 50,
+        'effective_from' => now()->startOfMonth(),
+    ]);
+
     $referenceMonth = now()->startOfMonth()->format('Y-m-d');
 
     $this->actingAs($admin)
@@ -87,6 +92,11 @@ test('executive can register a monthly payment', function () {
     attachRegisterContributionExecutive($community, $executive);
     $member = User::factory()->create();
     attachRegisterContributionMember($community, $member);
+
+    $community->contributionSettings()->create([
+        'monthly_amount' => 50,
+        'effective_from' => now()->startOfMonth(),
+    ]);
 
     $this->actingAs($executive)
         ->post(route('contributions.store', ['community' => $community->id]), [
@@ -210,4 +220,41 @@ test('amount resolved matches the contribution setting effective for that month,
     $contribution = $community->contributions()->where('user_id', $member->id)->first();
 
     expect((float) $contribution->amount)->toBe(30.0);
+});
+
+test('a payment cannot be registered when the monthly amount is not configured', function () {
+    $community = Community::factory()->create();
+    $admin = User::factory()->create(['is_admin' => true]);
+    $member = User::factory()->create();
+    attachRegisterContributionMember($community, $member);
+
+    $this->actingAs($admin)
+        ->post(route('contributions.store', ['community' => $community->id]), [
+            'user_id' => $member->id,
+            'reference_month' => now()->startOfMonth()->format('Y-m-d'),
+        ])
+        ->assertSessionHasErrors('amount');
+
+    expect($community->contributions()->count())->toBe(0);
+});
+
+test('a payment cannot be registered before the configured effective date', function () {
+    $community = Community::factory()->create();
+    $admin = User::factory()->create(['is_admin' => true]);
+    $member = User::factory()->create();
+    attachRegisterContributionMember($community, $member);
+
+    $community->contributionSettings()->create([
+        'monthly_amount' => 50,
+        'effective_from' => now()->addMonth()->startOfMonth(),
+    ]);
+
+    $this->actingAs($admin)
+        ->post(route('contributions.store', ['community' => $community->id]), [
+            'user_id' => $member->id,
+            'reference_month' => now()->startOfMonth()->format('Y-m-d'),
+        ])
+        ->assertSessionHasErrors('amount');
+
+    expect($community->contributions()->count())->toBe(0);
 });

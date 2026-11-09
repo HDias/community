@@ -229,6 +229,20 @@ export default function ContributionsIndex({
                             </p>
                         </div>
 
+                        {!monthlyAmount && (
+                            <div className="rounded-lg border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-400/30 dark:bg-amber-950/30 dark:text-amber-200">
+                                Monthly amount is not configured for this month.
+                                Configure it in{' '}
+                                <Link
+                                    href={`/contributions/settings?community=${community.id}`}
+                                    className="underline"
+                                >
+                                    Settings
+                                </Link>{' '}
+                                before registering payments.
+                            </div>
+                        )}
+
                         <table className="w-full text-sm">
                             <thead className="border-b bg-muted/50">
                                 <tr>
@@ -277,7 +291,12 @@ export default function ContributionsIndex({
                                             {!member.paid && (
                                                 <Dialog>
                                                     <DialogTrigger asChild>
-                                                        <Button size="sm">
+                                                        <Button
+                                                            size="sm"
+                                                            disabled={
+                                                                !monthlyAmount
+                                                            }
+                                                        >
                                                             Register payment
                                                         </Button>
                                                     </DialogTrigger>
@@ -323,6 +342,11 @@ export default function ContributionsIndex({
                                                                     <InputError
                                                                         message={
                                                                             errors.reference_month
+                                                                        }
+                                                                    />
+                                                                    <InputError
+                                                                        message={
+                                                                            errors.amount
                                                                         }
                                                                     />
 

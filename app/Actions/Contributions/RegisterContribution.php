@@ -34,13 +34,20 @@ class RegisterContribution
         }
 
         $setting = ContributionSetting::currentFor($community, $referenceMonth);
-        $amount = $setting ? $setting->monthly_amount : 0;
+
+        if (! $setting) {
+            throw ValidationException::withMessages([
+                'amount' => __('The monthly contribution amount is not configured for :month.', [
+                    'month' => $referenceMonth->format('F Y'),
+                ]),
+            ]);
+        }
 
         return $community->contributions()->create([
             'user_id' => $member->id,
             'reference_month' => $referenceMonth,
             'monthly_key' => $referenceMonth,
-            'amount' => $amount,
+            'amount' => $setting->monthly_amount,
             'registered_by' => $registeredBy->id,
             'type' => ContributionType::Monthly,
         ]);
