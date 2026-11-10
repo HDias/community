@@ -1,5 +1,12 @@
 import { Link, usePage } from '@inertiajs/react';
-import { Briefcase, Contact, LayoutGrid, Shield, Users } from 'lucide-react';
+import {
+    Briefcase,
+    Contact,
+    LayoutGrid,
+    Shield,
+    Users,
+    Wallet,
+} from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
@@ -46,6 +53,11 @@ export function AppSidebar() {
                       title: 'Members',
                       href: '/members',
                       icon: Contact,
+                  },
+                  {
+                      title: 'Contributions',
+                      href: '/contributions',
+                      icon: Wallet,
                   },
               ]
             : []),

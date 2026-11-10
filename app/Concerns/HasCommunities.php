@@ -9,6 +9,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 trait HasCommunities
 {
     /**
+     * Positions allowed to register payments/donations and reverse contributions.
+     *
+     * @var list<string>
+     */
+    public const CONTRIBUTION_OFFICER_POSITIONS = ['President', 'Vice-President', 'Treasurer'];
+
+    /**
      * Determine if the user holds a position with admin access in the community's current administration.
      */
     public function hasExecutivePositionIn(Community $community): bool
@@ -22,6 +29,23 @@ trait HasCommunities
         return $administration->members()
             ->where('user_id', $this->id)
             ->whereHas('position', fn ($q) => $q->where('has_admin_access', true))
+            ->exists();
+    }
+
+    /**
+     * Determine if the user holds a contribution officer position in the community's current administration.
+     */
+    public function hasContributionOfficerPositionIn(Community $community): bool
+    {
+        $administration = $community->currentAdministration;
+
+        if (! $administration) {
+            return false;
+        }
+
+        return $administration->members()
+            ->where('user_id', $this->id)
+            ->whereHas('position', fn ($q) => $q->whereIn('name', self::CONTRIBUTION_OFFICER_POSITIONS))
             ->exists();
     }
 

@@ -48,7 +48,7 @@ class MemberController extends Controller
         $members = $community->members()
             ->with('profile')
             ->orderBy('name')
-            ->paginate(15);
+            ->paginate((int) config('pagination.per_page'));
 
         $positions = $this->positionsByUser($community, $members->pluck('id')->all());
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Contributions\BuildMyContributions;
 use App\Enums\CommunityRole;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -9,7 +10,7 @@ use Inertia\Response;
 
 class DashboardController extends Controller
 {
-    public function __invoke(Request $request): Response
+    public function __invoke(Request $request, BuildMyContributions $buildMyContributions): Response
     {
         $user = $request->user();
         $community = $user->currentCommunity;
@@ -38,6 +39,7 @@ class DashboardController extends Controller
                 'name' => $m->user->name,
                 'position' => $m->position->name,
             ])->values() ?? collect(),
+            'myContributions' => $community ? $buildMyContributions->handle($user, $community) : null,
             'canManage' => $user->is_admin
                 || $membership?->pivot?->getAttribute('role') === CommunityRole::President->value,
         ]);

@@ -3,6 +3,9 @@
 use App\Http\Controllers\Api\BrasilApiController;
 use App\Http\Controllers\Communities\AdministrationController;
 use App\Http\Controllers\Communities\CommunityController;
+use App\Http\Controllers\Communities\ContributionController;
+use App\Http\Controllers\Communities\ContributionReportController;
+use App\Http\Controllers\Communities\ContributionSettingController;
 use App\Http\Controllers\Communities\MemberController;
 use App\Http\Controllers\Communities\PositionController;
 use App\Http\Controllers\DashboardController;
@@ -26,6 +29,27 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('administrations.members.search');
     Route::delete('administrations/{administration}/members/{user}', [AdministrationController::class, 'removeMember'])
         ->name('administrations.members.destroy');
+
+    Route::get('contributions', [ContributionController::class, 'index'])
+        ->name('contributions.index');
+    Route::get('contributions/settings', [ContributionSettingController::class, 'index'])
+        ->name('contributions.settings.index');
+    Route::post('contributions/settings', [ContributionSettingController::class, 'store'])
+        ->name('contributions.settings.store');
+    Route::put('contributions/settings/{contributionSetting}', [ContributionSettingController::class, 'update'])
+        ->name('contributions.settings.update');
+    Route::post('contributions', [ContributionController::class, 'store'])
+        ->name('contributions.store');
+    Route::get('contributions/donations', [ContributionController::class, 'indexDonations'])
+        ->name('contributions.donations.index');
+    Route::get('contributions/donations/create', [ContributionController::class, 'createDonation'])
+        ->name('contributions.donations.create');
+    Route::post('contributions/donations', [ContributionController::class, 'storeDonation'])
+        ->name('contributions.donations.store');
+    Route::post('contributions/{contribution}/reverse', [ContributionController::class, 'revert'])
+        ->name('contributions.reverse');
+    Route::get('contributions/report', [ContributionReportController::class, 'index'])
+        ->name('contributions.report.index');
 
     Route::get('api/brasil/states', [BrasilApiController::class, 'states'])->name('api.brasil.states');
     Route::get('api/brasil/cities/{uf}', [BrasilApiController::class, 'cities'])->name('api.brasil.cities');

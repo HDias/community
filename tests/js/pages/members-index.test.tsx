@@ -55,7 +55,7 @@ function paginate(data: Member[]) {
         data,
         current_page: 1,
         last_page: 1,
-        per_page: 15,
+        per_page: 50,
         total: data.length,
     };
 }

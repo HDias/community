@@ -19,3 +19,11 @@ Tracked issues that are known trade-offs or gaps, not yet worth blocking a merge
 
 - **Where:** `database/migrations/2026_07_18_020817_create_profiles_table.php`, `app/Models/Profile.php`
 - **Issue:** `cpf` (Brazil's national ID, comparable sensitivity to a US SSN) is stored as plain text with a unique index. Laravel's standard `encrypted` cast is non-deterministic and would break `unique:profiles,cpf` validation and `WHERE cpf = ?` lookups, so encrypting it would require a deterministic/blind-index approach. Flagging as a design decision to make deliberately, not a quick fix.
+
+## Contributions feature (`feat/contributions`)
+
+### 1. Member payment history is not implemented
+
+- **Where:** `docs/flows/04-contributions.md`
+- **Issue:** the documented "member views own payment history" flow has no route, controller or page yet.
+- **Fix:** add a read-only page for the authenticated member, listing paid/pending months since `community_user.joined_at`.

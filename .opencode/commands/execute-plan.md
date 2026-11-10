@@ -1,0 +1,68 @@
+---
+description: Execute a plan using TDD and checking off its Execution status
+agent: build
+model: opencode/deepseek-v4.1-flash
+---
+
+Implement the plan: $1
+
+`$1` may be a plan folder or its `plan.md`. The plan file is `<folder>/plan.md`.
+
+## Source of truth and resume
+
+- The plan file is the source of truth. If context is compacted, re-read it.
+- Resume from the FIRST unchecked task in the plan's `## Execution status`
+  section (do not start over).
+- If `$1` is empty or no plan file exists, ask the user for the plan before
+  starting.
+
+## Mandatory rules (project conventions — see AGENTS.md)
+
+1. Before each major action, state the current task explicitly:
+   `## Working: <task-id> — <title>`. This keeps the current state visible
+   across compaction.
+2. TDD is MANDATORY and strictly test-first. One behavior at a time:
+   write the test -> RUN it -> confirm it fails for the expected reason
+   (capture the red output) -> write the minimum code to pass (green) ->
+   refactor -> run again. NEVER write production code before observing the
+   red test. A test that passes on its first run is invalid: fix the test
+   before continuing. Bug fixes start with a failing regression test.
+3. ALWAYS use `php artisan make:*` to create files (migration, model,
+   controller, test, request, policy, action...). Never hand-write boilerplate.
+   Create the test file BEFORE the implementation files.
+4. Run `php artisan migrate` when you create migrations.
+5. Run tests: `php artisan test --compact --filter=...` (minimum necessary).
+6. At the end: `vendor/bin/pint --dirty` and run the affected tests.
+7. Follow project conventions: Actions pattern, Enums, Form Requests, Policies.
+8. Mutation testing: apply the concept to critical points (see AGENTS.md for the
+   tool). A surviving mutant means a weak test — strengthen the test, not the
+   code.
+
+## Progress tracking
+
+- When a task is done, check it off in the plan's `## Execution status` section
+  with its "done when" evidence, including the exact test command and its
+  passing result. A task with no test evidence is NOT done.
+- No separate progress file.
+- Keep the plan file as the single source of truth.
+
+## Checkpoints (stop and wait for the user)
+
+- Stop ONLY at decision gates and phase boundaries — not after every task.
+- At a gate, present Pass/Adjust/Abort and wait for the user's choice.
+- Between phases, ask: "Phase done. Continue to the next phase?
+  (continue / adjust / stop)".
+- If the red phase cannot be observed (test passes immediately or fails for the
+  wrong reason), stop and fix the test — do not proceed to implementation.
+- When a failure scenario triggers, apply the plan's recovery cascade.
+
+## Final step
+
+- If no plan file exists or the plan was never saved, ask the user whether they
+  want to see the final result documented before creating a file.
+- If a plan file exists, ensure every completed task is checked in
+  `## Execution status`.
+- Verify whether project documentation needs updating for the changes made
+  (README, docs/, AGENTS.md, API/usage docs). Update only existing docs made
+  inaccurate by the change; do not create new documentation files unless the
+  user explicitly asks.

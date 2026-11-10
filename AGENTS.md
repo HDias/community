@@ -123,6 +123,13 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 - Every change must be programmatically tested. Write a new test or update an existing test, then run the affected tests to make sure they pass.
 - Run the minimum number of tests needed to ensure code quality and speed. Use `php artisan test --compact` with a specific filename or filter.
 
+### Mutation Testing
+
+- Mutation testing measures whether existing tests actually catch bugs (beyond code coverage). A surviving mutant means a weak test.
+- PHP: use [Infection](https://infection.github.io/) — requires `infection/infection` as a dev dependency (needs approval before adding).
+- JS/TS (frontend): [Stryker Mutator](https://stryker-mutator.io/), if desired.
+- Without a tool installed, apply the concept manually: after tests pass, check that they catch small mutations (operator swap, sign/boolean inversion). A surviving mutant means strengthen the TEST, not the code.
+
 === inertia-laravel/core rules ===
 
 # Inertia
