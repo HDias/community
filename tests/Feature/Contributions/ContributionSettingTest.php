@@ -22,7 +22,7 @@ function attachContributionMember(Community $community, User $user): void
 /**
  * Attach a user to a community holding a position with admin access.
  */
-function attachContributionExecutive(Community $community, User $user): void
+function attachContributionExecutive(Community $community, User $user, string $positionName = 'Treasurer'): void
 {
     attachContributionMember($community, $user);
 
@@ -33,6 +33,7 @@ function attachContributionExecutive(Community $community, User $user): void
 
     $position = Position::factory()->create([
         'community_id' => $community->id,
+        'name' => $positionName,
         'has_admin_access' => true,
     ]);
 
@@ -57,6 +58,7 @@ function attachContributionNonExecutive(Community $community, User $user): void
 
     $position = Position::factory()->create([
         'community_id' => $community->id,
+        'name' => 'Coordinator',
         'has_admin_access' => false,
     ]);
 
@@ -297,6 +299,25 @@ test('non-executive position holder cannot view or change settings', function ()
             'effective_from' => now()->startOfMonth()->format('Y-m-d'),
         ])
         ->assertForbidden();
+});
+
+test('Secretary with admin access can view but cannot change settings', function () {
+    $community = Community::factory()->create();
+    $secretary = User::factory()->create(['is_admin' => false]);
+    attachContributionExecutive($community, $secretary, 'Secretary');
+
+    $this->actingAs($secretary)
+        ->get(route('contributions.settings.index', ['community' => $community->id]))
+        ->assertOk();
+
+    $this->actingAs($secretary)
+        ->post(route('contributions.settings.store', ['community' => $community->id]), [
+            'monthly_amount' => 50,
+            'effective_from' => now()->startOfMonth()->format('Y-m-d'),
+        ])
+        ->assertForbidden();
+
+    expect($community->contributionSettings()->count())->toBe(0);
 });
 
 test('plain member cannot view or change settings', function () {

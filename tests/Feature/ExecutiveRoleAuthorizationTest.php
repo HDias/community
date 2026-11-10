@@ -131,6 +131,49 @@ test('Treasurer has leadership position', function () {
 
 /*
 |--------------------------------------------------------------------------
+| User::hasContributionOfficerPositionIn() - President, Vice-President, Treasurer only
+|--------------------------------------------------------------------------
+*/
+test('President has a contribution officer position', function () {
+    [$user, $community] = createCommunityWithExecutiveMember('President');
+
+    expect($user->hasContributionOfficerPositionIn($community))->toBeTrue();
+});
+
+test('Vice-President has a contribution officer position', function () {
+    [$user, $community] = createCommunityWithExecutiveMember('Vice-President');
+
+    expect($user->hasContributionOfficerPositionIn($community))->toBeTrue();
+});
+
+test('Treasurer has a contribution officer position', function () {
+    [$user, $community] = createCommunityWithExecutiveMember('Treasurer');
+
+    expect($user->hasContributionOfficerPositionIn($community))->toBeTrue();
+});
+
+test('Secretary does not have a contribution officer position', function () {
+    [$user, $community] = createCommunityWithExecutiveMember('Secretary');
+
+    expect($user->hasContributionOfficerPositionIn($community))->toBeFalse();
+});
+
+test('a custom admin role does not have a contribution officer position', function () {
+    [$user, $community] = createCommunityWithExecutiveMember('Coordinator');
+
+    expect($user->hasContributionOfficerPositionIn($community))->toBeFalse();
+});
+
+test('a user without a current administration has no contribution officer position', function () {
+    $community = Community::factory()->create();
+    $user = User::factory()->create(['is_admin' => false]);
+    $community->members()->attach($user->id, ['role' => 'member', 'joined_at' => now()]);
+
+    expect($user->hasContributionOfficerPositionIn($community))->toBeFalse();
+});
+
+/*
+|--------------------------------------------------------------------------
 | CommunityPolicy
 |--------------------------------------------------------------------------
 */

@@ -18,7 +18,7 @@ function attachRegisterDonationMember(Community $community, User $user): void
     ]);
 }
 
-function attachRegisterDonationExecutive(Community $community, User $user): void
+function attachRegisterDonationExecutive(Community $community, User $user, string $positionName = 'Treasurer'): void
 {
     attachRegisterDonationMember($community, $user);
 
@@ -29,6 +29,7 @@ function attachRegisterDonationExecutive(Community $community, User $user): void
 
     $position = Position::factory()->create([
         'community_id' => $community->id,
+        'name' => $positionName,
         'has_admin_access' => true,
     ]);
 
@@ -50,6 +51,7 @@ function attachRegisterDonationNonExecutive(Community $community, User $user): v
 
     $position = Position::factory()->create([
         'community_id' => $community->id,
+        'name' => 'Coordinator',
         'has_admin_access' => false,
     ]);
 
@@ -225,6 +227,23 @@ test('non-executive position holder cannot register a donation', function () {
             'amount' => 100,
         ])
         ->assertForbidden();
+});
+
+test('Secretary with admin access cannot register a donation', function () {
+    $community = Community::factory()->create();
+    $secretary = User::factory()->create(['is_admin' => false]);
+    attachRegisterDonationExecutive($community, $secretary, 'Secretary');
+
+    $this->actingAs($secretary)
+        ->post(route('contributions.donations.store', ['community' => $community->id]), [
+            'donor_type' => DonorType::Individual->value,
+            'donor_name' => 'Maria Souza',
+            'donor_document' => '529.982.247-25',
+            'amount' => 100,
+        ])
+        ->assertForbidden();
+
+    expect($community->contributions()->count())->toBe(0);
 });
 
 test('plain member cannot register a donation', function () {

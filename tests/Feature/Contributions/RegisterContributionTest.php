@@ -17,7 +17,7 @@ function attachRegisterContributionMember(Community $community, User $user): voi
     ]);
 }
 
-function attachRegisterContributionExecutive(Community $community, User $user): void
+function attachRegisterContributionExecutive(Community $community, User $user, string $positionName = 'Treasurer'): void
 {
     attachRegisterContributionMember($community, $user);
 
@@ -28,6 +28,7 @@ function attachRegisterContributionExecutive(Community $community, User $user): 
 
     $position = Position::factory()->create([
         'community_id' => $community->id,
+        'name' => $positionName,
         'has_admin_access' => true,
     ]);
 
@@ -49,6 +50,7 @@ function attachRegisterContributionNonExecutive(Community $community, User $user
 
     $position = Position::factory()->create([
         'community_id' => $community->id,
+        'name' => 'Coordinator',
         'has_admin_access' => false,
     ]);
 
@@ -122,6 +124,23 @@ test('non-executive position holder cannot register a payment', function () {
             'reference_month' => now()->startOfMonth()->format('Y-m-d'),
         ])
         ->assertForbidden();
+});
+
+test('Secretary with admin access cannot register a payment', function () {
+    $community = Community::factory()->create();
+    $secretary = User::factory()->create(['is_admin' => false]);
+    attachRegisterContributionExecutive($community, $secretary, 'Secretary');
+    $member = User::factory()->create();
+    attachRegisterContributionMember($community, $member);
+
+    $this->actingAs($secretary)
+        ->post(route('contributions.store', ['community' => $community->id]), [
+            'user_id' => $member->id,
+            'reference_month' => now()->startOfMonth()->format('Y-m-d'),
+        ])
+        ->assertForbidden();
+
+    expect($community->contributions()->count())->toBe(0);
 });
 
 test('plain member cannot register a payment', function () {

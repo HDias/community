@@ -21,7 +21,7 @@ class ContributionPolicy
      */
     public function create(User $user, Community $community): bool
     {
-        return $user->is_admin || $user->hasExecutivePositionIn($community);
+        return $user->is_admin || $user->hasContributionOfficerPositionIn($community);
     }
 
     /**
@@ -30,7 +30,7 @@ class ContributionPolicy
     public function revert(User $user, Contribution $contribution, Community $community): bool
     {
         return $contribution->community_id === $community->id
-            && ($user->is_admin || $user->hasExecutivePositionIn($community));
+            && ($user->is_admin || $user->hasContributionOfficerPositionIn($community));
     }
 
     /**

@@ -101,9 +101,13 @@ flowchart TD
     I --> J[Payment no longer counts as paid in index, streaks or reports]
 ```
 
-Only admins and executives of the community may reverse a payment. The voided row is
-kept for audit; it is excluded from the paid status, default streaks and generated report
-totals. Donations use the same reversal fields and can be voided from the donations list.
+Only system admins and the community's contribution officers (President, Vice-President and
+Treasurer, by position name in the current administration) may register payments,
+register donations or reverse a payment. Other executive positions (for example,
+Secretary) can still view the contributions area but cannot change ledger data. The
+voided row is kept for audit; it is excluded from the paid status, default streaks and
+generated report totals. Donations use the same reversal fields and can be voided from
+the donations list.
 
 ## Flow: Donations Ledger
 

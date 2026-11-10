@@ -29,6 +29,7 @@ function attachDonationExecutive(Community $community, User $user): void
 
     $position = Position::factory()->create([
         'community_id' => $community->id,
+        'name' => 'Treasurer',
         'has_admin_access' => true,
     ]);
 
@@ -50,6 +51,7 @@ function attachDonationNonExecutive(Community $community, User $user): void
 
     $position = Position::factory()->create([
         'community_id' => $community->id,
+        'name' => 'Coordinator',
         'has_admin_access' => false,
     ]);
 

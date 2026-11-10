@@ -21,7 +21,7 @@ function attachReversalMember(Community $community, User $user, ?CarbonInterface
     ]);
 }
 
-function attachReversalExecutive(Community $community, User $user): void
+function attachReversalExecutive(Community $community, User $user, string $positionName = 'Treasurer'): void
 {
     attachReversalMember($community, $user);
 
@@ -32,6 +32,7 @@ function attachReversalExecutive(Community $community, User $user): void
 
     $position = Position::factory()->create([
         'community_id' => $community->id,
+        'name' => $positionName,
         'has_admin_access' => true,
     ]);
 
@@ -53,6 +54,7 @@ function attachReversalNonExecutive(Community $community, User $user): void
 
     $position = Position::factory()->create([
         'community_id' => $community->id,
+        'name' => 'Coordinator',
         'has_admin_access' => false,
     ]);
 
@@ -135,6 +137,24 @@ test('non-executive position holder cannot reverse a payment', function () {
     $contribution = makeMonthlyContribution($community, $member, $nonExecutive);
 
     $this->actingAs($nonExecutive)
+        ->post(route('contributions.reverse', [
+            'contribution' => $contribution->id,
+            'community' => $community->id,
+        ]), ['reversal_reason' => 'Trying to reverse.'])
+        ->assertForbidden();
+
+    expect($contribution->fresh()->reversed_at)->toBeNull();
+});
+
+test('Secretary with admin access cannot reverse a payment', function () {
+    $community = Community::factory()->create();
+    $secretary = User::factory()->create(['is_admin' => false]);
+    attachReversalExecutive($community, $secretary, 'Secretary');
+    $member = User::factory()->create();
+    attachReversalMember($community, $member);
+    $contribution = makeMonthlyContribution($community, $member, $secretary);
+
+    $this->actingAs($secretary)
         ->post(route('contributions.reverse', [
             'contribution' => $contribution->id,
             'community' => $community->id,
