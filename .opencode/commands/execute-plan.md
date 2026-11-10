@@ -1,7 +1,7 @@
 ---
 description: Execute a plan using TDD and checking off its Execution status
 agent: build
-model: opencode/deepseek-v4.1-flash-free
+model: opencode/deepseek-v4.1-flash
 ---
 
 Implement the plan: $1
@@ -21,10 +21,15 @@ Implement the plan: $1
 1. Before each major action, state the current task explicitly:
    `## Working: <task-id> — <title>`. This keeps the current state visible
    across compaction.
-2. TDD in small phases: one behavior at a time. For each phase: write the test
-   (red) -> implement the minimum (green) -> refactor -> run again.
+2. TDD is MANDATORY and strictly test-first. One behavior at a time:
+   write the test -> RUN it -> confirm it fails for the expected reason
+   (capture the red output) -> write the minimum code to pass (green) ->
+   refactor -> run again. NEVER write production code before observing the
+   red test. A test that passes on its first run is invalid: fix the test
+   before continuing. Bug fixes start with a failing regression test.
 3. ALWAYS use `php artisan make:*` to create files (migration, model,
    controller, test, request, policy, action...). Never hand-write boilerplate.
+   Create the test file BEFORE the implementation files.
 4. Run `php artisan migrate` when you create migrations.
 5. Run tests: `php artisan test --compact --filter=...` (minimum necessary).
 6. At the end: `vendor/bin/pint --dirty` and run the affected tests.
@@ -36,7 +41,9 @@ Implement the plan: $1
 ## Progress tracking
 
 - When a task is done, check it off in the plan's `## Execution status` section
-  with its "done when" evidence. No separate progress file.
+  with its "done when" evidence, including the exact test command and its
+  passing result. A task with no test evidence is NOT done.
+- No separate progress file.
 - Keep the plan file as the single source of truth.
 
 ## Checkpoints (stop and wait for the user)
@@ -45,6 +52,8 @@ Implement the plan: $1
 - At a gate, present Pass/Adjust/Abort and wait for the user's choice.
 - Between phases, ask: "Phase done. Continue to the next phase?
   (continue / adjust / stop)".
+- If the red phase cannot be observed (test passes immediately or fails for the
+  wrong reason), stop and fix the test — do not proceed to implementation.
 - When a failure scenario triggers, apply the plan's recovery cascade.
 
 ## Final step
