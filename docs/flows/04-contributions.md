@@ -10,6 +10,23 @@ automatically generates a default report by identifying members without a paymen
 A registered monthly payment can be **reversed** (voided) with an audit trail; the month
 then becomes pending again and can be registered afresh.
 
+## Implementation Status
+
+> Checked on 2026-11-10.
+
+| Flow                                    | Status                   | Implementation                                                                                                                                                                              |
+| --------------------------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Register Monthly Payment                | ✅ Implemented           | `ContributionController@store` → `RegisterContribution`, with confirmation dialog, effective-amount resolution and duplicate-month protection.                                              |
+| Reverse Monthly Payment                 | ✅ Implemented           | `ContributionController@revert` → `ReverseContribution`; records `reversed_at`, `reversed_by` and `reversal_reason`, and clears `monthly_key`.                                              |
+| Donations Ledger                        | ✅ Implemented           | `ContributionController@indexDonations`, `contributions/donations/index.tsx`, with month filter, search, pagination and Active/Reversed badge.                                              |
+| View Payment History                    | ✅ Implemented           | History column and `contribution-history-dialog` on both lists; covered by `ContributionHistoryTest`.                                                                                       |
+| Monthly Report Generation (Async Job)   | ✅ Implemented           | `contributions:generate-reports` dispatches `GenerateCommunityContributionReport` monthly; `GenerateContributionReports` builds the report.                                                 |
+| View Payment Defaults                   | ✅ Implemented           | `ContributionReportController`, `contributions/report.tsx` and `CalculateDefaultStreaks`, including the 3+ month overdue view.                                                              |
+| Change Contribution Amount              | ✅ Implemented           | `ContributionSettingController` and `contributions/settings.tsx`; future-dated settings are editable while already-effective ones stay read-only.                                           |
+| Register Donation                       | ✅ Implemented           | `ContributionController@storeDonation` → `RegisterDonation`, `contributions/donations/create.tsx`, with CPF/CNPJ donor support.                                                             |
+| Find a Member in the Contributions List | ✅ Implemented           | Debounced name/CPF search and pagination in `contributions/index.tsx`.                                                                                                                      |
+| Member Views Own Payment History        | ⚠️ Partially implemented | Dashboard "My Contributions" card and history modal (`BuildMyContributions`) show the member's summary and contribution rows; there is no dedicated page listing every month since joining. |
+
 ## Data Model
 
 ```mermaid
@@ -220,7 +237,9 @@ flowchart TD
     E --> F[Paid/Pending status per member for the selected month]
 ```
 
-## Flow: Member Views Own Payment History (planned)
+## Flow: Member Views Own Payment History (dashboard)
 
-Not implemented yet. Planned: the member sees every month since joining with paid/pending
-status and the amount/date of paid months.
+Partially implemented. The dashboard "My Contributions" card shows the member's total paid
+this year, the current-month status, the next due month and a history modal with their
+contribution rows. There is no dedicated page listing every month since joining with
+paid/pending status.

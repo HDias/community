@@ -3,6 +3,22 @@
 Only secretaries or admins can create meetings.
 Minutes are free text. Attendance is recorded manually by secretary or admin.
 
+## Implementation Status
+
+> Checked on 2026-11-10.
+
+❌ **Not implemented.** There is no `Meeting` or `MeetingAttendance` model, migration,
+route, controller, page or test in the application.
+
+| Flow                                | Status             | Notes                                |
+| ----------------------------------- | ------------------ | ------------------------------------ |
+| Create Meeting                      | ❌ Not implemented | No meetings module.                  |
+| Record Attendance                   | ❌ Not implemented | No attendance records or screen.     |
+| Record Minutes                      | ❌ Not implemented | No minutes field or page.            |
+| Admin Changes Future Meeting Date   | ❌ Not implemented | No edit flow, notification or email. |
+| Member Views Meetings               | ❌ Not implemented | No member-facing meetings page.      |
+| Member Views Own Attendance History | ❌ Not implemented | No attendance history.               |
+
 ## Data Model
 
 ```mermaid

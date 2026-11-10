@@ -4,6 +4,21 @@ Versioned with full history. Only admin can edit.
 On edit, all members receive email + in-system notification with changes and full content.
 Members must confirm reading ("I have read and acknowledge").
 
+## Implementation Status
+
+> Checked on 2026-11-10.
+
+❌ **Not implemented.** There is no `Bylaw` or `BylawAcknowledgement` model, migration,
+route, controller, page or test in the application.
+
+| Flow                         | Status             | Notes                                        |
+| ---------------------------- | ------------------ | -------------------------------------------- |
+| Edit Bylaws                  | ❌ Not implemented | No versioned bylaws module or notifications. |
+| Reading Confirmation         | ❌ Not implemented | No acknowledgement records or action.        |
+| Bylaws History (Admin Only)  | ❌ Not implemented | No version list or diff.                     |
+| Admin Panel - Reading Status | ❌ Not implemented | No reading-status panel or reminders.        |
+| Member Views Bylaws          | ❌ Not implemented | No member-facing bylaws page.                |
+
 ## Data Model
 
 ```mermaid
