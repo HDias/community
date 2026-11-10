@@ -1,5 +1,14 @@
 import { Head, router } from '@inertiajs/react';
 import { switchCommunity } from '@/actions/App/Http/Controllers/Communities/CommunityController';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogTitle,
+    DialogTrigger,
+} from '@/components/ui/dialog';
 
 interface AdministrationMember {
     name: string;
@@ -9,6 +18,26 @@ interface AdministrationMember {
 interface CommunityOption {
     id: number;
     name: string;
+}
+
+interface ContributionHistoryEntry {
+    id: number;
+    type: 'monthly' | 'donation';
+    amount: string;
+    reference_month: string;
+    status: 'active' | 'reversed';
+    registered_at: string | null;
+    registered_by_name: string | null;
+    reversed_at: string | null;
+    reversed_by_name: string | null;
+    reversal_reason: string | null;
+}
+
+interface MyContributions {
+    totalPaidThisYear: string;
+    currentMonthStatus: 'paid' | 'pending';
+    nextDueMonth: string | null;
+    history: ContributionHistoryEntry[];
 }
 
 interface DashboardProps {
@@ -23,6 +52,16 @@ interface DashboardProps {
     communityRole: string | null;
     administrationMembers: AdministrationMember[];
     canManage: boolean;
+    myContributions: MyContributions | null;
+}
+
+function formatMonth(value: string): string {
+    const [year, month] = value.split('-').map(Number);
+
+    return new Date(year, month - 1, 1).toLocaleDateString('en-US', {
+        month: 'long',
+        year: 'numeric',
+    });
 }
 
 export default function Dashboard({
@@ -31,6 +70,7 @@ export default function Dashboard({
     memberCount,
     memberSince,
     administrationMembers,
+    myContributions,
 }: DashboardProps) {
     const currentCommunity = communities.find(
         (c) => c.name === community?.name,
@@ -110,9 +150,139 @@ export default function Dashboard({
                         <h3 className="text-sm font-medium text-muted-foreground">
                             My Contributions
                         </h3>
-                        <p className="mt-2 text-sm text-muted-foreground/70">
-                            No contribution data available
-                        </p>
+                        {myContributions &&
+                        myContributions.history.length > 0 ? (
+                            <div className="mt-2 space-y-2 text-sm">
+                                <div className="flex items-center justify-between gap-2">
+                                    <span className="text-muted-foreground">
+                                        Total this year
+                                    </span>
+                                    <span className="font-semibold">
+                                        R$ {myContributions.totalPaidThisYear}
+                                    </span>
+                                </div>
+                                <div className="flex items-center justify-between gap-2">
+                                    <span className="text-muted-foreground">
+                                        This month
+                                    </span>
+                                    <Badge
+                                        variant={
+                                            myContributions.currentMonthStatus ===
+                                            'paid'
+                                                ? 'default'
+                                                : 'secondary'
+                                        }
+                                    >
+                                        {myContributions.currentMonthStatus ===
+                                        'paid'
+                                            ? 'Paid'
+                                            : 'Pending'}
+                                    </Badge>
+                                </div>
+                                {myContributions.nextDueMonth && (
+                                    <p className="text-muted-foreground">
+                                        Next due:{' '}
+                                        {formatMonth(
+                                            myContributions.nextDueMonth,
+                                        )}
+                                    </p>
+                                )}
+                                <Dialog>
+                                    <DialogTrigger asChild>
+                                        <Button
+                                            type="button"
+                                            size="sm"
+                                            variant="outline"
+                                        >
+                                            View history
+                                        </Button>
+                                    </DialogTrigger>
+                                    <DialogContent>
+                                        <DialogTitle>
+                                            Contribution history
+                                        </DialogTitle>
+                                        <DialogDescription>
+                                            Monthly payments and donations
+                                            registered for you.
+                                        </DialogDescription>
+                                        <ol className="space-y-3">
+                                            {myContributions.history.map(
+                                                (entry) => (
+                                                    <li
+                                                        key={entry.id}
+                                                        className="rounded-lg border p-3 text-sm"
+                                                    >
+                                                        <div className="flex items-center justify-between gap-2">
+                                                            <span className="font-medium">
+                                                                {entry.type ===
+                                                                'donation'
+                                                                    ? 'Donation'
+                                                                    : 'Monthly'}{' '}
+                                                                ·{' '}
+                                                                {
+                                                                    entry.reference_month
+                                                                }
+                                                            </span>
+                                                            <Badge
+                                                                variant={
+                                                                    entry.status ===
+                                                                    'active'
+                                                                        ? 'default'
+                                                                        : 'secondary'
+                                                                }
+                                                            >
+                                                                {entry.status ===
+                                                                'active'
+                                                                    ? 'Active'
+                                                                    : 'Reversed'}
+                                                            </Badge>
+                                                        </div>
+                                                        <p className="text-muted-foreground">
+                                                            Amount: R${' '}
+                                                            {entry.amount}
+                                                        </p>
+                                                        {entry.registered_by_name && (
+                                                            <p className="text-muted-foreground">
+                                                                Registered by{' '}
+                                                                {
+                                                                    entry.registered_by_name
+                                                                }
+                                                            </p>
+                                                        )}
+                                                        {entry.status ===
+                                                            'reversed' && (
+                                                            <div className="mt-2 space-y-1 border-t pt-2">
+                                                                {entry.reversed_by_name && (
+                                                                    <p className="text-muted-foreground">
+                                                                        Reversed
+                                                                        by{' '}
+                                                                        {
+                                                                            entry.reversed_by_name
+                                                                        }
+                                                                    </p>
+                                                                )}
+                                                                {entry.reversal_reason && (
+                                                                    <p>
+                                                                        Reason:{' '}
+                                                                        {
+                                                                            entry.reversal_reason
+                                                                        }
+                                                                    </p>
+                                                                )}
+                                                            </div>
+                                                        )}
+                                                    </li>
+                                                ),
+                                            )}
+                                        </ol>
+                                    </DialogContent>
+                                </Dialog>
+                            </div>
+                        ) : (
+                            <p className="mt-2 text-sm text-muted-foreground/70">
+                                No contributions yet
+                            </p>
+                        )}
                     </div>
 
                     {/* Current Administration card */}
